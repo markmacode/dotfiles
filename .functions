@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Go to the repos directory.
+# Accepts relative path argument to go into a specific repo.
+function repo {
+    cd "${REPOS}/${1}";
+}
+
+# Go to the vital directory
+# Accepts relative path argument to go into a specific sub-dir.
+function vital {
+    cd "${VITAL}/${1}";
+}
+
+# Git commit
+function gc {
+    message=$1;
+    git commit -m "$message";
+}
+
+# Git add all and commit
+function gac {
+    message=$1;
+    git add .;
+    git commit -m "$message";
+}

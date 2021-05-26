@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export VITAL="/mnt/v";
+export REPOS="${VITAL}/mark-bromell/repos";

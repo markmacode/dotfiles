@@ -1,0 +1,54 @@
+# Custom
+.tasks/
+.debug/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# JetBrains
+.idea/
+.idea_modules/
+cmake-build-*/
+out/
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+*.iml
+*.ipr
+*.iws
+
+# Backup
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+tmp/
+
+# Virtualenv
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+pip-selfcheck.json
+.venv
+.venv-*
+venv/
+venv-*/
+env/
+env-*/

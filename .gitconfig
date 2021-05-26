@@ -1,0 +1,7 @@
+[user]
+	name = mark-bromell
+	email = markbromell.business@gmail.com
+[core]
+	whitespace = cr-at-eol
+	autocrlf = true
+	excludesfile = /home/mark/global.gitignore
