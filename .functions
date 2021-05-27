@@ -15,6 +15,12 @@ for directory in ${create_directories[@]}; do
     fi;
 done;
 
+# Make a directory and cd into it.
+function md {
+    mkdir $1;
+    cd $1;
+}
+
 # Go to the repos directory.
 # Accepts relative path argument to go into a specific repo.
 function repo {
