@@ -11,10 +11,16 @@ alias setpy39='sudo update-alternatives --set python3 /usr/bin/python3.9'
 alias setpy36='sudo update-alternatives --set python3 /usr/bin/python3.6'
 
 # Dir listing
-alias lf='ls -alF'
-alias ll='ls -Alp'
-alias la='ls -A'
-alias l='ls -CF'
+alias ls='ls --color=auto'
+alias lf='ls -alF --color=auto'
+alias ll='ls -Alp --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+
+# Grepping
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # Git
 alias gs='git status'
