@@ -2,3 +2,4 @@
 
 export VITAL="/mnt/v";
 export REPOS="${VITAL}/mark-bromell/repos";
+export PATH="${PATH}:/usr/local/go/bin"
