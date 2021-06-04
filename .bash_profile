@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Start docker
+# Start some common services
 sudo service docker start &>/dev/null;
+sudo service postgresql start &>/dev/null;
 
 # Node stuff
 export NVM_DIR="$HOME/.nvm";
