@@ -5,6 +5,7 @@ alias c='clear'
 alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
+alias untar='tar -xvzf'
 
 # Python
 alias vc='python3 -m venv ./venv'
