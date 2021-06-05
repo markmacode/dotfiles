@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Iterate over boilerplate create directories and source the `main.sh` file.
-create_directories=($(ls -d ~/create/*));
+create_directories=($(ls -d ~/.create/*));
 for directory in ${create_directories[@]}; do
 
     # Remove traling slash

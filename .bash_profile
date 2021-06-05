@@ -11,8 +11,6 @@ export NVM_DIR="$HOME/.nvm";
 # This loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion";
 
-test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)";
-
 # Sourcing
 source ~/.exports;
 source ~/.bash_prompt;

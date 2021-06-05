@@ -5,7 +5,7 @@ create_python() {
     git init $project_name;
     cd $project_name;
     git branch -M main
-    cp -a ~/create/python/template/. .;
+    cp -a ~/.create/python/template/. .;
     mv "./#project_name" ./$project_name;
 
     # Create the virtual environment.
