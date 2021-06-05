@@ -2,13 +2,18 @@
 
 # Shortcuts
 alias c='clear'
+alias ..='cd ..'
+alias ....='cd ../..'
+alias ......='cd ../../..'
 
 # Python
 alias vc='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
 alias pp='export PYTHONPATH=$PWD'
-alias setpy39='sudo update-alternatives --set python3 /usr/bin/python3.9'
-alias setpy36='sudo update-alternatives --set python3 /usr/bin/python3.6'
+alias setpy39='sudo update-alternatives --set python /usr/bin/python3.9'
+alias setpy38='sudo update-alternatives --set python /usr/bin/python3.8'
+alias setpy37='sudo update-alternatives --set python /usr/bin/python3.7'
+alias setpy36='sudo update-alternatives --set python /usr/bin/python3.6'
 
 # Dir listing
 alias ls='ls --color=auto'

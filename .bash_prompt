@@ -1,48 +1,48 @@
 #!/usr/bin/env bash
 
 function prompt_git {
-    local branch_symbol=$'\uE0A0';
-    local branch_name=$(git branch --show-current 2>/dev/null);
+    local branch_symbol=$'\uE0A0'
+    local branch_name=$(git branch --show-current 2>/dev/null)
 
     if [ -n "$branch_name" ]; then
-        local changes_raw=$(git diff --shortstat 2>/dev/null);
-        local changes_raw_cached=$(git diff --cached --shortstat 2>/dev/null);
-        local changes="";
+        local changes_raw=$(git diff --shortstat 2>/dev/null)
+        local changes_raw_cached=$(git diff --cached --shortstat 2>/dev/null)
+        local changes=""
 
         # Show changes
         if [ -n "$changes_raw" ]; then
-            local arr_raw=($changes_raw);
-            local arr_raw_cached=($changes_raw);
+            local arr_raw=($changes_raw)
+            local arr_raw_cached=($changes_raw)
 
             if [ ${arr_raw[0]} -gt 0 ] || [ ${arr_raw_cached[0]} -gt 0 ]; then
                 changes=$(echo -e "∙");
-            fi;
-        fi;
+            fi
+        fi
 
-        echo "$branch_symbol $branch_name $changes";
-    fi;
+        echo "$branch_symbol $branch_name $changes"
+    fi
 }
 
-reset="\[\e[0m\]";
-black="\[\e[30m\]";
-red="\[\e[31m\]";
-green="\[\e[32m\]";
-yellow="\[\e[33m\]";
-blue="\[\e[34m\]";
-magenta="\[\e[35m\]";
-cyan="\[\e[36m\]";
-light_grey="\[\e[37m\]";
-dark_grey="\[\e[90m\]";
-light_red="\[\e[91m\]";
-light_green="\[\e[92m\]";
-light_yellow="\[\e[93m\]";
-light_blue="\[\e[94m\]";
-light_magenta="\[\e[95m\]";
-light_cyan="\[\e[96m\]";
-white="\[\e[97m\]";
+reset="\[\e[0m\]"
+black="\[\e[30m\]"
+red="\[\e[31m\]"
+green="\[\e[32m\]"
+yellow="\[\e[33m\]"
+blue="\[\e[34m\]"
+magenta="\[\e[35m\]"
+cyan="\[\e[36m\]"
+light_grey="\[\e[37m\]"
+dark_grey="\[\e[90m\]"
+light_red="\[\e[91m\]"
+light_green="\[\e[92m\]"
+light_yellow="\[\e[93m\]"
+light_blue="\[\e[94m\]"
+light_magenta="\[\e[95m\]"
+light_cyan="\[\e[96m\]"
+white="\[\e[97m\]"
 
-PS1="${yellow}\w "; # working directory base name
-PS1+="${light_magenta}\$(prompt_git)"; # git stuff
-PS1+="\n";
-PS1+="${dark_grey}$ ";
-PS1+="${reset}";
+PS1="${yellow}\w " # working directory base name
+PS1+="${light_magenta}\$(prompt_git)" # git stuff
+PS1+="\n"
+PS1+="${dark_grey}$ "
+PS1+="${reset}"
