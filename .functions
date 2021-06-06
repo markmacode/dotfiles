@@ -33,6 +33,10 @@ function vital {
     cd "${VITAL}/${1}"
 }
 
+#
+# Git stuff
+#
+
 # Git commit
 function gc {
     message=$1
@@ -44,4 +48,10 @@ function gac {
     message=$1
     git add .
     git commit -m "$message"
+}
+
+function tag {
+    name=$1
+    git tag $name
+    git push --tags
 }
