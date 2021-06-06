@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-export VITAL="~/vital"
-export REPOS="${VITAL}/mark-bromell/repos"
 export PATH="${PATH}:/usr/local/go/bin"
+
+export VITAL="/vital"
+export REPOS="${VITAL}/mark-bromell/repos"

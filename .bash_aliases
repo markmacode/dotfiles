@@ -17,11 +17,11 @@ alias setpy37='sudo update-alternatives --set python /usr/bin/python3.7'
 alias setpy36='sudo update-alternatives --set python /usr/bin/python3.6'
 
 # Dir listing
-alias ls='ls --color=auto'
-alias lf='ls -alF --color=auto'
-alias ll='ls -Alp --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
+alias ls="ls --color=auto -I '\$RECYCLE.BIN' -I 'System Volume Information'"
+alias lf="ls -alF --color=auto -I '\$RECYCLE.BIN' -I 'System Volume Information'"
+alias ll="ls -Alp --color=auto -I '\$RECYCLE.BIN' -I 'System Volume Information'"
+alias la="ls -A --color=auto -I '\$RECYCLE.BIN' -I 'System Volume Information'"
+alias l="ls -CF --color=auto -I '\$RECYCLE.BIN' -I 'System Volume Information'"
 
 # Grepping
 alias grep='grep --color=auto'
