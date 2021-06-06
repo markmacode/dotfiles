@@ -2,5 +2,5 @@
 
 export PATH="${PATH}:/usr/local/go/bin"
 
-export VITAL="~/vital"
+export VITAL="${HOME}/vital"
 export REPOS="${VITAL}/repos"
