@@ -50,6 +50,7 @@ function gac {
     git commit -m "$message"
 }
 
+# Git create tag and push the tag
 function tag {
     name=$1
     git tag $name
