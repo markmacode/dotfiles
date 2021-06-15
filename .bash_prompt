@@ -41,8 +41,8 @@ light_magenta="\[\e[95m\]"
 light_cyan="\[\e[96m\]"
 white="\[\e[97m\]"
 
-PS1="${light_yellow}\w " # working directory base name
-PS1+="${light_red}\$(prompt_git)" # git stuff
+PS1="${magenta}\w " # working directory base name
+PS1+="${yellow}\$(prompt_git)" # git stuff
 PS1+="\n"
 PS1+="${dark_grey}$ "
 PS1+="${reset}"
