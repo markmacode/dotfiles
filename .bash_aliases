@@ -6,9 +6,10 @@ alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
 alias untar='tar -xvzf'
+alias untarxz='tar -xvJf'
 
 # Python
-alias vc='python3 -m venv ./venv'
+alias vc='python -m venv ./venv'
 alias va='source ./venv/bin/activate'
 alias pp='export PYTHONPATH=$PWD'
 alias setpy39='sudo update-alternatives --set python /usr/bin/python3.9'
