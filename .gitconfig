@@ -3,5 +3,9 @@
 	email = markbromell.business@gmail.com
 [core]
 	whitespace = cr-at-eol
-	autocrlf = true
+	autocrlf = false
 	excludesfile = /home/mark/global.gitignore
+	eol = lf
+[alias]
+	ca = commit --all
+	s = status
