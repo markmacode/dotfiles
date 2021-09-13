@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# Colors for ls
-#test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)";
+echo "disable" > /sys/firmware/acpi/interrupts/gpe6F
 
 # Sourcing
 source ~/.exports

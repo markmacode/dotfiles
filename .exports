@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
 
-export GOPATH="${HOME}/go"
+# Java
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+
+# Android
 export ANDROID_HOME="${HOME}/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+# Golang
+export GOPATH="${HOME}/go"
 export PATH="${PATH}:/usr/local/go/bin"
 export PATH="${PATH}:${GOPATH}/bin"
 
+# Custom stuff
 export VITAL="${HOME}/vital"
 export REPOS="${VITAL}/repos"
+
