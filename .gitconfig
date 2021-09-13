@@ -9,3 +9,5 @@
 [alias]
 	ca = commit --all
 	s = status
+	amend = commit --amend --no-edit
+	amendm = commit --amend -m
