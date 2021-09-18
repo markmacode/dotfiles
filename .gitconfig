@@ -8,7 +8,7 @@
 	eol = lf
 [alias]
 	s = status
-	ca = commit --all
+	ca = commit --all -m
 	amend = commit --amend --no-edit
 	amendm = commit --amend -m
 	a = add .
