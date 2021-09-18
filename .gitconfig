@@ -7,7 +7,8 @@
 	excludesfile = /home/mark/global.gitignore
 	eol = lf
 [alias]
-	ca = commit --all
 	s = status
+	ca = commit --all
 	amend = commit --amend --no-edit
 	amendm = commit --amend -m
+	a = add .
