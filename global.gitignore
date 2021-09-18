@@ -37,15 +37,6 @@ com_crashlytics_export_strings.xml
 tmp/
 
 # Virtualenv
-.Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-pip-selfcheck.json
 .venv
 .venv-*
 venv/
