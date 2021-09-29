@@ -28,11 +28,3 @@ alias l="ls -CF --color=auto -I '\$RECYCLE.BIN' -I 'System Volume Information'"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-# Git
-alias gs='git status'
-alias ga='git add .'
-alias amend='git commit --amend --no-edit'
-alias push='git push'
-alias pull='git pull'
-alias fpull='git fetch && git pull'

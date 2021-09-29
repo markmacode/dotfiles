@@ -2,13 +2,14 @@
 	name = mark-bromell
 	email = markbromell.business@gmail.com
 [core]
-	whitespace = cr-at-eol
-	autocrlf = false
+	autocrlf = input
+	editor = code --wait
 	excludesfile = /home/mark/global.gitignore
-	eol = lf
 [alias]
-	s = status
-	ca = commit --all -m
+	a = add .
 	amend = commit --amend --no-edit
 	amendm = commit --amend -m
-	a = add .
+	build = commit --allow-empty -m "Trigger build"
+	ca = commit --all -m
+	logo = log --oneline
+	s = status

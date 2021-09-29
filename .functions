@@ -1,20 +1,5 @@
 #!/usr/bin/env bash
 
-# Iterate over boilerplate create directories and source the `main.sh` file.
-create_directories=($(ls -d ~/.create/*))
-for directory in ${create_directories[@]}; do
-
-    # Remove traling slash
-    length=${#directory}
-    last_char=${directory:length-1:1}
-    [[ $last_char == "/" ]] && directory=${directory:0:length-1}
-    :
-
-    if [ -e $directory/main.sh ]; then
-        source $directory/main.sh
-    fi
-done
-
 # Make a directory and cd into it.
 function md {
     mkdir $1
@@ -31,28 +16,4 @@ function repo {
 # Accepts relative path argument to go into a specific sub-dir.
 function vital {
     cd "${VITAL}/${1}"
-}
-
-#
-# Git stuff
-#
-
-# Git commit
-function gc {
-    message=$1
-    git commit -m "$message"
-}
-
-# Git add all and commit
-function gac {
-    message=$1
-    git add .
-    git commit -m "$message"
-}
-
-# Git create tag and push the tag
-function tag {
-    name=$1
-    git tag $name
-    git push --tags
 }
