@@ -15,7 +15,7 @@ function prompt_git {
             local arr_raw_cached=($changes_raw)
 
             if [ ${arr_raw[0]} -gt 0 ] || [ ${arr_raw_cached[0]} -gt 0 ]; then
-                changes=$(echo -e "∙");
+                changes=$(echo -e "∙")
             fi
         fi
 
