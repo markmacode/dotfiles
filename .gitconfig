@@ -20,5 +20,6 @@
 	ca = commit --all -m
 	ch = checkout
 	chb = checkout -b
+	cp = cherry-pick
 	logo = log --oneline
 	s = status
