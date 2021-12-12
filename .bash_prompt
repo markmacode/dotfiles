@@ -4,21 +4,7 @@ function prompt_git {
     local branch_name=$(git branch --show-current 2>/dev/null)
 
     if [ -n "$branch_name" ]; then
-        local changes_raw=$(git diff --shortstat 2>/dev/null)
-        local changes_raw_cached=$(git diff --cached --shortstat 2>/dev/null)
-        local changes=""
-
-        # Show changes
-        if [ -n "$changes_raw" ]; then
-            local arr_raw=($changes_raw)
-            local arr_raw_cached=($changes_raw)
-
-            if [ ${arr_raw[0]} -gt 0 ] || [ ${arr_raw_cached[0]} -gt 0 ]; then
-                changes=$(echo -e " ∙")
-            fi
-        fi
-
-        echo "[$branch_name$changes]"
+        echo " [$branch_name$changes]"
     fi
 }
 
@@ -40,7 +26,7 @@ light_magenta="\[\e[95m\]"
 light_cyan="\[\e[96m\]"
 white="\[\e[97m\]"
 
-PS1="${magenta}\w " # working directory base name
+PS1="${magenta}\w" # working directory base name
 PS1+="${yellow}\$(prompt_git)" # git stuff
 if is_linux; then
     PS1+="\n"
