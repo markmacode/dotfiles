@@ -1,21 +1,34 @@
 #!/usr/bin/env bash
 
-# Java
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export DOTFILES_ENV=$(uname -o)
 
-# Android
-export ANDROID_HOME="${HOME}/Android/Sdk"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/tools/bin"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
+function is_linux {
+    [ "$DOTFILES_ENV" = "GNU/Linux" ]
+}
+function is_msys {
+    [ "$DOTFILES_ENV" = "Msys" ]
+}
 
-# Golang
-export GOPATH="${HOME}/go"
-export PATH="${PATH}:/usr/local/go/bin"
-export PATH="${PATH}:${GOPATH}/bin"
+if is_linux; then
+    # Java
+    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 
-# Custom stuff
-export VITAL="${HOME}/vital"
-export REPOS="${VITAL}/repos"
+    # Android
+    export ANDROID_HOME="${HOME}/Android/Sdk"
+    export PATH="$PATH:$ANDROID_HOME/emulator"
+    export PATH="$PATH:$ANDROID_HOME/tools"
+    export PATH="$PATH:$ANDROID_HOME/tools/bin"
+    export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
+    # Golang
+    export GOPATH="${HOME}/go"
+    export PATH="${PATH}:/usr/local/go/bin"
+    export PATH="${PATH}:${GOPATH}/bin"
+
+    # Custom stuff
+    export VITAL="${HOME}/vital"
+    export REPOS="${VITAL}/repos"
+elif is_msys; then
+    export VITAL="/v"
+    export REPOS="${VITAL}/mark-bromell/repos"
+fi

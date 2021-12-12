@@ -8,4 +8,4 @@ cd dotfiles
 source bootstrap.sh
 ```
 
-You may then need to source the `~/.bash_profile` file within your `.bashrc` file.
+You may then need to source the `~/.bash_profile` file within your `~/.bashrc` file.

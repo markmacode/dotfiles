@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 function prompt_git {
-    local branch_symbol=$'\uE0A0'
     local branch_name=$(git branch --show-current 2>/dev/null)
 
     if [ -n "$branch_name" ]; then
@@ -15,11 +14,11 @@ function prompt_git {
             local arr_raw_cached=($changes_raw)
 
             if [ ${arr_raw[0]} -gt 0 ] || [ ${arr_raw_cached[0]} -gt 0 ]; then
-                changes=$(echo -e "∙")
+                changes=$(echo -e " ∙")
             fi
         fi
 
-        echo "$branch_symbol $branch_name $changes"
+        echo "[$branch_name$changes]"
     fi
 }
 
@@ -43,6 +42,10 @@ white="\[\e[97m\]"
 
 PS1="${magenta}\w " # working directory base name
 PS1+="${yellow}\$(prompt_git)" # git stuff
-PS1+="\n"
+if is_linux; then
+    PS1+="\n"
+elif is_msys; then
+    PS1+="\012"
+fi
 PS1+="${dark_grey}$ "
 PS1+="${reset}"
