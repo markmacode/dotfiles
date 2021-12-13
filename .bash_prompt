@@ -21,20 +21,16 @@ white="\[\e[97m\]"
 source ~/git-prompt.sh
 
 function set_ps1 {
-    # The start will always be the same
-    local start="${magenta}\\w"
+    PS1="${magenta}\\w"
+    PS1+="\$(__git_ps1 ' ${reset}[${yellow}%s${reset}]')"
 
-    # The ending will also be the same always
-    local end=""
     if is_linux; then
-        end+="\n"
+        PS1+="\n"
     elif is_msys; then
-        end+="\012"
+        PS1+="\012"
     fi
-    end+="${dark_grey}$ "
-    end+="${reset}"
-    
-    PS1="${start}\$(__git_ps1 ' ${reset}[${yellow}%s${reset}]')${end}"
+    PS1+="${dark_grey}$ ${reset}"
+
 }
 
 set_ps1
