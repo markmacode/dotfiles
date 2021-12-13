@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-function prompt_git {
-    local branch_name=$(git branch --show-current 2>/dev/null)
-
-    if [ -n "$branch_name" ]; then
-        echo " [$branch_name$changes]"
-    fi
-}
-
 reset="\[\e[0m\]"
 black="\[\e[30m\]"
 red="\[\e[31m\]"
@@ -26,12 +18,23 @@ light_magenta="\[\e[95m\]"
 light_cyan="\[\e[96m\]"
 white="\[\e[97m\]"
 
-PS1="${magenta}\w" # working directory base name
-PS1+="${yellow}\$(prompt_git)" # git stuff
-if is_linux; then
-    PS1+="\n"
-elif is_msys; then
-    PS1+="\012"
-fi
-PS1+="${dark_grey}$ "
-PS1+="${reset}"
+source ~/git-prompt.sh
+
+function set_ps1 {
+    # The start will always be the same
+    local start="${magenta}\\w"
+
+    # The ending will also be the same always
+    local end=""
+    if is_linux; then
+        end+="\n"
+    elif is_msys; then
+        end+="\012"
+    fi
+    end+="${dark_grey}$ "
+    end+="${reset}"
+    
+    PS1="${start}\$(__git_ps1 ' ${reset}[${yellow}%s${reset}]')${end}"
+}
+
+set_ps1
