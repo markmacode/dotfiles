@@ -1,36 +1,40 @@
 #!/usr/bin/env bash
 
-reset="\[\e[0m\]"
-black="\[\e[30m\]"
-red="\[\e[31m\]"
-green="\[\e[32m\]"
-yellow="\[\e[33m\]"
-blue="\[\e[34m\]"
-magenta="\[\e[35m\]"
-cyan="\[\e[36m\]"
-light_grey="\[\e[37m\]"
-dark_grey="\[\e[90m\]"
-light_red="\[\e[91m\]"
-light_green="\[\e[92m\]"
-light_yellow="\[\e[93m\]"
-light_blue="\[\e[94m\]"
-light_magenta="\[\e[95m\]"
-light_cyan="\[\e[96m\]"
-white="\[\e[97m\]"
-
-source ~/git-prompt.sh
+source ~/.git-prompt.sh
 
 function set_ps1 {
-    PS1="${magenta}\\w"
-    PS1+="\$(__git_ps1 ' ${reset}[${yellow}%s${reset}]')"
+    local r="\[\e[0m\]"
+    local bold="\[\e[1m\]"
+    local dim="\[\e[2m\]"
+    local underline="\[\e[4m\]"
+
+    local black="\[\e[30m\]"
+    local red="\[\e[31m\]"
+    local green="\[\e[32m\]"
+    local yellow="\[\e[33m\]"
+    local blue="\[\e[34m\]"
+    local magenta="\[\e[35m\]"
+    local cyan="\[\e[36m\]"
+    local light_grey="\[\e[37m\]"
+    local dark_grey="\[\e[90m\]"
+    local light_red="\[\e[91m\]"
+    local light_green="\[\e[92m\]"
+    local light_yellow="\[\e[93m\]"
+    local light_blue="\[\e[94m\]"
+    local light_magenta="\[\e[95m\]"
+    local light_cyan="\[\e[96m\]"
+    local white="\[\e[97m\]"
+
+    PS1="${light_magenta}\\w"
+    PS1+="\$(__git_ps1 ' $yellow<$r$yellow>$r [$blue%s$r] $red-$green+$r|$red-$green+$r')"
+    # PS1+="\$(__git_ps1 ' $yellow<$r$yellow>$r [$blue%s$r] $yellow*$r|$yellow*$r')"
 
     if is_linux; then
         PS1+="\n"
     elif is_msys; then
         PS1+="\012"
     fi
-    PS1+="${dark_grey}$ ${reset}"
-
+    PS1+="${dark_grey}$ ${r}"
 }
 
 set_ps1
