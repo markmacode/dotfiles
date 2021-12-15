@@ -26,7 +26,11 @@ function set_ps1 {
     local white="\[\e[97m\]"
 
     PS1="${blue}\\w"
-    PS1+="\$(__git_ps1 ' $yellow<$dark_grey$yellow>$r $dark_grey[$light_magenta%s$dark_grey]$r $light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙$r')"
+    # PS1+="\$(__git_ps1 ' $yellow<${dark_grey}$yellow>$r $dark_grey[$light_magenta%s$dark_grey]$r $light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙$r')"
+    # PS1+="\$(__git_ps1 ' ${dark_grey}origin$r $yellow<${dark_grey}$yellow> $light_magenta%s$r $light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙$r')"
+    # PS1+="\$(__git_ps1 ' ${dark_grey} ${dark_grey}[$yellow-${dark_grey}origin$yellow+${dark_grey}]$r $dark_grey[$light_magenta%s$dark_grey]$r ${dark_grey}[$light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙${dark_grey}]$r')"
+    PS1+="\$(__git_ps1 ' ${dark_grey} ${dark_grey}[$yellow-${dark_grey}origin$yellow+${dark_grey}]$r $dark_grey[$light_magenta%s$dark_grey]$r ${dark_grey}[$light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙${dark_grey}]$r')"
+    
     # PS1+="\$(__git_ps1 ' $yellow<$dark_grey$yellow>$r [$blue%s$r] $red⚬$green⚬$blue⚬$dark_grey|$red⚬$green⚬$blue⚬$r')"
     # PS1+="\$(__git_ps1 ' $yellow<$dark_grey$yellow>$r [$blue%s$r] $red*$green*$blue*$dark_grey|$red*$green*$blue*$r')"
     # PS1+="\$(__git_ps1 ' $yellow<$r$yellow>$r [$blue%s$r] $yellow*$r|$yellow*$r')"
