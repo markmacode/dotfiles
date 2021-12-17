@@ -339,7 +339,7 @@ __git_sequencer_status ()
 # The optional third parameter will be used as printf format string to further
 # customize the output of the git-status string.
 # In this mode you can request colored hints using GIT_PS1_SHOWCOLORHINTS=true
-__git_ps1 ()
+__git_branch ()
 {
 	# preserve exit status
 	local exit=$?

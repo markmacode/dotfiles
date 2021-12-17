@@ -2,6 +2,15 @@
 
 source ~/.git-prompt.sh
 
+function __git_remote {
+    printf_format="${1}"
+    remote="$(git status -sb 2> /dev/null | grep '##' | sed 's/.*\.\.\.//' | sed 's/\/.*//')"
+
+    if [ ! -z "$remote" ]; then
+        printf -- "$printf_format" "$remote"
+    fi
+}
+
 function set_ps1 {
     local r="\[\e[0m\]"
     local bold="\[\e[1m\]"
@@ -26,14 +35,10 @@ function set_ps1 {
     local white="\[\e[97m\]"
 
     PS1="${blue}\\w"
-    # PS1+="\$(__git_ps1 ' $yellow<${dark_grey}$yellow>$r $dark_grey[$light_magenta%s$dark_grey]$r $light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙$r')"
-    # PS1+="\$(__git_ps1 ' ${dark_grey}origin$r $yellow<${dark_grey}$yellow> $light_magenta%s$r $light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙$r')"
-    # PS1+="\$(__git_ps1 ' ${dark_grey} ${dark_grey}[$yellow-${dark_grey}origin$yellow+${dark_grey}]$r $dark_grey[$light_magenta%s$dark_grey]$r ${dark_grey}[$light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙${dark_grey}]$r')"
-    PS1+="\$(__git_ps1 ' ${dark_grey} ${dark_grey}[$yellow-${dark_grey}origin$yellow+${dark_grey}]$r $dark_grey[$magenta%s$dark_grey]$r ${dark_grey}[$light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙${dark_grey}]$r')"
-    
-    # PS1+="\$(__git_ps1 ' $yellow<$dark_grey$yellow>$r [$blue%s$r] $red⚬$green⚬$blue⚬$dark_grey|$red⚬$green⚬$blue⚬$r')"
-    # PS1+="\$(__git_ps1 ' $yellow<$dark_grey$yellow>$r [$blue%s$r] $red*$green*$blue*$dark_grey|$red*$green*$blue*$r')"
-    # PS1+="\$(__git_ps1 ' $yellow<$r$yellow>$r [$blue%s$r] $yellow*$r|$yellow*$r')"
+
+    # PS1+="\$(__git_remote ' ${dark_grey}[$yellow-${dark_grey}%s$yellow+${dark_grey}]$r')"
+    PS1+="\$(__git_remote ' ${dark_grey}[$yellow%s${dark_grey}%s$yellow%s${dark_grey}]$r')"
+    PS1+="\$(__git_branch ' ${dark_grey} $dark_grey[$magenta%s$dark_grey]$r ${dark_grey}[$light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙${dark_grey}]$r')"
 
     if is_linux; then
         PS1+="\n"
