@@ -20,12 +20,12 @@ function __git_remote {
     # If the status contains 'ahead' replace it with a '+'.
     ahead="$(git status -sb 2> /dev/null |
         grep '##' 2> /dev/null |
-        grep '\[ahead' 2> /dev/null |
+        grep -e '\[ahead' -e ', ahead' 2> /dev/null |
         sed 's/.*/+/')"
     # If the status contains 'behind' replace it with a '-'.
     behind="$(git status -sb 2> /dev/null |
         grep '##' 2> /dev/null |
-        grep '\[behind' 2> /dev/null |
+        grep -e '\[behind' -e ', behind' 2> /dev/null |
         sed 's/.*/-/')"
     # Get the branch details on the line that contains '##'
     # It has a remote beind tracked if that line contains '...'
