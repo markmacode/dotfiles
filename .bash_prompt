@@ -98,7 +98,7 @@ function set_ps1 {
     PS1+=" ${dark_grey}\$(__git_symbol)"
     PS1+="\$(__git_remote ' ${dark_grey}[$yellow%s${dark_grey}%s$yellow%s${dark_grey}]$r')"
     PS1+="\$(__git_branch ' $dark_grey[$magenta%s$dark_grey]$r')"
-    PS1+="\$(__git_stash ' $red%s$dark_grey$r')"
+    PS1+="\$(__git_stash ' $dark_grey[$light_grey%s$dark_grey]$r')"
     PS1+="\$(__git_changes ' ${dark_grey}[$red%s$dark_grey|$yellow%s$dark_grey|$green%s${dark_grey}]$r')"
 
     if is_linux; then
