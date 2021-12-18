@@ -15,22 +15,22 @@ function __git_remote {
     #   ## main...origin/main [ahead 3]
     #   M .bash_prompt
 
-    printf_format="${1}"
+    local printf_format="${1}"
 
     # If the status contains 'ahead' replace it with a '+'.
-    ahead="$(git status -sb 2> /dev/null |
+    local ahead="$(git status -sb 2> /dev/null |
         grep '##' 2> /dev/null |
         grep -e '\[ahead' -e ', ahead' 2> /dev/null |
         sed 's/.*/+/')"
     # If the status contains 'behind' replace it with a '-'.
-    behind="$(git status -sb 2> /dev/null |
+    local behind="$(git status -sb 2> /dev/null |
         grep '##' 2> /dev/null |
         grep -e '\[behind' -e ', behind' 2> /dev/null |
         sed 's/.*/-/')"
     # Get the branch details on the line that contains '##'
     # It has a remote beind tracked if that line contains '...'
     # Just get the origin name based on the format `*...<remote>/*`
-    remote="$(git status -sb 2> /dev/null |
+    local remote="$(git status -sb 2> /dev/null |
         grep '##' |
         grep '\.\.\.' 2> /dev/null |
         sed 's/.*\.\.\.//' |
@@ -42,22 +42,24 @@ function __git_remote {
 }
 
 function __git_changes {
-    printf_format="${1}"
+    local printf_format="${1}"
 
-    untracked="$(git ls-files --others --exclude-standard 2> /dev/null |
-        wc -l |
-        grep -v '0' 2> /dev/null |
-        xargs echo)"
-    unstaged="$(git diff --name-only 2> /dev/null |
-        wc -l |
-        grep -v '0' 2> /dev/null |
-        xargs echo)"
-    staged="$(git diff --name-only --cached 2> /dev/null |
-        wc -l |
-        grep -v '0' 2> /dev/null |
-        xargs echo)"
+    if [ $(git rev-parse --is-inside-git-dir 2> /dev/null) ]; then
+        local untracked="$(git ls-files --others --exclude-standard 2> /dev/null |
+            wc -l |
+            grep -v '0' 2> /dev/null |
+            cat)"
+        local unstaged="$(git diff --name-only 2> /dev/null |
+            wc -l |
+            grep -v '0' 2> /dev/null |
+            cat)"
+        local staged="$(git diff --name-only --cached 2> /dev/null |
+            wc -l |
+            grep -v '0' 2> /dev/null |
+            cat)"
 
-    printf -- "$printf_format" "$untracked" "$unstaged" "$staged"
+        printf -- "$printf_format" "$untracked" "$unstaged" "$staged"
+    fi
 }
 
 function set_ps1 {
