@@ -58,7 +58,9 @@ function __git_changes {
             grep -v '0' 2> /dev/null |
             cat)"
 
-        printf -- "$printf_format" "$untracked" "$unstaged" "$staged"
+        if [ ! -z "$untracked" ] || [ ! -z "$unstaged" ] || [ ! -z "$staged" ]; then
+            printf -- "$printf_format" "$untracked" "$unstaged" "$staged"
+        fi
     fi
 }
 
