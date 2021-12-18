@@ -21,12 +21,12 @@ function __git_remote {
     local ahead="$(git status -sb 2> /dev/null |
         grep '##' 2> /dev/null |
         grep -e '\[ahead' -e ', ahead' 2> /dev/null |
-        sed 's/.*/+/')"
+        sed 's/.*/>/')"
     # If the status contains 'behind' replace it with a '-'.
     local behind="$(git status -sb 2> /dev/null |
         grep '##' 2> /dev/null |
         grep -e '\[behind' -e ', behind' 2> /dev/null |
-        sed 's/.*/-/')"
+        sed 's/.*/</')"
     # Get the branch details on the line that contains '##'
     # It has a remote beind tracked if that line contains '...'
     # Just get the origin name based on the format `*...<remote>/*`
@@ -62,6 +62,14 @@ function __git_changes {
     fi
 }
 
+function __git_stash {
+    local printf_format="${1}"
+
+    if git rev-parse --verify --quiet refs/stash >/dev/null; then
+        printf -- "$printf_format" "$"
+    fi
+}
+
 function set_ps1 {
     local r="\[\e[0m\]"
     local bold="\[\e[1m\]"
@@ -90,6 +98,7 @@ function set_ps1 {
     PS1+=" ${dark_grey}\$(__git_symbol)"
     PS1+="\$(__git_remote ' ${dark_grey}[$yellow%s${dark_grey}%s$yellow%s${dark_grey}]$r')"
     PS1+="\$(__git_branch ' $dark_grey[$magenta%s$dark_grey]$r')"
+    PS1+="\$(__git_stash ' $red%s$dark_grey$r')"
     PS1+="\$(__git_changes ' ${dark_grey}[$red%s$dark_grey|$yellow%s$dark_grey|$green%s${dark_grey}]$r')"
 
     if is_linux; then
