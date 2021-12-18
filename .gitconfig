@@ -19,7 +19,6 @@
 	b = branch -v
 	build = commit --allow-empty -m \"Trigger build\"
 	c = commit -m
-	ca = commit --all -m
 	ch = checkout
 	chb = checkout -b
 	cp = cherry-pick

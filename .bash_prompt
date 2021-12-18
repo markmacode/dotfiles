@@ -2,13 +2,62 @@
 
 source ~/.git-prompt.sh
 
+function __git_symbol {
+    if [ $(git rev-parse --is-inside-git-dir 2> /dev/null) ]; then
+        echo ''
+    fi
+}
+
 function __git_remote {
+    # Based on the `git status -sb` command.
+    #
+    # Example output
+    #   ## main...origin/main [ahead 3]
+    #   M .bash_prompt
+
     printf_format="${1}"
-    remote="$(git status -sb 2> /dev/null | grep '##' | sed 's/.*\.\.\.//' | sed 's/\/.*//')"
+
+    # If the status contains 'ahead' replace it with a '+'.
+    ahead="$(git status -sb 2> /dev/null |
+        grep '##' 2> /dev/null |
+        grep '\[ahead' 2> /dev/null |
+        sed 's/.*/+/')"
+    # If the status contains 'behind' replace it with a '-'.
+    behind="$(git status -sb 2> /dev/null |
+        grep '##' 2> /dev/null |
+        grep '\[behind' 2> /dev/null |
+        sed 's/.*/-/')"
+    # Get the branch details on the line that contains '##'
+    # It has a remote beind tracked if that line contains '...'
+    # Just get the origin name based on the format `*...<remote>/*`
+    remote="$(git status -sb 2> /dev/null |
+        grep '##' |
+        grep '\.\.\.' 2> /dev/null |
+        sed 's/.*\.\.\.//' |
+        sed 's/\/.*//')"
 
     if [ ! -z "$remote" ]; then
-        printf -- "$printf_format" "$remote"
+        printf -- "$printf_format" "$behind" "$remote" "$ahead"
     fi
+}
+
+function __git_changes {
+    printf_format="${1}"
+
+    untracked="$(git ls-files --others --exclude-standard 2> /dev/null |
+        wc -l |
+        grep -v '0' 2> /dev/null |
+        xargs echo)"
+    unstaged="$(git diff --name-only 2> /dev/null |
+        wc -l |
+        grep -v '0' 2> /dev/null |
+        xargs echo)"
+    staged="$(git diff --name-only --cached 2> /dev/null |
+        wc -l |
+        grep -v '0' 2> /dev/null |
+        xargs echo)"
+
+    printf -- "$printf_format" "$untracked" "$unstaged" "$staged"
 }
 
 function set_ps1 {
@@ -36,9 +85,10 @@ function set_ps1 {
 
     PS1="${blue}\\w"
 
-    # PS1+="\$(__git_remote ' ${dark_grey}[$yellow-${dark_grey}%s$yellow+${dark_grey}]$r')"
+    PS1+=" ${dark_grey}\$(__git_symbol)"
     PS1+="\$(__git_remote ' ${dark_grey}[$yellow%s${dark_grey}%s$yellow%s${dark_grey}]$r')"
-    PS1+="\$(__git_branch ' ${dark_grey} $dark_grey[$magenta%s$dark_grey]$r ${dark_grey}[$light_red-$green+$blue∙$dark_grey|$light_red-$green+$blue∙${dark_grey}]$r')"
+    PS1+="\$(__git_branch ' $dark_grey[$magenta%s$dark_grey]$r')"
+    PS1+="\$(__git_changes ' ${dark_grey}[$red%s$dark_grey|$yellow%s$dark_grey|$green%s${dark_grey}]$r')"
 
     if is_linux; then
         PS1+="\n"
