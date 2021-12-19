@@ -67,7 +67,7 @@ function __git_changes {
 function __git_stash {
     local printf_format="${1}"
 
-    if git rev-parse --verify --quiet refs/stash >/dev/null; then
+    if [ $(git rev-parse --verify --quiet refs/stash 2> /dev/null) ]; then
         printf -- "$printf_format" "$"
     fi
 }
