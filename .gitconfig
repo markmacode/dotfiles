@@ -19,6 +19,7 @@
 	b = branch -v
 	build = commit --allow-empty -m \"Trigger build\"
 	c = commit -m
+	cap = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
 	ch = checkout
 	chb = checkout -b
 	cp = cherry-pick
