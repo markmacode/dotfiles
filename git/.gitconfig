@@ -1,0 +1,36 @@
+[user]
+    name = mark-bromell
+    email = 33425418+mark-bromell@users.noreply.github.com
+[init]
+    defaultBranch = main
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+[pager]
+    branch = false
+[alias]
+    a = add --all
+
+    b = branch -vv
+    ba = branch -vv -a
+    br = branch -r
+    
+    c = commit
+    ca = commit -a
+    cm = commit -m
+    cam = commit -am
+    cd = commit --amend
+    cad = commit --amend -a
+    
+    cp = cherry-pick
+    cpa = cherry-pick --abort
+    cpc = cherry-pick --continue
+    
+    l = log --graph --abbrev-commit --decorate \
+        --format=format:'%C(auto)%h%C(auto)%d %s %C(italic dim white)~ %an'
+
+    o = checkout
+    om = checkout main
+
+    s = status
+    sb = status -sb
