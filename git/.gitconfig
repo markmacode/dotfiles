@@ -1,13 +1,20 @@
 [user]
     name = mark-bromell
     email = 33425418+mark-bromell@users.noreply.github.com
+
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
+
 [init]
     defaultBranch = main
+
 [core]
     editor = nvim
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore.global
+
 [pager]
     branch = false
+
 [alias]
     a = add --all
 
