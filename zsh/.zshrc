@@ -1,4 +1,3 @@
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -9,7 +8,6 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Plugins
 plugins=(
     git
     docker
@@ -21,6 +19,11 @@ plugins=(
     rust
 )
 
-# Applying oh-my-zsh config
 source $ZSH/oh-my-zsh.sh
 
+# Cargo binaries
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# QMK related binaries
+export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/avr-gcc@8/lib"

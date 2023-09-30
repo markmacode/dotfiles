@@ -1,47 +1,44 @@
 #!/usr/bin/env bash
 
-dotfilesUrl="https://github.com/mark-bromell/dotfiles"
-dotfilesPath="$HOME/dotfiles"
+if [ ! -f "$HOME/.config/dotfiles/env" ]; then
+    function exists_in_list() {
+        LIST=$1
+        VALUE=$2
+        for x in $LIST; do
+            if [ "$x" = "$VALUE" ]; then
+                return 0
+            fi
+        done
+        return 1
+    }
 
-use_brew() {
-    [[ "$OSTYPE" =~ "(darwin*|linux-gnu)" ]]
-} 
+    export DOTFILES="$(pwd)"
+    export DOTFILES_OS="$1"
+    os_list="$(ls $DOTFILES/.os | tr "\n" " ")"
 
-use_choco() {
-    [[ "$OSTYPE" =~ "(msys)" ]]
-}
-
-if use_brew; then
-    if ! command -v brew &> /dev/null; then
-        echo "WARNING: Homebrew is not installed, will try to install now"
-        NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-    brew install git
-elif use_choco; then
-    if ! command -v choco &> /dev/null; then
-        echo "WARNING: Cannot find choco, please install or add to PATH https://chocolatey.org/install#individual"
+    if exists_in_list "$os_list" "$1"; then
+        echo "[+] Running $DOTFILES/.os/$DOTFILES_OS/install.sh"
+        $DOTFILES/.os/$DOTFILES_OS/install.sh
     else
-        choco install git
+        echo "OS List (from .os/*): ${os_list}"
+        echo
+        echo "Example:"
+        echo "./install.sh ubuntu"
+        echo
+        exit 1
     fi
+
+    # -- Global installs --
+
+    # Setting config vars
+    mkdir -p $HOME/.config/dotfiles/
+    echo "export DOTFILES=\"${DOTFILES}\"" > $HOME/.config/dotfiles/env
+    echo "export DOTFILES_OS=\"${DOTFILES_OS}\"" >> $HOME/.config/dotfiles/env
+
+    # Install oh-my-zsh
+    echo "[+] Installing oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-pushd "$HOME"
-if [ -d "$dotfilesPath" ]; then
-    echo "WARNING: Directory already exists $dotfilesPath"
-    echo "WARNING: Assuming $dotfilesPath is $dotfilesUrl"
-else
-    echo "Cloning dotfiles into $dotfilesPath"
-    git clone "${dotfilesUrl}.git"
-fi
-popd
-
-pushd "$dotfilesPath"
-if use_brew; then
-    xargs brew install < _packages/brew.txt
-elif use_choco; then
-    # git bash
-else
-    echo "WARNING: \$OSTYPE $OSTYPE not supported, packages wont be installed"
-fi
-popd
-
+# Sync
+$DOTFILES/sync.sh
