@@ -32,8 +32,9 @@ if [ ! -f "$HOME/.config/dotfiles/env" ]; then
 
     # Setting config vars
     mkdir -p $HOME/.config/dotfiles/
-    echo "export DOTFILES=\"${DOTFILES}\"" > $HOME/.config/dotfiles/env
-    echo "export DOTFILES_OS=\"${DOTFILES_OS}\"" >> $HOME/.config/dotfiles/env
+    echo "# AUTO GENERATED FROM ${DOTFILES}/install.sh"
+    echo "export DOTFILES=\"${DOTFILES}\"" >> $HOME/.config/dotfiles/dotrc
+    echo "export DOTFILES_OS=\"${DOTFILES_OS}\"" >> $HOME/.config/dotfiles/dotrc
 
     # Install oh-my-zsh
     echo "[+] Installing oh-my-zsh"
@@ -42,3 +43,4 @@ fi
 
 # Sync
 $DOTFILES/sync.sh
+

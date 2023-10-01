@@ -74,15 +74,20 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  catppuccin = {
+  gruvbox = {
     loaded = true,
-    path = "/Users/mark/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
+    path = "/Users/mark/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   harpoon = {
     loaded = true,
     path = "/Users/mark/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
+  },
+  nightfox = {
+    loaded = true,
+    path = "/Users/mark/.local/share/nvim/site/pack/packer/start/nightfox",
+    url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["nvim-treesitter"] = {
     loaded = true,

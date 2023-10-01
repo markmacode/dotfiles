@@ -1,18 +1,15 @@
-require("catppuccin").setup({
-    flavour = "macchiato", -- latte, frappe, macchiato, mocha
-    background = {
-        light = "latte",
-        dark = "macchiato",
-    },
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = false,
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-    },
+require("nightfox").setup({
+    options = {
+        styles = {
+            comments = "italic",
+        }
+    }
 })
-vim.cmd.colorscheme "catppuccin"
+
+require("gruvbox").setup({
+    terminal_colors = true, -- add neovim terminal colors
+    contrast = "soft", -- can be "hard", "soft" or empty string
+})
+
+vim.cmd("colorscheme nightfox")
 
