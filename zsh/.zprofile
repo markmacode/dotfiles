@@ -1,6 +1,6 @@
-source $HOME/.config/dotfiles/dotrc
+source $HOME/.dotrc
 
-if [ "$DOTFILES_OS" = "mac" ]; then
+if [[ "$DOTFILES_ENV" == "mac" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 

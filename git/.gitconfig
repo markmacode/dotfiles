@@ -1,6 +1,6 @@
 [user]
-    name = mark-bromell
-    email = 33425418+mark-bromell@users.noreply.github.com
+    name = mbromell
+    email = code@mamo.aleeas.com
 
 [includeIf "gitdir:~/work/"]
     path = ~/work/.gitconfig

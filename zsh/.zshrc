@@ -13,7 +13,6 @@ plugins=(
     docker
     dotenv
     gitignore
-    macos
     nvm
     pep8
     rust
@@ -21,10 +20,12 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Hiding dirs / files from showing in fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git,node_modules}"'
+
 # Cargo binaries
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# QMK related binaries
+# QMK stuff
 export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/avr-gcc@8/lib"
-export PATH=$PATH:/Users/mark/.spicetify
