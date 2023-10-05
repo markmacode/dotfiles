@@ -1,5 +1,8 @@
 # Installation
 
+**Dependencies:** Install `curl`, `git` and `build-essential` before running
+dotfiles install. This just guarantees smooth sailing.
+
 ```bash
 git clone https://github.com/mbromell/dotfiles.git
 cd dotfiles

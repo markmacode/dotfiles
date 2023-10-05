@@ -24,6 +24,8 @@ if ! command -v nix-env &> /dev/null; then
     echo "[+] Installing nix package manager for nix-env"
     if [[ "$DOTFILES_ENV" == "mac" ]]; then
         sh <(curl -L https://nixos.org/nix/install) --yes
+    elif [[ "$DOTFILES_ENV" == "wsl" ]]; then
+        sh <(curl -L https://nixos.org/nix/install) --yes --no-daemon
     else
         sh <(curl -L https://nixos.org/nix/install) --yes --daemon
     fi
