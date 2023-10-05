@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-case "$(uname)" in
-    Linux*)             dotfiles_env="linux" ;;
-    Linux*Microsoft*)   dotfiles_env="wsl" ;;
-    Darwin*)            dotfiles_env="mac" ;;
-    *)                  dotfiles_env="unknown" ;;
+case "$(uname -a)" in
+    Linux*microsoft-standard-WSL2*) dotfiles_env="wsl" ;;
+    Linux*)                         dotfiles_env="linux" ;;
+    Darwin*)                        dotfiles_env="mac" ;;
+    *)                              dotfiles_env="unknown" ;;
 esac
 
 if [[ "$dotfiles_env" == "unknown" ]]; then
