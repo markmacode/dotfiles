@@ -1,7 +1,9 @@
 # Installation
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/mbromell/dotfiles/main/install.sh)"
+git clone https://github.com/mbromell/dotfiles.git
+cd dotfiles
+./install.sh
 ```
 
 # Commands
@@ -11,6 +13,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/mbromell/dotfiles/main/i
 2. `dotstow` Just stow the files / folders to $HOME
 3. `dotnix` Install the packages saved to
     [`dotfiles/.config/dotifles/packages.nix`](dotfiles/.config/dotifles/packages.nix)
+    (Opens in nvim for edit before installing)
 4. `dotedit` Open up dotfiles in neovim for editing.
-5. `dotnixedit` Open up package list for editing inside neovim.
-6. `dotsync` Run `dotpull && dotstow && dotnix` for quick machine syncing.
+5. `dotsync` Run `dotpull && dotnix && dotstow` for quick machine syncing.
