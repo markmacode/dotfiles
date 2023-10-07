@@ -7,7 +7,10 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 
 # Set default applications
 export EDITOR="nvim"
-export PAGER="bat"
+export PAGER="less"
+if ! command -v bat &> /dev/null; then
+    export PAGER="bat"
+fi
 
 # Misc
 export LANG=en_US.UTF-8

@@ -1,7 +1,7 @@
-dotfiles
 git
 iterm
 linearmouse
+mbromell
 nvim
 skhd
 yabai
