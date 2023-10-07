@@ -6,7 +6,7 @@ if [[ ! -f ${HOME}/.config/dotfiles/env.sh ]]; then
     env_file=${HOME}/.config/dotfiles/env.sh
     stow_files="$(ls -d */)"
 
-    if [[ "${DOTFILES_OS}" != "unknown" ]]
+    if [[ "${DOTFILES_OS}" != "unknown" ]]; then
         stow_files="$(cat ${DOTFILES}/stow/${DOTFILES_OS}.txt | tr "\n" " ")"
     fi
 
@@ -20,7 +20,7 @@ if [[ ! -f ${HOME}/.config/dotfiles/env.sh ]]; then
 fi
 
 pushd ${DOTFILES}/home
-for dir in "${DOTFILES_STOW}"; do
+for dir in ${DOTFILES_STOW}; do
     echo "[+] Stowing :: $dir"
     # Ignore pointless bug warnings
     # https://github.com/aspiers/stow/issues/65#issuecomment-1465060710
