@@ -1,0 +1,5 @@
+alt-tab
+font-jetbrains-mono-nerd-font
+gcc-arm-embedded
+iterm2
+qmk-toolbox

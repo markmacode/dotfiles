@@ -1,0 +1,8 @@
+dotfiles
+git
+iterm
+linearmouse
+nvim
+skhd
+yabai
+zsh

@@ -1,0 +1,11 @@
+act
+curl
+ffmpeg
+git
+jq
+neovim
+parallel
+ripgrep
+rust
+stow
+zsh

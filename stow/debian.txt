@@ -1,0 +1,5 @@
+alacritty
+dotfiles
+git
+nvim
+zsh
