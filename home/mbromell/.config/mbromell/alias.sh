@@ -1,8 +1,8 @@
 # Dotfiles stuff
 alias dotfiles='${=EDITOR} ${DOTFILES}'
-alias dotpull='pushd $DOTFILES && git pull && popd'
-alias dotstow='pushd $DOTFILES && ./install.sh && popd'
-alias dot='pushd $DOTFILES; git pull; ./install.sh && popd'
+alias dotpull='pushd $DOTFILES ; git pull ; popd'
+alias dotstow='pushd $DOTFILES ; ./stow.sh ; popd'
+alias dot='pushd $DOTFILES ; git pull ; ./stow.sh ; popd'
 
 # System shortcuts
 alias c='clear'

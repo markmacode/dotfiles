@@ -1,41 +1,53 @@
 #!/usr/bin/env bash
 
-arg=${1:-'--full'}
-if [[ "${arg}" == "--basic" ]] || [[ "${arg}" == "--full" ]]; then
-    source ./scripts/init-env.sh $arg
-else
-    echo "[ERROR] '$arg' is invalid"
-    echo "[+] You can use './build.sh --basic' for a basic install"
-    echo "[+] Just use './build.sh' for a full install on supported OS's"
-    exit 1
+user_install=false
+if [[ ! -z $1 ]]; then
+    if [[ "$1" == "--user" ]]; then
+        echo "[WARNING] User install does NOT work on MacOS"
+        user_install=true
+    else
+        echo "[ERROR] Invalid argument $1"
+        echo "[+] Only valid argument is --user"
+        exit 1
+    fi
 fi
 
-if [[ "$DOTFILES_OS" != "basic" ]]; then
-    echo "[+] Detected OS: $DOTFILES_OS"
-    if [[ -f ./scripts/build-${DOTFILES_OS}.sh ]]; then
-        ./scripts/build-${DOTFILES_OS}.sh
+source ./scripts/os.sh
+if ! command -v nix-env &> /dev/null; then
+    echo "[+] Installing Nix package manager"
+
+    if [[ "$OS" == "mac" ]]; then
+        sh <(curl -L https://nixos.org/nix/install) --yes
+    elif [[ "$user_install" == true ]]; then
+        sh <(curl -L https://nixos.org/nix/install) --yes --no-daemon
+    else
+        sh <(curl -L https://nixos.org/nix/install) --yes --daemon
     fi
-else
-    echo "[+] OS Not supported, or the '--basic' flag has been set."
-    echo "[+] Skipping any package installs / distro setups."
+
+    echo "[+] Nix has been installed, run ./build.sh again to continue"
+    exec $SHELL
 fi
+
+[[ "$OS" == "mac" ]] && ./packages/brew.sh
+./packages/nix.sh
+./stow.sh
 
 if ! command -v zsh &> /dev/null; then
-    # ZSH ain't installed
-    echo "[WARNING] zsh is not installed, install it and run ./build.sh again"
-    echo "https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH"
-else
-    # Make ZSH default shell and install oh-my-zsh
-    chsh -s $(which zsh)
-    if [[ -z "$ZSH" ]]; then
-        echo "[+] Installing oh-my-zsh"
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        echo "[+] Installing powerlevel10k theme for zsh"
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-            $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-    fi
+    echo "[+] Installing zsh"
+    nix-env -iA nixpkgs.zsh
 fi
 
-./install.sh $arg
+if [[ "$SHELL" != "/bin/zsh" ]]; then
+    echo "[+] Setting ZSH as default shell"
+    command -v zsh | sudo tee -a /etc/shells
+    sudo chsh -s $(which zsh) $USER
+fi
 
-echo "[+] Reset shell to complete isntallation"
+if [[ -z "${ZSH}" ]]; then
+    echo "[+] Installing oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    echo "[+] Installing powerlevel10k theme for zsh"
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+        ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+fi
+exec $SHELL

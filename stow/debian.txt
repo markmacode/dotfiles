@@ -1,5 +1,0 @@
-alacritty
-git
-mbromell
-nvim
-zsh

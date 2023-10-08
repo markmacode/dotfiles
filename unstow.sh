@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 pushd ./home
-for dir in ${DOTFILES_STOW:-"git" "mbromell" "nvim" "zsh"}; do
+stow_files="$(ls -d */)"
+for dir in $(echo "$stow_files"); do
     echo "[+] Unstowing :: $dir"
     # Ignore pointless bug warnings
     # https://github.com/aspiers/stow/issues/65#issuecomment-1465060710
@@ -11,4 +12,3 @@ done
 popd
 
 rm -rf $HOME/.config/mbromell
-echo "[+] Run 'unset DOTFILES && unset DOTFILES_OS && unset DOTFILES_STOW'"

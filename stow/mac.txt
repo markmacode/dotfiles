@@ -1,8 +1,1 @@
-git
-iterm
-linearmouse
-mbromell
-nvim
-skhd
-yabai
-zsh
+git iterm linearmouse mbromell nvim skhd yabai zsh
