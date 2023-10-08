@@ -6,12 +6,12 @@ if ! command -v brew &> /dev/null; then
 fi
 
 echo "[+] Installing Brew packages:"
-echo "$(cat ${DOTFILES}/packages/brew.txt)"
-xargs brew install < ${DOTFILES}/packages/brew.txt
+echo "$(cat $DOTFILES/packages/brew.txt)"
+xargs brew install < $DOTFILES/packages/brew.txt
 
 echo "[+] Installing Brew Cask packages:"
-echo "$(cat ${DOTFILES}/.pkg/brew-cask.txt)"
-xargs brew install --cask < ${DOTFILES}/packages/brew-cask.txt
+echo "$(cat $DOTFILES/.pkg/brew-cask.txt)"
+xargs brew install --cask < $DOTFILES/packages/brew-cask.txt
 
 echo "[+] Running brew cleanup"
 brew cleanup

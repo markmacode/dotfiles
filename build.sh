@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
-${1:="--full"}
-
-if [[ "$1" != "--full" ]] || [[ "$1" != "--basic" ]]; then
-    echo "[ERROR] '$1' is invalid"
+arg=${1:-'--full'}
+if [[ "${arg}" == "--basic" ]] || [[ "${arg}" == "--full" ]]; then
+    source ./scripts/init-env.sh $arg
+else
+    echo "[ERROR] '$arg' is invalid"
     echo "[+] You can use './build.sh --basic' for a basic install"
     echo "[+] Just use './build.sh' for a full install on supported OS's"
     exit 1
 fi
-
-source ./scripts/init-env.sh $1
 
 if [[ "$DOTFILES_OS" != "basic" ]]; then
     echo "[+] Detected OS: $DOTFILES_OS"
@@ -35,6 +34,6 @@ else
     fi
 fi
 
-./install.sh $1
+./install.sh $arg
 
 echo "[+] Reset shell to complete isntallation"

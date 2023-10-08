@@ -4,7 +4,7 @@ export DOTFILES="$(pwd)"
 export DOTFILES_OS="basic"
 echo "[+] DOTFILES=${DOTFILES}"
 
-if [[ "$1" == "--basic" ]]; then
+if [[ "$1" == "--full" ]]; then
     if [[ -f /etc/os-release ]]; then
         release="$(awk -F= '/^NAME/{print $2}' /etc/os-release | sed s/\"//g)"
     fi

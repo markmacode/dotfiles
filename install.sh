@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-${1:="--full"}
-
-if [[ "$1" != "--full" ]] || [[ "$1" != "--basic" ]]; then
-    echo "[ERROR] '$1' is invalid"
-    echo "[+] You can use './install.sh --basic' for a basic install"
-    echo "[+] Just use './install.sh' for a full install on supported OS's"
-    exit 1
-fi
-
 if [[ ! -f $HOME/.config/mbromell/env.sh ]]; then
-    source ./scripts/init-env.sh $1
+    arg=${1:-"--full"}
+    if [[ "${arg}" == "--basic" ]] || [[ "${arg}" == "--full" ]]; then
+        source ./scripts/init-env.sh $arg
+    else
+        echo "[ERROR] '$arg' is invalid"
+        echo "[+] You can use './install.sh --basic' for a basic install"
+        echo "[+] Just use './install.sh' for a full install on supported OS's"
+        exit 1
+    fi
+
     mkdir -p $HOME/.config/mbromell
     env_file=$HOME/.config/mbromell/env.sh
 

@@ -10,6 +10,5 @@ for dir in ${DOTFILES_STOW:-"git" "mbromell" "nvim" "zsh"}; do
 done
 popd
 
-unset DOTFILES
-unset DOTFILES_OS
-unset DOTFILES_STOW
+rm -rf $HOME/.config/mbromell
+echo "[+] Run 'unset DOTFILES && unset DOTFILES_OS && unset DOTFILES_STOW'"
