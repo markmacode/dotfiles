@@ -6,7 +6,6 @@ jq
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 neovim
-osx-cross/avr/avr-gcc@8
 parallel
 ripgrep
 rust

@@ -12,7 +12,9 @@ fi
 
 if [[ "$DOTFILES_OS" != "basic" ]]; then
     echo "[+] Detected OS: $DOTFILES_OS"
-    ./scripts/build-${DOTFILES_OS}.sh
+    if [[ -f ./scripts/build-${DOTFILES_OS}.sh ]]; then
+        ./scripts/build-${DOTFILES_OS}.sh
+    fi
 else
     echo "[+] OS Not supported, or the '--basic' flag has been set."
     echo "[+] Skipping any package installs / distro setups."
