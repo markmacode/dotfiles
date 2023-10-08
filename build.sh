@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
 
-if [[ ! -f $HOME/.config/mbromell/env.sh ]]; then
-    source ./scripts/init-env.sh
-else
-    source $HOME/.config/mbromell/env.sh
+${1:="--full"}
+
+if [[ "$1" != "--full" ]] || [[ "$1" != "--basic" ]]; then
+    echo "[ERROR] '$1' is invalid"
+    echo "[+] You can use './build.sh --basic' for a basic install"
+    echo "[+] Just use './build.sh' for a full install on supported OS's"
+    exit 1
 fi
 
-if [[ "$DOTFILES_OS" != "unknown" ]]; then
+source ./scripts/init-env.sh $1
+
+if [[ "$DOTFILES_OS" != "basic" ]]; then
     echo "[+] Detected OS: $DOTFILES_OS"
     ./scripts/build-${DOTFILES_OS}.sh
 else
-    echo "[WARNING] Unkown OS environment of: $(uname -a)"
+    echo "[+] OS Not supported, or the '--basic' flag has been set."
     echo "[+] Skipping any package installs / distro setups."
 fi
 
@@ -30,6 +35,6 @@ else
     fi
 fi
 
-./install.sh
+./install.sh $1
 
-echo "[+] Reset shell with: \$SHELL -l"
+echo "[+] Reset shell to complete isntallation"
