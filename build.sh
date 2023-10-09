@@ -30,7 +30,7 @@ fi
 
 [[ "$OS" == "mac" ]] && ./packages/brew.sh
 ./packages/nix.sh
-./stow.sh
+./install.sh
 
 if ! command -v zsh &> /dev/null; then
     echo "[+] Installing zsh"
