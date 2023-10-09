@@ -14,6 +14,12 @@ fi
 
 source $DOTFILES/scripts/os.sh
 
+if [[ ! -f $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
+    echo "[+] Installing packer for NeoVim"
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
+
 stow_files="$(cat $DOTFILES/stow/linux.txt)"
 [[ "$OS" == "mac" ]] && stow_files="$(cat $DOTFILES/stow/mac.txt)"
 
@@ -26,5 +32,4 @@ for dir in $stow_files; do
         2> >(grep -v 'BUG in find_stowed_path? Absolute/relative mismatch' 1>&2)
     stow -t $HOME $dir
 done
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 popd
