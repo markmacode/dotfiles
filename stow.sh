@@ -14,7 +14,7 @@ fi
 
 source $DOTFILES/scripts/os.sh
 
-if [[ ! -f $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
+if [[ ! -d $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
     echo "[+] Installing packer for NeoVim"
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
