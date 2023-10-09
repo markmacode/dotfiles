@@ -26,4 +26,5 @@ for dir in $stow_files; do
         2> >(grep -v 'BUG in find_stowed_path? Absolute/relative mismatch' 1>&2)
     stow -t $HOME $dir
 done
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 popd
