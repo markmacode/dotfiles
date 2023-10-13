@@ -6,27 +6,23 @@ alias dot='pushd $DOTFILES ; git pull ; ./install.sh ; popd'
 
 # System shortcuts
 alias c='clear'
+alias L='$SHELL -l'
 
 # Python
 alias py='python3'
 alias vc='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
 
-# Ripped from oh-my-zsh
-# ls, the common ones I use a lot shortened for rapid fire usage
-alias l='ls -lFh'     #size,show type,human readable
-alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
-alias ll='ls -l'      #long list
-alias ldot='ls -ld .*'
-alias lS='ls -1FSsh'
-alias lart='ls -1Fcart'
-alias lrt='ls -1Fcrt'
-alias lsr='ls -lARFh' #Recursive list of files and directories
-alias lsn='ls -1'     #A column contains name of files and directories
+alias eza='eza --color=always'
+alias l='eza -la --no-permissions --no-time --no-user --no-filesize \
+    --group-directories-first --git'
+alias la='eza -lah --group-directories-first --git'
+alias lt='eza -lah --git --sort modified'
+alias lr='eza -la -o --no-permissions --group-directories-first --git \
+    --git-ignore -T | bat'
 
 alias grep='grep --color'
+alias grepi='grep -i'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
 
 alias t='tail -f'
