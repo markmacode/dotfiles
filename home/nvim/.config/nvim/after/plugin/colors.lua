@@ -11,5 +11,21 @@ require("gruvbox").setup({
     contrast = "soft", -- can be "hard", "soft" or empty string
 })
 
-vim.cmd("colorscheme nightfox")
+require("catppuccin").setup({
+    flavour = "mocha",
+    background = {
+        light = "latte",
+        dark = "mocha",
+    },
+    term_colors = true,
+    dim_inactive = {
+        enabled = false,
+    },
+})
+
+vim.cmd("colorscheme catppuccin")
+
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#585b70', bold=false })
+vim.api.nvim_set_hl(0, 'LineNr', { fg='#6c7086', bold=true })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#585b70', bold=false })
 

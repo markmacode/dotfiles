@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
     -- Themes
     use { "EdenEast/nightfox.nvim", as = "nightfox" }
     use { "ellisonleao/gruvbox.nvim", as = "gruvbox" }
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
