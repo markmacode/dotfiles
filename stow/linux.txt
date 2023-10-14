@@ -1,1 +1,1 @@
-alacritty git mbromell nvim zsh
+bat alacritty git mbromell nvim zsh
