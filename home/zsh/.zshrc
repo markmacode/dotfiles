@@ -14,9 +14,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source $XDG_CONFIG_HOME/mbromell/env.sh
 source $XDG_CONFIG_HOME/mbromell/alias.sh
-if [[ -f $HOME/.zshinject ]]; then
-    source $HOME/.zshinject
-fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

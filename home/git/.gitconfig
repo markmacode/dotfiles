@@ -2,9 +2,6 @@
     name = mbromell
     email = code@mamo.aleeas.com
 
-[includeIf "gitdir:~/work/"]
-    path = ~/work/.gitconfig
-
 [init]
     defaultBranch = main
 
@@ -40,4 +37,8 @@
     om = checkout main
     # Status
     s = status -sb
-    sb = status --long
+    sv = status --long
+
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
+
