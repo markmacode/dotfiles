@@ -5,9 +5,7 @@
 > [!WARNING]
 > This alters the system in potentially undesirable ways. Read this section and only do this step if you know you want these updates to your system.
 >
-> This step is for setting up a non-configured system (MacOS or Linux) by installing the [nix package manager](https://nixos.org/), and also installing common packages (see [packages/nix.sh](packages/nix.sh)). If you're on MacOS it will also install [homebrew](https://brew.sh/) if it is missing, and install common packages specifically for MacOS (see [packages/brew.sh](packages/brew.sh)).
->
-> It will also install `zsh` and [oh-my-zsh](https://ohmyz.sh/) and set `zsh` as the default shell for the current user. Lastly, it will do the regular [`./install.sh`](install.sh) of config files to the `$HOME` directory from this repos [home/](./home) directory.
+> The main things this step does is install `nix`, `zsh` and various packages. Check the script [build.sh](build.sh) to see what exactly is does, and use it if you are comfortable with it.
 
 First off you will need to clone the repo and `cd` into it.
 
@@ -49,11 +47,15 @@ Now you can simply run the install script. This will detect if you are on Linux 
 ./install.sh
 ```
 
-## File Structure
+## Usage
 
-TODO
+### Extending with `.zprofile`
 
-## Commands
+You may have noticed that there is no `.zprofile` being maintained by these dotfiles. On each of your systems where you use these dotfiles, if you have specific configurations per-system, then you can put it inside the `~/.zprofile` file.
+
+I experimented with using a custom `.zshinject` file for this purpose, but I'd rather stick to known defaults rather than going further down the road of customization.
+
+### Commands
 
 For convenience, there are a few commands that these dotfiles set up for you to run anywhere at any time inside your shell. These are currently just aliases setup inside [alias.sh](./home/mbromell/.config/mbromell/alias.sh).
 
@@ -69,3 +71,21 @@ of your own shells setup files.
 source $HOME/.config/mbromell/env.sh
 source $HOME/.config/mbromell/alias.sh
 ```
+
+## File Structure
+
+### [home/](home/)
+
+This directory will store the configuration files that are going to be stowed inside of the current user `$HOME` directory. It will do this using [GNU stow](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
+
+### [packages/](packages/)
+
+Scripts for installing packages. Each file should only install packages related to certain package manager, but I guess nothing is stopping us from creating any script here, it's pupose should just be to install packages though.
+
+### [scripts/](scripts/)
+
+Arbitrary scripts that help other scripts inside the dotfiles repo. If there's some code duplication across multiple scripts, rip it out and put it here to `source` it inside the scripts where it was duplicated.
+
+### [stow/](stow/)
+
+Plain text files which list stow files for different environments, the lists should be space-separated.
