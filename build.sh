@@ -43,12 +43,12 @@ if [[ "$SHELL" != "/bin/zsh" ]]; then
     sudo chsh -s $(which zsh) $USER
 fi
 
+echo "[+] Installing starship prompt"
+sh <(curl -sS https://startship.rs/install.sh) --yes
+
 if [[ -z "${ZSH}" ]]; then
     echo "[+] Installing oh-my-zsh"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
         "" --keep-zshrc --unattended
-    echo "[+] Installing powerlevel10k theme for zsh"
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-        ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 exec $SHELL
