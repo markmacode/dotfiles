@@ -28,6 +28,8 @@ If you want to install `nix` for all users, then run the following command. For 
 ./build.sh
 ```
 
+**If nix was installed, you will have to run `./build.sh` again to finish the rest of the build script since it resets to shell to complete the install of nix.**
+
 ## Install
 
 If you skipped the [Build](#build-optional) step, then you will need to make sure you have `stow` installed.
