@@ -3,9 +3,7 @@
 ## Build (Optional)
 
 > [!WARNING]
-> This alters the system in potentially undesirable ways. Read this section and only do this step if you know you want these updates to your system.
->
-> The main things this step does is install `nix`, `zsh` and various packages. Check the script [build.sh](build.sh) to see what exactly is does, and use it if you are comfortable with it.
+> This alters the system in potentially undesirable ways. The main things this step does is install `nix`, `zsh`, and various packages. Check the script [build.sh](build.sh) to see what exactly is does, and use it if you are comfortable with it.
 
 First off you will need to clone the repo and `cd` into it.
 
