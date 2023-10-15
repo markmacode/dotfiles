@@ -1,1 +1,1 @@
-bat git iterm linearmouse mbromell nvim skhd yabai zsh
+bat git iterm linearmouse mbromell nvim skhd starship yabai zsh
