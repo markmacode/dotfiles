@@ -30,3 +30,14 @@ vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 
+-- Auto wrap at 80 columnts
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = {'*.md'},
+    group = group,
+    callback = function(event)
+        vim.opt_local.wrap = true
+        vim.opt_local.textwidth = 80
+        vim.opt_local.linebreak = true
+    end
+})
+

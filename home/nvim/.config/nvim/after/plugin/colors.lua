@@ -23,9 +23,9 @@ require("catppuccin").setup({
     },
 })
 
-vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme nightfox")
 
-vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#585b70', bold=false })
-vim.api.nvim_set_hl(0, 'LineNr', { fg='#6c7086', bold=true })
-vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#585b70', bold=false })
+-- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#585b70', bold=false })
+-- vim.api.nvim_set_hl(0, 'LineNr', { fg='#6c7086', bold=true })
+-- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#585b70', bold=false })
 
