@@ -13,6 +13,10 @@
     branch = false
 
 [alias]
+    personal = !git config --local --replace-all user.name "mbromell" && \
+        git config --local --replace-all user.email "code@mamo.aleeas.com" && \
+        git config --local -l
+
     a = add --all
     # Branch
     b = branch -vv
@@ -39,6 +43,6 @@
     s = status -sb
     sv = status --long
 
-[includeIf "gitdir:~/work/"]
+[include]
     path = ~/work/.gitconfig
 
