@@ -1,1 +1,1 @@
-bat alacritty git mbromell nvim starship zsh
+bat alacritty git mbromell nvim starship zellij zsh

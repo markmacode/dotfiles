@@ -6,8 +6,13 @@ alias dot='pushd $DOTFILES ; git pull ; ./install.sh ; popd'
 
 # System shortcuts
 alias L='$SHELL -l'
-alias c='cd'
 alias t='tail -f'
+alias c='cd'
+alias .='cd ../'
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../../'
 
 alias grep='grep --color'
 alias grepi='grep -i'
