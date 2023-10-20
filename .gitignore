@@ -58,3 +58,6 @@ tags
 # Persistent undo
 [._]*.un~
 packer_compiled.lua
+
+# -- NPM I guess.. --
+node_modules/

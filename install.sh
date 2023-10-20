@@ -20,8 +20,7 @@ if [[ ! -d $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
 
-stow_files="$(cat $DOTFILES/stow/linux.txt)"
-[[ "$OS" == "mac" ]] && stow_files="$(cat $DOTFILES/stow/mac.txt)"
+stow_files="$(ls $DOTFILES/home/ | tr "\n" " ")"
 
 pushd $DOTFILES/home
 for dir in $stow_files; do

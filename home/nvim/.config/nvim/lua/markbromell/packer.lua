@@ -26,12 +26,11 @@ return require('packer').startup(function(use)
     }
 
     -- Themes
-    use { "EdenEast/nightfox.nvim", as = "nightfox" }
-    use { "ellisonleao/gruvbox.nvim", as = "gruvbox" }
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use {"EdenEast/nightfox.nvim", as = "nightfox"}
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
+    use {'neoclide/coc.nvim', branch = 'release'}
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')

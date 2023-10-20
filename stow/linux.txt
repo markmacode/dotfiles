@@ -1,1 +1,0 @@
-bat alacritty git mbromell nvim starship zellij zsh
