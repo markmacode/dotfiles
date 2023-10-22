@@ -9,6 +9,7 @@ nix-env -iA \
     nixpkgs.git \
     nixpkgs.jq \
     nixpkgs.neovim \
+    nixpkgs.gnumake \
     nixpkgs.parallel \
     nixpkgs.ripgrep \
     nixpkgs.rustup \
