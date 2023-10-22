@@ -43,6 +43,7 @@ Now you can simply run the install script. This will detect if you are on Linux 
 
 ```bash
 ./install.sh
+nvim --headless "+Lazy! sync" +qa
 ```
 
 ## Usage
