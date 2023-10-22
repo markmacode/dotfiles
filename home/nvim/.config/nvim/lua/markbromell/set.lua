@@ -3,18 +3,17 @@ vim.opt.relativenumber = true
 
 vim.opt.termguicolors = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
-vim.opt.smartindent = true
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+-- vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" 
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -28,13 +27,10 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-vim.g.mapleader = " "
-
--- Auto wrap at 80 columnts
+-- Auto wrap at 80 columns
 vim.api.nvim_create_autocmd('BufEnter', {
     pattern = {'*.md'},
-    group = group,
-    callback = function(event)
+    callback = function(_)
         vim.opt_local.wrap = true
         vim.opt_local.textwidth = 80
         vim.opt_local.linebreak = true
