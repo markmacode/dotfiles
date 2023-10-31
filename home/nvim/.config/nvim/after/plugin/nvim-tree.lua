@@ -1,0 +1,29 @@
+-- require('nvim-tree').setup({
+--   view = {
+--     side = 'right',
+--   },
+--   renderer = {
+--     indent_markers = {
+--       enable = true,
+--     },
+--     icons = {
+--       git_placement = 'signcolumn',
+--       show = {
+--         file = false,
+--         folder = false,
+--         folder_arrow = false,
+--       },
+--       glyphs = {
+--         git = {
+--           unstaged = '-',
+--           staged = '+',
+--           renamed = '',
+--           untracked = '?',
+--           deleted = '',
+--           ignored = '',
+--         },
+--       },
+--     },
+--   },
+-- })
+
