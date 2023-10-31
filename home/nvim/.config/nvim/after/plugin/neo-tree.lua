@@ -1,4 +1,5 @@
 require("neo-tree").setup({
+  close_if_last_window = true,
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
@@ -22,14 +23,14 @@ require("neo-tree").setup({
         -- Status type
         untracked = "?",
         ignored   = "0",
-        unstaged  = "󰍴",
+        unstaged  = "󰅖",
         staged    = "󰄬",
         conflict  = "*",
       }
     },
   },
   window = {
-    position = 'right',
+    position = 'current',
     mappings = {
       ['g'] = 'open',
     },
@@ -42,6 +43,7 @@ require("neo-tree").setup({
       hide_by_name = {
         "node_modules",
         "venv",
+        ".git",
       },
       hide_by_pattern = {
         --"*.meta",

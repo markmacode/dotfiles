@@ -51,4 +51,7 @@ if [[ -z "${ZSH}" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
         "" --keep-zshrc --unattended
 fi
+
+nvim --headless "+Lazy! sync" +qa
+
 exec $SHELL

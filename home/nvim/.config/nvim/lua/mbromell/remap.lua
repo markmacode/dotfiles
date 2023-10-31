@@ -37,28 +37,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- see `:help neo-tree` or `:help Neotree`
 vim.keymap.set(
   'n', '<leader>nf',
-  '<cmd>Neotree position=float<CR>',
-  { desc = '[N]eotree [F]loat' }
+  '<cmd>Neotree position=current<CR>',
+  { desc = '[N]eotree [F]iles' }
 )
 vim.keymap.set(
   'n', '<leader>ng',
-  '<cmd>Neotree source=git_status position=float<CR>',
-  { desc = '[N]eotree [G]it status float' }
+  '<cmd>Neotree source=git_status position=current<CR>',
+  { desc = '[N]eotree [G]it status' }
 )
 vim.keymap.set(
   'n', '<leader>nb',
-  '<cmd>Neotree source=buffers position=float<CR>',
-  { desc = '[N]eotree [B]uffers float' }
+  '<cmd>Neotree source=buffers position=current<CR>',
+  { desc = '[N]eotree [B]uffers' }
 )
 vim.keymap.set(
   'n', '<leader>nr',
   '<cmd>Neotree position=right<CR>',
   { desc = '[N]eotree [R]ight' }
-)
-vim.keymap.set(
-  'n', '<leader>nc',
-  '<cmd>Neotree action=close<CR>',
-  { desc = '[N]eotree [C]lose' }
 )
 
 -- [[ Telescope ]]
