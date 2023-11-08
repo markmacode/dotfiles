@@ -32,7 +32,7 @@ require("neo-tree").setup({
   window = {
     position = 'current',
     mappings = {
-      ['g'] = 'open',
+      ['e'] = 'open',
     },
   },
   filesystem = {
@@ -50,6 +50,7 @@ require("neo-tree").setup({
         --"*/src/*/tsconfig.json",
       },
       always_show = {
+        ".editorconfig",
         ".gitignored",
       },
       never_show = {
@@ -62,4 +63,3 @@ require("neo-tree").setup({
     },
   },
 })
-

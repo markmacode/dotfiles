@@ -1,0 +1,24 @@
+root = true
+
+[*]
+tab_width = 8
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{go}]
+tab_width = 4
+indent_style = tab
+
+[{M,m}akefile]
+tab_width = 4
+indent_style = tab
+
+# Misc docs, config, and scripting
+[*.{md,lua,yaml,yml}]
+indent_size = 2
+
+# Web stuff
+[*.{html,css,js,json,ts,tsx,svelte}]
+indent_size = 2
+

@@ -1,4 +1,5 @@
 vim.keymap.set("i", "jk", "<Esc>")
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 vim.keymap.set("n", "Q", "<nop>")
 
 -- move selected and indent automatically
@@ -83,3 +84,32 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- [[ Harpoon ]]
+vim.keymap.set(
+  "n", "<leader>hi", require("harpoon.mark").add_file,
+  { desc = '[H]arpoon [I]nsert file' }
+)
+vim.keymap.set(
+  "n", "<leader>hl", require("harpoon.ui").toggle_quick_menu,
+  { desc = '[H]arpoon [L]ist files' }
+)
+vim.keymap.set(
+  "n", "<leader>tn", require("harpoon.ui").nav_next,
+  { desc = 'Harpoon [T]o [N]ext' }
+)
+vim.keymap.set(
+  "n", "<leader>tp", require("harpoon.ui").nav_prev,
+  { desc = 'Harpoon [T]o [P]revious' }
+)
+vim.keymap.set(
+  "n", "<leader>tj", function() require("harpoon.ui").nav_file(1) end,
+  { desc = 'Harpoon [T]o 1' }
+)
+vim.keymap.set(
+  "n", "<leader>tk", function() require("harpoon.ui").nav_file(2) end,
+  { desc = 'Harpoon [T]o 2' }
+)
+vim.keymap.set(
+  "n", "<leader>tl", function() require("harpoon.ui").nav_file(3) end,
+  { desc = 'Harpoon [T]o 3' }
+)
