@@ -94,22 +94,22 @@ vim.keymap.set(
   { desc = '[H]arpoon [L]ist files' }
 )
 vim.keymap.set(
-  "n", "<leader>tn", require("harpoon.ui").nav_next,
+  "n", "<leader>hn", require("harpoon.ui").nav_next,
   { desc = 'Harpoon [T]o [N]ext' }
 )
 vim.keymap.set(
-  "n", "<leader>tp", require("harpoon.ui").nav_prev,
+  "n", "<leader>hp", require("harpoon.ui").nav_prev,
   { desc = 'Harpoon [T]o [P]revious' }
 )
 vim.keymap.set(
-  "n", "<leader>tj", function() require("harpoon.ui").nav_file(1) end,
-  { desc = 'Harpoon [T]o 1' }
+  "n", "<leader>j", function() require("harpoon.ui").nav_file(1) end,
+  { desc = 'Harpoon to 1' }
 )
 vim.keymap.set(
-  "n", "<leader>tk", function() require("harpoon.ui").nav_file(2) end,
-  { desc = 'Harpoon [T]o 2' }
+  "n", "<leader>k", function() require("harpoon.ui").nav_file(2) end,
+  { desc = 'Harpoon to 2' }
 )
 vim.keymap.set(
-  "n", "<leader>tl", function() require("harpoon.ui").nav_file(3) end,
-  { desc = 'Harpoon [T]o 3' }
+  "n", "<leader>l", function() require("harpoon.ui").nav_file(3) end,
+  { desc = 'Harpoon to 3' }
 )
