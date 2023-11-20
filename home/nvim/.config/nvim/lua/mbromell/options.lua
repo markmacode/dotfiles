@@ -22,7 +22,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.termguicolors = true
 vim.wo.signcolumn = 'yes'
-vim.o.colorcolumn = '80'
+vim.o.colorcolumn = '80,100'
 vim.o.scrolloff = 8
 
 vim.o.tabstop = 4

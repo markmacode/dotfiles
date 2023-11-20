@@ -37,13 +37,17 @@ function pyv() {
         return 0
     fi
     # No arg specified and virtual environment is active, so deactivate.
-    deactivate 
+    deactivate
     return 0
 }
- 
+
 # Listing files
 alias eza='eza --color=always'
 alias x='eza -la --no-permissions --no-time --no-user --no-filesize --group-directories-first --git'
 alias xx='eza -lah --group-directories-first --git'
 alias xxx='eza -la -o --no-permissions --group-directories-first --git --git-ignore -T | bat --style=plain'
+
+# Development experience
+alias v='nvim .'
+alias z='zellij'
 

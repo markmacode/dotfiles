@@ -27,7 +27,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
 
   {
     -- LSP Configuration & Plugins
@@ -111,6 +111,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'nightfox'
+      vim.cmd [[highlight colorcolumn guibg='#1B2938']]
     end,
   },
 
@@ -193,4 +194,3 @@ require('lazy').setup({
     },
   },
 }, {})
-
