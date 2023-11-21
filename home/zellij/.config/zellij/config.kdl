@@ -1,9 +1,9 @@
-theme "mbromell"
+theme "mbromell-nightfox"
 
 themes {
-    mbromell {
-        bg "#29394f"
+    mbromell-nightfox {
         fg "#cdcecf"
+        bg "#29394f"
         red "#c94f6d"
         green "#81b29a"
         blue "#719cd6"
@@ -11,8 +11,34 @@ themes {
         magenta "#9d79d6"
         orange "#f4a261"
         cyan "#63cdcf"
-        black "#192330"
+        black "#29394f"
         white "#aeafb0"
+    }
+    mbromell-dayfox {
+        bg "#d3c7bb"
+        fg "#3d2b5a"
+        red "#a5222f"
+        green "#396847"
+        blue "#2848a9"
+        yellow "#ac5402"
+        magenta "#6e33ce"
+        orange "#955f61"
+        cyan "#287980"
+        black "#d3c7bb"
+        white "#643f61"
+    }
+    mbromell-terafox {
+        bg "#254147"
+        fg "#e6eaea"
+        red "#e85c51"
+        green "#7aa4a1"
+        blue "#5a93aa"
+        yellow "#fda47f"
+        magenta "#ad5c7c"
+        orange "#ff8349"
+        cyan "#a1cdd8"
+        black "#254147"
+        white "#cbd9d8"
     }
 }
 

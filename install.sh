@@ -12,14 +12,6 @@ else
     source $HOME/.config/mbromell/env.sh
 fi
 
-source $DOTFILES/scripts/os.sh
-
-if [[ ! -d $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
-    echo "[+] Installing packer for NeoVim"
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi
-
 stow_files="$(ls $DOTFILES/home/ | tr "\n" " ")"
 
 pushd $DOTFILES/home

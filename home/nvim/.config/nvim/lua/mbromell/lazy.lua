@@ -111,7 +111,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'nightfox'
-      vim.cmd [[highlight colorcolumn guibg='#1B2938']]
+      vim.cmd [[highlight colorcolumn guibg='#1C2836']]
     end,
   },
 

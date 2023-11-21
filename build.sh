@@ -1,57 +1,27 @@
 #!/usr/bin/env bash
 
-user_install=false
-if [[ ! -z $1 ]]; then
-    if [[ "$1" == "--user" ]]; then
-        echo "[WARNING] User install does NOT work on MacOS"
-        user_install=true
-    else
-        echo "[ERROR] Invalid argument $1"
-        echo "[+] Only valid argument is --user"
-        exit 1
-    fi
-fi
+case "$(uname -a)" in
+    Linux*microsoft-standard-WSL2*) export OS="wsl" ;;
+    Linux*) export OS="linux" ;;
+    Darwin*) export OS="mac" ;;
+    *) export OS="unknown" ;;
+esac
 
-source ./scripts/os.sh
 if ! command -v nix-env &> /dev/null; then
-    echo "[+] Installing Nix package manager"
-
-    if [[ "$OS" == "mac" ]]; then
-        sh <(curl -L https://nixos.org/nix/install) --yes
-    elif [[ "$user_install" == true ]]; then
-        sh <(curl -L https://nixos.org/nix/install) --yes --no-daemon
-    else
-        sh <(curl -L https://nixos.org/nix/install) --yes --daemon
-    fi
-
-    echo "[+] Nix has been installed, run ./build.sh again to continue"
-    exec $SHELL
+    echo "[E] Nix is not installed"
+    echo "    To install at a system level run \`./setup/nix-root.sh\`"
+    echo "    To install at a user level run \`./setup/nix-user.sh\`"
+    exit 1
 fi
 
-[[ "$OS" == "mac" ]] && ./packages/brew.sh
 ./packages/nix.sh
+./packages/cargo.sh
+[[ "$OS" == "mac" ]] && ./packages/brew.sh
+
 ./install.sh
 
-if ! command -v zsh &> /dev/null; then
-    echo "[+] Installing zsh"
-    nix-env -iA nixpkgs.zsh
-fi
-
-if [[ "$SHELL" != "/bin/zsh" ]]; then
-    echo "[+] Setting ZSH as default shell"
-    command -v zsh | sudo tee -a /etc/shells
-    sudo chsh -s $(which zsh) $USER
-fi
-
-echo "[+] Installing starship prompt"
-sh <(curl -sS https://startship.rs/install.sh) --yes
-
-if [[ -z "${ZSH}" ]]; then
-    echo "[+] Installing oh-my-zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-        "" --keep-zshrc --unattended
-fi
-
-nvim --headless "+Lazy! sync" +qa
+./setup/zsh.sh
+./setup/nvim.sh
 
 exec $SHELL
+
