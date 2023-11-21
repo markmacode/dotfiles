@@ -1,2 +1,18 @@
-theme "nightfox"
+theme "mbromell"
+
+themes {
+    mbromell {
+        bg "#29394f"
+        fg "#cdcecf"
+        red "#c94f6d"
+        green "#81b29a"
+        blue "#719cd6"
+        yellow "#dbc074"
+        magenta "#9d79d6"
+        orange "#f4a261"
+        cyan "#63cdcf"
+        black "#192330"
+        white "#aeafb0"
+    }
+}
 
