@@ -7,21 +7,20 @@ case "$(uname -a)" in
     *) export OS="unknown" ;;
 esac
 
-if ! command -v nix-env &> /dev/null; then
-    echo "[E] Nix is not installed"
-    echo "    To install at a system level run \`./setup/nix-root.sh\`"
-    echo "    To install at a user level run \`./setup/nix-user.sh\`"
+if ! command -v nix-env &>/dev/null; then
+    echo "[E] nix-env is not installed"
+    echo "  > To install at a system level run \`./scripts/setup-nix-root.sh\`"
+    echo "  > To install at a user level run \`./scripts/setup-nix-user.sh\`"
+    echo "  > Or go to https://nixos.org/download and do it manually"
     exit 1
 fi
 
 ./packages/nix.sh
 ./packages/cargo.sh
 [[ "$OS" == "mac" ]] && ./packages/brew.sh
+./packages/pip.sh
 
 ./install.sh
-
-./setup/zsh.sh
-./setup/nvim.sh
+./scripts/setup-zsh.sh
 
 exec $SHELL
-

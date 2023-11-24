@@ -1,4 +1,25 @@
 -- [[ Configure LSP ]]
+
+-- Enable the following language servers
+--
+-- If you want to override the default filetypes that your language server will
+-- attach to you can define the property 'filetypes' to the map in question.
+local servers = {
+  clangd = {},
+  gopls = {},
+  pyright = {},
+  rust_analyzer = {},
+  tsserver = {},
+  bashls = {},
+  html = {},
+  lua_ls = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+    },
+  },
+}
+
 -- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
@@ -34,40 +55,13 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
-  nmap('<leader>f', vim.lsp.buf.format, '[F]ormat Buffer')
+  -- nmap('<leader>f', vim.lsp.buf.format, '[F]ormat Buffer')
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
-
--- Enable the following language servers
---
--- If you want to override the default filetypes that your language server will attach to you can
--- define the property 'filetypes' to the map in question.
-local servers = {
-  clangd = {},
-  gopls = {},
-  pyright = {},
-  rust_analyzer = {},
-  tsserver = {},
-
-  html = {
-    filetypes = {
-      'html',
-      'twig',
-      'hbs',
-    },
-  },
-
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
-}
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
