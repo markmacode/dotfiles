@@ -30,3 +30,4 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
     export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
     export LDFLAGS="-L/opt/homebrew/opt/avr-gcc@8/lib"
 fi
+

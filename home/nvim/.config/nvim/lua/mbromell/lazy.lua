@@ -106,16 +106,6 @@ require('lazy').setup({
   },
 
   {
-    -- Theme
-    'EdenEast/nightfox.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'nightfox'
-      vim.cmd [[highlight colorcolumn guibg='#1B2938']]
-    end,
-  },
-
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -168,16 +158,6 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
-  },
-
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
   },
 
   {

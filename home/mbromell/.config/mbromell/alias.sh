@@ -1,5 +1,5 @@
 # Dotfiles stuff
-alias dotfiles='pushd $DOTFILES ; ${=EDITOR} ${DOTFILES} ; popd'
+alias dotfiles='cd $DOTFILES'
 alias dotpull='pushd $DOTFILES ; git pull ; popd'
 alias dotstow='pushd $DOTFILES ; ./install.sh ; popd'
 alias dot='pushd $DOTFILES ; git pull ; ./install.sh ; popd'
@@ -19,6 +19,7 @@ alias fp='find . -path'
 
 # Python
 alias py='python3'
+alias pip='pip3'
 function pyv() {
     local venv_dir="${1:-.venv}"
     if [[ ! -d $venv_dir ]]; then
@@ -50,4 +51,3 @@ alias xxx='eza -la -o --no-permissions --group-directories-first --git --git-ign
 # Development experience
 alias v='nvim .'
 alias z='zellij'
-
