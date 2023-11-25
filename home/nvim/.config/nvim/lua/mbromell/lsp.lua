@@ -2,6 +2,9 @@
 
 -- Enable the following language servers
 --
+-- List of available LSPs:
+-- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+--
 -- If you want to override the default filetypes that your language server will
 -- attach to you can define the property 'filetypes' to the map in question.
 local servers = {
@@ -52,10 +55,9 @@ local on_attach = function(_, bufnr)
   end, '[W]orkspace [L]ist Folders')
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-  -- nmap('<leader>f', vim.lsp.buf.format, '[F]ormat Buffer')
+  -- vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+  --   vim.lsp.buf.format()
+  -- end, { desc = 'Format current buffer with LSP' })
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order

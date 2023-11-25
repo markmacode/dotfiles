@@ -1,5 +1,19 @@
 # mbromell dotfiles
 
+![Screenshot of MacOS using dotfiles](images/screenshot-01.png)
+
+*[Wallpaper](https://unsplash.com/photos/low-angle-photography-of-trees-during-night-time-_OQ8Jc7kBmA)
+by [Jr Korpa](https://unsplash.com/@jrkorpa)*
+
+## Install
+
+This step requires `stow` (GNU Stow) and it does symlinking of dotfiles found in
+this repos [`home/`](home/) directory to the user's `$HOME` directory.
+
+```bash
+./install.sh
+```
+
 ## Build (optional)
 
 **Read and understand this script before using it, and then use it at your own
@@ -14,18 +28,6 @@ zsh shell. It might be something you like, but it does things that are personal
 preference rather than standard practice. If you are unsure about it, do not use
 it.
 
-## Install
-
-If you skipped the [Build](#build-optional) step, then you will need to make
-sure you have `stow` installed.
-
-```bash
-./install.sh
-```
-
-Using 'GNU Stow', this step does symlinking of dotfiles found in this repos
-[home/](home/) directory to the users `$HOME` directory.
-
 ## Extras
 
 ### Extending with `.zprofile`
@@ -33,10 +35,6 @@ Using 'GNU Stow', this step does symlinking of dotfiles found in this repos
 You may have noticed that there is no `.zprofile` in my dotfiles. You can put a
 custom configuration for zsh inside the `~/.zprofile` file on each system that
 uses these dotfiles.
-
-I experimented with using a custom `.zshinject` file for this purpose, but I
-would rather stick to known defaults rather than going further down the road of
-non-standard workarounds.
 
 ### Commands
 
@@ -60,18 +58,18 @@ source $HOME/.config/mbromell/alias.sh
 
 ## File Structure
 
-### [home/](home/)
+### [`home/`](home/)
 
 This directory will store the configuration files that are going to be put
 inside of the current user `$HOME` directory. It will do this using
 [GNU stow](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
 
-### [packages/](packages/)
+### [`packages/`](packages/)
 
 Scripts for installing packages. Each file should only install packages related
 to certain package manager. The name of the file is the package manager's name.
 
-### [scripts/](scripts/)
+### [`scripts/`](scripts/)
 
 Arbitrary scripts to be executed by the user in the terminal, or scripts that
 are used inside other scripts.

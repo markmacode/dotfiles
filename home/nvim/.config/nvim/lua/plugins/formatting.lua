@@ -1,3 +1,5 @@
+-- List of available formatters:
+-- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
 return {
   {
     "stevearc/conform.nvim",
@@ -8,7 +10,9 @@ return {
       {
         "<leader>f",
         function()
-          require("conform").format()
+          if not require("conform").format() then
+            vim.lsp.buf.format()
+          end
         end,
         mode = { "n", "v" },
         desc = "[F]ormat file with conform"
@@ -24,11 +28,6 @@ return {
         python = { "isort", "ruff_format" },
         markdown = { "mdformat" },
         sh = { "shfmt" },
-      },
-      format_on_save = {
-        -- These options will be passed to conform.format()
-        timeout_ms = 500,
-        lsp_fallback = true,
       },
       formatters = {
         mdformat = {

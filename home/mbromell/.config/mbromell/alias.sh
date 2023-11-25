@@ -1,5 +1,5 @@
 # Dotfiles stuff
-alias dotfiles='pushd $DOTFILES ; ${=EDITOR} ${DOTFILES} ; popd'
+alias dotfiles='cd $DOTFILES'
 alias dotpull='pushd $DOTFILES ; git pull ; popd'
 alias dotstow='pushd $DOTFILES ; ./install.sh ; popd'
 alias dot='pushd $DOTFILES ; git pull ; ./install.sh ; popd'
