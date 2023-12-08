@@ -1,6 +1,6 @@
 # mbromell dotfiles
 
-![Screenshot of MacOS using dotfiles](images/screenshot-01.png)
+![Screenshot 1 of MacOS using dotfiles](images/screenshot-01.png)
 
 *[Wallpaper](https://unsplash.com/photos/low-angle-photography-of-trees-during-night-time-_OQ8Jc7kBmA)
 by [Jr Korpa](https://unsplash.com/@jrkorpa)*
@@ -73,3 +73,7 @@ to certain package manager. The name of the file is the package manager's name.
 
 Arbitrary scripts to be executed by the user in the terminal, or scripts that
 are used inside other scripts.
+
+## Pretty Screenshot
+
+![Screenshot 2 of MacOS using dotfiles](images/screenshot-02.png)
