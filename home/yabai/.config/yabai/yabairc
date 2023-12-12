@@ -9,55 +9,56 @@ sudo yabai --load-sa
 
 # -- Tiling setting --
 
-yabai -m config layout                      bsp
+yabai -m config layout bsp
 
-# yabai -m config top_padding                 12
-# yabai -m config bottom_padding              12
-# yabai -m config left_padding                12
-# yabai -m config right_padding               12
-# yabai -m config window_gap                  12
-# yabai -m config external_bar                all:28:0
+yabai -m config top_padding 4
+yabai -m config bottom_padding 4
+yabai -m config left_padding 4
+yabai -m config right_padding 4
+yabai -m config window_gap 4
+# yabai -m config external_bar all:28:0
 
-yabai -m config mouse_follows_focus         off
-yabai -m config focus_follows_mouse         off
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse off
 
-yabai -m config window_opacity              off
-yabai -m config window_shadow               on
-yabai -m config window_placement            second_child
+yabai -m config window_opacity off
+yabai -m config window_shadow off
+yabai -m config window_placement second_child
 
-yabai -m config active_window_opacity       0.9
-yabai -m config normal_window_opacity       0.9
-yabai -m config split_ratio                 0.5
-yabai -m config split_type                  auto
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
+yabai -m config split_ratio 0.5
+yabai -m config split_type auto
 
-yabai -m config auto_balance                off
+yabai -m config auto_balance off
 
-yabai -m config mouse_modifier              cmd
-yabai -m config mouse_action1               move
-yabai -m config mouse_action2               resize
+yabai -m config mouse_modifier cmd
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
 
 # -- Rules --
 
-yabai -m rule --add label="Finder" manage=off \
-    app="^Finder$"
-yabai -m rule --add label="System Preferences" manage=off \
-    app="^System Settings$" title=".*"
-yabai -m rule --add label="App Store" manage=off \
-    app="^App Store$"
-yabai -m rule --add label="Activity Monitor" manage=off \
-    app="^Activity Monitor$"
-yabai -m rule --add label="Calculator" manage=off \
-    app="^Calculator$"
-yabai -m rule --add label="Dictionary" manage=off \
-    app="^Dictionary$"
-yabai -m rule --add label="Spotify" manage=off \
-    app="^Spotify$"
-yabai -m rule --add label="Software Update" manage=off \
-    title="Software Update"
-yabai -m rule --add label="About This Mac" manage=off \
-    app="System Information" title="About This Mac"
-yabai -m rule --add label="Opera Opacity" \
-    app="^Opera$" opacity="1.0"
+# Non-managed windows are not sticky with this line
+yabai -m rule --add app=".*" layer=normal
+yabai -m signal --add event=window_created action="yabai -m window --layer normal"
+yabai -m signal --add event=window_focused action="yabai -m window --layer normal"
+yabai -m signal --add event=space_destroyed action="yabai -m window --layer normal"
+
+# Automatically float non-resizable windows, such as palettes, system settings etc.
+float_windows='yabai -m query --windows --window $YABAI_WINDOW_ID \
+    | jq -er ".\"can-resize\" or .\"is-floating\"" \
+    || yabai -m window $YABAI_WINDOW_ID --toggle float'
+yabai -m signal --add event=window_created action="$float_windows"
+
+yabai -m rule --add label="Finder" manage=off app="^Finder$"
+yabai -m rule --add label="System Preferences" manage=off app="^System Settings$" title=".*"
+yabai -m rule --add label="App Store" manage=off app="^App Store$"
+yabai -m rule --add label="Activity Monitor" manage=off app="^Activity Monitor$"
+yabai -m rule --add label="Calculator" manage=off app="^Calculator$"
+yabai -m rule --add label="Dictionary" manage=off app="^Dictionary$"
+yabai -m rule --add label="Spotify" manage=off app="^Spotify$"
+yabai -m rule --add label="Software Update" manage=off title="Software Update"
+yabai -m rule --add label="About This Mac" manage=off app="System Information" title="About This Mac"
 
 set +x
 echo "yabai: configuration loaded..."
