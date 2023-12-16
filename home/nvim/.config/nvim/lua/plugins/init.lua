@@ -47,16 +47,18 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
+      debug_mode = true,
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
+        add = { text = '│' },
+        change = { text = '│' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
+        untracked = { text = '┆' },
       },
       on_attach = function(bufnr)
         vim.keymap.set(
-          'n', '<leader>hp',
+          'n', '<leader>gp',
           require('gitsigns').preview_hunk,
           { buffer = bufnr, desc = 'Preview git hunk' }
         )

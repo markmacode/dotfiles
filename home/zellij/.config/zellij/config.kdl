@@ -1,5 +1,38 @@
 theme "mbromell-nightfox"
 
+keybinds {
+    normal {
+        bind "F1" { MovePane "Left"; }
+        bind "F2" { MovePane "Down"; }
+        bind "F3" { MovePane "Up"; }
+        bind "F4" { MovePane "Right"; }
+
+        bind "F5" { Resize "Increase Left"; }
+        bind "F6" { Resize "Increase Down"; }
+        bind "F7" { Resize "Increase Up"; }
+        bind "F8" { Resize "Increase Right"; }
+
+        bind "F9" { GoToPreviousTab; }
+        bind "F10" { GoToNextTab; }
+
+        bind "F11" { NewPane "Down"; }
+        bind "F12" { NewPane "Right"; }
+        bind "Alt ." { CloseFocus; }
+        bind "Alt /" { ToggleFocusFullscreen; }
+
+        bind "PageUp" { NewTab; }
+        bind "PageDown" { BreakPane; }
+        bind "Alt ," { CloseTab; }
+
+        bind "Alt ;" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+        }
+    }
+}
+
 themes {
     mbromell-nightfox {
         fg "#cdcecf"

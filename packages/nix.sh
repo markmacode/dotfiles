@@ -10,6 +10,7 @@ nix-env -iA \
     nixpkgs.bat \
     nixpkgs.curl \
     nixpkgs.eza \
+    nixpkgs.fd \
     nixpkgs.fzf \
     nixpkgs.gcc \
     nixpkgs.git \

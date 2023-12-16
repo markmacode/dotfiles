@@ -7,15 +7,16 @@ alias dot='pushd $DOTFILES ; git pull ; ./install.sh ; popd'
 # System shortcuts
 alias L='$SHELL -l'
 alias t='tail -f'
-alias c='cd'
 
-alias grep='grep --color'
-alias grepi='grep -i'
-alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
-
-alias ff='find . -type f -name'
-alias fd='find . -type d -name'
-alias fp='find . -path'
+# fzf stuff
+# [F]uzzy [F]ind
+alias ff='fd -t file -LH -E "{.git,node_modules}" | fzf'
+# [F]uzzy [F]ind and [V]im
+alias ffv='nvim $(fd -t file -LH -E "{.git,node_modules}" | fzf)'
+# [F]uzzy find [D]ir and [C]ange
+alias fdc='cd $(fd -t directory -LH -E "{.git,node_modules}" | fzf)'
+# [F]uzzy find [D]ir and [V]im
+alias fdv='nvim $(fd -t directory -LH -E "{.git,node_modules}" | fzf)'
 
 # Python
 alias py='python3'
@@ -43,10 +44,10 @@ function pyv() {
 }
 
 # Listing files
+# Using `x` because hitting `x` and enter is easier than `l` and enter :)
 alias eza='eza --color=always'
 alias x='eza -la --no-permissions --no-time --no-user --no-filesize --group-directories-first --git'
 alias xx='eza -lah --group-directories-first --git'
-alias xxx='eza -la -o --no-permissions --group-directories-first --git --git-ignore -T | bat --style=plain'
 
 # Development experience
 alias v='nvim .'
