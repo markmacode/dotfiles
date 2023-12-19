@@ -47,7 +47,7 @@ yabai -m signal --add event=space_destroyed action="yabai -m window --layer norm
 # Automatically float non-resizable windows, such as palettes, system settings etc.
 float_windows='yabai -m query --windows --window $YABAI_WINDOW_ID \
     | jq -er ".\"can-resize\" or .\"is-floating\"" \
-    || yabai -m window $YABAI_WINDOW_ID --toggle float'
+    || yabai -m window $YABAI_WINDOW_ID --toggle float --layer normal'
 yabai -m signal --add event=window_created action="$float_windows"
 
 yabai -m rule --add label="Finder" manage=off app="^Finder$"

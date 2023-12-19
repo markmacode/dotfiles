@@ -1,60 +1,37 @@
-# -- Applications --
-cmd - f16         : open -a /Applications/iTerm.app
-cmd + shift - f16 : open -na /Applications/iTerm.app
+# -- Focus --
+f13 : yabai -m window --focus west
+f14 : yabai -m window --focus south
+f15 : yabai -m window --focus north
+f16 : yabai -m window --focus east
 
-cmd - f17         : open -a /Applications/Opera.app
-cmd + shift - f17 : open -na /Applications/Opera.app
+# -- Moving --
+shift - f13 : yabai -m window --swap west
+shift - f14 : yabai -m window --swap south
+shift - f15 : yabai -m window --swap north
+shift - f16 : yabai -m window --swap east
 
-cmd - f18         : open -a /Applications/Obsidian.app
-cmd + shift - f18 : open -na /Applications/Obsidian.app
+f17         : yabai -m space --rotate 90
+shift - f17 : yabai -m space --rotate 270
 
-cmd - f19         : open -a /System/Library/CoreServices/Finder.app
+# -- Resize --
+cmd - f13 : yabai -m window --resize left:-50:0; \
+            yabai -m window --resize right:-50:0
+cmd - f14 : yabai -m window --resize bottom:0:50; \
+            yabai -m window --resize top:0:50
+cmd - f15 : yabai -m window --resize top:0:-50; \
+            yabai -m window --resize bottom:0:-50
+cmd - f16 : yabai -m window --resize right:50:0; \
+            yabai -m window --resize left:50:0
 
-# -- Movement HJKL --
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+cmd - f17         : yabai -m window --toggle zoom-fullscreen
+meh - f11         : yabai -m window --toggle zoom-fullscreen
+shift + cmd - f17 : yabai -m space --balance
+f18               : yabai -m window --toggle float --layer normal --grid 5:5:1:1:3:3
+meh - f10         : yabai -m window --toggle float --layer normal --grid 5:5:1:1:3:3
+shift - f18       : yabai -m window --toggle split
 
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
-
-cmd + alt - j : yabai -m window --warp south
-cmd + alt - k : yabai -m window --warp north
-cmd + alt - h : yabai -m window --warp west
-cmd + alt - l : yabai -m window --warp east
-
-ctrl + alt - h : yabai -m window --resize left:-50:0; \
-                 yabai -m window --resize right:-50:0
-ctrl + alt - j : yabai -m window --resize bottom:0:50; \
-                 yabai -m window --resize top:0:50
-ctrl + alt - k : yabai -m window --resize top:0:-50; \
-                 yabai -m window --resize bottom:0:-50
-ctrl + alt - l : yabai -m window --resize right:50:0; \
-                 yabai -m window --resize left:50:0
-
-# -- Window states --
-alt - space : yabai -m window --toggle float --grid 6:6:1:1:4:4
-
-alt - f         : yabai -m window --toggle zoom-fullscreen
-shift + alt - f : yabai -m window --toggle native-fullscreen
-
-alt - m : yabai -m window --minimize
-
-# -- Space states --
-alt - r         : yabai -m space --rotate 270
-shift + alt - r : yabai -m space --rotate 90
-
-alt - x : yabai -m space --mirror x-axis
-alt - y : yabai -m space --mirror y-axis
-
-alt - e : yabai -m space --balance
-alt - g : yabai -m space --toggle padding; \
-          yabai -m space --toggle gap
-
-# -- System --
-ctrl + alt - q : brew services stop yabai
-ctrl + alt - s : brew services start yabai
-ctrl + alt - r : yabai --restart-service
+# -- Spaces --
+shift + cmd - f13 : yabai -m space --focus 1
+shift + cmd - f14 : yabai -m space --focus 2
+shift + cmd - f15 : yabai -m space --focus 3
+shift + cmd - f16 : yabai -m space --focus 4
