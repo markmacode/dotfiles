@@ -56,7 +56,6 @@ yabai -m rule --add label="App Store" manage=off app="^App Store$"
 yabai -m rule --add label="Activity Monitor" manage=off app="^Activity Monitor$"
 yabai -m rule --add label="Calculator" manage=off app="^Calculator$"
 yabai -m rule --add label="Dictionary" manage=off app="^Dictionary$"
-yabai -m rule --add label="Spotify" manage=off app="^Spotify$"
 yabai -m rule --add label="Software Update" manage=off title="Software Update"
 yabai -m rule --add label="About This Mac" manage=off app="System Information" title="About This Mac"
 

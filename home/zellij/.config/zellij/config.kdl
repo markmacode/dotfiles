@@ -1,30 +1,43 @@
 theme "mbromell-nightfox"
 
 keybinds {
-    normal {
-        bind "F1" { MovePane "Left"; }
-        bind "F2" { MovePane "Down"; }
-        bind "F3" { MovePane "Up"; }
-        bind "F4" { MovePane "Right"; }
+    shared_except "locked" {
+        unbind "Alt h"
+        unbind "Alt j"
+        unbind "Alt k"
+        unbind "Alt l"
+        unbind "Alt n"
+        unbind "Alt ["
+        unbind "Alt ]"
 
-        bind "F5" { Resize "Increase Left"; }
-        bind "F6" { Resize "Increase Down"; }
-        bind "F7" { Resize "Increase Up"; }
-        bind "F8" { Resize "Increase Right"; }
+        bind "Alt !" { MovePane "Left"; }
+        bind "Alt @" { MovePane "Down"; }
+        bind "Alt #" { MovePane "Up"; }
+        bind "Alt $" { MovePane "Right"; }
 
-        bind "F9" { GoToPreviousTab; }
-        bind "F10" { GoToNextTab; }
+        bind "Alt %" { Resize "Increase Left"; }
+        bind "Alt ^" { Resize "Increase Down"; }
+        bind "Alt &" { Resize "Increase Up"; }
+        bind "Alt *" { Resize "Increase Right"; }
 
-        bind "F11" { NewPane "Down"; }
-        bind "F12" { NewPane "Right"; }
-        bind "Alt ." { CloseFocus; }
-        bind "Alt /" { ToggleFocusFullscreen; }
+        bind "Alt ," { GoToTab 1; }
+        bind "Alt ." { GoToTab 2; }
+        bind "Alt /" { GoToTab 3; }
+        bind "Alt ;" { GoToTab 4; }
 
-        bind "PageUp" { NewTab; }
-        bind "PageDown" { BreakPane; }
-        bind "Alt ," { CloseTab; }
+        bind "Alt _" { ToggleFocusFullscreen; }
+        bind "Alt '" { NewPane "Right"; }
+        bind "Alt \"" { NewPane "Down"; }
+        bind "Alt ~" { CloseFocus; }
+        bind "Alt ]" { NextSwapLayout; }
+        bind "Alt [" { PreviousSwapLayout; }
 
-        bind "Alt ;" {
+        bind "Alt |" { NewTab; }
+        bind "Alt `" { CloseTab; }
+        bind "Alt ?" { GoToNextTab; }
+        bind "Alt :" { GoToPreviousTab; }
+
+        bind "Alt (" {
             LaunchOrFocusPlugin "zellij:session-manager" {
                 floating true
                 move_to_focused_tab true
@@ -59,19 +72,6 @@ themes {
         cyan "#287980"
         black "#d3c7bb"
         white "#643f61"
-    }
-    mbromell-terafox {
-        bg "#254147"
-        fg "#e6eaea"
-        red "#e85c51"
-        green "#7aa4a1"
-        blue "#5a93aa"
-        yellow "#fda47f"
-        magenta "#ad5c7c"
-        orange "#ff8349"
-        cyan "#a1cdd8"
-        black "#254147"
-        white "#cbd9d8"
     }
 }
 
