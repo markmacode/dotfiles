@@ -9,10 +9,10 @@ alias L='$SHELL -l'
 alias t='tail -f'
 
 # fzf stuff
-# [F]uzzy [F]ind
-alias ff='fd -t file -LH -E "{.git,node_modules}" | fzf'
-# [F]uzzy [F]ind and [V]im
-alias ffv='nvim $(fd -t file -LH -E "{.git,node_modules}" | fzf)'
+# [F]uzzy find [F]ile
+alias ff='fzf'
+# [F]uzzy find [F]ile and [V]im
+alias ffv='nvim $(fzf)'
 # [F]uzzy find [D]ir and [C]ange
 alias fdc='cd $(fd -t directory -LH -E "{.git,node_modules}" | fzf)'
 # [F]uzzy find [D]ir and [V]im
