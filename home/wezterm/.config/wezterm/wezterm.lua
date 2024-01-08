@@ -2,6 +2,9 @@
 local wezterm = require 'wezterm'
 local config = {}
 
+-- Thank you for the hack mnicky https://stackoverflow.com/a/14425862
+local is_windows = package.config:sub(1,1) == "\\"
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
@@ -15,7 +18,7 @@ config.font = wezterm.font {
     family = 'JetBrains Mono',
     harfbuzz_features = { 'ss02', 'ss19', 'cv18' }
 }
-config.font_size = 14
+if is_windows then config.font_size = 12 else config.font_size = 14 end
 
 -- Key overrides
 config.keys = {
