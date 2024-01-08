@@ -9,6 +9,9 @@ plugins=(
     nvm
     pep8
     rust
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -30,4 +33,3 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
     export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
     export LDFLAGS="-L/opt/homebrew/opt/avr-gcc@8/lib"
 fi
-

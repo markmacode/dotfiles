@@ -11,3 +11,13 @@ if [[ -z "${ZSH}" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
         "" --keep-zshrc --unattended
 fi
+
+declare -a custom_plugins=(
+    "zdharma-continuum/fast-syntax-highlighting"
+    "zsh-users/zsh-autosuggestions"
+    "marlonrichert/zsh-autocomplete"
+)
+pushd ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins
+for repo in "${custom_plugins[@]}"; do
+    git clone https://github.com/${repo}.git
+done

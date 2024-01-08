@@ -1,4 +1,5 @@
 theme "mbromell-nightfox"
+default_layout "compact"
 
 keybinds {
     shared_except "locked" {
@@ -7,8 +8,6 @@ keybinds {
         unbind "Alt k"
         unbind "Alt l"
         unbind "Alt n"
-        unbind "Alt ["
-        unbind "Alt ]"
 
         bind "Alt !" { MovePane "Left"; }
         bind "Alt @" { MovePane "Down"; }
@@ -29,8 +28,6 @@ keybinds {
         bind "Alt '" { NewPane "Right"; }
         bind "Alt \"" { NewPane "Down"; }
         bind "Alt ~" { CloseFocus; }
-        bind "Alt ]" { NextSwapLayout; }
-        bind "Alt [" { PreviousSwapLayout; }
 
         bind "Alt |" { NewTab; }
         bind "Alt `" { CloseTab; }
