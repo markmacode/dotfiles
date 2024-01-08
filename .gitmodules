@@ -1,3 +1,4 @@
 [submodule "home/intel"]
 	path = home/intel
 	url = https://github.com/mbromell/dotfiles-intel.git
+	branch = main

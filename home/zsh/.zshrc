@@ -17,9 +17,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source $XDG_CONFIG_HOME/mbromell/env.sh
 source $XDG_CONFIG_HOME/mbromell/alias.sh
+if [[ -e "$XDG_CONFIG_HOME/work/setup.sh" ]]; then
+    source "$XDG_CONFIG_HOME/work/setup.sh"
+fi
 
 # Append Cargo to path, if it's installed
-if [[ -d "$HOME/.cargo/bin" ]]; then
+[[ -d "$HOME/.cargo/bin" ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 

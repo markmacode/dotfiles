@@ -1,6 +1,6 @@
 [user]
-    name = mbromell
     email = code@mamo.aleeas.com
+    name = mbromell
 
 [init]
     defaultBranch = main
@@ -44,5 +44,4 @@
     sv = status --long
 
 [include]
-    path = ~/work/.gitconfig
-
+    path = ~/.config/work/.gitconfig
