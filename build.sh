@@ -4,8 +4,14 @@ case "$(uname -a)" in
     Linux*microsoft-standard-WSL2*) export OS="wsl" ;;
     Linux*) export OS="linux" ;;
     Darwin*) export OS="mac" ;;
+    MINGW*) export OS="windows" ;;
     *) export OS="unknown" ;;
 esac
+
+if [[ "$OS" == "windows" ]]; then
+    echo "[+] Nothing to do on Windows MINGW"
+    exit 0
+fi
 
 if ! command -v nix-env &>/dev/null; then
     echo "[E] nix-env is not installed"

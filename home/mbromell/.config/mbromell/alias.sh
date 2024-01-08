@@ -1,8 +1,19 @@
 # Dotfiles stuff
-alias dotfiles='cd $DOTFILES'
-alias dotpull='pushd $DOTFILES ; git pull ; popd'
-alias dotstow='pushd $DOTFILES ; ./install.sh ; popd'
-alias dot='pushd $DOTFILES ; git pull ; ./install.sh ; popd'
+alias dot='cd $DOTFILES'
+function dotpull() {
+    pushd $DOTFILES
+    git pull
+    ./install.sh
+    popd
+}
+function dotsync() {
+    pushd $DOTFILES
+    git pull
+    git add .
+    git commit -m "Sync (push)"
+    git push
+    popd
+}
 
 # System shortcuts
 alias L='$SHELL -l'
