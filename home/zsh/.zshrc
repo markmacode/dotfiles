@@ -22,7 +22,7 @@ if [[ -e "$XDG_CONFIG_HOME/work/setup.sh" ]]; then
 fi
 
 # Append Cargo to path, if it's installed
-[[ -d "$HOME/.cargo/bin" ]]; then
+if [[ -d "$HOME/.cargo/bin" ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
