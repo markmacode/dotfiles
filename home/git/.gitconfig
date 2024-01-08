@@ -39,6 +39,7 @@
     # Checking out
     o = checkout
     om = checkout main
+    ob = checkout -b
     # Status
     s = status -sb
     sv = status --long

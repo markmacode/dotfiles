@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+case "$(uname -a)" in
+    Linux*microsoft-standard-WSL2*) export OS="wsl" ;;
+    Linux*) export OS="linux" ;;
+    Darwin*) export OS="mac" ;;
+    MINGW*) export OS="windows" ;;
+    *) export OS="unknown" ;;
+esac
+
 if [[ ! -f $HOME/.config/mbromell/env.sh ]]; then
     mkdir -p $HOME/.config/mbromell
     env_file=$HOME/.config/mbromell/env.sh
@@ -10,6 +18,14 @@ if [[ ! -f $HOME/.config/mbromell/env.sh ]]; then
     echo "export DOTFILES=\"$DOTFILES\"" >>$env_file
 else
     source $HOME/.config/mbromell/env.sh
+fi
+
+# Do Windows stuff and get out of the way
+if [[ "$OS" == "windows" ]]; then
+    rsync -av $DOTFILES/home/wezterm/.config/ $HOME/.config/
+    rsync -av $DOTFILES/home/git/ $HOME/
+    rsync -av $DOTFILES/home/intel/.config/ $HOME/.config/
+    exit 0
 fi
 
 stow_files="$(ls $DOTFILES/home/ | tr "\n" " ")"

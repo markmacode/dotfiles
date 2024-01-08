@@ -42,11 +42,9 @@ For convenience, there are a few commands that these dotfiles set up for you to
 run anywhere at any time inside your shell. These are currently just aliases
 setup inside [alias.sh](./home/mbromell/.config/mbromell/alias.sh).
 
-1. `dotfiles` Change directory to the dotfiles repo.
-2. `dotpull` Pull the latest changes of the current checked out branch of your
-   dotfiles.
-3. `dotstow` Just runs `./install.sh` script
-4. `dot` Runs `dotpull && dotstow` for quick syncing of any changes.
+1. `dot` Change directory to the dotfiles repo.
+2. `dotpull` Pulls and installs any changes on the current checked out branch.
+3. `dotsync` Commits all changes and pushes to the current checked out branch.
 
 If you are not using `zsh` and you still want these aliases, then add the
 following lines inside one of your own shell setup files.

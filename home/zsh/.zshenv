@@ -9,4 +9,4 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export EDITOR="nvim"
 export PAGER="bat"
 
-export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{.git,node_modules}"'
+export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{\.git,node_modules}"'
