@@ -10,8 +10,8 @@ function dotsync() {
     pushd $DOTFILES
     git pull
     git add .
-    git commit -m "Sync (push)"
-    git push
+    git commit -m "Sync push ($(uname -nmsr))"
+    # git push
     popd
 }
 
