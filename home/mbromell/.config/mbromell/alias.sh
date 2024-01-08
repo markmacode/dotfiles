@@ -12,6 +12,7 @@ function dotsync() {
     git add .
     git commit -m "Sync push ($(uname -nmsr))"
     # git push
+    ./install.sh
     popd
 }
 
