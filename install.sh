@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export DOTFILES="$(pwd)"
+
 case "$(uname -a)" in
     Linux*microsoft-standard-WSL2*) export OS="wsl" ;;
     Linux*) export OS="linux" ;;
@@ -22,9 +24,11 @@ fi
 
 # Do Windows stuff and get out of the way
 if [[ "$OS" == "windows" ]]; then
+    mkdir -p $HOME/.config/wezterm/ $HOME/.config/intel/ $HOME/.config/mbromell/
     rsync -av $DOTFILES/home/wezterm/.config/ $HOME/.config/
     rsync -av $DOTFILES/home/git/ $HOME/
     rsync -av $DOTFILES/home/intel/.config/ $HOME/.config/
+    rsync -av $DOTFILES/home/mbromell/.config/ $HOME/.config/
     exit 0
 fi
 
