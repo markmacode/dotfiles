@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This is not up to date, use at your own risk.
+
 pushd ./home
 stow_files="$(ls -d */)"
 for dir in $(echo "$stow_files"); do
