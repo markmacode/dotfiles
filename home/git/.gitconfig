@@ -46,3 +46,5 @@
 
 [include]
     path = ~/.config/work/.gitconfig
+[include]
+    path = ~/.gitconfig.inject
