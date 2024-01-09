@@ -17,7 +17,6 @@ function dotsync() {
 }
 
 # System shortcuts
-alias L='$SHELL -l'
 alias t='tail -f'
 
 # fzf stuff

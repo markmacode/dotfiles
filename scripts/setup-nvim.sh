@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! restore" +qa

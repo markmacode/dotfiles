@@ -32,17 +32,23 @@ if [[ "$OS" == "windows" ]]; then
     exit 0
 fi
 
-stow_files="$(ls $DOTFILES/home/ | tr "\n" " ")"
+function stow_helper() {
+    stow_dir="$1"
+    stow_files="$(ls $DOTFILES/${stow_dir}/ | tr "\n" " ")"
+    pushd $DOTFILES/${stow_dir}/
+    for dir in $stow_files; do
+        echo "[+] Stowing :: $dir"
+        # Ignore pointless bug warnings
+        # https://github.com/aspiers/stow/issues/65#issuecomment-1465060710
+        stow -t $HOME -D $dir \
+            2> >(grep -v -E 'BUG in find_stowed_path|perl:|LANG|LC_ALL|are supported' 1>&2)
+        stow -t $HOME $dir \
+            2> >(grep -v -E 'BUG in find_stowed_path|perl:|LANG|LC_ALL|are supported' 1>&2)
+    done
+    popd
+}
 
-pushd $DOTFILES/home
-for dir in $stow_files; do
-    echo "[+] Stowing :: $dir"
-    # Ignore pointless bug warnings
-    # https://github.com/aspiers/stow/issues/65#issuecomment-1465060710
-    stow -t $HOME -D $dir \
-        2> >(grep -v 'BUG in find_stowed_path? Absolute/relative mismatch' 1>&2)
-    stow -t $HOME $dir
-done
-popd
+stow_helper home
+[[ "$OS" == "wsl" ]] && stow_helper home-wsl
 
 $DOTFILES/scripts/setup-nvim.sh
