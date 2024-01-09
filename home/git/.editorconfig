@@ -12,6 +12,9 @@ indent_style = tab
 [{M,m}akefile]
 indent_style = tab
 
+[*Jenkinsfile]
+indent_size = 2
+
 # Misc docs, config, and scripting
 [*.{md,yaml,yml}]
 indent_size = 2
