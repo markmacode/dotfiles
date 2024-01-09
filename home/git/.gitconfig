@@ -46,5 +46,7 @@
 
 [include]
     path = ~/.config/work/.gitconfig
+
 [include]
+    # My work env refuses to be simple and needs very strange configs for WSL
     path = ~/.gitconfig.inject
