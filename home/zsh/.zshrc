@@ -10,7 +10,7 @@ plugins=(
     pep8
     rust
     zsh-autosuggestions
-    zsh-syntax-highlighting
+    fast-syntax-highlighting
     zsh-autocomplete
 )
 
