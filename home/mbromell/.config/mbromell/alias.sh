@@ -61,5 +61,5 @@ alias x='eza -la --no-permissions --no-time --no-user --no-filesize --group-dire
 alias xx='eza -lah --group-directories-first --git'
 
 # Development experience
-alias v='nvim .'
+alias v='nvim'
 alias z='zellij'
