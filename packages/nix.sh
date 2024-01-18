@@ -14,10 +14,13 @@ nix-env -iA \
     nixpkgs.fzf \
     nixpkgs.gcc \
     nixpkgs.git \
+    nixpkgs.go \
     nixpkgs.jq \
     nixpkgs.neovim \
     nixpkgs.gnumake \
     nixpkgs.parallel \
     nixpkgs.ripgrep \
-    nixpkgs.stow
+    nixpkgs.rustup \
+    nixpkgs.stow \
+    nixpkgs.xplr
 

@@ -6,6 +6,7 @@ if ! command -v brew &>/dev/null; then
 fi
 
 brew tap homebrew/cask-fonts
+brew tap homebrew/cask-versions
 
 brew install \
     dprint \
@@ -15,9 +16,7 @@ brew install \
 brew install --cask \
     alt-tab \
     font-jetbrains-mono-nerd-font \
-    gcc-arm-embedded \
-    iterm2 \
     python@3.11 \
-    qmk-toolbox
+    wezterm-nightly
 
 brew cleanup
