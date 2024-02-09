@@ -7,7 +7,21 @@ return {
   'tpope/vim-sleuth',
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {},
+    config = function()
+      require('which-key').register {
+        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
+        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+      }
+    end,
+  },
 
   {
     -- LSP Configuration & Plugins
@@ -29,6 +43,7 @@ return {
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
+    version = false,
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
@@ -36,10 +51,46 @@ return {
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
+    opts = function()
+      local luasnip = require('luasnip')
+      local cmp = require('cmp')
+      return {
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert {
+          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete {},
+          ['<Tab>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        },
+      }
+    end,
+  },
+
+  {
+    'L3MON4D3/LuaSnip',
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end,
   },
 
   {
@@ -94,7 +145,7 @@ return {
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'nightfox',
+        theme = 'duskfox',
         component_separators = '|',
         section_separators = '',
       },
@@ -115,22 +166,47 @@ return {
   {
     -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    version = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
       {
         'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        -- refer to the README for telescope-fzf-native for more instructions.
         build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
+        enabled = vim.fn.executable 'make' == 1,
       },
     },
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            ['<C-u>'] = false,
+            ['<C-d>'] = false,
+          },
+        },
+        file_ignore_patterns = {
+          "node_modules/",
+          "%.git/",
+        }
+      },
+      pickers = {
+        git_files = {
+          theme = "dropdown",
+        },
+        find_files = {
+          theme = "dropdown",
+          hidden = true,
+        },
+        grep_string = {
+          theme = "dropdown",
+        },
+        live_grep = {
+          theme = "dropdown",
+        },
+      },
+    },
+    config = function()
+      require('telescope').load_extension('fzf')
+    end,
   },
 
   {
@@ -140,6 +216,90 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    opts = {
+      ensure_installed = {
+        'bash',
+        'c',
+        'cpp',
+        'go',
+        'kdl',
+        'lua',
+        'python',
+        'rust',
+        'tsx',
+        'javascript',
+        'typescript',
+        'vimdoc',
+        'vim',
+      },
+
+      auto_install = false,
+      sync_install = false,
+      ignore_install = {},
+      modules = {},
+
+      highlight = { enable = true },
+      indent = { enable = true },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<c-space>',
+          node_incremental = '<c-space>',
+          scope_incremental = '<c-s>',
+          node_decremental = '<M-space>',
+        },
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true, -- Automatically jump forward to textobj
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ['aa'] = '@parameter.outer',
+            ['ia'] = '@parameter.inner',
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            [']m'] = '@function.outer',
+            [']]'] = '@class.outer',
+          },
+          goto_next_end = {
+            [']M'] = '@function.outer',
+            [']['] = '@class.outer',
+          },
+          goto_previous_start = {
+            ['[m'] = '@function.outer',
+            ['[['] = '@class.outer',
+          },
+          goto_previous_end = {
+            ['[M'] = '@function.outer',
+            ['[]'] = '@class.outer',
+          },
+        },
+        swap = {
+          enable = true,
+          swap_next = {
+            ['<leader>a'] = '@parameter.inner',
+          },
+          swap_previous = {
+            ['<leader>A'] = '@parameter.inner',
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      -- Defer setup after first render to improve startup time of 'nvim {filename}'
+      vim.defer_fn(function()
+        require('nvim-treesitter.configs').setup(opts)
+      end, 0)
+    end,
   },
 
   {
