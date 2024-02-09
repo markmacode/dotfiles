@@ -9,6 +9,9 @@
     editor = nvim
     excludesfile = ~/.gitignore.global
 
+[push]
+    autoSetupRemote = true
+
 [pager]
     branch = false
 
