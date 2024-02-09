@@ -7,7 +7,7 @@ config.color_scheme = 'nightfox'
 config.keys = require('keymap')
 config.hide_tab_bar_if_only_one_tab = true
 config.font = wezterm.font {
-    family = 'JetBrains Mono',
+    family = 'JetBrainsMono Nerd Font Propo',
     harfbuzz_features = { 'ss02', 'ss19', 'cv18' }
 }
 config.font_size = 14

@@ -4,8 +4,8 @@ return {
     'EdenEast/nightfox.nvim',
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'nightfox'
-      vim.cmd [[highlight colorcolumn guibg='#1C2836']]
+      vim.cmd.colorscheme 'duskfox'
+      -- vim.cmd [[highlight colorcolumn guibg='#1C2836']]
     end,
     opts = {
       options = {
