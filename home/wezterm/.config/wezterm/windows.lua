@@ -14,14 +14,7 @@ function module.apply(config)
     wezterm.log_info 'Applying Windows config'
 
     config.font_size = 12
-    config.wsl_domains = {
-        {
-            name = 'WSL:Ubuntu',
-            distribution = 'Ubuntu',
-            default_cwd = '~',
-        },
-    }
-    config.default_domain = 'WSL:Ubuntu'
+    config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe', '-i', '-l' }
 end
 
 return module

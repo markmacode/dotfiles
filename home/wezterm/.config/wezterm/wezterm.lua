@@ -10,10 +10,9 @@ config.hide_tab_bar_if_only_one_tab = true
 --     family = 'JetBrainsMono Nerd Font Propo',
 --     harfbuzz_features = { 'ss02', 'ss19', 'cv18' }
 -- }
--- config.font_size = 20
+-- config.font_size = 14
 config.font = wezterm.font {
     family = 'IosevkaTerm Nerd Font Propo',
-    weight = 400,
 }
 config.font_size = 16
 
