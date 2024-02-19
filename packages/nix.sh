@@ -22,5 +22,6 @@ nix-env -iA \
     nixpkgs.ripgrep \
     nixpkgs.rustup \
     nixpkgs.stow \
-    nixpkgs.xplr
+    nixpkgs.xplr \
+    nixpkgs.zoxide
 

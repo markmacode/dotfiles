@@ -62,4 +62,3 @@ alias xx='eza -lah --group-directories-first --git'
 
 # Development experience
 alias v='nvim'
-alias z='zellij'

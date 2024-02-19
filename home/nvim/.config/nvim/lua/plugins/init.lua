@@ -145,7 +145,6 @@ return {
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'duskfox',
         component_separators = '|',
         section_separators = '',
       },

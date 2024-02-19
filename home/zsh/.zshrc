@@ -28,6 +28,7 @@ fi
 
 # Starship prompt
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"

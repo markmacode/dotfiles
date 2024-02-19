@@ -16,6 +16,7 @@ brew install \
 brew install --cask \
     alt-tab \
     font-jetbrains-mono-nerd-font \
+    font-iosevka-mono-nerd-font \
     python@3.11 \
     wezterm-nightly
 
