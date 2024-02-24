@@ -6,13 +6,9 @@ local config = wezterm.config_builder()
 config.color_scheme = 'duskfox'
 config.keys = require('keymap')
 config.hide_tab_bar_if_only_one_tab = true
--- config.font = wezterm.font {
---     family = 'JetBrainsMono Nerd Font Propo',
---     harfbuzz_features = { 'ss02', 'ss19', 'cv18' }
--- }
--- config.font_size = 14
-config.font = wezterm.font {
-    family = 'IosevkaTerm Nerd Font Propo',
+config.font = wezterm.font_with_fallback {
+    'Brosevka Nerd Font',
+    'JetBrainsMono Nerd Font',
 }
 config.font_size = 16
 
