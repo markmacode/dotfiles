@@ -213,6 +213,8 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'RRethy/nvim-treesitter-endwise',
+      'windwp/nvim-ts-autotag',
     },
     build = ':TSUpdate',
     opts = {
@@ -237,6 +239,12 @@ return {
       ignore_install = {},
       modules = {},
 
+      autotag = {
+        enable = true,
+      },
+      endwise = {
+        enable = true,
+      },
       highlight = { enable = true },
       indent = { enable = true },
       incremental_selection = {
@@ -313,5 +321,11 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true,
   },
 }
