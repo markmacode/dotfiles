@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 case "$(uname -a)" in
-    Linux*microsoft-standard-WSL2*) export OS="wsl" ;;
-    Linux*) export OS="linux" ;;
-    Darwin*) export OS="mac" ;;
-    MINGW*) export OS="windows" ;;
-    *) export OS="unknown" ;;
+    Linux*microsoft-standard-WSL2*) export DOTFILES_OS="wsl" ;;
+    Linux*) export DOTFILES_OS="linux" ;;
+    Darwin*) export DOTFILES_OS="mac" ;;
+    MINGW*) export DOTFILES_OS="windows" ;;
+    *) export DOTFILES_OS="unknown" ;;
 esac
 
-if [[ "$OS" == "windows" ]]; then
+if [[ "$DOTFILES_OS" == "windows" ]]; then
     echo "[+] Nothing to do on Windows MINGW"
     exit 0
 fi
@@ -23,7 +23,7 @@ fi
 
 ./packages/nix.sh
 ./packages/cargo.sh
-[[ "$OS" == "mac" ]] && ./packages/brew.sh
+[[ "$DOTFILES_OS" == "mac" ]] && ./packages/brew.sh
 ./packages/pip.sh
 
 ./install.sh

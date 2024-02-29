@@ -1,0 +1,3 @@
+homebrew/cask-fonts/font-font-jetbrains-mono-nerd-font
+homebrew/cask-fonts/font-iosevka-aile
+wezterm

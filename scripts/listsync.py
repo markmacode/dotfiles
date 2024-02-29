@@ -13,7 +13,7 @@ parser.add_argument(
 )
 parser.add_argument(
     '-d', '--delete',
-    help='Items to remote from file',
+    help='Items to remove from file',
     nargs='+',
 )
 parser.add_argument(

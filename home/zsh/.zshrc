@@ -15,7 +15,8 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source $XDG_CONFIG_HOME/mbromell/env.sh
+source $XDG_CONFIG_HOME/mbromell/env.sh # Contains important env vars
+source $XDG_CONFIG_HOME/mbromell/function.sh
 source $XDG_CONFIG_HOME/mbromell/alias.sh
 if [[ -e "$XDG_CONFIG_HOME/work/setup.sh" ]]; then
     source "$XDG_CONFIG_HOME/work/setup.sh"
