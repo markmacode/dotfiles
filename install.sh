@@ -25,11 +25,16 @@ fi
 
 # Do Windows stuff and get out of the way
 if [[ "$DOTFILES_OS" == "windows" ]]; then
-    mkdir -p $HOME/.config/wezterm/ $HOME/.config/intel/ $HOME/.config/mbromell/
+    mkdir -p \
+        $HOME/.config/wezterm/ \
+        $HOME/.config/intel/ \
+        $HOME/.config/mbromell/ \
+        $HOME/AppData/Local/nvim/
     rsync -av $DOTFILES/home/wezterm/.config/ $HOME/.config/
     rsync -av $DOTFILES/home/git/ $HOME/
     rsync -av $DOTFILES/home/intel/.config/ $HOME/.config/
     rsync -av $DOTFILES/home/mbromell/.config/ $HOME/.config/
+    rsync -av $DOTFILES/home/nvim/.config/nvim/ $HOME/AppData/Local/nvim/
     exit 0
 fi
 

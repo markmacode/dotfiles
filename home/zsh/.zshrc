@@ -33,8 +33,4 @@ eval "$(zoxide init zsh)"
 
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    # QMK stuff
-    export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
-    export LDFLAGS="-L/opt/homebrew/opt/avr-gcc@8/lib"
 fi
