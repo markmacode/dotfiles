@@ -12,8 +12,8 @@ elif [[ "$DOTFILES_OS" == "windows" ]]; then
     alias remove='remove-winget'
 fi
 
-# System shortcuts
 alias t='tail -f'
+alias g='git'
 
 # fzf stuff
 # [F]uzzy find [F]ile
@@ -30,10 +30,5 @@ alias py='python3'
 alias pip='pip3'
 
 # Listing files
-# Using `x` because hitting `x` and enter is easier than `l` and enter :)
 alias eza='eza --color=always'
-alias x='eza -la --no-permissions --no-time --no-user --no-filesize --group-directories-first --git'
-alias xx='eza -lah --group-directories-first --git'
-
-# Development experience
-alias v='nvim'
+alias l='eza -lah --group-directories-first --git'
