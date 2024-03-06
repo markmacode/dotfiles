@@ -10,6 +10,7 @@ case "$(uname -a)" in
     *) export DOTFILES_OS="unknown" ;;
 esac
 
+# Generate dotfiles env vars or source it.
 if [[ ! -f "$HOME/.config/mbromell/env.sh" ]]; then
     mkdir -p "$HOME/.config/mbromell"
     env_file="$HOME/.config/mbromell/env.sh"
@@ -25,18 +26,21 @@ fi
 
 # Do Windows stuff and get out of the way
 if [[ "$DOTFILES_OS" == "windows" ]]; then
-    mkdir -p \
-        "$HOME/.config/wezterm/" \
-        "$HOME/.config/intel/" \
-        "$HOME/.config/mbromell/" \
-        "$HOME/.config/nvim/" \
-        "$HOME/AppData/Local/nvim/"
-    rsync -av "$DOTFILES/home/wezterm/.config/" "$HOME/.config/"
-    rsync -av "$DOTFILES/home/git/" "$HOME/"
-    rsync -av "$DOTFILES/home/intel/.config/" "$HOME/.config/"
-    rsync -av "$DOTFILES/home/mbromell/.config/" "$HOME/.config/"
-    rsync -av "$DOTFILES/home/nvim/.config/" "$HOME/.config/"
-    rsync -av "$DOTFILES/home/nvim/.config/nvim/" "$HOME/AppData/Local/nvim/"
+    # mkdir -p \
+    #     "$HOME/.config/wezterm/" \
+    #     "$HOME/.config/intel/" \
+    #     "$HOME/.config/mbromell/" \
+    #     "$HOME/.config/nvim/" \
+    #     "$HOME/AppData/Local/nvim/"
+    # rsync -av "$DOTFILES/home/shell/" "$HOME/"
+    # rsync -av "$DOTFILES/home/wezterm/.config/" "$HOME/.config/"
+    # rsync -av "$DOTFILES/home/git/" "$HOME/"
+    # rsync -av "$DOTFILES/home/intel/.config/" "$HOME/.config/"
+    # rsync -av "$DOTFILES/home/mbromell/.config/" "$HOME/.config/"
+    # rsync -av "$DOTFILES/home/nvim/.config/" "$HOME/.config/"
+    # rsync -av "$DOTFILES/home/nvim/.config/nvim/" "$HOME/AppData/Local/nvim/"
+    mkdir -p "$HOME/.config"
+    ln -s -t "$HOME/.config" "$DOTFILES/home/nvim/.config/nvim/"
     exit 0
 fi
 
