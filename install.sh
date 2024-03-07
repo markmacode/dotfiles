@@ -18,9 +18,9 @@ if [[ "$DOTFILES_OS" == "windows" ]]; then
     mkdir -p "$HOME/.config"
     find "$DOTFILES/home/shell/" -type f -exec ln -s -t "$HOME/" {} \;
     find "$DOTFILES/home/git/" -type f -exec ln -s -t "$HOME/" {} \;
+    ln -s -t "$HOME/.config" "$DOTFILES/home/starship/.config/starship.toml"
     ln -s -t "$HOME/.config" "$DOTFILES/home/nvim/.config/nvim/"
     ln -s -t "$HOME/.config" "$DOTFILES/home/mbromell/.config/mbromell/"
-    ln -s -t "$HOME/.config" "$DOTFILES/home/starship/.config/starship/"
     if [[ -d "$DOTFILES/home/intel/.config/work/" ]]; then
         ln -s -t "$HOME/.config" "$DOTFILES/home/intel/.config/work/"
     fi
