@@ -10,6 +10,8 @@ by [Jr Korpa](https://unsplash.com/@jrkorpa)*
 This step requires `stow` (GNU Stow) and it does symlinking of dotfiles found in
 this repos [`home/`](home/) directory to the user's `$HOME` directory.
 
+On MingW it has no dependencies, it uses `ln -s`.
+
 ```bash
 ./install.sh
 ```
@@ -19,22 +21,14 @@ this repos [`home/`](home/) directory to the user's `$HOME` directory.
 **Read and understand this script before using it, and then use it at your own
 risk!**
 
+Install various packages depending on the operating system. Good to run on fresh
+OS's.
+
 ```bash
 ./build.sh
 ```
 
-This script will setup the OS with various package managers, packages, and the
-zsh shell. It might be something you like, but it does things that are personal
-preference rather than standard practice. If you are unsure about it, do not use
-it.
-
 ## Extras
-
-### Extending with `.zprofile`
-
-You may have noticed that there is no `.zprofile` in my dotfiles. You can put a
-custom configuration for zsh inside the `~/.zprofile` file on each system that
-uses these dotfiles.
 
 ### Commands
 
@@ -45,14 +39,6 @@ setup inside [alias.sh](./home/mbromell/.config/mbromell/alias.sh).
 1. `dot` Change directory to the dotfiles repo.
 2. `dotpull` Pulls and installs any changes on the current checked out branch.
 3. `dotsync` Commits all changes and pushes to the current checked out branch.
-
-If you are not using `zsh` and you still want these aliases, then add the
-following lines inside one of your own shell setup files.
-
-```bash
-source $HOME/.config/mbromell/env.sh
-source $HOME/.config/mbromell/alias.sh
-```
 
 ## File Structure
 

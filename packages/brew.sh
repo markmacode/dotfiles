@@ -5,9 +5,5 @@ if ! command -v brew &>/dev/null; then
     NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-for package in $(cat $DOTFILES/packages/brew.txt | sed 's/\n//'); do
-    echo "[+] Installing $package"
-    brew install $package
-done
-
+xargs brew install < $DOTFILES/packages/brew.txt
 brew cleanup
