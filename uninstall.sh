@@ -13,4 +13,3 @@ for dir in $(echo "$stow_files"); do
 done
 popd
 
-rm -rf $HOME/.config/mbromell

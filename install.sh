@@ -15,22 +15,9 @@ fi
 
 # Do Windows stuff and get out of the way
 if [[ "$DOTFILES_OS" == "windows" ]]; then
-    # mkdir -p \
-    #     "$HOME/.config/wezterm/" \
-    #     "$HOME/.config/intel/" \
-    #     "$HOME/.config/mbromell/" \
-    #     "$HOME/.config/nvim/" \
-    #     "$HOME/AppData/Local/nvim/"
-    # rsync -av "$DOTFILES/home/shell/" "$HOME/"
-    # rsync -av "$DOTFILES/home/wezterm/.config/" "$HOME/.config/"
-    # rsync -av "$DOTFILES/home/git/" "$HOME/"
-    # rsync -av "$DOTFILES/home/intel/.config/" "$HOME/.config/"
-    # rsync -av "$DOTFILES/home/mbromell/.config/" "$HOME/.config/"
-    # rsync -av "$DOTFILES/home/nvim/.config/" "$HOME/.config/"
-    # rsync -av "$DOTFILES/home/nvim/.config/nvim/" "$HOME/AppData/Local/nvim/"
     mkdir -p "$HOME/.config"
-    ln -s -t "$HOME/" "$DOTFILES/home/shell/*"
-    ln -s -t "$HOME/" "$DOTFILES/home/git/*"
+    find "$DOTFILES/home/shell/" -type f -exec ln -s -t "$HOME/" {} \;
+    find "$DOTFILES/home/git/" -type f -exec ln -s -t "$HOME/" {} \;
     ln -s -t "$HOME/.config" "$DOTFILES/home/nvim/.config/nvim/"
     ln -s -t "$HOME/.config" "$DOTFILES/home/wezterm/.config/wezterm/"
     ln -s -t "$HOME/.config" "$DOTFILES/home/mbromell/.config/mbromell/"
