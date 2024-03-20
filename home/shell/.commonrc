@@ -12,9 +12,11 @@ export EDITOR="nvim"
 export PAGER="bat"
 export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{\.git,node_modules}"'
 
-source "$XDG_CONFIG_HOME/mbromell/env.sh"
-source "$XDG_CONFIG_HOME/mbromell/functions.sh"
+source "$XDG_CONFIG_HOME/env.sh"
+source "$DOTFILES/scripts/os.sh"
+
 source "$XDG_CONFIG_HOME/mbromell/aliases.sh"
+source "$XDG_CONFIG_HOME/mbromell/functions.sh"
 if [[ -e "$XDG_CONFIG_HOME/work/setup.sh" ]]; then
     source "$XDG_CONFIG_HOME/work/setup.sh"
 fi

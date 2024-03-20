@@ -14,7 +14,7 @@ fi
 [[ -z "$DOTFILES_OS" ]] && source "$DOTFILES/scripts/os.sh"
 
 # Do Windows stuff and get out of the way
-if [[ "$DOTFILES_OS" == "windows" ]]; then
+if [[ "$DOTFILES_OS" == "mingw" ]]; then
     mkdir -p "$HOME/.config"
     find "$DOTFILES/home/shell/" -type f -exec ln -s -t "$HOME/" {} \;
     find "$DOTFILES/home/git/" -type f -exec ln -s -t "$HOME/" {} \;
@@ -43,6 +43,8 @@ function stow_helper() {
     popd
 }
 
-stow_helper home
+if [[ "$DOTFILES_OS" == "mac" ]]; then
+    stow_helper home
+fi
 
 #"$DOTFILES/scripts/setup-nvim.sh"

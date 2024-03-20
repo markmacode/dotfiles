@@ -7,7 +7,7 @@ alias dot='cd $DOTFILES'
 if [[ "$DOTFILES_OS" == "mac" ]]; then
     alias add='add-brew'
     alias remove='remove-brew'
-elif [[ "$DOTFILES_OS" == "windows" ]]; then
+elif [[ "$DOTFILES_OS" == "mingw" ]]; then
     alias add='add-winget'
     alias remove='remove-winget'
 fi
