@@ -42,21 +42,21 @@ function pyv {
 # brew
 function add-brew {
     python $DOTFILES/scripts/listsync.py --add ${@:1} --file "$DOTFILES/packages/brew.txt"
-    #brew install ${@:1}
+    brew install ${@:1}
 }
 function remove-brew {
     python $DOTFILES/scripts/listsync.py --delete ${@:1} --file "$DOTFILES/packages/brew.txt"
-    #brew uninstall ${@:1}
+    brew uninstall ${@:1}
 }
 
 # brew --cask
 function add-cask {
     python $DOTFILES/scripts/listsync.py --add ${@:1} --file "$DOTFILES/packages/cask.txt"
-    #brew install --cask ${@:1}
+    brew install --cask ${@:1}
 }
 function remove-cask {
     python $DOTFILES/scripts/listsync.py --delete ${@:1} --file "$DOTFILES/packages/cask.txt"
-    #brew uninstall --cask ${@:1}
+    brew uninstall --cask ${@:1}
 }
 
 # winget

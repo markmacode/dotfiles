@@ -27,6 +27,7 @@ alias fdv='nvim $(fd -t directory -LH -E "{.git,node_modules}" | fzf)'
 
 # Python
 alias py='python3'
+alias python='python3'
 alias pip='pip3'
 
 # Listing files

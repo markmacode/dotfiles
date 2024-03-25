@@ -1,4 +1,5 @@
 bat
+cmake
 curl
 eza
 fd
@@ -11,6 +12,7 @@ koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 make
 neovim
+ninja
 openssl@1.1
 python@3.11
 ripgrep

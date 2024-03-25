@@ -31,7 +31,7 @@ function stow_helper() {
     stow_dir="$1"
     stow_files="$(ls "$DOTFILES/${stow_dir}/" | tr "\n" " ")"
     pushd "$DOTFILES/${stow_dir}/"
-    for dir in "$stow_files"; do
+    for dir in $stow_files; do
         echo "[+] Stowing :: $dir"
         # Ignore pointless bug warnings
         # https://github.com/aspiers/stow/issues/65#issuecomment-1465060710
