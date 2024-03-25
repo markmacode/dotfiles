@@ -15,11 +15,14 @@ fi
 
 # Do Windows stuff and get out of the way
 if [[ "$DOTFILES_OS" == "mingw" ]]; then
+    # Makes symbolic links work on mingw
     export MSYS="winsymlinks:nativestrict"
     mkdir -p "$HOME/.config"
 
     if [[ -d "$DOTFILES/home/intel/.config/work/" ]]; then
         ln -s -t "$HOME/.config" "$DOTFILES/home/intel/.config/work/"
+        # If on my work machine, use their git config as the main config file
+        # Then include my .gitconfig.personal inside the work .gitconfig
         ln -s -t "$HOME" "$HOME/.config/work/.gitconfig"
         ln -s "$DOTFILES/home/git/.gitconfig" "$HOME/.gitconfig.personal"
     fi
