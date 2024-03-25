@@ -46,9 +46,3 @@
     # Status
     s = status -sb
     sv = status --long
-
-[include]
-    path = ~/.config/work/.gitconfig
-
-[include]
-    path = ~/.gitconfig.wsl
