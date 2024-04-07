@@ -353,6 +353,7 @@ return {
         'lua',
         'python',
         'rust',
+        'svelte',
         'tsx',
         'javascript',
         'typescript',
