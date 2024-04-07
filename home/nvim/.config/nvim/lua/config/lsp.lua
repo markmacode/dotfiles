@@ -14,6 +14,7 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   bashls = {},
+  svelte = {},
   html = {},
   lua_ls = {
     Lua = {

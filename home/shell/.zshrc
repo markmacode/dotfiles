@@ -23,3 +23,10 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 source $HOME/.commonrc
+
+# bun completions
+[ -s "/Users/mark/.oh-my-zsh/completions/_bun" ] && source "/Users/mark/.oh-my-zsh/completions/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
