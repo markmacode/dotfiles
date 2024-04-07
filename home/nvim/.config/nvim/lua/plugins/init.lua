@@ -129,6 +129,7 @@ return {
         pyright = {},
         tsserver = {},
         bashls = {},
+        svelte = {},
         html = {},
         lua_ls = {
           settings = {
