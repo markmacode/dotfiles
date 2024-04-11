@@ -1,0 +1,74 @@
+theme "mbromell-nightfox"
+default_layout "compact"
+
+keybinds {
+    shared_except "locked" {
+        unbind "Alt h"
+        unbind "Alt j"
+        unbind "Alt k"
+        unbind "Alt l"
+        unbind "Alt n"
+
+        bind "Alt !" { MovePane "Left"; }
+        bind "Alt @" { MovePane "Down"; }
+        bind "Alt #" { MovePane "Up"; }
+        bind "Alt $" { MovePane "Right"; }
+
+        bind "Alt %" { Resize "Increase Left"; }
+        bind "Alt ^" { Resize "Increase Down"; }
+        bind "Alt &" { Resize "Increase Up"; }
+        bind "Alt *" { Resize "Increase Right"; }
+
+        bind "Alt ," { GoToTab 1; }
+        bind "Alt ." { GoToTab 2; }
+        bind "Alt /" { GoToTab 3; }
+        bind "Alt ;" { GoToTab 4; }
+
+        bind "Alt _" { ToggleFocusFullscreen; }
+        bind "Alt '" { NewPane "Right"; }
+        bind "Alt \"" { NewPane "Down"; }
+        bind "Alt ~" { CloseFocus; }
+
+        bind "Alt |" { NewTab; }
+        bind "Alt `" { CloseTab; }
+        bind "Alt ?" { GoToNextTab; }
+        bind "Alt :" { GoToPreviousTab; }
+
+        bind "Alt (" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+        }
+    }
+}
+
+themes {
+    mbromell-nightfox {
+        fg "#cdcecf"
+        bg "#29394f"
+        red "#c94f6d"
+        green "#81b29a"
+        blue "#719cd6"
+        yellow "#dbc074"
+        magenta "#9d79d6"
+        orange "#f4a261"
+        cyan "#63cdcf"
+        black "#29394f"
+        white "#aeafb0"
+    }
+    mbromell-dayfox {
+        bg "#d3c7bb"
+        fg "#3d2b5a"
+        red "#a5222f"
+        green "#396847"
+        blue "#2848a9"
+        yellow "#ac5402"
+        magenta "#6e33ce"
+        orange "#955f61"
+        cyan "#287980"
+        black "#d3c7bb"
+        white "#643f61"
+    }
+}
+

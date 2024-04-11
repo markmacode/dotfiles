@@ -1,9 +1,0 @@
-BurntSushi.ripgrep.MSVC
-Neovim.Neovim
-Starship.Starship
-ajeetdsouza.zoxide
-eza-community.eza
-junegunn.fzf
-sharkdp.bat
-sharkdp.fd
-wez.wezterm

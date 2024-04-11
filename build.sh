@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-source ./scripts/os.sh
-if [[ "$DOTFILES_OS" == "mingw" ]]; then
-    echo "[+] MingW build"
-    ./packages/winget.sh
+echo "[+] Installing Nix packages"
+if ! command -v nix &>/dev/null; then
+    echo "[WARNING] Nix is not installed, attempting to install nix"
+    sh <(curl -L https://nixos.org/nix/install) --daemon
+    echo "[WARNING] Nix installed, re-run this script"
     exit 0
-elif [[ "$DOTFILES_OS" == "mac" ]]; then
-    echo "[+] MacOS build"
-    ./packages/brew.sh
-    ./packages/cask.sh
+else
+    nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+    nix-channel --update
+    nix-env -if "./packages/stable.nix"
+    nix-env -if "./packages/unstable.nix"
 fi
 
 ./install.sh
 
-echo "[+] Restart terminal"
+echo "[+] Restart terminal for changes to take effect"
