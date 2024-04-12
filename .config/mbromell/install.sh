@@ -8,18 +8,16 @@ fi
 
 # Try to checkout code, if there's existing files then back them up
 # and try again
-mkdir -p .config-backup
 git --git-dir=$HOME/.dot/ --work-tree=$HOME checkout
 if [ $? = 0 ]; then
-    echo "Checked out config";
+    echo "Checked out dotfiles"
 else
-    echo "Backing up pre-existing dot files";
-    git --git-dir=$HOME/.dot/ --work-tree=$HOME checkout 2>&1 \
-        | tail -n +2 \
-        | head -n -2 \
-        | awk {'print $1'} \
-        | xargs -I{} sh -c 'mkdir -p .config-backup/{}; mv {} .config-backup/{}'
+    echo "Backing up pre-existing dot files"
+    mkdir -p home.bak-$(date +"%Y%m%d%H%M%S")
+    cp -R .config home.bak-$(date +"%Y%m%d%H%M%S")/.config
+    find . -maxdepth 1 -type f | xargs -I{} cp {} home.bak-$(date +"%Y%m%d%H%M%S")/
 fi
 
 git --git-dir=$HOME/.dot/ --work-tree=$HOME checkout
 git --git-dir=$HOME/.dot/ --work-tree=$HOME config status.showUntrackedFiles no
+echo "Checked out dotfiles"
