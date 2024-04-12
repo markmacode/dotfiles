@@ -11,13 +11,14 @@ fi
 mkdir -p .config-backup
 git --git-dir=$HOME/.dot/ --work-tree=$HOME checkout
 if [ $? = 0 ]; then
-    echo "Checked out config.";
+    echo "Checked out config";
 else
-    echo "Backing up pre-existing dot files.";
+    echo "Backing up pre-existing dot files";
     git --git-dir=$HOME/.dot/ --work-tree=$HOME checkout 2>&1 \
-        | egrep "\s+\." \
+        | tail -n +2 \
+        | head -n -2 \
         | awk {'print $1'} \
-        | xargs -I{} mv {} .config-backup/{}
+        | xargs -I{} sh -c 'mkdir -p .config-backup/{}; mv {} .config-backup/{}'
 fi
 
 git --git-dir=$HOME/.dot/ --work-tree=$HOME checkout
