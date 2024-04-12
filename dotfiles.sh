@@ -31,8 +31,17 @@ declare -a custom_plugins=(
 )
 pushd ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins
 for repo in "${custom_plugins[@]}"; do
-    git clone https://github.com/${repo}.git
+    # Get repo name after slash because that is what the dir name is
+    # If it is already there, then update it
+    if [ -d "${repo#*/}" ]; then
+        pushd "${repo#*/}"
+        git pull
+        popd
+    else
+        git clone https://github.com/${repo}.git
+    fi
 done
+popd
 
 nvim --headless "+Lazy! restore" +qa
 
