@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Set XDG directories
+[ -z "${XDG_CONFIG_HOME}" ] && export XDG_CONFIG_HOME="$HOME/.config"
+[ -z "${XDG_DATA_HOME}" ]   && export XDG_DATA_HOME="$HOME/.local/share"
+[ -z "${XDG_BIN_HOME}" ]    && export XDG_BIN_HOME="$HOME/.local/bin"
+[ -z "${XDG_LIB_HOME}" ]    && export XDG_LIB_HOME="$HOME/.local/lib"
+[ -z "${XDG_CACHE_HOME}" ]  && export XDG_CACHE_HOME="$HOME/.cache"
+
+# Some more env vars
+export EDITOR="nvim"
+export PAGER="bat"
+export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{\.git,node_modules}"'
+
+source "$XDG_CONFIG_HOME/env.sh"
+source "$DOTFILES/scripts/os.sh"
+
+source "$XDG_CONFIG_HOME/mbromell/aliases.sh"
+source "$XDG_CONFIG_HOME/mbromell/functions.sh"
+if [[ -e "$XDG_CONFIG_HOME/work/setup.sh" ]]; then
+    source "$XDG_CONFIG_HOME/work/setup.sh"
+fi
+
+# Updating paths
+if [[ -d "$HOME/.cargo/bin" ]]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi

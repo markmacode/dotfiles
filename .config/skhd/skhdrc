@@ -1,0 +1,37 @@
+# -- Focus --
+ctrl - f13 : yabai -m window --focus west
+ctrl - f14 : yabai -m window --focus south
+ctrl - f15 : yabai -m window --focus north
+ctrl - f16 : yabai -m window --focus east
+
+# -- Moving --
+ctrl + shift - f13 : yabai -m window --swap west
+ctrl + shift - f14 : yabai -m window --swap south
+ctrl + shift - f15 : yabai -m window --swap north
+ctrl + shift - f16 : yabai -m window --swap east
+
+ctrl - f17         : yabai -m space --rotate 90
+ctrl + shift - f17 : yabai -m space --rotate 270
+
+# -- Resize --
+ctrl + cmd - f13 : yabai -m window --resize left:-50:0; \
+                   yabai -m window --resize right:-50:0
+ctrl + cmd - f14 : yabai -m window --resize bottom:0:50; \
+                   yabai -m window --resize top:0:50
+ctrl + cmd - f15 : yabai -m window --resize top:0:-50; \
+                   yabai -m window --resize bottom:0:-50
+ctrl + cmd - f16 : yabai -m window --resize right:50:0; \
+                   yabai -m window --resize left:50:0
+
+ctrl + cmd - f17         : yabai -m window --toggle zoom-fullscreen
+ctrl + alt + shift - f11 : yabai -m window --toggle zoom-fullscreen
+ctrl + cmd + shift - f17 : yabai -m space --balance
+ctrl - f18               : yabai -m window --toggle float --layer normal --grid 5:5:1:1:3:3
+ctrl + meh - f10         : yabai -m window --toggle float --layer normal --grid 5:5:1:1:3:3
+ctrl + shift - f18       : yabai -m window --toggle split
+
+# -- Spaces --
+ctrl + cmd + shift - f13 : yabai -m space --focus 1
+ctrl + cmd + shift - f14 : yabai -m space --focus 2
+ctrl + cmd + shift - f15 : yabai -m space --focus 3
+ctrl + cmd + shift - f16 : yabai -m space --focus 4
