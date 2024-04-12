@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-git clone --bare git@github.com:mbromell/dotfiles.git $HOME/.dot
+if [[ "$1" == "https" ]]; then
+    git clone --bare https://github.com/mbromell/dotfiles.git $HOME/.dot
+else
+    git clone --bare git@github.com:mbromell/dotfiles.git $HOME/.dot
+fi
 alias dot='git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 mkdir -p .config-backup
 if [ $? = 0 ]; then
