@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 function pyv {
     local venv_dir="${1:-.venv}"
     if [[ ! -d $venv_dir ]]; then

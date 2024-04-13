@@ -6,8 +6,8 @@
     defaultBranch = main
 
 [core]
-    editor = nvim
-    excludesfile = ~/.gitignore.global
+    editor = vim
+    excludesfile = ~/.config/mbormell/global.gitignore
 
 [push]
     autoSetupRemote = true

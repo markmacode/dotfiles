@@ -8,13 +8,27 @@ plugins=(
     gitignore
     nvm
     pep8
-    rust
     zsh-autosuggestions
-    fast-syntax-highlighting
     zsh-autocomplete
 )
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
+
+# Inject before because you might want to overwrite XDG dirs before
+# exports that use those dirs inside .zshrc.exports
+# Then inject after because you might want to override vars such as
+# EDITOR and PAGER
+# Doing this double source should not have adverse side effects.. maybe
+source "$HOME/.zshrc.inject"
+source "$HOME/.zshrc.exports"
+source "$HOME/.zshrc.inject"
+
+if [[ -e "$XDG_CONFIG_HOME/mbromell/setup.sh" ]]; then
+    source "$XDG_CONFIG_HOME/mbromell/setup.sh"
+fi
+if [[ -e "$XDG_CONFIG_HOME/work/setup.sh" ]]; then
+    source "$XDG_CONFIG_HOME/work/setup.sh"
+fi
 
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -22,11 +36,5 @@ fi
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-source $HOME/.commonrc
-
-# bun completions
-[ -s "/Users/mark/.oh-my-zsh/completions/_bun" ] && source "/Users/mark/.oh-my-zsh/completions/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# ZSH Completions
+[ -s "$ZSH/completions/_bun" ] && source "$ZSH/completions/_bun"

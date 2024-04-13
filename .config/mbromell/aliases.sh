@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # This is for the bare repo managmene of dotfiels
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias dot='git --git-dir=$HOME/.dot/ --work-tree=$HOME'
