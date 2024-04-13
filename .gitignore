@@ -1,4 +1,8 @@
 .dot
+.cache
+.local
+.nix-defexpr
+.nix-profile
 
 # -- Linux --
 *~
