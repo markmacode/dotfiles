@@ -19,20 +19,16 @@ source "$ZSH/oh-my-zsh.sh"
 # Then inject after because you might want to override vars such as
 # EDITOR and PAGER
 # Doing this double source should not have adverse side effects.. maybe
-source "$HOME/.zshrc.inject"
+[ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"
 source "$HOME/.zshrc.exports"
-source "$HOME/.zshrc.inject"
+[ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"
 
-if [[ -e "$XDG_CONFIG_HOME/mbromell/setup.sh" ]]; then
-    source "$XDG_CONFIG_HOME/mbromell/setup.sh"
-fi
-if [[ -e "$XDG_CONFIG_HOME/work/setup.sh" ]]; then
-    source "$XDG_CONFIG_HOME/work/setup.sh"
-fi
+# Setups for extra configs specific to their categories
+[ -s "$XDG_CONFIG_HOME/mbromell/setup.sh" ] && source "$XDG_CONFIG_HOME/mbromell/setup.sh"
+[ -s "$XDG_CONFIG_HOME/work/setup.sh" ] && source "$XDG_CONFIG_HOME/work/setup.sh"
 
-if [[ -f /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# Evals for varias programs
+[[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
