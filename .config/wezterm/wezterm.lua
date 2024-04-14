@@ -6,7 +6,18 @@ local config = wezterm.config_builder()
 config.keys = require('keymap')
 config.font = wezterm.font {
     family = 'JetBrainsMono Nerd Font',
-    harfbuzz_features = { 'zero', 'cv06', 'cv07' }
+    harfbuzz_features = { 'zero', 'cv06', 'cv07' },
+}
+config.font_rules = {
+    {
+        intensity = 'Normal',
+        italic = true,
+        font = wezterm.font {
+            family = 'Maple Mono',
+            weight = 'Regular',
+            italic = true,
+        }
+    }
 }
 config.font_size = 16
 
