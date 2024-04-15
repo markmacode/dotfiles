@@ -7,7 +7,7 @@
 
 [core]
     editor = vim
-    excludesfile = ~/.config/mbormell/global.gitignore
+    excludesfile = ~/.config/mbromell/global.gitignore
 
 [push]
     autoSetupRemote = true
@@ -46,3 +46,9 @@
     # Status
     s = status -sb
     sv = status --long
+
+[include]
+    path = ~/.config/work/.gitconfig
+
+[include]
+    path = ~/.gitconfig.inject
