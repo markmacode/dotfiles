@@ -92,3 +92,6 @@ function ubuntu_only_function {
     echo "Hello Ubuntu PC"
 }
 ```
+
+You can also inject a git config file on a per-system basis, do this by adding
+your configuration to `$HOME/.gitconfig.inject`
