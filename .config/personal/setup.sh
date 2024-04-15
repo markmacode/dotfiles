@@ -1,3 +1,3 @@
-source "$XDG_CONFIG_HOME/mbromell/exports.sh"
-source "$XDG_CONFIG_HOME/mbromell/aliases.sh"
-source "$XDG_CONFIG_HOME/mbromell/functions.sh"
+source "$XDG_CONFIG_HOME/personal/exports.sh"
+source "$XDG_CONFIG_HOME/personal/aliases.sh"
+source "$XDG_CONFIG_HOME/personal/functions.sh"
