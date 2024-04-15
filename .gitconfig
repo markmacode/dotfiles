@@ -7,7 +7,7 @@
 
 [core]
     editor = vim
-    excludesfile = ~/.config/mbromell/global.gitignore
+    excludesfile = ~/.config/personal/global.gitignore
 
 [push]
     autoSetupRemote = true

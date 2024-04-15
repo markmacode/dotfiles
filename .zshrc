@@ -20,12 +20,12 @@ source "$ZSH/oh-my-zsh.sh"
 # EDITOR and PAGER
 # Doing this double source should not have adverse side effects.. maybe
 [ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"
-source "$HOME/.zshrc.exports"
-[ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"
 
 # Setups for extra configs specific to their categories
-[ -s "$XDG_CONFIG_HOME/mbromell/setup.sh" ] && source "$XDG_CONFIG_HOME/mbromell/setup.sh"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/personal/setup.sh"
 [ -s "$XDG_CONFIG_HOME/work/setup.sh" ] && source "$XDG_CONFIG_HOME/work/setup.sh"
+
+[ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"
 
 # Evals for varias programs
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"

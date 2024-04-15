@@ -1,7 +1,3 @@
-# Not putting this file inside .config/mbromell/ because of "reasons".
-# The potential for ~/.zshrc.inject to set $XDG_CONFIG_HOME makes it awkward
-# to source this file if it is in .config/ so just leave it here.
-
 [ -z "${XDG_CONFIG_HOME}" ] && export XDG_CONFIG_HOME="$HOME/.config"
 [ -z "${XDG_DATA_HOME}" ] && export XDG_DATA_HOME="$HOME/.local/share"
 [ -z "${XDG_BIN_HOME}" ] && export XDG_BIN_HOME="$HOME/.local/bin"
