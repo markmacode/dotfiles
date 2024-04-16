@@ -8,6 +8,16 @@ config.font = wezterm.font {
     family = 'JetBrainsMono Nerd Font',
     harfbuzz_features = { 'zero', 'cv06', 'cv07' },
 }
+config.enable_tab_bar = false
+config.enable_scroll_bar = false
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = '0.5cell',
+  bottom = '0.5cell',
+}
+config.window_decorations = "RESIZE"
+config.text_background_opacity = 1.0
 config.font_rules = {
     {
         intensity = 'Normal',
