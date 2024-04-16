@@ -17,7 +17,6 @@ config.window_padding = {
   bottom = '0.5cell',
 }
 config.window_decorations = "RESIZE"
-config.text_background_opacity = 1.0
 config.font_rules = {
     {
         intensity = 'Normal',
