@@ -2,7 +2,6 @@
 -- See `:help vim.o`
 vim.o.hlsearch = false
 vim.wo.number = true
-vim.o.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.breakindent = true
 vim.o.guicursor =
