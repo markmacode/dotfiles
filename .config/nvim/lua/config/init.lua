@@ -1,4 +1,4 @@
 require("config.autocmds")
 require("config.keymaps")
--- require("config.lsp")
+require("config.filetype")
 require("config.options")

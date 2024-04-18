@@ -1,10 +1,10 @@
 # This can non-declaratively install packages on your system.
 # You can run this using `nix-env -if filename.nix`
 {
-  pkgs ? import <nixpkgs> {},
+  stable ? import <stable> {},
   unstable ? import <unstable> {}
 }: {
-  inherit (pkgs)
+  inherit (stable)
     bat
     curl
     eza
@@ -16,7 +16,6 @@
     neovim
     python3
     ripgrep
-    stow
     tmux
     zsh
     ;
@@ -25,6 +24,7 @@
     bun
     go
     starship
+    stow
     wezterm
     zoxide
     ;

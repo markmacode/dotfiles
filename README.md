@@ -14,13 +14,13 @@ I learned about this from this article https://www.atlassian.com/git/tutorials/d
 Install on a new system using the Github **HTTPS** url
 
 ```bash
-curl -Lks https://raw.githubusercontent.com/mbromell/dotfiles/main/.config/mbromell/install.sh | /bin/bash -s https
+curl -Lks https://raw.githubusercontent.com/mbromell/dotfiles/main/.config/personal/install.sh | /bin/bash -s https
 ```
 
 Install on a new system using **SSH**
 
 ```bash
-curl -Lks https://raw.githubusercontent.com/mbromell/dotfiles/main/.config/mbromell/install.sh | /bin/bash
+curl -Lks https://raw.githubusercontent.com/mbromell/dotfiles/main/.config/personal/install.sh | /bin/bash
 ```
 
 ### Optional Extra Setup
@@ -37,8 +37,8 @@ If you don't want to use ZSH as your shell, be sure to add the following to your
 own shell's setup (such as `.bashrc` or `.profile`).
 
 ```bash
-if [[ -e "$XDG_CONFIG_HOME/mbromell/setup.sh" ]]; then
-    source "$XDG_CONFIG_HOME/mbromell/setup.sh"
+if [[ -e "$XDG_CONFIG_HOME/personal/setup.sh" ]]; then
+    source "$XDG_CONFIG_HOME/personal/setup.sh"
 fi
 ```
 

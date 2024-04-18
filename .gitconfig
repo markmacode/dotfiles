@@ -7,7 +7,7 @@
 
 [core]
     editor = vim
-    excludesfile = ~/.config/personal/global.gitignore
+    excludesfile = ~/.gitignore.global
 
 [push]
     autoSetupRemote = true

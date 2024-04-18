@@ -7,12 +7,19 @@ if ! command -v nix &>/dev/null; then
     echo "[WARNING] Nix installed, re-run this script"
     exit 0
 else
-    nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+    stable_version="23.11"
+    if [ "$(uname)" == "Darwin" ]; then
+        nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+        nix-channel --add https://nixos.org/channels/nixpkgs-${stable_version}-darwin stable
+    else
+        nix-channel --add https://nixos.org/channels/nixos-unstable unstable
+        nix-channel --add https://nixos.org/channels/nixos-${stable_version} stable
+    fi
     nix-channel --update
     nix-env -if "$HOME/dotfiles.nix"
 fi
 
-if [[ "$SHELL" != "/bin/zsh" ]]; then
+if [[ "$SHELL" != "$(which zsh)" ]]; then
     echo "[+] Setting ZSH as default shell"
     command -v zsh | sudo tee -a /etc/shells
     sudo chsh -s $(which zsh) $USER
@@ -29,19 +36,19 @@ declare -a custom_plugins=(
     "zsh-users/zsh-autosuggestions"
     "marlonrichert/zsh-autocomplete"
 )
-pushd ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins
 for repo in "${custom_plugins[@]}"; do
+    plugins_path="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
+    repo_path="${plugins_path}/${repo#*/}"
     # Get repo name after slash because that is what the dir name is
     # If it is already there, then update it
-    if [ -d "${repo#*/}" ]; then
-        pushd "${repo#*/}"
-        git pull
-        popd
+    if [ -d "$repo_path" ]; then
+        echo "[+] Updating ZSH plugin $repo"
+        git -C "$repo_path" pull
     else
-        git clone https://github.com/${repo}.git
+        echo "[+] Downloading ZSH plugin $repo"
+        git clone https://github.com/${repo}.git "$plugins_path"
     fi
 done
-popd
 
 nvim --headless "+Lazy! restore" +qa
 
