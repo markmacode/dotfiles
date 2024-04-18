@@ -11,10 +11,10 @@ config.font = wezterm.font {
 config.enable_tab_bar = false
 config.enable_scroll_bar = false
 config.window_padding = {
-  left = 0,
-  right = 0,
+  left = '0.5cell',
+  right = '0.5cell',
   top = '0.5cell',
-  bottom = '0.5cell',
+  bottom = 0,
 }
 config.window_decorations = "RESIZE"
 config.font_rules = {
