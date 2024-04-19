@@ -13,7 +13,6 @@
     git
     gnumake
     jq
-    neovim
     python3
     ripgrep
     tmux

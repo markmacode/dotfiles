@@ -50,6 +50,12 @@ for repo in "${custom_plugins[@]}"; do
     fi
 done
 
-nvim --headless "+Lazy! restore" +qa
+# echo "[+] Installing neovim from pre-built binaries"
+# curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+# sudo rm -rf /opt/nvim
+# sudo rm -rf /opt/nvim-linux64
+# sudo tar -C /opt -xzf nvim-linux64.tar.gz
+# rm nvim-linux64.tar.gz
+# /opt/nvim-linux64/bin/nvim --headless "+Lazy! restore" +qa
 
 echo "[+] Restart terminal for changes to take effect"

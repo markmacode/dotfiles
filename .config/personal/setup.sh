@@ -12,8 +12,8 @@ export EDITOR="nvim"
 export PAGER="bat"
 export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{\.git,node_modules}"'
 
-# Set your path!
 export PATH="$XDG_CONFIG_HOME/personal/scripts:$PATH"
+#export PATH="/opt/nvim-linux64/bin:$PATH"
 
 # This is for the bare repo managmene of dotfiels
 # https://www.atlassian.com/git/tutorials/dotfiles

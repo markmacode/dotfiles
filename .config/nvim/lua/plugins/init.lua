@@ -351,6 +351,7 @@ return {
         'typescript',
         'vimdoc',
         'vim',
+        'yaml',
       },
 
       auto_install = true,
