@@ -1,0 +1,13 @@
+import = [
+    "~/.config/alacritty/nightfox.toml",
+]
+
+[font]
+size = 16
+
+[font.normal]
+family = "Brosevka Nerd Font"
+style = "Regular"
+
+[font.italic]
+family = "Maple Mono"

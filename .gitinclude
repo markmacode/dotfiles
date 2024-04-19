@@ -4,6 +4,7 @@
 README.md
 dotfiles.nix
 dotfiles.sh
+.config/alacritty/
 .config/linearmouse/
 .config/nvim/
 .config/personal/
