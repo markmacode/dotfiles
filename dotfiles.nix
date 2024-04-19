@@ -17,6 +17,7 @@
     python3
     ripgrep
     tmux
+    unzip
     zsh
     ;
 
