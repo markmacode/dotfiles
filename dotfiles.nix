@@ -23,6 +23,7 @@
   inherit (unstable)
     bun
     go
+    neovim
     starship
     stow
     stylua

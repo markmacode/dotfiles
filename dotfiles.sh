@@ -50,12 +50,19 @@ for repo in "${custom_plugins[@]}"; do
     fi
 done
 
-# echo "[+] Installing neovim from pre-built binaries"
-# curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-# sudo rm -rf /opt/nvim
-# sudo rm -rf /opt/nvim-linux64
-# sudo tar -C /opt -xzf nvim-linux64.tar.gz
-# rm nvim-linux64.tar.gz
-# /opt/nvim-linux64/bin/nvim --headless "+Lazy! restore" +qa
+# Install neovim for WSL.
+# Going the nixpkgs route causes strange issues with the gcc compiler and libstdc++.so.6
+if [[ $(grep -i "microsoft" /proc/version) ]]; then
+    echo "[+] Installing neovim from pre-built binaries"
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    sudo rm -rf /opt/nvim
+    sudo rm -rf /opt/nvim-linux64
+    sudo tar -C /opt -xzf nvim-linux64.tar.gz
+    rm nvim-linux64.tar.gz
+    export PATH="/opt/nvim-linux64/bin:$PATH"
+fi
+
+echo "[+] Setting lazy.nvim plugins to the lockfile versions"
+nvim --headless "+Lazy! restore" +qa
 
 echo "[+] Restart terminal for changes to take effect"
