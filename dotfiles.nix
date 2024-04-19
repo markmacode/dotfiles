@@ -25,6 +25,7 @@
     go
     starship
     stow
+    stylua
     wezterm
     zoxide
     ;
