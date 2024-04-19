@@ -3,6 +3,7 @@
 .local
 .nix-defexpr
 .nix-profile
+.config/tmux/plugins
 
 # -- Linux --
 *~
