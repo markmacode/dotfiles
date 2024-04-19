@@ -17,7 +17,12 @@ export PATH="$XDG_CONFIG_HOME/personal/scripts:$PATH"
 
 # This is for the bare repo managmene of dotfiels
 # https://www.atlassian.com/git/tutorials/dotfiles
-alias dot='git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+function dot {
+    git --git-dir=$HOME/.dot/ --work-tree=$HOME $@
+}
+function dotadd {
+    cat $HOME/.gitinclude | xargs -I % git --git-dir=$HOME/.dot/ --work-tree=$HOME add %
+}
 
 alias t='tail -f'
 alias g='git'

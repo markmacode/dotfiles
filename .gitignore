@@ -1,6 +1,5 @@
 .dot
 .cache
-.local
 .nix-defexpr
 .nix-profile
 .config/tmux/plugins

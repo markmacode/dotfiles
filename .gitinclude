@@ -1,0 +1,15 @@
+.gitconfig
+.gitignore
+.gitinclude
+README.md
+dotfiles.nix
+dotfiles.sh
+.config/linearmouse/
+.config/nvim/
+.config/personal/
+.config/skhd/
+.config/tmux/
+.config/wezterm/
+.config/yabai/
+.config/zellij/
+.config/starship.toml

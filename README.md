@@ -37,25 +37,17 @@ If you don't want to use ZSH as your shell, be sure to add the following to your
 own shell's setup (such as `.bashrc` or `.profile`).
 
 ```bash
-if [[ -e "$XDG_CONFIG_HOME/personal/setup.sh" ]]; then
-    source "$XDG_CONFIG_HOME/personal/setup.sh"
+if [[ -e "$HOME/.config/personal/setup.sh" ]]; then
+    source "$HOME/.config/personal/setup.sh"
 fi
-```
-
-**Don't want to source that file?** Then at the very least add this alias to
-your shell's setup
-
-```bash
-alias dot='git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 ```
 
 ## Usage
 
-Ensure that you reset your shell after the install step, or that the `dot` alias
-has been set.
+### The `dot` function
 
-Run the `dot` alias just as you would use the `git` command, the `dot` alias
-will only affect this dotfiles bare repo on your machine.
+Run the `dot` function just as you would use the `git` command, the `dot`
+function will only affect the dotfiles bare repo on your machine.
 
 ```bash
 # Check for changes
@@ -73,6 +65,29 @@ dot push
 # Pull from remote
 dot pull
 ```
+
+### The `dotadd` function
+
+```bash
+dotadd
+```
+
+This will run a `dot add <glob>` on each file / glob pattern inside the
+`~/.gitinclude` file. The reason for this is that if you every create a new file
+in a dir that you are logically tracking, running `dotadd` will make sure it
+adds that new file to be tracked by git. Lets say you create a file in
+`.config/nvim/lua/foo.lua`, doing a `dot commit -am "added foo"` will not
+actually have that new file in the commit, so as long as `.config/nvim/` is in
+`.gitinclude`, then running `dotadd` will give add the new file to be tracked.
+
+Why do this? A normal git workflow on a project would most likely run fine with
+`git add .` which will add all files to be tracked except for the ignored ones.
+So normally we would have an 'ignore' focused workflow, whereas withe the
+dotfiles as a bare repo, we have a mix of both and using `dot add .` will add
+everything in your home dir. So it's easier to have an 'include' focused
+workflow, as listing every relevant file and dir on every system inside your
+`.gitignore`, lets just have a sane default for `.gitignore`, and then be
+explicit with what files and dirs we are tracking for our dotfiles.
 
 ## Local Configuration
 
