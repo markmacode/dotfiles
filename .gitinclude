@@ -1,5 +1,6 @@
 .gitconfig
 .gitignore
+.gitignore.global
 .gitinclude
 README.md
 dotfiles.nix
