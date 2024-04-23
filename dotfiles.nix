@@ -23,6 +23,7 @@
   inherit (unstable)
     bun
     go
+    lazygit
     neovim
     starship
     stow
