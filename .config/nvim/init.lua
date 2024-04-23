@@ -19,11 +19,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 require("config")
-
-if vim.g.neovide then
-  vim.o.guifont = "Brosevka Nerd Font:h16"
-  vim.g.neovide_padding_bottom = 16
-  vim.g.neovide_padding_top = 16
-  vim.g.neovide_padding_right = 16
-  vim.g.neovide_padding_left = 16
-end
