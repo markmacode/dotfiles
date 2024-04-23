@@ -3,11 +3,18 @@ import = [
 ]
 
 [font]
-size = 16
+size = 28
 
 [font.normal]
 family = "Brosevka Nerd Font"
 style = "Regular"
 
 [font.italic]
-family = "Maple Mono"
+# Explicitly set weight otherwise it will default to thinnest available.
+family = "Brosevka Nerd Font"
+style = "Italic"
+
+[keyboard]
+bindings = [
+    { key = "0", mods = "Control", action = "ResetFontSize" },
+]

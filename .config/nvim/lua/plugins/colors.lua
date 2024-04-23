@@ -25,21 +25,19 @@ return {
     },
   },
   {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    ops = {},
-  },
-  {
     'rebelot/kanagawa.nvim',
     lazy = false,
     priority = 1000,
-    ops = {},
-  },
-  {
-    'sainnhe/everforest',
-    lazy = false,
-    priority = 1000,
-    ops = {},
+    opts = {
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = 'none',
+            },
+          },
+        },
+      },
+    },
   },
 }

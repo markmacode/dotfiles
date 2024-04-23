@@ -32,5 +32,5 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/personal/setup.sh"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-# ZSH Completions
 [ -s "$ZSH/completions/_bun" ] && source "$ZSH/completions/_bun"
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 

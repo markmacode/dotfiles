@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd --full-path ~/ ~/work ~/personal --max-depth 1 --type directory | fzf)
+    selected=$(fd --full-path ~/ ~/work ~/personal ~/.config --max-depth 1 --type directory | fzf)
 fi
 
 if [[ -z $selected ]]; then
