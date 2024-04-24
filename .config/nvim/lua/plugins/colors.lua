@@ -5,11 +5,11 @@ return {
       update_interval = 1000,
       set_dark_mode = function()
         vim.api.nvim_set_option("background", "dark")
-        vim.cmd.colorscheme 'nightfox'
+        vim.cmd.colorscheme 'catppuccin-mocha'
       end,
       set_light_mode = function()
         vim.api.nvim_set_option("background", "light")
-        vim.cmd.colorscheme 'dayfox'
+        vim.cmd.colorscheme 'catppuccin-latte'
       end,
     },
   },
@@ -25,19 +25,16 @@ return {
     },
   },
   {
-    'rebelot/kanagawa.nvim',
+    'catppuccin/nvim',
     lazy = false,
+    name = 'catppuccin',
     priority = 1000,
     opts = {
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = 'none',
-            },
-          },
-        },
-      },
+      custom_highlights = function(colors)
+        return {
+          ['@parameter'] = { style = { 'italic' } }
+        }
+      end
     },
   },
 }
