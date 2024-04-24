@@ -18,11 +18,9 @@ function module.apply(config)
     config.front_end = "WebGpu"
     config.webgpu_power_preference = "HighPerformance"
     config.webgpu_preferred_adapter = {
-        backend = "Vulkan",
+        backend = "Dx12",
         device = 39745,
         device_type = "IntegratedGpu",
-        driver = "Intel Corporation",
-        driver_info = "Intel driver",
         name = "Intel(R) UHD Graphics",
         vendor = 32902,
     }
