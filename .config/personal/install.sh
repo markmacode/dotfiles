@@ -20,7 +20,7 @@ git --git-dir=$HOME/.dot/ --work-tree=$HOME checkout
 if [ $? = 0 ]; then
     echo "Checked out dotfiles"
 else
-    backup_name=home-$(date +"%Y%m%d%H%M%S").bak
+    backup_name=home-$(date +"%Y%m%d-%H%M%S").bak
     echo "Backing up pre-existing dot files to $backup_name"
     mkdir -p $backup_name
 
