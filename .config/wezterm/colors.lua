@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm'
 local module = {}
 
-local light = "dawnfox"
+local light = "Catppuccin Latte"
 local dark = "Catppuccin Mocha"
 
 -- Set the colors for the tab bars, sample `colors` arg that you can pass in:

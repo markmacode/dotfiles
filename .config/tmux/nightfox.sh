@@ -34,3 +34,27 @@ theme_green_bg="#344847"
 
 theme_border="#6085b6"
 
+set -g mode-style "fg=$theme_yellow,bg=$theme_yellow_bg"
+set -g message-style "fg=$theme_yellow_fg,bg=$theme_yellow_bg"
+set -g message-command-style "fg=$theme_yellow_fg,bg=$theme_yellow_bg"
+set -g pane-border-style "fg=$theme_bg3"
+set -g pane-active-border-style "fg=$theme_border"
+set -g status "on"
+set -g status-style "fg=$theme_fg1,bg=$theme_bg0"
+set -g status-position top
+set -g status-bg "${theme_bg0}"
+set -g status-justify "left"
+set -g status-left-length "100"
+set -g status-right-length "100"
+set -g status-left-style NONE
+set -g status-right-style NONE
+set -g status-left ""
+set -g status-right "\
+#[fg=$theme_fg3,bg=$theme_bg0]%Y-%m-%d #[fg=$theme_bg4]|#[fg=$theme_fg3,bg=$theme_bg0] %H:%M  \
+#[fg=$theme_bg3,bg=$theme_bg0]#[fg=$theme_fg2,bg=$theme_bg3] #h#[fg=$theme_bg3,bg=$theme_bg0] \
+#[fg=$theme_purple_bg,bg=$theme_bg0]#[fg=$theme_purple_fg,bg=$theme_purple_bg]󰆧 #S \
+"
+setw -g window-status-style "fg=$theme_fg3,bg=$theme_bg0"
+setw -g window-status-format "#[default] #I#[fg=$theme_bg4]:#[default]#W#F "
+setw -g window-status-current-format "#[fg=$theme_blue_fg,bg=$theme_blue_bg] #I #W#F "
+setw -g window-status-separator ""

@@ -21,7 +21,7 @@ function dot {
     git --git-dir=$HOME/.dot/ --work-tree=$HOME $@
 }
 function dotadd {
-    cat $HOME/.gitinclude | xargs -I % git --git-dir=$HOME/.dot/ --work-tree=$HOME add %
+    cat $HOME/.gitinclude | xargs -I % git --git-dir=$HOME/.dot/ --work-tree=$HOME add ${HOME}/%
 }
 
 # This function is context aware, just run `pyv` to create, activate, and 
