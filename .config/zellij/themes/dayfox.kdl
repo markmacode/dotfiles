@@ -1,0 +1,15 @@
+themes {
+    dayfox {
+        bg "#d3c7bb"
+        fg "#3d2b5a"
+        red "#a5222f"
+        green "#396847"
+        blue "#2848a9"
+        yellow "#ac5402"
+        magenta "#6e33ce"
+        orange "#955f61"
+        cyan "#287980"
+        black "#d3c7bb"
+        white "#643f61"
+    }
+}
