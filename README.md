@@ -44,32 +44,32 @@ fi
 
 ## Usage
 
-### The `dot` function
+### `dot`
 
 Run the `dot` function just as you would use the `git` command, the `dot`
 function will only affect the dotfiles bare repo on your machine.
 
 ```bash
 # Check for changes
-dot status
+$ dot status
 
 # Add a file to the repo
-dot add .bashrc
+$ dot add .bashrc
 
 # Commit changes
-dot commit -m "New change"
+$ dot commit -m "New change"
 
 # Push to remote
-dot push
+$ dot push
 
 # Pull from remote
-dot pull
+$ dot pull
 ```
 
-### The `dotadd` function
+### `dotadd`
 
 ```bash
-dotadd
+$ dotadd
 ```
 
 This will run a `dot add <glob>` on each file / glob pattern inside the
@@ -88,6 +88,16 @@ everything in your home dir. So it's easier to have an 'include' focused
 workflow, as listing every relevant file and dir on every system inside your
 `.gitignore`, lets just have a sane default for `.gitignore`, and then be
 explicit with what files and dirs we are tracking for our dotfiles.
+
+
+### `dotgit`
+
+```bash
+$ dotgit
+```
+
+Opens up [lazygit](https://github.com/jesseduffield/lazygit) of the dotfiles
+bare repo. Helpful when doing anything more than just `dotadd && dot commit ...`
 
 ## Local Configuration
 
