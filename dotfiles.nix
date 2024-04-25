@@ -15,6 +15,7 @@
     jq
     python3
     ripgrep
+    stylua
     tmux
     unzip
     zsh
@@ -27,7 +28,6 @@
     neovim
     starship
     stow
-    stylua
     wezterm
     zoxide
     ;
