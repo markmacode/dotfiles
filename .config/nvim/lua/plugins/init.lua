@@ -148,7 +148,7 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-          'stylua', -- Used to format Lua code
+        'stylua', -- Used to format Lua code
       })
 
       require('mason').setup()
@@ -406,5 +406,15 @@ return {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      indent = {
+        char = '┇',
+      },
+    },
   },
 }

@@ -32,7 +32,8 @@ return {
     opts = {
       custom_highlights = function(colors)
         return {
-          ['@parameter'] = { style = { 'italic' } }
+          ['@parameter'] = { style = { 'italic' } },
+          ['IblScope'] = { fg = colors.overlay0 },
         }
       end
     },
