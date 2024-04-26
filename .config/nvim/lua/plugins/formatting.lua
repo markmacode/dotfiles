@@ -31,7 +31,7 @@ return {
       },
       formatters = {
         mdformat = {
-          prepend_args = { "--number", "--wrap", "80" },
+          prepend_args = { "--number" },
         },
         shfmt = {
           prepend_args = { "-i", "4", "-ci" },
