@@ -45,11 +45,11 @@ set wrap
 
 " [[ Remaps ]]
 nmap <leader>w :w!<cr>
-inoremap jk <esc>
+inoremap jk <Esc>
 
 " move selected and indent automatically
-vnoremap J :m '>+1<cr>gv=gv
-vnoremap K :m '>-2<cr>gv=gv
+vnoremap J :m '>+1<Cr>gv=gv
+vnoremap K :m '>-2<Cr>gv=gv
 
 " half-page jumping but stay centered
 nnoremap <C-d> <C-d>zz
