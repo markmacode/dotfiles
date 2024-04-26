@@ -2,6 +2,7 @@
 .gitignore
 .gitignore.global
 .gitinclude
+.vimrc
 .zshrc
 README.md
 dotfiles.nix

@@ -12,6 +12,7 @@ vim.o.guicursor =
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.o.autoread = true
 vim.o.updatetime = 150
 vim.o.timeoutlen = 300
 vim.o.clipboard = 'unnamedplus'
@@ -21,7 +22,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.termguicolors = true
 vim.wo.signcolumn = 'yes'
-vim.o.colorcolumn = '80,90'
+vim.o.colorcolumn = '80'
 vim.o.scrolloff = 8
 
 vim.o.tabstop = 4
