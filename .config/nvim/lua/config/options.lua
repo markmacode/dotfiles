@@ -3,7 +3,10 @@
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = 'a'
+vim.o.wrap = true
 vim.o.breakindent = true
+vim.o.linebreak = true
+vim.o.showbreak = '󱞩 ' -- 󱞩 󰘍 󱞵
 vim.o.guicursor =
     'n-v-c-sm:block,' ..
     'i-ci-ve:ver25,' ..
@@ -31,5 +34,4 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.autoindent = true
-vim.o.wrap = false
 

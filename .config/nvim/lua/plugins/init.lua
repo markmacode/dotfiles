@@ -331,6 +331,7 @@ return {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
+      'nvim-treesitter/playground',
       'RRethy/nvim-treesitter-endwise',
       'windwp/nvim-ts-autotag',
     },
@@ -341,16 +342,18 @@ return {
         'c',
         'cpp',
         'go',
+        'javascript',
         'kdl',
         'lua',
+        'markdown',
+        'markdown_inline',
         'python',
         'rust',
         'svelte',
         'tsx',
-        'javascript',
         'typescript',
-        'vimdoc',
         'vim',
+        'vimdoc',
         'yaml',
       },
 
@@ -362,7 +365,12 @@ return {
       endwise = {
         enable = true,
       },
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        -- For better performance and making sure there is no conflicts
+        -- with highlight grups that interact directly with treesitter.
+        additional_vim_regex_highlighting = false,
+      },
       indent = { enable = false },
       incremental_selection = {
         enable = true,
@@ -380,12 +388,6 @@ return {
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     },
-    config = function(_, opts)
-      -- Defer setup after first render to improve startup time of 'nvim {filename}'
-      vim.defer_fn(function()
-        require('nvim-treesitter.configs').setup(opts)
-      end, 0)
-    end,
   },
 
   {

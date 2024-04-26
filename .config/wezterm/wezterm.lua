@@ -8,8 +8,30 @@ config.keys = require('keymap')
 -- Font stuff
 config.font_size = 16
 config.font = wezterm.font {
-    family = 'Brosevka Nerd Font',
-    weight = 400,
+  family = 'Brosevka Nerd Font',
+  weight = 'Regular',
+}
+config.font_rules = {
+  -- Bold and non-italic
+  {
+    intensity = 'Bold',
+    italic = false,
+    font = wezterm.font {
+      family = 'Brosevka Nerd Font',
+      weight = 'Bold',
+    },
+  },
+
+  -- Bold and italic
+  {
+    intensity = 'Bold',
+    italic = true,
+    font = wezterm.font {
+      family = 'Brosevka Nerd Font',
+      weight = 'Bold',
+      style = 'Italic',
+    },
+  },
 }
 
 -- Window stuff
