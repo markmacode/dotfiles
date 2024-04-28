@@ -15,6 +15,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+export BAT_THEME="catppuccin-mocha"
 
 export PATH="$XDG_CONFIG_HOME/personal/scripts:$PATH"
 [ -d /opt/nvim-linux64/bin ] && export PATH="/opt/nvim-linux64/bin:$PATH"
@@ -76,6 +77,7 @@ alias pip='pip3'
 
 # Listing files
 alias eza='eza --color=always'
-alias l='eza -lah --group-directories-first --git'
+alias l='eza -lh --group-directories-first --git'
+alias ll='eza -lah --group-directories-first --git'
 
 bindkey -s ^f "tmux-sessionizer\n"

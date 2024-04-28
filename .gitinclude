@@ -8,6 +8,7 @@ README.md
 dotfiles.nix
 dotfiles.sh
 .config/alacritty/
+.config/bat/
 .config/lazygit/
 .config/linearmouse/
 .config/nvim/
@@ -16,5 +17,6 @@ dotfiles.sh
 .config/tmux/
 .config/wezterm/
 .config/yabai/
+.config/yazi/
 .config/zellij/
 .config/starship.toml

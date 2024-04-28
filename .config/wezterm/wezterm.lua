@@ -10,6 +10,7 @@ config.font_size = 16
 config.font = wezterm.font {
   family = 'Brosevka Nerd Font',
   weight = 'Regular',
+  harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
 }
 config.font_rules = {
   -- Bold and non-italic
