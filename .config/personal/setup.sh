@@ -10,6 +10,7 @@
 # the OS, so these exports will never be used.
 export EDITOR="nvim"
 export PAGER="bat"
+export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
 export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{\.git,node_modules}"'
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \

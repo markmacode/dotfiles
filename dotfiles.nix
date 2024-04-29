@@ -11,6 +11,7 @@
     fd
     fzf
     git
+    glibcLocales
     gnumake
     jq
     python3
@@ -29,6 +30,7 @@
     starship
     stow
     wezterm
+    yazi
     zoxide
     ;
 }
