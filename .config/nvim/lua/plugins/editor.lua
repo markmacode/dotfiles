@@ -40,15 +40,16 @@ return {
         },
       },
       window = {
-        position = 'current',
+        position = 'right',
         mappings = {
-          ['e'] = 'open',
+          ['l'] = 'toggle_node',
+          ['h'] = 'focus_preview',
         },
       },
       filesystem = {
         hijack_netrw_behaviour = 'open_default',
         filtered_items = {
-          hide_dotfiles = false,
+          hide_dotfiles = true,
           hide_gitignored = true,
           hide_by_name = {
             "node_modules",
@@ -61,7 +62,7 @@ return {
           },
           always_show = {
             ".editorconfig",
-            ".gitignored",
+            ".gitignore",
             ".debug",
             ".scripts",
           },

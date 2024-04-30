@@ -1,8 +1,7 @@
 .dot
 .cache
-.nix-defexpr
-.nix-profile
 .config/tmux/plugins
+.config/yazi/**/.git
 
 # -- Linux --
 *~

@@ -4,8 +4,9 @@
 " need to use vim in any situation, or that I need to port
 " this config to an application that supports vim motions.
 
-let mapleader=' '
-let maplocalleader=' '
+let mapleader=" "
+let maplocalleader=" "
+colorscheme desert
 filetype plugin indent on
 
 " Ignore compiled files
@@ -19,18 +20,21 @@ endif
 " [[ Options ]]
 set number
 set foldcolumn=1
-set mouse='a'
+set mouse="a"
 set breakindent
-set guicursor='n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
+set guicursor="n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
 set ignorecase
 set smartcase
 set hlsearch
 
 set autoread
-set clipboard='unnamedplus'
-set undofile
-set completeopt='menuone,noselect'
+set clipboard="unnamedplus"
+if has('persistent_undo')
+    set undodir=$HOME/.vim/undo
+    set undofile
+endif
+set completeopt="menuone,noselect"
 
 set termguicolors
 set scrolloff=8
@@ -45,11 +49,12 @@ set wrap
 
 " [[ Remaps ]]
 nmap <leader>w :w!<cr>
+nmap <leader>t :Ex<cr>
 inoremap jk <Esc>
 
 " move selected and indent automatically
-vnoremap J :m '>+1<Cr>gv=gv
-vnoremap K :m '>-2<Cr>gv=gv
+vnoremap J :m ">+1<Cr>gv=gv
+vnoremap K :m ">-2<Cr>gv=gv
 
 " half-page jumping but stay centered
 nnoremap <C-d> <C-d>zz
@@ -62,3 +67,5 @@ nnoremap N Nzzzv
 " For long, wrapped lines
 nnoremap k gk
 nnoremap j gj
+
+nnoremap Q <Nop>

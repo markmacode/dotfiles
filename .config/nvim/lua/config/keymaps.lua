@@ -29,10 +29,7 @@ map('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
 -- [[ Neotree ]]
 -- see `:help neo-tree` or `:help Neotree`
-map('n', '<leader>nf', '<cmd>Neotree position=current<CR>', { desc = '[N]eotree [F]iles' })
-map('n', '<leader>ng', '<cmd>Neotree source=git_status position=current<CR>', { desc = '[N]eotree [G]it status' })
-map('n', '<leader>nb', '<cmd>Neotree source=buffers position=current<CR>', { desc = '[N]eotree [B]uffers' })
-map('n', '<leader>nr', '<cmd>Neotree position=right<CR>', { desc = '[N]eotree [R]ight' })
+map('n', '<leader>t', '<cmd>Neotree position=right<CR>', { desc = '[N]eotree [R]ight' })
 
 -- [[ Telescope ]]
 -- See `:help telescope.builtin`
@@ -63,8 +60,8 @@ map('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [
 -- [[ Diagnostics ]]
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+map('n', '<leader>i', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+map('n', '<leader>I', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ Harpoon ]]
 map('n', '<leader>hi', require('harpoon.mark').add_file, { desc = '[H]arpoon [I]nsert file' })
