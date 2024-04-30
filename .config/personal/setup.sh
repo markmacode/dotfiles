@@ -32,6 +32,17 @@ function dotgit {
     lazygit -g $HOME/.dot -w $HOME $@
 }
 
+# Run yazi through `yy` and when you close it it will cd into the selected 
+# directory on yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # This function is context aware, just run `pyv` to create, activate, and 
 # deactivate your virtual env
 # pyv [venv_dir]
