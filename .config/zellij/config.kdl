@@ -1,6 +1,0 @@
-theme "catppuccin-latte"
-// default_layout "compact"
-default_layout "default"
-simplified_ui true
-scroll_buffer_size 50000
-
