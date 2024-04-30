@@ -8,6 +8,7 @@ dotfiles.nix
 dotfiles.sh
 .config/alacritty/
 .config/bat/
+.config/btop/
 .config/lazygit/
 .config/linearmouse/
 .config/nvim/
