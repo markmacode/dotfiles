@@ -6,8 +6,14 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew bundle
 
-brew install $(cat $HOME/.config/brew.txt)
+#
+# Setting up the ~/me directory
+#
+mkdir -p $HOME/me $HOME/me/clones $HOME/me/inbox $HOME/me/repos
+ln -sfn $HOME/.config $HOME/me/config
+ln -sfn $HOME/ $HOME/me/home
 
 #
 # Setting up ZSH
