@@ -3,7 +3,7 @@
 <plist version="1.0">
   <dict>
     <key>name</key>
-    <string>Catppuccin Latte</string>
+    <string>catppuccin-latte</string>
     <key>semanticClass</key>
     <string>theme.light.catppuccin-latte</string>
     <key>uuid</key>

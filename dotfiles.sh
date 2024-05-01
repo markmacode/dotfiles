@@ -55,4 +55,7 @@ done
 echo "Setting lazy.nvim plugins to the lockfile versions"
 nvim --headless "+Lazy! restore" +qa
 
+echo "Building bat cache"
+bat cache --build
+
 echo "Restart terminal for changes to take effect"
