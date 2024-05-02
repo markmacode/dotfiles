@@ -40,7 +40,7 @@ return {
         },
       },
       window = {
-        position = 'right',
+        position = 'current',
         mappings = {
           ['l'] = 'toggle_node',
           ['h'] = 'focus_preview',

@@ -6,6 +6,9 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- Good old gen-AI
+  'github/copilot.vim',
+
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
