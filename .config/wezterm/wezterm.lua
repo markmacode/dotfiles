@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 config.keys = require('keymap')
 
 -- Font stuff
-config.font_size = 16
+config.font_size = 18
 config.font = wezterm.font {
   family = 'Brosevka Nerd Font',
   weight = 'Regular',
