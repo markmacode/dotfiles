@@ -38,7 +38,7 @@ fi
 
 ## Usage
 
-### `dot`
+### The `dot` function
 
 Run the `dot` function just as you would use the `git` command, the `dot` function will only affect the dotfiles bare repo on your machine.
 
@@ -54,28 +54,23 @@ $ dot commit -m "New change"
 
 # Push to remote
 $ dot push
-
-# Pull from remote
-$ dot pull
 ```
 
-### `dotadd`
+You can also open up the dotfiles bare repo inside of [lazygit](https://github.com/jesseduffield/lazygit). This is an optional argument and can be run from anywhere inside the terminal.
 
 ```bash
-$ dotadd
+$ dot lazygit
 ```
 
-This will run a `dot add <glob>` on each file / glob pattern inside the `~/.gitinclude` file. The reason for this is that if you every create a new file in a dir that you are logically tracking, running `dotadd` will make sure it adds that new file to be tracked by git. Lets say you create a file in `.config/nvim/lua/foo.lua`, doing a `dot commit -am "added foo"` will not actually have that new file in the commit, so as long as `.config/nvim/` is in `.gitinclude`, then running `dotadd` will give add the new file to be tracked.
-
-Why do this? A normal git workflow on a project would most likely run fine with `git add .` which will add all files to be tracked except for the ignored ones. So normally we would have an 'ignore' focused workflow, whereas withe the dotfiles as a bare repo, we have a mix of both and using `dot add .` will add everything in your home dir. So it's easier to have an 'include' focused workflow, as listing every relevant file and dir on every system inside your `.gitignore`, lets just have a sane default for `.gitignore`, and then be explicit with what files and dirs we are tracking for our dotfiles.
-
-### `dotgit`
+### The `~/.gitinclude` file
 
 ```bash
-$ dotgit
+$ dot add --all
 ```
 
-Opens up [lazygit](https://github.com/jesseduffield/lazygit) of the dotfiles bare repo. Helpful when doing anything more than just `dotadd && dot commit ...`
+This will run a `dot add <glob>` on each file / glob pattern inside the `~/.gitinclude` file. The reason for this is that if you every create a new file in a dir that you are logically tracking, running `dotadd` will make sure it adds that new file to be tracked by git. Lets say you create a file in `.config/nvim/lua/foo.lua`, doing a `dot commit -am "added foo"` will not actually have that new file in the commit, so as long as `.config/nvim/` is in `.gitinclude`, then running `dot add --all` will give add the new file to be tracked.
+
+Why do this? A normal git workflow on a project would most likely run fine with `git add --all` which will add all files to be tracked except for the ignored ones. So normally we would have an 'ignore' focused workflow, whereas withe the dotfiles as a bare repo, we have a mix of both and using `dot add --all` will add everything in your home dir. So it's easier to have an 'include' focused workflow, as listing every relevant file and dir on every system inside your `.gitignore`, lets just have a sane default for `.gitignore`, and then be explicit with what files and dirs we are tracking for our dotfiles.
 
 ## Local Configuration
 
