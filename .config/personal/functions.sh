@@ -23,7 +23,7 @@ function dot {
     if [ "$1" = "add" ] && [ "$2" = "--all" ]; then
         cat $HOME/.gitinclude | xargs -I % \
             git --git-dir=$HOME/.dot/ --work-tree=$HOME add ${HOME}/%
-    elif [ "$1" = "lazy" ]; then
+    elif [ "$1" = "lazygit" ]; then
         lazygit -g $HOME/.dot -w $HOME ${@:2}
     else
         git --git-dir=$HOME/.dot/ --work-tree=$HOME $@
