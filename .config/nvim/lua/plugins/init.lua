@@ -9,6 +9,7 @@ return {
   -- Good old gen-AI
   'github/copilot.vim',
 
+
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
@@ -18,7 +19,6 @@ return {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
         ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
@@ -229,15 +229,6 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
-      debug_mode = true,
-      signs = {
-        add = { text = '│' },
-        change = { text = '│' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-        untracked = { text = '┆' },
-      },
       on_attach = function(bufnr)
         vim.keymap.set(
           'n', '<leader>gp',
@@ -421,5 +412,11 @@ return {
         char = '┇',
       },
     },
+  },
+
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {},
   },
 }

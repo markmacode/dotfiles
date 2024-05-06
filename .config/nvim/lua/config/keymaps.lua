@@ -68,6 +68,32 @@ map('n', '<leader>hi', require('harpoon.mark').add_file, { desc = '[H]arpoon [I]
 map('n', '<leader>hl', require('harpoon.ui').toggle_quick_menu, { desc = '[H]arpoon [L]ist files' })
 map('n', '<leader>hn', require('harpoon.ui').nav_next, { desc = 'Harpoon [T]o [N]ext' })
 map('n', '<leader>hp', require('harpoon.ui').nav_prev, { desc = 'Harpoon [T]o [P]revious' })
-map('n', '<leader>j', function() require('harpoon.ui').nav_file(1) end, { desc = 'Harpoon to 1' })
-map('n', '<leader>k', function() require('harpoon.ui').nav_file(2) end, { desc = 'Harpoon to 2' })
-map('n', '<leader>l', function() require('harpoon.ui').nav_file(3) end, { desc = 'Harpoon to 3' })
+map('n', '<leader>1', function() require('harpoon.ui').nav_file(1) end, { desc = 'Harpoon to 1' })
+map('n', '<leader>2', function() require('harpoon.ui').nav_file(2) end, { desc = 'Harpoon to 2' })
+map('n', '<leader>3', function() require('harpoon.ui').nav_file(3) end, { desc = 'Harpoon to 3' })
+map('n', '<leader>4', function() require('harpoon.ui').nav_file(4) end, { desc = 'Harpoon to 4' })
+map('n', '<leader>5', function() require('harpoon.ui').nav_file(5) end, { desc = 'Harpoon to 5' })
+
+-- [[ ToggleTerm (floating terminal) ]]
+function _lazygit_toggle()
+  local Terminal = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({
+    cmd = 'lazygit',
+    direction = 'float',
+    hidden = true,   -- Do not show in `:ToggleTerm` commands
+  })
+  local cwd = vim.fn.getcwd()
+  local env_xdg = vim.fn.getenv('XDG_CONFIG_HOME')
+  local env_home = vim.fn.getenv('HOME')
+  if cwd:sub(1, #env_xdg) == env_xdg or cwd == env_home then
+    lazygit.cmd = 'lazygit -g $HOME/.dot -w $HOME' -- Requires my dotfiles `dot` command
+  end
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>l',
+  '<cmd>lua _lazygit_toggle()<CR>',
+  { noremap = true, silent = true }
+)
