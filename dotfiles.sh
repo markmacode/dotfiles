@@ -49,7 +49,7 @@ for repo in "${custom_plugins[@]}"; do
     fi
 done
 
-#
+# tjHj
 # Extra app inits
 #
 echo "Setting lazy.nvim plugins to the lockfile versions"
@@ -57,5 +57,10 @@ nvim --headless "+Lazy! restore" +qa
 
 echo "Building bat cache"
 bat cache --build
+
+echo "Install NVM and Node"
+mkdir $HOME/.nvm
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
+nvm install --lts
 
 echo "Restart terminal for changes to take effect"

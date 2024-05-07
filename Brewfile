@@ -21,6 +21,7 @@ brew "zoxide"
 brew "go"
 brew "python@3.12"
 brew "stylua"
+brew "nvm"
 
 # Extras
 brew "curl"
