@@ -11,7 +11,7 @@ brew bundle
 #
 # Setting up the ~/me directory
 #
-mkdir -p $HOME/me $HOME/me/clones $HOME/me/inbox $HOME/me/repos
+mkdir -p $HOME/me $HOME/me/clones $HOME/me/inbox $HOME/me/repos $HOME/me/remotes
 ln -sfn $HOME/.config $HOME/me/config
 ln -sfn $HOME/ $HOME/me/home
 

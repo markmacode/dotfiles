@@ -14,7 +14,6 @@ function module.apply(config)
     wezterm.log_info 'Applying Windows config'
 
     config.font_size = 14
-    config.default_domain = 'WSL:Ubuntu-22.04'
     config.front_end = "WebGpu"
     config.webgpu_power_preference = "HighPerformance"
     -- This makes my work laptop actually responsive!!
