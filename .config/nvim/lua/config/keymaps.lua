@@ -29,7 +29,7 @@ map('n', 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
 -- [[ Neotree ]]
 -- see `:help neo-tree` or `:help Neotree`
-map('n', '<leader>t', '<cmd>Neotree position=left<CR>', { desc = 'Neo[t]ree Files' })
+map('n', '<leader>t', '<cmd>Neotree position=right<CR>', { desc = 'Neo[t]ree Files' })
 
 -- [[ Telescope ]]
 -- See `:help telescope.builtin`

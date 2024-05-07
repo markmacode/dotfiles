@@ -34,8 +34,13 @@ return {
         return {
           ['@parameter'] = { style = { 'italic' } },
           ['IblScope'] = { fg = colors.overlay0 },
+          ['NeoTreeNormal'] = { bg = colors.mantle },
+          ['NeoTreeNormalNC'] = { bg = colors.mantle },
         }
       end
+    },
+    integrations = {
+      neotree = true,
     },
   },
 }
