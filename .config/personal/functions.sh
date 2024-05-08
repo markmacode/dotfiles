@@ -13,20 +13,23 @@
 #
 function dot {
     if [ "$1" = "add" ] && [ "$2" = "-a" ]; then
+        # git add -a  ->  git add --all
         set -- "$1" "--all" "${@:3}"
     elif [ "$1" = "add" ] && [ "$2" = "." ]; then
+        # git add .  ->  git add --all
         set -- "$1" "--all" "${@:3}"
     elif [ "$1" = "a" ]; then
+        # git a  ->  git add --all
         set -- "add" "--all" "${@:3}"
     fi
 
     if [ "$1" = "add" ] && [ "$2" = "--all" ]; then
-        cat $HOME/.gitinclude | xargs -I % \
-            git --git-dir=$HOME/.dot/ --work-tree=$HOME add ${HOME}/%
+        cat $HOME/.gitinclude | xargs -I {} \
+            git --git-dir=$HOME/.dot/ --work-tree=$HOME add ${HOME}/{} "${@:3}"
     elif [ "$1" = "lazygit" ]; then
         lazygit -g $HOME/.dot -w $HOME ${@:2}
     else
-        git --git-dir=$HOME/.dot/ --work-tree=$HOME $@
+        git --git-dir=$HOME/.dot/ --work-tree=$HOME "$@"
     fi
 }
 
