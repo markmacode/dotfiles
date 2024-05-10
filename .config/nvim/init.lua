@@ -1,6 +1,7 @@
 -- Must happen before plugins are required
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+require("config.options")
 
 -- Install package manager
 -- `:help lazy.nvim.txt` for more info
@@ -18,6 +19,11 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
-  change_detection = { enabled = false },
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
 })
-require("config")
+require("config.autocmds")
+require("config.keymaps")
+require("config.filetype")

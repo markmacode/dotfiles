@@ -1,11 +1,13 @@
 return {
   {
     "e-q/okcolors.nvim",
+    lazy = false,
     priority = 1000,
     name = "okcolors"
   },
   {
     'EdenEast/nightfox.nvim',
+    lazy = false,
     priority = 1000,
     opts = {
       options = {
