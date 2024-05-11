@@ -2,30 +2,30 @@
 -- See `:help vim.opt`
 
 -- The basics
-vim.opt.mouse = 'a' -- You can use a mouse if needed :)
+vim.opt.mouse = "a" -- You can use a mouse if needed :)
 vim.opt.termguicolors = true -- Use more colors
 vim.opt.updatetime = 1000 -- Make updates happen faster
 
 -- Line number column
 vim.opt.relativenumber = true -- Show line numbers
 vim.opt.number = true -- But show the actual number for the line we're on
-vim.opt.signcolumn = 'yes' -- Allows git signs and diagnostics
+vim.opt.signcolumn = "yes" -- Allows git signs and diagnostics
 
 -- Buffer management
 vim.opt.autoread = true -- Safely load external buffer changes
 vim.opt.autowrite = true -- Write buffer changes on various events
-vim.opt.clipboard = 'unnamedplus' -- Use the "+ register
+vim.opt.clipboard = "unnamedplus" -- Use the "+ register
 vim.opt.undofile = true -- Persist change history in a file
 vim.opt.swapfile = false -- Dont litter my projects with swap files
-vim.opt.completeopt = 'menuone,noselect' -- I dont know what you do..
+vim.opt.completeopt = "menuone,noselect" -- I dont know what you do..
 vim.opt.hidden = true -- I like having buffers stay around
 
 -- Line wrapping
-vim.opt.colorcolumn = '80' -- Visual lines suggesting length limit
+vim.opt.colorcolumn = "80" -- Visual lines suggesting length limit
 vim.opt.wrap = true -- Soft wrap lines that go beyond viewable width
 vim.opt.breakindent = true -- Indent wrapped lines
 vim.opt.linebreak = true -- Dont wrap lines in the middle of a word
-vim.opt.showbreak = '󱞩 ' -- 󱞩 󰘍 󱞵
+vim.opt.showbreak = "󱞩 " -- 󱞩 󰘍 󱞵
 
 -- Tabs and indentation
 vim.opt.tabstop = 4
@@ -47,7 +47,7 @@ vim.opt.equalalways = false -- I don't like my windows changing all the time
 vim.opt.splitright = true -- Prefer windows splitting to the right
 vim.opt.splitbelow = true -- Prefer windows splitting to the bottom
 vim.opt.scrolloff = 8 -- keep 8 lines padding the cursor when scrolling files
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Format options innit
 vim.opt.formatoptions = vim.opt.formatoptions

@@ -15,7 +15,7 @@ return {
           end
         end,
         mode = { "n", "v" },
-        desc = "[F]ormat file with conform"
+        desc = "[F]ormat file with conform",
       },
     },
     opts = {
@@ -28,6 +28,7 @@ return {
         python = { "isort", "ruff_format" },
         markdown = { "mdformat" },
         sh = { "shfmt" },
+        lua = { "stylua" },
       },
       formatters = {
         mdformat = {

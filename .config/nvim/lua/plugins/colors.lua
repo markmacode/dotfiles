@@ -1,12 +1,26 @@
 return {
   {
+    "morhetz/gruvbox",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function() end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
     "e-q/okcolors.nvim",
     lazy = false,
     priority = 1000,
-    name = "okcolors"
+    name = "okcolors",
+    opts = {},
   },
   {
-    'EdenEast/nightfox.nvim',
+    "EdenEast/nightfox.nvim",
     lazy = false,
     priority = 1000,
     opts = {
@@ -18,24 +32,20 @@ return {
     },
   },
   {
-    'catppuccin/nvim',
+    "catppuccin/nvim",
     lazy = false,
-    name = 'catppuccin',
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
+      vim.cmd.colorscheme("catppuccin")
     end,
     opts = {
-      dark = 'mocha',
-      light = 'latte',
       custom_highlights = function(colors)
         return {
-          ['@parameter'] = { style = { 'italic' } },
-          ['IblScope'] = { fg = colors.overlay0 },
-          ['NeoTreeNormal'] = { bg = colors.mantle },
-          ['NeoTreeNormalNC'] = { bg = colors.mantle },
+          ["@parameter"] = { style = { "italic" } },
+          ["IblScope"] = { fg = colors.overlay0 },
         }
-      end
+      end,
     },
     integrations = {
       neotree = true,
