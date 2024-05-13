@@ -1,10 +1,14 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 
+vim.api.nvim_set_hl(0, "@parameter", { italic = true })
+
 -- The basics
 vim.opt.mouse = "a" -- You can use a mouse if needed :)
 vim.opt.termguicolors = true -- Use more colors
 vim.opt.updatetime = 1000 -- Make updates happen faster
+vim.opt.listchars = { tab = " ", trail = "~", nbsp = "␣" }
+vim.opt.list = true
 
 -- Line number column
 vim.opt.relativenumber = true -- Show line numbers

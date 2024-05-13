@@ -38,15 +38,12 @@ return {
     priority = 1000,
     config = function()
       vim.cmd.colorscheme("catppuccin")
+      local mocha = require("catppuccin.palettes").get_palette("mocha")
+      vim.api.nvim_set_hl(0, "IblScope", { fg = mocha.overlay2 })
+      vim.api.nvim_set_hl(0, "IblIndent", { fg = mocha.surface1 })
+      vim.api.nvim_set_hl(0, "Whitespace", { fg = mocha.overlay1 })
     end,
-    opts = {
-      custom_highlights = function(colors)
-        return {
-          ["@parameter"] = { style = { "italic" } },
-          ["IblScope"] = { fg = colors.overlay0 },
-        }
-      end,
-    },
+    opts = {},
     integrations = {
       neotree = true,
     },
