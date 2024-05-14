@@ -3,6 +3,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
+config.leader = { key = 'e', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = require('keymap')
 
 -- Font stuff
