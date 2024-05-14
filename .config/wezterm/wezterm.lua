@@ -7,9 +7,10 @@ config.leader = { key = 'e', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = require('keymap')
 
 -- Font stuff
+local font = 'Brosevka Nerd Font'
 config.font_size = 18
 config.font = wezterm.font {
-  family = 'Brosevka Nerd Font',
+  family = font,
   weight = 'Regular',
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
 }
@@ -19,7 +20,7 @@ config.font_rules = {
     intensity = 'Bold',
     italic = false,
     font = wezterm.font {
-      family = 'Brosevka Nerd Font',
+      family = font,
       weight = 'Bold',
     },
   },
@@ -29,7 +30,7 @@ config.font_rules = {
     intensity = 'Bold',
     italic = true,
     font = wezterm.font {
-      family = 'Brosevka Nerd Font',
+      family = font,
       weight = 'Bold',
       style = 'Italic',
     },

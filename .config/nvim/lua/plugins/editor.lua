@@ -26,28 +26,28 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added     = "",
-            deleted   = "",
-            modified  = "",
-            renamed   = "",
+            added = "",
+            deleted = "",
+            modified = "",
+            renamed = "",
             -- Status type
             untracked = "?",
-            ignored   = "0",
-            unstaged  = "󰅖",
-            staged    = "󰄬",
-            conflict  = "*",
-          }
+            ignored = "0",
+            unstaged = "󰅖",
+            staged = "󰄬",
+            conflict = "*",
+          },
         },
       },
       window = {
-        position = 'current',
+        position = "current",
         mappings = {
-          ['l'] = 'toggle_node',
-          ['h'] = 'focus_preview',
+          ["l"] = "toggle_node",
+          ["h"] = "focus_preview",
         },
       },
       filesystem = {
-        hijack_netrw_behaviour = 'open_default',
+        hijack_netrw_behaviour = "open_default",
         filtered_items = {
           hide_dotfiles = true,
           hide_gitignored = true,
