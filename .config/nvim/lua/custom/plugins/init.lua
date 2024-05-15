@@ -26,52 +26,6 @@ return {
   },
 
   {
-    -- Autocompletion
-    "hrsh7th/nvim-cmp",
-    version = false,
-    dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-
-      -- Adds LSP completion capabilities
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-
-      -- Adds a number of user-friendly snippets
-      "rafamadriz/friendly-snippets",
-    },
-    opts = function()
-      local luasnip = require("luasnip")
-      local cmp = require("cmp")
-      return {
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete({}),
-          ["<Tab>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }),
-        }),
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        },
-      }
-    end,
-  },
-
-  {
     "L3MON4D3/LuaSnip",
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
@@ -79,57 +33,22 @@ return {
   },
 
   {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    -- Adds git related signs to the gutter.
+    -- As well as utilities for managing changes.
     "lewis6991/gitsigns.nvim",
-    opts = {
-      -- See `:help gitsigns.txt`
-      on_attach = function(bufnr)
-        vim.keymap.set(
-          "n",
-          "<leader>gp",
-          require("gitsigns").preview_hunk,
-          { buffer = bufnr, desc = "Preview git hunk" }
-        )
-
-        -- don't override the built-in and fugitive keymaps
-        local gs = package.loaded.gitsigns
-        vim.keymap.set({ "n", "v" }, "]c", function()
-          if vim.wo.diff then
-            return "]c"
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return "<Ignore>"
-        end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
-        vim.keymap.set({ "n", "v" }, "[c", function()
-          if vim.wo.diff then
-            return "[c"
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return "<Ignore>"
-        end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
-      end,
-    },
+    opts = {},
   },
 
   {
     -- Set lualine as statusline
     "nvim-lualine/lualine.nvim",
-    -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = true,
         component_separators = "|",
         section_separators = "",
       },
     },
   },
-
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
 
   {
     -- Fuzzy Finder (files, lsp, etc)
@@ -152,22 +71,9 @@ return {
         },
         file_ignore_patterns = {
           "node_modules/",
+          "venv/",
+          "%.venv/",
           "%.git/",
-        },
-      },
-      pickers = {
-        git_files = {
-          theme = "dropdown",
-        },
-        find_files = {
-          theme = "dropdown",
-          hidden = true,
-        },
-        grep_string = {
-          theme = "dropdown",
-        },
-        live_grep = {
-          theme = "dropdown",
         },
       },
     },
@@ -223,15 +129,6 @@ return {
         additional_vim_regex_highlighting = false,
       },
       indent = { enable = false },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<c-space>",
-          node_incremental = "<c-space>",
-          scope_incremental = "<c-s>",
-          node_decremental = "<M-space>",
-        },
-      },
     },
   },
 
@@ -248,22 +145,6 @@ return {
     "ThePrimeagen/harpoon",
     dependencies = {
       "nvim-lua/plenary.nvim",
-    },
-  },
-
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = true,
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {
-      indent = {
-        char = "│",
-      },
     },
   },
 
