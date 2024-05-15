@@ -9,6 +9,12 @@ return {
   -- Good old gen-AI
   "github/copilot.vim",
 
+  -- Used by many plugins
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = {},
+  },
+
   -- Useful plugin to show you pending keybinds.
   {
     "folke/which-key.nvim",

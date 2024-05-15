@@ -1,7 +1,6 @@
 -- Must happen before plugins are required
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-require("config.options")
 
 -- Install package manager
 -- `:help lazy.nvim.txt` for more info
@@ -25,6 +24,8 @@ require("lazy").setup("custom.plugins", {
   },
 })
 
+-- Just put these in plugin/
 require("config.filetype")
 require("config.keymaps")
 require("config.autocmds")
+require("config.options")
