@@ -4,7 +4,9 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
-    config = function() end,
+    config = function()
+      vim.cmd.colorscheme("gruvbox")
+    end,
   },
   {
     "folke/tokyonight.nvim",
@@ -37,7 +39,6 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("catppuccin")
       local mocha = require("catppuccin.palettes").get_palette("mocha")
       vim.api.nvim_set_hl(0, "IblScope", { fg = mocha.overlay2 })
       vim.api.nvim_set_hl(0, "IblIndent", { fg = mocha.surface1 })
