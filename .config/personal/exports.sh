@@ -2,6 +2,7 @@
 
 # PATH
 export PATH="$XDG_CONFIG_HOME/personal/scripts:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Misc exports
 export EDITOR="nvim"

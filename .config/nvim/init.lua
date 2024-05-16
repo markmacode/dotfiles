@@ -24,8 +24,3 @@ require("lazy").setup("custom.plugins", {
   },
 })
 
--- Just put these in plugin/
-require("config.filetype")
-require("config.keymaps")
-require("config.autocmds")
-require("config.options")

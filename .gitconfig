@@ -12,6 +12,9 @@
 [push]
     autoSetupRemote = true
 
+[fetch]
+    prune = true
+
 [pager]
     branch = false
 
