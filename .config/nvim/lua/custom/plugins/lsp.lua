@@ -107,6 +107,7 @@ return {
         bashls = {},
         svelte = {},
         html = {},
+        yamlls = {},
         lua_ls = {
           settings = {
             Lua = {
