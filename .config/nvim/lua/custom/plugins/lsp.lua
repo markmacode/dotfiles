@@ -142,13 +142,6 @@ return {
           end,
         },
       })
-
-      -- Need to do this outside `servers` because gdscript is not supported
-      -- by Mason, and Mason is strict
-      -- require('lspconfig').gdscript.setup({
-      --   capabilities = {},
-      --   cmd = { "nc", "localhost", os.getenv("GDScript_Port") or "6005" },
-      -- })
     end,
   },
 }

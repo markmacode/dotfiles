@@ -7,5 +7,6 @@ vim.filetype.add({
   pattern = {
     ["Jenkinsfile.*"] = "groovy",
     [".gitignore..*"] = "gitignore",
+    ["*.gd"] = "gdscript",
   },
 })
