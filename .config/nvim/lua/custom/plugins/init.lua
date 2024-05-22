@@ -97,45 +97,44 @@ return {
       "windwp/nvim-ts-autotag",
     },
     build = ":TSUpdate",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "c",
-        "cpp",
-        "godot_resource",
-        "gdscript",
-        "go",
-        "javascript",
-        "kdl",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "rust",
-        "svelte",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "yaml",
-      },
-
-      auto_install = true,
-      ignore_install = {},
-      autotag = {
-        enable = true,
-      },
-      endwise = {
-        enable = true,
-      },
-      highlight = {
-        enable = true,
-        -- For better performance and making sure there is no conflicts
-        -- with highlight grups that interact directly with treesitter.
-        additional_vim_regex_highlighting = false,
-      },
-      indent = { enable = false },
-    },
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        modules = {},
+        ensure_installed = {
+          "bash",
+          "c",
+          "cpp",
+          "css",
+          "godot_resource",
+          "gdscript",
+          "go",
+          "javascript",
+          "kdl",
+          "lua",
+          "markdown",
+          "markdown_inline",
+          "python",
+          "rust",
+          "svelte",
+          "typescript",
+          "vim",
+          "vimdoc",
+          "yaml",
+        },
+        ignore_install = {},
+        sync_install = false,
+        auto_install = true,
+        autotag = { enable = true },
+        endwise = { enable = true },
+        indent = { enable = false },
+        highlight = {
+          enable = true,
+          -- For better performance and making sure there is no conflicts
+          -- with highlight grups that interact directly with treesitter.
+          additional_vim_regex_highlighting = false,
+        },
+      })
+    end,
   },
 
   {

@@ -17,3 +17,6 @@ export FZF_DEFAULT_OPTS=" \
 export BAT_THEME="catppuccin-mocha"
 export NVM_DIR="$HOME/.nvm"
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -33,7 +33,8 @@ eval "$(zoxide init zsh)"
 
 # Shell completions
 [ -s "$ZSH/completions/_bun" ] && source "$ZSH/completions/_bun"
-[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
 
 [ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"
+
