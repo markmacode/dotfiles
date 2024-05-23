@@ -189,7 +189,9 @@ return {
 
   {
     "m4xshen/smartcolumn.nvim",
-    opts = {},
+    opts = {
+      colorcolumn = "81",
+    },
   },
 
   -- Godot file syntax highlighting is lacking without this

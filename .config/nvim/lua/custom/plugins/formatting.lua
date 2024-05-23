@@ -6,21 +6,10 @@ return {
     dependencies = {
       "mason.nvim",
     },
-    keys = {
-      {
-        "<leader>f",
-        function()
-          if not require("conform").format() then
-            vim.lsp.buf.format()
-          end
-        end,
-        mode = { "n", "v" },
-        desc = "[F]ormat file with conform",
-      },
-    },
     opts = {
       format = {
-        timeout_ms = 3000,
+        timeout_ms = 500,
+        lsp_fallback = true,
         async = false, -- not recommended to change
         quiet = false, -- not recommended to change
       },
@@ -29,8 +18,17 @@ return {
         markdown = { "mdformat" },
         sh = { "shfmt" },
         lua = { "stylua" },
+        svelte = { "prettier" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        ["_"] = { "trim_whitespace" },
       },
       formatters = {
+        prettier = {
+          prepend_args = { "--plugin=prettier-plugin-svelte" },
+        },
         mdformat = {
           prepend_args = { "--number" },
         },
