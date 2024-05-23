@@ -122,6 +122,12 @@ map(
   require("telescope.builtin").resume,
   { desc = "[S]earch [R]esume" }
 )
+map(
+  "n",
+  "<leader>/",
+  require("telescope.builtin").current_buffer_fuzzy_find,
+  { desc = "Fuzzy search current buffer" }
+)
 
 -- [[ Diagnostics ]]
 map(
