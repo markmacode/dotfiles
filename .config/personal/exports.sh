@@ -10,11 +10,11 @@ export PAGER="bat"
 
 export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{\.git,node_modules}"'
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+--color=bg+:#3c3836,bg:#32302f,spinner:#8ec07c,hl:#83a598 \
+--color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c \
+--color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#838ba8"
 
-export BAT_THEME="catppuccin-mocha"
+export BAT_THEME="gruvbox-dark"
 export NVM_DIR="$HOME/.nvm"
 
 # bun

@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm'
 local module = {}
 
-local light = "Catppuccin Latte"
-local dark = "Catppuccin Mocha"
+local light = "GruvboxLight"
+local dark = "GruvboxDark"
 
 function module.apply(config)
     -- Auto change light or dark mode depending on system config
