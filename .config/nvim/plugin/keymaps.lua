@@ -38,15 +38,6 @@ map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 map("n", "k", 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
 map("n", "j", 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
--- [[ Neotree ]]
--- see `:help neo-tree` or `:help Neotree`
-map(
-  "n",
-  "<leader>t",
-  "<cmd>Neotree position=right<CR>",
-  { desc = "Neo[t]ree Files" }
-)
-
 -- [[ Formatting ]]
 map(
   { "n", "v" },
