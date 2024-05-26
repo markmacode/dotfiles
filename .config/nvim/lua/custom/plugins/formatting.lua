@@ -3,9 +3,13 @@
 return {
   {
     "stevearc/conform.nvim",
-    dependencies = {
-      "mason.nvim",
-    },
+    lazy = false,
+    keys = function()
+      local conform = require('conform')
+      return {
+        { "<leader>f", conform.format, desc = "[F]ormat file" },
+      }
+    end,
     opts = {
       format = {
         timeout_ms = 500,
@@ -26,9 +30,6 @@ return {
         ["_"] = { "trim_whitespace" },
       },
       formatters = {
-        prettier = {
-          prepend_args = { "--plugin=prettier-plugin-svelte" },
-        },
         mdformat = {
           prepend_args = { "--number" },
         },

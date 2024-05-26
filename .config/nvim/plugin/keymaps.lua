@@ -1,8 +1,8 @@
 local map = vim.keymap.set
 
 map("i", "jk", "<Esc>")
-map("n", "<leader>w", "<cmd>w<CR>")
 map("n", "Q", "<nop>")
+map("n", "q:", "<nop>")
 
 -- move selected and indent automatically
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -32,19 +32,11 @@ end, { expr = true })
 
 -- [[ Basic Keymaps ]]
 -- Keymaps for better default experience
-map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+map({ "n", "v" }, "<Space>", "<Nop>", { noremap = true })
 
 -- Remap for dealing with word wrap
 map("n", "k", 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
 map("n", "j", 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
-
--- [[ Formatting ]]
-map(
-  { "n", "v" },
-  "<leader>f",
-  require("conform").format,
-  { desc = "[F]ormat file with conform" }
-)
 
 -- [[ Telescope ]]
 -- See `:help telescope.builtin`
@@ -75,13 +67,13 @@ map(
   "n",
   "<leader>gf",
   require("telescope.builtin").git_files,
-  { desc = "Search [G]it [F]iles" }
+  { desc = "search git files" }
 )
 map(
-  "n",
+  { "n", "v" },
   "<leader>sf",
   require("telescope.builtin").find_files,
-  { desc = "[S]earch [F]iles" }
+  { desc = "search files" }
 )
 map(
   "n",

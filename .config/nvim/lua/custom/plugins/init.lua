@@ -15,6 +15,17 @@ return {
     opts = {},
   },
 
+  {
+    "ggandor/leap.nvim",
+    lazy = false,
+    config = function()
+      -- Don's mess with lazy.nvim window keybind
+      vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
+      vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
+      vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
+    end,
+  },
+
   -- Useful plugin to show you pending keybinds.
   {
     "folke/which-key.nvim",
@@ -54,38 +65,6 @@ return {
         section_separators = "",
       },
     },
-  },
-
-  {
-    -- Fuzzy Finder (files, lsp, etc)
-    "nvim-telescope/telescope.nvim",
-    version = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-      },
-    },
-    opts = {
-      defaults = {
-        mappings = {
-          i = {
-            ["<C-u>"] = false,
-            ["<C-d>"] = false,
-          },
-        },
-        file_ignore_patterns = {
-          "node_modules/",
-          "venv/",
-          "%.venv/",
-          "%.git/",
-        },
-      },
-    },
-    config = function()
-      require("telescope").load_extension("fzf")
-    end,
   },
 
   {

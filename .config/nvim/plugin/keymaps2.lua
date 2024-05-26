@@ -20,60 +20,53 @@
 --     description: string,
 --     opts: table|nil,
 --   }
+local resets = {
+  J = { "<nop>" },
+  K = { "<nop>" },
+}
+
 local keymap = {
-  {
-    "<Space>",
-    "<Nop>",
-    "",
-    { "n", "v" },
-    { silent = true },
+  J = {
+    d = { vim.diagnostic.goto_next, "next: diagnostic" },
   },
-  {
-    "<leader>s",
-    "*search",
-    {
-      {
-        "r",
-        require("telescope.builtin").git_files,
-        "git *repo",
-        "n",
-      },
-      {
-        "f",
-        require("telescope.builtin").find_files,
-        "*files",
-        "n",
-      },
-      {
-        "h",
-        require("telescope.builtin").help_tags,
-        "*help",
-        "n",
-      },
-      {
-        "w",
-        require("telescope.builtin").grep_string,
-        "current *word",
-        "n",
-      },
-      {
-        "g",
-        require("telescope.builtin").live_grep,
-        "by *grep",
-        "n",
-      },
-      {
-        "d",
-        require("telescope.builtin").diagnostics,
-        "*diagnostics",
-        "n",
-      },
-      {
-        "a",
-        require("telescope.builtin").resume,
-        "*again",
-        "n",
-      },
-    },
+  K = {
+    d = { vim.diagnostic.goto_prev, "previous: diagnostic" },
+  },
+  ["<leader>"] = {
+    d = function()
+      local t = require("telescope.builtin")
+      return {
+        b = { t.diagnostics({ bufnr = 0 }), "diagnostics: in buffer" },
+        w = { t.diagnostics, "diagnostics: in workspace" },
+      }
+    end,
+    r = function ()
+      return {
+        n = { vim.lsp.buf.rename, "refactor: rename" },
+        a = { vim.lsp.buf.rename, "refactor: rename" }
+      }
+    end,
+    l = function()
+      local t = require("telescope.builtin")
+      return {
+        b = { t.lsp_document_symbols, "lsp: buffer symbols" },
+        d = { t.lsp_definitions, "lsp: definitions of word" },
+        D = { vim.lsp.buf.declaration, "lsp: declaration of word" },
+        i = { t.lsp_implementations, "lsp: implementations of word" },
+        r = { t.lsp_references, "lsp: references for word" },
+        t = { t.lsp_type_definitions, "lsp: type definitions of word" },
+        w = { t.lsp_dynamic_workspace_symbols, "lsp: workspace symbols" },
+      }
+    end,
+    s = function()
+      local t = require("telescope.builtin")
+      return {
+        f = { t.find_files, "search: workspace files" },
+        g = { t.live_grep, "search: workspace with grep" },
+        h = { t.help_tags, "search: help tags" },
+        r = { t.resume, "search: resume" },
+        w = { t.grep_string, "search: workspace for word" },
+      }
+    end,
   },
 }
