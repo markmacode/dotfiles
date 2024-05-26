@@ -40,16 +40,21 @@ local keymap = {
         w = { t.diagnostics, "diagnostics: in workspace" },
       }
     end,
-    r = function ()
+    r = function()
       return {
         n = { vim.lsp.buf.rename, "refactor: rename" },
-        a = { vim.lsp.buf.rename, "refactor: rename" }
+        a = { vim.lsp.buf.code_action, "refactor: code action" },
       }
     end,
     l = function()
       local t = require("telescope.builtin")
       return {
-        b = { t.lsp_document_symbols, "lsp: buffer symbols" },
+        s = {
+          t.lsp_document_symbols({
+            symbols = { "function", "method", "class", "struct" },
+          }),
+          "lsp: buffer symbols",
+        },
         d = { t.lsp_definitions, "lsp: definitions of word" },
         D = { vim.lsp.buf.declaration, "lsp: declaration of word" },
         i = { t.lsp_implementations, "lsp: implementations of word" },

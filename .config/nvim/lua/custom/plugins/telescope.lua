@@ -9,20 +9,6 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   config = function()
-    require("telescope").load_extension("fzf")
-    require("telescope").setup({
-      defaults = {
-        sorting_strategy = "ascending",
-        layout_config = {
-          prompt_position = "top",
-        },
-        file_ignore_patterns = {
-          "node_modules/",
-          "venv/",
-          "%.venv/",
-          "%.git/",
-        },
-      },
-    })
+    require("custom.telescope")
   end,
 }
