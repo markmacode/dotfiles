@@ -17,12 +17,32 @@ return {
 
   {
     "ggandor/leap.nvim",
+    enabled = false,
     lazy = false,
     config = function()
       -- Don's mess with lazy.nvim window keybind
       vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
       vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
       vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
+    end,
+  },
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = function()
+      local f = require("flash")
+      return {
+        { "s", mode = { "n", "x", "o" }, f.jump, desc = "Flash" },
+        {
+          "S",
+          mode = { "n", "x", "o" },
+          f.treesitter,
+          desc = "Flash Treesitter",
+        },
+        { "<c-s>", mode = { "c" }, f.toggle, desc = "Toggle Flash Search" },
+      }
     end,
   },
 
