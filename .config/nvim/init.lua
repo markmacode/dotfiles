@@ -2,8 +2,11 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Install package manager
--- `:help lazy.nvim.txt` for more info
+-- pre-plugin setup
+require("custom.config.options")
+require("custom.config.filetype")
+
+-- Install lazy.nvim package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -16,6 +19,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 
+---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("custom.plugins", {
   change_detection = {
@@ -24,3 +28,6 @@ require("lazy").setup("custom.plugins", {
   },
 })
 
+-- post-plugin setup
+require("custom.config.autocmds")
+require("custom.config.keymaps")

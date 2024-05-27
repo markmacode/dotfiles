@@ -1,8 +1,4 @@
 return {
-  -- Git
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
-
   -- Detect tabstop and shiftwidth automatically
   "tpope/vim-sleuth",
 
@@ -13,18 +9,6 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     opts = {},
-  },
-
-  {
-    "ggandor/leap.nvim",
-    enabled = false,
-    lazy = false,
-    config = function()
-      -- Don's mess with lazy.nvim window keybind
-      vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
-      vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
-      vim.keymap.set({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)")
-    end,
   },
 
   {
@@ -67,13 +51,6 @@ return {
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
-  },
-
-  {
-    -- Adds git related signs to the gutter.
-    -- As well as utilities for managing changes.
-    "lewis6991/gitsigns.nvim",
-    opts = {},
   },
 
   {
