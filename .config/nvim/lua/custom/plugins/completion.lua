@@ -5,7 +5,7 @@ return {
     version = false,
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
-      "L3MON4D3/LuaSnip",
+      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
       "saadparwaiz1/cmp_luasnip",
 
       -- Adds LSP completion capabilities
@@ -18,30 +18,7 @@ return {
       "rafamadriz/friendly-snippets",
     },
     opts = function()
-      local luasnip = require("luasnip")
-      local cmp = require("cmp")
-      return {
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete({}),
-          ["<Tab>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }),
-        }),
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        },
-      }
+      require("custom.completion")
     end,
   },
 }

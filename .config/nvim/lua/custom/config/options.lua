@@ -22,6 +22,3 @@ vim.opt.scrolloff = 8
 
 -- Show some commands in an updating window
 vim.opt.inccommand = "split"
-
--- Don't continue comments with `o`
-vim.opt.formatoptions:remove("o")
