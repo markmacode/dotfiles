@@ -4,10 +4,6 @@ map("i", "jk", "<Esc>")
 map("n", "Q", "<nop>")
 map("n", "q:", "<nop>")
 
--- move selected and indent automatically
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
-
 -- half-page jumping but stay centered
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
@@ -128,47 +124,6 @@ map(
   vim.diagnostic.setloclist,
   { desc = "Open diagnostics list" }
 )
-
--- [[ Harpoon ]]
-map(
-  "n",
-  "<leader>hi",
-  require("harpoon.mark").add_file,
-  { desc = "[H]arpoon [I]nsert file" }
-)
-map(
-  "n",
-  "<leader>hl",
-  require("harpoon.ui").toggle_quick_menu,
-  { desc = "[H]arpoon [L]ist files" }
-)
-map(
-  "n",
-  "<leader>hn",
-  require("harpoon.ui").nav_next,
-  { desc = "Harpoon [T]o [N]ext" }
-)
-map(
-  "n",
-  "<leader>hp",
-  require("harpoon.ui").nav_prev,
-  { desc = "Harpoon [T]o [P]revious" }
-)
-map("n", "<leader>1", function()
-  require("harpoon.ui").nav_file(1)
-end, { desc = "Harpoon to 1" })
-map("n", "<leader>2", function()
-  require("harpoon.ui").nav_file(2)
-end, { desc = "Harpoon to 2" })
-map("n", "<leader>3", function()
-  require("harpoon.ui").nav_file(3)
-end, { desc = "Harpoon to 3" })
-map("n", "<leader>4", function()
-  require("harpoon.ui").nav_file(4)
-end, { desc = "Harpoon to 4" })
-map("n", "<leader>5", function()
-  require("harpoon.ui").nav_file(5)
-end, { desc = "Harpoon to 5" })
 
 -- Lazygit
 -- No need to manually use git-dir and git-worktree args for lazygit

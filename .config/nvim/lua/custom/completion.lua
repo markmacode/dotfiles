@@ -17,7 +17,7 @@ cmp.setup({
     ["<C-p>"] = cmp.mapping.select_prev_item({
       behavior = cmp.SelectBehavior.Insert,
     }),
-    ["<Tab>"] = cmp.mapping(cmp.mapping.confirm({
+    ["<C-y>"] = cmp.mapping(cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     })),
