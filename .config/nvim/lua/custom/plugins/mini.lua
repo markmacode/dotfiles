@@ -4,7 +4,7 @@ return {
     config = function()
       require("mini.ai").setup()
       require("mini.basics").setup()
-      require("mini.diff").setup()
+      require("mini.diff").setup({ view = { style = "sign" } })
       require("mini.hipatterns").setup()
       require("mini.indentscope").setup({ symbol = "│" })
       require("mini.hipatterns").setup()

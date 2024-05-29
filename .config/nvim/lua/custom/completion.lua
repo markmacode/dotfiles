@@ -34,23 +34,23 @@ cmp.setup({
 
 require("custom.util").map({
   ["<C-k>"] = {
-    "snippet: cursor jump next",
     function()
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       end
     end,
+    "snippet: cursor jump next",
     mode = { "i", "s" },
-    opts = { silent = true },
+    silent = true,
   },
   ["<C-j>"] = {
-    "snippet: cursor jump previous",
     function()
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       end
     end,
+    "snippet: cursor jump previous",
     mode = { "i", "s" },
-    opts = { silent = true },
+    silent = true,
   },
 })

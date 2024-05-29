@@ -170,27 +170,15 @@ map("n", "<leader>5", function()
   require("harpoon.ui").nav_file(5)
 end, { desc = "Harpoon to 5" })
 
--- [[ ToggleTerm (floating terminal) ]]
-function _lazygit_toggle()
+-- Lazygit
+-- No need to manually use git-dir and git-worktree args for lazygit
+-- because I set the equivalent env vars in autocommands now.
+map("n", "<leader>l", function()
   local Terminal = require("toggleterm.terminal").Terminal
   local lazygit = Terminal:new({
     cmd = "lazygit",
     direction = "float",
     hidden = true, -- Do not show in `:ToggleTerm` commands
   })
-  local cwd = vim.fn.getcwd()
-  local env_xdg = vim.fn.getenv("XDG_CONFIG_HOME")
-  local env_home = vim.fn.getenv("HOME")
-  if cwd:sub(1, #env_xdg) == env_xdg or cwd == env_home then
-    -- Requires my dotfiles `dot` command
-    lazygit.cmd = "lazygit -g $HOME/.dot -w $HOME"
-  end
   lazygit:toggle()
-end
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>l",
-  "<cmd>lua _lazygit_toggle()<CR>",
-  { noremap = true, silent = true }
-)
+end, { noremap = true, silent = true })
