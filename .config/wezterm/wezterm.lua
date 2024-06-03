@@ -1,39 +1,39 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
-config.leader = { key = 'e', mods = 'CTRL', timeout_milliseconds = 1000 }
-config.keys = require('keymap')
+config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
+config.keys = require("keymap")
 
 -- Font stuff
-local font = 'Brosevka Nerd Font'
+local font = "Brosevka Nerd Font"
 config.font_size = 18
-config.font = wezterm.font {
+config.font = wezterm.font({
   family = font,
-  weight = 'Regular',
-  harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
-}
+  weight = "Regular",
+  harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+})
 config.font_rules = {
   -- Bold and non-italic
   {
-    intensity = 'Bold',
+    intensity = "Bold",
     italic = false,
-    font = wezterm.font {
+    font = wezterm.font({
       family = font,
-      weight = 'Bold',
-    },
+      weight = "Bold",
+    }),
   },
 
   -- Bold and italic
   {
-    intensity = 'Bold',
+    intensity = "Bold",
     italic = true,
-    font = wezterm.font {
+    font = wezterm.font({
       family = font,
-      weight = 'Bold',
-      style = 'Italic',
-    },
+      weight = "Bold",
+      style = "Italic",
+    }),
   },
 }
 
@@ -49,6 +49,6 @@ config.window_padding = {
 -- Snap to the size of cells
 -- config.use_resize_increments = true
 
-require('windows').apply(config)
-require('colors').apply(config)
+require("windows").apply(config)
+require("colors").apply(config)
 return config

@@ -10,6 +10,9 @@ telescope.setup({
       -- For some reason flex is not smart enough
       flip_columns = 120,
       flip_lines = 40,
+      -- horizontal = {
+      --   preview_width = 81,
+      -- },
     },
     file_ignore_patterns = {
       "node_modules/",

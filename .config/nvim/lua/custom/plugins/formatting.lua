@@ -24,7 +24,6 @@ return {
       typescript = { "prettier" },
       css = { "prettier" },
       html = { "prettier" },
-      ["_"] = { "trim_whitespace" },
     },
     formatters = {
       mdformat = {
