@@ -5,6 +5,7 @@ return {
     "nvim-treesitter/playground",
     "nvim-treesitter/nvim-treesitter-textobjects",
     "RRethy/nvim-treesitter-endwise",
+    "RRethy/nvim-treesitter-textsubjects",
     "windwp/nvim-ts-autotag",
   },
   build = ":TSUpdate",
