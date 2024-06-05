@@ -3,7 +3,7 @@ vim.api.nvim_set_hl(0, "@parameter", { italic = true })
 -- Sign columns
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "auto:3" -- Allows git signs and diagnostics
+vim.opt.signcolumn = "auto:1-3" -- Allows git signs and diagnostics
 
 -- Tabs and indentation
 vim.opt.tabstop = 4
