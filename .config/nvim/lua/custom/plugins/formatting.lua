@@ -29,9 +29,6 @@ return {
       mdformat = {
         prepend_args = { "--number" },
       },
-      shfmt = {
-        prepend_args = { "-i", "4", "-ci" },
-      },
     },
   },
 }

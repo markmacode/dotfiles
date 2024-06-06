@@ -4,12 +4,6 @@ map("i", "jk", "<Esc>")
 map("n", "Q", "<nop>")
 map("n", "q:", "<nop>")
 
--- window movement
-map("n", "<c-j>", "<c-w><c-j>")
-map("n", "<c-k>", "<c-w><c-k>")
-map("n", "<c-l>", "<c-w><c-l>")
-map("n", "<c-h>", "<c-w><c-h>")
-
 -- half-page jumping but stay centered
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
