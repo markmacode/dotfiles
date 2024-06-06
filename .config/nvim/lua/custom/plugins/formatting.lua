@@ -27,7 +27,7 @@ return {
     },
     formatters = {
       mdformat = {
-        prepend_args = { "--number" },
+        prepend_args = { "--number", "--wrap", "80" },
       },
     },
   },
