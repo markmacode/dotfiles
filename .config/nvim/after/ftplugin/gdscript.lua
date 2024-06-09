@@ -7,3 +7,6 @@ vim.lsp.start({
   cmd = cmd,
   root_dir = vim.fs.dirname(root_dir),
 })
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.shiftwidth = 4
