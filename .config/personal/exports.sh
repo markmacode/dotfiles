@@ -2,6 +2,7 @@
 
 # PATH
 export PATH="$XDG_CONFIG_HOME/personal/scripts:$PATH"
+export PATH="$XDG_BIN_HOME:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
