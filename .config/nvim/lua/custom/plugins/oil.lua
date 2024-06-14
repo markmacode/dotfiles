@@ -19,6 +19,7 @@ return {
   init = function()
     require("oil").setup({
       view_options = {
+        skip_confirm_for_simple_edits = false,
         show_hidden = true,
         ---@diagnostic disable-next-line: unused-local
         is_always_hidden = function(name, bufnr)

@@ -55,3 +55,5 @@
 
 [include]
     path = ~/.gitconfig.inject
+[color]
+	status = always
