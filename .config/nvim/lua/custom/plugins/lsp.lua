@@ -23,8 +23,6 @@ local servers = {
         completion = {
           callSnippet = "Replace",
         },
-        -- Toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        -- diagnostics = { disable = { 'missing-fields' } },
       },
     },
   },
@@ -67,30 +65,20 @@ return {
           })
         end
 
-        local telescope = require("telescope.builtin")
+        local tb = require("telescope.builtin")
 
         -- Jump to the definition of the word under your cursor.
         -- This is where a variable was first declared, or where a function is
         -- defined, etc.
         -- To jump back, press <C-t>.
-        map("gd", telescope.lsp_definitions, "[G]oto [D]efinition")
-        map("gr", telescope.lsp_references, "[G]oto [R]eferences")
-        map("gI", telescope.lsp_implementations, "[G]oto [I]mplementation")
-        map("<leader>D", telescope.lsp_type_definitions, "Type [D]efinition")
-        map(
-          "<leader>ds",
-          telescope.lsp_document_symbols,
-          "[D]ocument [S]ymbols"
-        )
-        map(
-          "<leader>ws",
-          telescope.lsp_dynamic_workspace_symbols,
-          "[W]orkspace [S]ymbols"
-        )
-        map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+        map("<leader>ld", tb.lsp_definitions, "[G]oto [D]efinition")
+        map("<leader>lr", tb.lsp_references, "[G]oto [R]eferences")
+        map("<leader>li", tb.lsp_implementations, "[G]oto [I]mplementation")
+        map("<leader>lt", tb.lsp_type_definitions, "Type [D]efinition")
+        map("<leader>lD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+        map("<leader>ar", vim.lsp.buf.rename, "[R]e[n]ame")
+        map("<leader>aa", vim.lsp.buf.code_action, "[C]ode [A]ction")
         map("H", vim.lsp.buf.hover, "Hover Documentation")
-        map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
       end,
     })
 

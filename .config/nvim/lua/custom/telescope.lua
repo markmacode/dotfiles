@@ -7,18 +7,13 @@ telescope.setup({
     layout_strategy = "flex",
     layout_config = {
       prompt_position = "top",
-      -- For some reason flex is not smart enough
+      -- For some reason builtin flex is not smart enough
       flip_columns = 120,
       flip_lines = 40,
-      -- horizontal = {
-      --   preview_width = 81,
-      -- },
     },
     file_ignore_patterns = {
-      "node_modules/",
-      "venv/",
-      "%.venv/",
-      "%.git/",
+      ".DS_Store",
+      ".git/",
     },
   },
 })

@@ -1,6 +1,7 @@
 require("which-key").register({
-  ["<leader>c"] = { name = "+code/lsp" },
-  ["<leader>cs"] = { name = "+surround" },
+  ["<leader>a"] = { name = "+action/refactor" },
+  ["<leader>as"] = { name = "+surround" },
+  ["<leader>l"] = { name = "+lsp" },
   ["<leader>f"] = { name = "+file/buffer" },
   ["<leader>g"] = { name = "+git" },
   ["<leader>s"] = { name = "+search" },
