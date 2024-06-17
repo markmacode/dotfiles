@@ -1,5 +1,6 @@
 return {
   "folke/trouble.nvim",
+  version = "2.x",
   -- keys = {
   --   {
   --     "<leader>xx",

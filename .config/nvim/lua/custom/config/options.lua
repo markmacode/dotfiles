@@ -6,10 +6,10 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes:1" -- Allows git signs and diagnostics
 
 -- Tabs and indentation
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
 
 -- Use the "+ register
 vim.opt.clipboard = "unnamedplus"
