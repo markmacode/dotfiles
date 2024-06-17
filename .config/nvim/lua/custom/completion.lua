@@ -32,25 +32,27 @@ cmp.setup({
   },
 })
 
-require("custom.util").map({
-  ["<C-k>"] = {
+require("custom.util").keys({
+  {
+    "<C-k>",
     function()
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       end
     end,
-    "snippet: cursor jump next",
     mode = { "i", "s" },
+    desc = "snippet: cursor jump next",
     silent = true,
   },
-  ["<C-j>"] = {
+  {
+    "<C-j>",
     function()
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       end
     end,
-    "snippet: cursor jump previous",
     mode = { "i", "s" },
+    desc = "snippet: cursor jump previous",
     silent = true,
   },
 })
