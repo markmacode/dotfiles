@@ -34,14 +34,4 @@ function M.map(table, extra_opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
----@param tables table
----@return table
-function M.combine(tables)
-  local ret = {}
-  for _, value in ipairs(tables) do
-    vim.tbl_deep_extend("force", {}, value, ret)
-  end
-  return ret
-end
-
 return M

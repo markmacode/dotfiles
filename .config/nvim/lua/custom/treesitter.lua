@@ -1,23 +1,13 @@
 ---@diagnostic disable: missing-fields
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
-    "bash",
-    "css",
     "gdscript",
     "godot_resource",
-    "javascript",
-    "kdl",
-    "lua",
     "markdown_inline",
-    "python",
-    "rust",
-    "svelte",
-    "typescript",
-    "yaml",
   },
   auto_install = true,
-  autotag = { enable = true },
-  endwise = { enable = true },
+  autotag = { enable = false },
+  endwise = { enable = false },
   indent = { enable = false },
   highlight = {
     enable = true,
