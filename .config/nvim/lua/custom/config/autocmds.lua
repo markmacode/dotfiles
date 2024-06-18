@@ -1,10 +1,8 @@
-local function augroup(name)
-  return vim.api.nvim_create_augroup("mbromell_" .. name, { clear = true })
-end
+local group = vim.api.nvim_create_augroup("mbromell", { clear = true })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup("highlight_yank"),
+  group = group,
   callback = function()
     vim.highlight.on_yank()
   end,
@@ -13,7 +11,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Use my dotfiles git worktree for git integration features
 -- in neovim.
 vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
-  group = augroup("dirchanged_dotfiles_git"),
+  group = group,
   callback = function()
     local cwd = vim.fn.getcwd()
     local env_xdg = vim.fn.getenv("XDG_CONFIG_HOME")
@@ -29,7 +27,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 -- the dotfiles git vars may be set but the new dir may be
 -- another git project .
 vim.api.nvim_create_autocmd("DirChangedPre", {
-  group = augroup("dirchanged_pre_dofile_git"),
+  group = group,
   callback = function()
     vim.env.GIT_WORK_TREE = nil
     vim.env.GIT_DIR = nil

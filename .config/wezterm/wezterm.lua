@@ -7,35 +7,12 @@ config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = require("keymap")
 
 -- Font stuff
-local font = "Brosevka Nerd Font"
+local font = "JetBrainsMono Nerd Font"
 config.font_size = 18
 config.font = wezterm.font({
   family = font,
-  weight = "Regular",
-  harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
-config.font_rules = {
-  -- Bold and non-italic
-  {
-    intensity = "Bold",
-    italic = false,
-    font = wezterm.font({
-      family = font,
-      weight = "Bold",
-    }),
-  },
-
-  -- Bold and italic
-  {
-    intensity = "Bold",
-    italic = true,
-    font = wezterm.font({
-      family = font,
-      weight = "Bold",
-      style = "Italic",
-    }),
-  },
-}
+config.line_height = 1.1
 
 -- Window stuff
 config.enable_tab_bar = false
