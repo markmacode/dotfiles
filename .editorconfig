@@ -11,5 +11,8 @@ indent_size = 4
 [*.{lua,js,ts,html,css,scss,json,yaml,yml}]
 indent_size = 2
 
-[Makefile,*.{go,gdscript}]
+[Makefile]
+indent_style = tab
+
+[*.{go,gd}]
 indent_style = tab

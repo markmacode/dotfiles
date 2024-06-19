@@ -6,7 +6,12 @@ return {
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter").setup({
-        ensure_installed = { "core", "stable" },
+        ensure_install = {
+          "core",
+          "stable",
+          "godot_resource",
+          "gdscript",
+        },
       })
 
       -- Enable highlighting

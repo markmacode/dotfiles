@@ -22,9 +22,8 @@ map("n", "<CR>", function()
   if vim.opt.hlsearch:get() then
     vim.cmd.nohl()
     return ""
-  else
-    return "<CR>"
   end
+  return "<CR>"
 end, { expr = true })
 
 -- Remap for dealing with word wrap
