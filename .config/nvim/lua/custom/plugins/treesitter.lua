@@ -31,6 +31,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     branch = "main",
     config = function()

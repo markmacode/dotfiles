@@ -1,6 +1,5 @@
 return {
   "stevearc/conform.nvim",
-  lazy = false,
   keys = function()
     local conform = require("conform")
     return {

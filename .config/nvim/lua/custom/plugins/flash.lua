@@ -1,6 +1,6 @@
 return {
   "folke/flash.nvim",
-  event = "VeryLazy",
+  lazy = true,
   opts = {},
   keys = function()
     local f = require("flash")
