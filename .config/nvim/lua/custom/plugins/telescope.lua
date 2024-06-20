@@ -14,7 +14,18 @@ return {
       { "<leader>sp", tb.builtin, desc = "Telescope pickers" },
       { "<leader>sr", tb.oldfiles, desc = "Recent files" },
       { "<leader>sb", tb.buffers, desc = "Buffers" },
-      { "<leader>sf", tb.git_files, desc = "Git files" },
+      -- TODO: include files that are unstaged
+      {
+        "<leader>sf",
+        function()
+          if vim.env.GIT_WORK_TREE == vim.fn.expand("~") then
+            tb.git_files({ show_untracked = false })
+          else
+            tb.git_files()
+          end
+        end,
+        desc = "Git files",
+      },
       { "<leader>sd", tb.find_files, desc = "CWD files" },
       { "<leader>sh", tb.help_tags, desc = "Help" },
       { "<leader>sw", tb.grep_string, desc = "Word (grep)" },

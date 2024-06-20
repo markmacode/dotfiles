@@ -8,11 +8,8 @@
 Brewfile
 README.md
 dotfiles.sh
-.config/alacritty/
 .config/bat/
-.config/btop/
 .config/lazygit/
-.config/linearmouse/
 .config/nvim/
 .config/personal/
 .config/tmux/

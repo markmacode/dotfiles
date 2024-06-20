@@ -5,6 +5,7 @@ require("which-key").register({
   ["<leader>f"] = { name = "+file/buffer" },
   ["<leader>g"] = { name = "+git" },
   ["<leader>s"] = { name = "+search" },
+  ["<leader>x"] = { name = "+quickfix/diagnostics" },
   ["["] = { name = "+prev" },
   ["]"] = { name = "+next" },
   ["z"] = { name = "+fold" },

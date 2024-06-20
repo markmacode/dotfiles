@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 
 -- Unset git worktree env vars BEFORE changing dirs, because
 -- the dotfiles git vars may be set but the new dir may be
--- another git project .
+-- another git project.
 vim.api.nvim_create_autocmd("DirChangedPre", {
   group = group,
   callback = function()

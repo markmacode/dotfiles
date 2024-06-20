@@ -1,5 +1,5 @@
+require("mini.basics").setup()
 require("mini.diff").setup({ view = { style = "sign" } })
-require("mini.hipatterns").setup()
 require("mini.indentscope").setup({ symbol = "│" })
 require("mini.statusline").setup()
 require("mini.hipatterns").setup()

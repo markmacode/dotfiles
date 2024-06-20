@@ -2,6 +2,11 @@ local telescope = require("telescope")
 
 telescope.load_extension("fzf")
 telescope.setup({
+  pickers = {
+    git_files = {
+      show_untracked = true,
+    },
+  },
   defaults = {
     sorting_strategy = "ascending",
     layout_strategy = "flex",

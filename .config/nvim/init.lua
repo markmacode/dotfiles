@@ -1,12 +1,8 @@
--- Must happen before plugins are required
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- pre-plugin setup
 require("custom.config.options")
 require("custom.config.filetype")
 
--- Install lazy.nvim package manager
+-- install lazy.nvim package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -19,6 +15,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 
+-- use the `lua/custom/plugins/` directory for plugin specs
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("custom.plugins", {
