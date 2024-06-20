@@ -49,3 +49,8 @@ map("n", "<leader>l", function()
   })
   lazygit:toggle()
 end, { noremap = true, silent = true })
+
+-- Quickfix
+map("n", "[x", "<cmd>cprev<cr>", { desc = "Quickfix prev" })
+map("n", "]x", "<cmd>cnext<cr>", { desc = "Quickfix next" })
+map("n", "<leader>xf", "<cmd>cfirst<cr>", { desc = "Quickfix first" })
