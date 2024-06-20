@@ -16,15 +16,15 @@ require("custom.util").keys({
   -- diagnostics
   { "[q", vim.cmd.cprevious, desc = "Quickfix prev" },
   { "]q", vim.cmd.cnext, desc = "Quickfix next" },
-  { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
-  { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
-  { "<leader>xi", vim.diagnostic.open_float, desc = "Open floating diagnostic message" },
+  { "[x", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
+  { "]x", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
+  { "<leader>xh", vim.diagnostic.open_float, desc = "Open diagnostic hover window" },
   { "<leader>xx", vim.diagnostic.setqflist, desc = "Open diagnostics list" },
   { "<leader>xX", vim.diagnostic.setloclist, desc = "Open diagnostics list (buffer)" },
 
   -- toggle hlsearch if it's on, otherwise just do "enter"
   {
-    "<CR>",
+    "<cr>",
     function()
       ---@diagnostic disable-next-line: undefined-field
       if vim.opt.hlsearch:get() then
@@ -34,22 +34,5 @@ require("custom.util").keys({
       return "<CR>"
     end,
     expr = true,
-  },
-
-  -- lazygit
-  {
-    "<leader>gg",
-    function()
-      local Terminal = require("toggleterm.terminal").Terminal
-      local lazygit = Terminal:new({
-        cmd = "lazygit",
-        direction = "float",
-        hidden = true,
-      })
-      lazygit:toggle()
-    end,
-    desc = "Open lazygit",
-    noremap = true,
-    silent = true,
   },
 })

@@ -1,19 +1,13 @@
 return {
   "stevearc/conform.nvim",
   keys = function()
-    local conform = require("conform")
     return {
-      { "<leader>f", conform.format, desc = "[F]ormat file" },
+      { "<leader>ff", require("conform").format, desc = "Format file" },
     }
   end,
   opts = {
-    format = {
-      timeout_ms = 500,
-      lsp_fallback = true,
-      async = false, -- not recommended to change
-      quiet = false, -- not recommended to change
-    },
     formatters_by_ft = {
+      ["_"] = { "trim_whitespace" },
       python = { "isort", "ruff_format" },
       markdown = { "mdformat" },
       sh = { "shfmt" },

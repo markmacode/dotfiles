@@ -20,14 +20,14 @@ return {
 
     -- Key map later used in the LspAttach auto command
     local keys = {
-      { "<leader>ld", telescope.lsp_definitions, desc = "[G]oto [D]efinition" },
-      { "<leader>lr", telescope.lsp_references, desc = "[G]oto [R]eferences" },
-      { "<leader>li", telescope.lsp_implementations, desc = "[G]oto [I]mplementation" },
-      { "<leader>lt", telescope.lsp_type_definitions, desc = "Type [D]efinition" },
-      { "<leader>lD", vim.lsp.buf.declaration, desc = "[G]oto [D]eclaration" },
-      { "<leader>ar", vim.lsp.buf.rename, desc = "[R]e[n]ame" },
-      { "<leader>aa", vim.lsp.buf.code_action, desc = "[C]ode [A]ction" },
-      { "H", vim.lsp.buf.hover, desc = "Hover Documentation" },
+      { "<leader>ld", telescope.lsp_definitions, desc = "Goto definitions" },
+      { "<leader>lr", telescope.lsp_references, desc = "Goto references" },
+      { "<leader>li", telescope.lsp_implementations, desc = "Goto implementations" },
+      { "<leader>lt", telescope.lsp_type_definitions, desc = "Goto type definition" },
+      { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto declaration" },
+      { "<header>lh", vim.lsp.buf.hover, desc = "Hover documentation" },
+      { "<leader>ar", vim.lsp.buf.rename, desc = "Rename" },
+      { "<leader>aa", vim.lsp.buf.code_action, desc = "Code action" },
     }
 
     -- LSP to install and their configuration, `true` for default config.

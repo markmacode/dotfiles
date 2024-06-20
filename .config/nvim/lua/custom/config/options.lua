@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 vim.opt.scrolloff = 8 -- Tap & bottom padding on the cursor when scrolling files
 vim.opt.showbreak = "󱞩 " -- Show a nice symbol on a soft-wrapped line

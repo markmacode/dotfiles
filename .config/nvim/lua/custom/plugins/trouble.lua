@@ -1,5 +1,6 @@
 return {
   "folke/trouble.nvim",
+  cmd = "Trouble",
   keys = {
     {
       "<leader>xx",
@@ -21,7 +22,11 @@ return {
       "<cmd>Trouble qflist toggle<cr>",
       desc = "Quickfix List (Trouble)",
     },
+    {
+      "<leader>xc",
+      "<cmd>Trouble todo toggle<cr>",
+      desc = "Todo comments toggle (Trouble)",
+    },
   },
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
-  cmd = "Trouble",
+  opts = {},
 }

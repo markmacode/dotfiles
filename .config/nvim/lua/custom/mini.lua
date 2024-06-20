@@ -4,7 +4,6 @@ require("mini.indentscope").setup({ symbol = "│" })
 require("mini.statusline").setup()
 require("mini.hipatterns").setup()
 require("mini.move").setup()
--- require("mini.surround").setup()
 require("mini.trailspace").setup()
 
 local ai = require("mini.ai")

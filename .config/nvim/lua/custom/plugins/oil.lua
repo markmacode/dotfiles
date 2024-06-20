@@ -13,7 +13,7 @@ return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
-    { "<leader>t", "<cmd>Oil<cr>", "Open file tree" },
+    { "<leader>t", "<cmd>Oil<cr>", desc = "File tree" },
   },
   opts = {},
   init = function()
