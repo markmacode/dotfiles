@@ -8,6 +8,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- TODO: Change this once you go back to using GNU/stow
+--
 -- Use my dotfiles git worktree for git integration features
 -- in neovim.
 vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
@@ -23,6 +25,8 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
   end,
 })
 
+-- TODO: Change this once you go back to using GNU/stow
+--
 -- Unset git worktree env vars BEFORE changing dirs, because
 -- the dotfiles git vars may be set but the new dir may be
 -- another git project.

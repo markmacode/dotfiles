@@ -14,12 +14,13 @@ require("custom.util").keys({
   { "N", "Nzzzv" },
 
   -- diagnostics
-  { "[x", vim.cmd.cprevious, desc = "Quickfix prev" },
-  { "]x", vim.cmd.cnext, desc = "Quickfix next" },
+  { "[q", vim.cmd.cprevious, desc = "Quickfix prev" },
+  { "]q", vim.cmd.cnext, desc = "Quickfix next" },
   { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
   { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
   { "<leader>xi", vim.diagnostic.open_float, desc = "Open floating diagnostic message" },
-  { "<leader>xl", vim.diagnostic.setloclist, desc = "Open diagnostics list" },
+  { "<leader>xx", vim.diagnostic.setqflist, desc = "Open diagnostics list" },
+  { "<leader>xX", vim.diagnostic.setloclist, desc = "Open diagnostics list (buffer)" },
 
   -- toggle hlsearch if it's on, otherwise just do "enter"
   {

@@ -40,8 +40,8 @@ require("custom.util").keys({
         luasnip.expand_or_jump()
       end
     end,
-    mode = { "i", "s" },
     desc = "snippet: cursor jump next",
+    mode = { "i", "s" },
     silent = true,
   },
   {
@@ -51,8 +51,8 @@ require("custom.util").keys({
         luasnip.jump(-1)
       end
     end,
-    mode = { "i", "s" },
     desc = "snippet: cursor jump previous",
+    mode = { "i", "s" },
     silent = true,
   },
 })

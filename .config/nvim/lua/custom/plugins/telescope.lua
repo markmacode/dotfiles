@@ -14,7 +14,7 @@ return {
       { "<leader>sp", tb.builtin, desc = "Telescope pickers" },
       { "<leader>sr", tb.oldfiles, desc = "Recent files" },
       { "<leader>sb", tb.buffers, desc = "Buffers" },
-      -- TODO: include files that are unstaged
+      -- TODO: Change this once you go back to using GNU/stow
       {
         "<leader>sf",
         function()
@@ -36,7 +36,7 @@ return {
         function()
           tb.find_files({ cwd = vim.fn.stdpath("config") })
         end,
-        desc = "NeoVim config",
+        desc = "Neovim config",
       },
     }
   end,
