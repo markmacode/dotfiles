@@ -1,5 +1,3 @@
-local util = require("custom.util")
-
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -7,12 +5,12 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     { "j-hui/fidget.nvim", opts = {} },
-    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     -- Putting these up here for better visibility on what is pulled in
     require("mason").setup()
     require("mason-lspconfig").setup()
+    local util = require("custom.util")
     local telescope = require("telescope.builtin")
     local lspconfig = require("lspconfig")
     local installer = require("mason-tool-installer")

@@ -18,7 +18,11 @@ end
 -- use the `lua/custom/plugins/` directory for plugin specs
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("custom.plugins", {
+require("lazy").setup({
+  { import = "custom.core" },
+  { import = "custom.extra" },
+  { import = "custom.vendor" },
+}, {
   change_detection = {
     enabled = true,
     notify = false,

@@ -13,7 +13,7 @@ config.font = wezterm.font({
   family = font,
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
-config.line_height = 1.1
+config.line_height = 1
 
 -- Window stuff
 config.enable_tab_bar = false
