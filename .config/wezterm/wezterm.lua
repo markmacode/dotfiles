@@ -12,7 +12,30 @@ config.font_size = 18
 config.font = wezterm.font({
   family = font,
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+  weight = "Regular",
 })
+config.font_rules = {
+  -- Bold and non-italic
+  {
+    intensity = "Bold",
+    italic = false,
+    font = wezterm.font({
+      family = font,
+      weight = "ExtraBold",
+    }),
+  },
+
+  -- Bold and italic
+  {
+    intensity = "Bold",
+    italic = true,
+    font = wezterm.font({
+      family = font,
+      weight = "ExtraBold",
+      style = "Italic",
+    }),
+  },
+}
 config.line_height = 1
 
 -- Window stuff
