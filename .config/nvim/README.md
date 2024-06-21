@@ -1,24 +1,51 @@
-# My Neovim config
+# Neovim config for the chronic customizer
 
-This config is custom, it may or may not work on your machine if you decide to
-try and use it. This readme is mainly for my own future reference.
+This is the personal Neovim config of *Mark Bromell*.
 
-## File structure
+> I configure my IDE, to be more productive in configuring my IDE.
+>
+> -- *Average Neovim User*
 
-It all starts in the [init.lua](init.lua) file, currently I am using
+A beautiful recursive loop of configuration that I have found myself in, it has
+helped me learn a lot and it has been fun... but it has to stop. My goal is to
+create projects that bring value to the world, and finding myself lost in
+constanlty tweaking Neovim is incredibly counter productive to that goal. Some
+tweaking is a necessary evil and can lead to positive results. But when I do
+enter into my config, I need to have guiding principals to get back out of it as
+fast as possible.
+
+My config is structured to align with my motivation to stay out of that
+recursive loop of configuring, and this readme outlines the details of the
+structure. This may or may not make sense to you, and it may not apply to you,
+but that is okay and you can safely move on from here. But if what I have said
+resonates with you so far, I believe this is the cure.
+
+## Principles
+
+- If it is not broken, stay away.
+- If it does not cause pain, stay away.
+- If you ponder the need for it; you do not need it.
+- If you do not use it, remove it.
+- Perfect does not exist.
+
+## Structure
+
+It all starts in the [init.lua](init.lua) file. I use
 [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management as it
-results in the most simple way of organising my config.
+results in the most simple way of organising my config. It just works and it
+makes sense, I do not need to look at any other plugin manager.
 
-I use [Filetype](https://neovim.io/doc/user/filetype.html) detection for
-configuration that I want to execute when entering specific file type buffers --
-these configs are in [after/ftplugin/](./after/ftplugin/).
+I use the [Filetype](https://neovim.io/doc/user/filetype.html) builtin plugin
+for configuration that I want to execute when entering specific file type
+buffers -- these configs are in [after/ftplugin/](./after/ftplugin/). These
+configs should be *tiny* and *simple*.
 
 In the [lua/custom/](./lua/custom/) directory, this is where the rest of the
 configuration lives for Neovim and plugins. The first directory is
-[lua/custom/config/](./lua/custom/config/) -- is simply configs for Neovim
-itself. You will see 3 other directories inside here, initially I just had a
-single large `plugins/` directory for plugins, but I wanted to get better
-visibilty on the reasons for certain plugins.
+[lua/custom/config/](./lua/custom/config/) -- which simply configures Neovim
+itself. For the plugin configuration I initially just had a single large
+`plugins/` directory, but I wanted to design a system that helps guide me away
+from ever entering (or staying inside) the plugin configs.
 
 ### [**lua/custom/core/**](./lua/custom/core/)
 
