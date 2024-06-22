@@ -12,34 +12,34 @@ brew bundle
 # Setting up ZSH
 #
 if [[ "$SHELL" != "$(which zsh)" ]]; then
-    echo "Setting ZSH as default shell"
-    command -v zsh | sudo tee -a /etc/shells
-    sudo chsh -s $(which zsh) $USER
+  echo "Setting ZSH as default shell"
+  command -v zsh | sudo tee -a /etc/shells
+  sudo chsh -s $(which zsh) $USER
 fi
 
 if [[ -z "${ZSH}" ]]; then
-    echo "Installing oh-my-zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-        "" --keep-zshrc --unattended
+  echo "Installing oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+    "" --keep-zshrc --unattended
 fi
 
 declare -a custom_plugins=(
-    "zdharma-continuum/fast-syntax-highlighting"
-    "zsh-users/zsh-autosuggestions"
-    "marlonrichert/zsh-autocomplete"
+  "zdharma-continuum/fast-syntax-highlighting"
+  "zsh-users/zsh-autosuggestions"
+  "marlonrichert/zsh-autocomplete"
 )
 for repo in "${custom_plugins[@]}"; do
-    plugins_path="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
-    repo_path="${plugins_path}/${repo#*/}"
-    # Get repo name after slash because that is what the dir name is
-    # If it is already there, then update it
-    if [ -d "$repo_path" ]; then
-        echo "Updating ZSH plugin $repo"
-        git -C "$repo_path" pull
-    else
-        echo "Downloading ZSH plugin $repo"
-        git clone https://github.com/${repo}.git "$plugins_path"
-    fi
+  plugins_path="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
+  repo_path="${plugins_path}/${repo#*/}"
+  # Get repo name after slash because that is what the dir name is
+  # If it is already there, then update it
+  if [ -d "$repo_path" ]; then
+    echo "Updating ZSH plugin $repo"
+    git -C "$repo_path" pull
+  else
+    echo "Downloading ZSH plugin $repo"
+    git clone https://github.com/${repo}.git "$plugins_path"
+  fi
 done
 
 #

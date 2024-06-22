@@ -8,7 +8,7 @@ indent_style = space
 [*.{py}]
 indent_size = 4
 
-[*.{lua,js,ts,html,css,scss,json,yaml,yml}]
+[*.{lua,js,ts,html,css,scss,json,yaml,yml,sh}]
 indent_size = 2
 
 [Makefile]
