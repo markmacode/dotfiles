@@ -9,13 +9,6 @@
 brew bundle
 
 #
-# Setting up the ~/me directory
-#
-mkdir -p $HOME/me $HOME/me/clones $HOME/me/inbox $HOME/me/repos $HOME/me/remotes
-ln -sfn $HOME/.config $HOME/me/config
-ln -sfn $HOME/ $HOME/me/home
-
-#
 # Setting up ZSH
 #
 if [[ "$SHELL" != "$(which zsh)" ]]; then
@@ -49,7 +42,7 @@ for repo in "${custom_plugins[@]}"; do
     fi
 done
 
-# tjHj
+#
 # Extra app inits
 #
 echo "Setting lazy.nvim plugins to the lockfile versions"

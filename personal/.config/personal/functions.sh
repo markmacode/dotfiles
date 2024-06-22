@@ -1,38 +1,5 @@
 #!/usr/bin/env bash
 
-# This is for the bare repo managmene of dotfiels
-# https://www.atlassian.com/git/tutorials/dotfiles
-#
-# Treat this function like the `git` command, except it will only interact with
-# the dotfiles repo, no matter where you are on the terminal.
-#
-# usage: dot [git-args] [lazy]
-#
-#   git-args    any standard git arguments you want
-#   lazy        open `lazygit` with the dotilfes repo worktree
-#
-function dot {
-    if [ "$1" = "add" ] && [ "$2" = "-a" ]; then
-        # git add -a  ->  git add --all
-        set -- "$1" "--all" "${@:3}"
-    elif [ "$1" = "add" ] && [ "$2" = "." ]; then
-        # git add .  ->  git add --all
-        set -- "$1" "--all" "${@:3}"
-    elif [ "$1" = "a" ]; then
-        # git a  ->  git add --all
-        set -- "add" "--all" "${@:3}"
-    fi
-
-    if [ "$1" = "add" ] && [ "$2" = "--all" ]; then
-        cat $HOME/.gitinclude | xargs -I {} \
-            git --git-dir=$HOME/.dot/ --work-tree=$HOME add ${HOME}/{} "${@:3}"
-    elif [ "$1" = "lazygit" ]; then
-        lazygit -g $HOME/.dot -w $HOME ${@:2}
-    else
-        git --git-dir=$HOME/.dot/ --work-tree=$HOME "$@"
-    fi
-}
-
 # Run yazi through `yy` and when you close it it will cd into the selected 
 # directory on yazi
 function yy {

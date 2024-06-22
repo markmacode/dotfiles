@@ -6,8 +6,8 @@
     defaultBranch = main
 
 [core]
-    editor = vim
-    excludesfile = ~/.gitignore.global
+    editor = nvim
+    excludesfile = ~/.gitignore
 
 [push]
     autoSetupRemote = true
@@ -55,5 +55,6 @@
 
 [include]
     path = ~/.gitconfig.inject
+
 [color]
-	status = always
+    status = always

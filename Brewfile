@@ -9,6 +9,7 @@ brew "yazi"
 
 # Core tools
 brew "bat"
+brew "stow"
 brew "eza"
 brew "fd"
 brew "git"
