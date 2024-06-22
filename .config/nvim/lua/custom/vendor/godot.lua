@@ -1,5 +1,0 @@
-return {
-  {
-    "habamax/vim-godot",
-  },
-}
