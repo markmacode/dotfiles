@@ -19,8 +19,7 @@ brew "zoxide"
 
 # Languages
 brew "go"
-brew "python@3.12"
-brew "stylua"
+brew "python"
 brew "nvm"
 
 # Extras
