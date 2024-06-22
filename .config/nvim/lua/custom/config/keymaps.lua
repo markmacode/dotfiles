@@ -1,19 +1,22 @@
 require("custom.util").keys({
-  -- stop these
+  -- Stop these
   { "Q", "<nop>" },
   { "q:", "<nop>" },
 
-  -- just go down on wrapped lines
+  -- `Ex` aint so bad as a fallback if I ever remove file tree plugins
+  -- { "g.", "<cmd>Ex<cr>", desc = "File tree" },
+
+  -- Just go down on wrapped lines
   { "k", 'v:count == 0 ? "gk" : "k"', expr = true, silent = true },
   { "j", 'v:count == 0 ? "gj" : "j"', expr = true, silent = true },
 
-  -- stay centered when jumping around
+  -- Stay centered when jumping around
   { "<C-d>", "<C-d>zz" },
   { "<C-u>", "<C-u>zz" },
   { "n", "nzzzv" },
   { "N", "Nzzzv" },
 
-  -- diagnostics
+  -- Diagnostics
   { "[q", vim.cmd.cprevious, desc = "Quickfix prev" },
   { "]q", vim.cmd.cnext, desc = "Quickfix next" },
   { "[x", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
@@ -22,7 +25,7 @@ require("custom.util").keys({
   { "<leader>xx", vim.diagnostic.setqflist, desc = "Open diagnostics list" },
   { "<leader>xX", vim.diagnostic.setloclist, desc = "Open diagnostics list (buffer)" },
 
-  -- toggle hlsearch if it's on, otherwise just do "enter"
+  -- Toggle hlsearch if it's on, otherwise just do "enter"
   {
     "<cr>",
     function()

@@ -4,6 +4,7 @@ return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    { "folke/neodev.nvim", opts = {} },
     { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()

@@ -1,11 +1,8 @@
-" WARNING:
 " This config is not very important to me. It is simply sane
 " defaults that I would like to have in the event that I
 " need to use vim in any situation, or that I need to port
 " this config to an application that supports vim motions.
 
-let mapleader=" "
-let maplocalleader=" "
 colorscheme desert
 filetype plugin indent on
 
@@ -48,13 +45,7 @@ set autoindent
 set wrap
 
 " [[ Remaps ]]
-nmap <leader>w :w!<cr>
-nmap <leader>t :Ex<cr>
-inoremap jk <Esc>
-
-" move selected and indent automatically
-vnoremap J :m ">+1<Cr>gv=gv
-vnoremap K :m ">-2<Cr>gv=gv
+nmap gt :Ex<cr>
 
 " half-page jumping but stay centered
 nnoremap <C-d> <C-d>zz
