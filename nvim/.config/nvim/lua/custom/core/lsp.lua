@@ -23,8 +23,9 @@ return {
       { "<leader>lr", telescope.lsp_references, desc = "Goto references" },
       { "<leader>li", telescope.lsp_implementations, desc = "Goto implementations" },
       { "<leader>lt", telescope.lsp_type_definitions, desc = "Goto type definition" },
+      { "<C-a>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature help (args)" },
+      { "K", vim.lsp.buf.hover, desc = "Hover documentation" },
       { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto declaration" },
-      { "<header>lh", vim.lsp.buf.hover, desc = "Hover documentation" },
       { "<leader>ar", vim.lsp.buf.rename, desc = "Rename" },
       { "<leader>aa", vim.lsp.buf.code_action, desc = "Code action" },
     }
