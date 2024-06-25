@@ -3,10 +3,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     docker
-    dotenv
-    gitignore
-    nvm
-    pep8
+    # nvm
     zsh-autosuggestions
     zsh-autocomplete
 )

@@ -1,3 +1,5 @@
 #!/usr/bin/env zsh
 
-bindkey -s ^f "tmux-sessionizer\n"
+if [[ "$0" == "-zsh" ]]; then
+  bindkey -s ^f "tmux-sessionizer\n"
+fi

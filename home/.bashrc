@@ -5,6 +5,7 @@
 # so that I can get the config for cross-platform apps.
 
 PROMPT_COMMAND='history -a'
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # XDG exports if not already set
 [ -z "${XDG_CONFIG_HOME}" ] && export XDG_CONFIG_HOME="$HOME/.config"
@@ -18,6 +19,6 @@ PROMPT_COMMAND='history -a'
 
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
+# [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
 eval "$(starship init bash)"
-eval "$(zoxide init bash)"
+# eval "$(zoxide init bash)"
