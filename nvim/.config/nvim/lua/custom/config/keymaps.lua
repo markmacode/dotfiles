@@ -17,8 +17,9 @@ require("custom.util").keys({
   { "N", "Nzzzv" },
 
   -- Diagnostics
-  { "[q", vim.cmd.cprevious, desc = "Quickfix prev" },
-  { "]q", vim.cmd.cnext, desc = "Quickfix next" },
+  { "<leader>cp", vim.cmd.cprevious, desc = "Quickfix prev" },
+  { "<leader>cn", vim.cmd.cnext, desc = "Quickfix next" },
+  { "<leader>cf", vim.cmd.cfirst, desc = "Quickfix first" },
   { "[x", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
   { "]x", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
   { "<leader>xh", vim.diagnostic.open_float, desc = "Open diagnostic hover window" },
