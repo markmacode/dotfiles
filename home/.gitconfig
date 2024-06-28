@@ -10,7 +10,7 @@
     excludesfile = ~/.gitignore
 
 [push]
-    autoSetupRemote = true
+    autoSetupRemote = false
 
 [fetch]
     prune = true
