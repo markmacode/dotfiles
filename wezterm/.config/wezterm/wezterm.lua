@@ -8,7 +8,7 @@ config.keys = require("keymap")
 
 -- Font stuff
 local font = "JetBrainsMono Nerd Font"
-config.font_size = 18
+config.font_size = 16
 config.font = wezterm.font({
   family = font,
   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
@@ -21,7 +21,7 @@ config.font_rules = {
     italic = false,
     font = wezterm.font({
       family = font,
-      weight = "ExtraBold",
+      weight = "Bold",
     }),
   },
 
@@ -31,7 +31,7 @@ config.font_rules = {
     italic = true,
     font = wezterm.font({
       family = font,
-      weight = "ExtraBold",
+      weight = "Bold",
       style = "Italic",
     }),
   },

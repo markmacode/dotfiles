@@ -4,7 +4,7 @@ require("custom.util").keys({
   { "q:", "<nop>" },
 
   -- `Ex` aint so bad as a fallback if I ever remove file tree plugins
-  -- { "g.", "<cmd>Ex<cr>", desc = "File tree" },
+  -- { "<leader>.", "<cmd>Ex<cr>", desc = "File tree" },
 
   -- Just go down on wrapped lines
   { "k", 'v:count == 0 ? "gk" : "k"', expr = true, silent = true },
