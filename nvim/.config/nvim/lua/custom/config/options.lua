@@ -18,4 +18,3 @@ vim.opt.inccommand = "split" -- Show some commands in an updating window
 vim.opt.listchars = "tab:> ,extends:…,precedes:…,nbsp:␣" -- Define which helper symbols to show
 vim.opt.list = true -- Show some helper symbols
 vim.opt.swapfile = false -- Do not create swap files
-vim.opt.formatoptions:remove({'o'}) -- Do not continue comments on `o`

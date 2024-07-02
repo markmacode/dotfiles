@@ -11,7 +11,6 @@ return {
     -- Putting these up here for better visibility on what is pulled in
     require("mason").setup()
     require("mason-lspconfig").setup()
-    local util = require("custom.util")
     local telescope = require("telescope.builtin")
     local lspconfig = require("lspconfig")
     local installer = require("mason-tool-installer")
@@ -45,7 +44,7 @@ return {
     }
 
     -- Anything else from mason that is not an LSP
-    local packages = {
+    local tools = {
       "stylua",
       "ruff",
       "prettierd",
@@ -55,9 +54,15 @@ return {
 
     -- Make life easy for me and install what I need
     local install_list = {}
+    for key, value in pairs(servers) do
+      if value ~= false then
+        table.insert(install_list, key)
+      end
+    end
+    vim.list_extend(install_list, tools)
     installer.setup({ ensure_isntalled = install_list })
 
-    -- Adding actual functionality to the servers (idk what I'm doing)
+    -- Adding actual functionality to the servers
     -- stylua: ignore
     local capabilities = vim.tbl_deep_extend('force',
       vim.lsp.protocol.make_client_capabilities(),
@@ -77,9 +82,9 @@ return {
     end
 
     vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("mbromell-lsp-attach", { clear = true }),
+      group = require("custom.util").group,
       callback = function(event)
-        util.keys(keys, { buffer = event.buf })
+        require("custom.util").keys(keys, { buffer = event.buf })
       end,
     })
   end,

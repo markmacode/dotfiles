@@ -3,9 +3,11 @@ require("custom.util").keys({
   { "Q", "<nop>" },
   { "q:", "<nop>" },
 
-  -- Arrow keys can do something
   { "<up>", "<nop>" },
   { "<down>", "<nop>" },
+
+  -- Paste last yank
+  { "<leader>p", '"0p' },
 
   -- `Ex` aint so bad as a fallback if I ever remove file tree plugins
   -- { "<leader>.", "<cmd>Ex<cr>", desc = "File tree" },

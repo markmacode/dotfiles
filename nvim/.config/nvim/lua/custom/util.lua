@@ -1,5 +1,8 @@
 local M = {}
 
+--- Get my autocommand group from one spot only, easy to change later.
+M.group = vim.api.nvim_create_augroup("mbromell", { clear = true })
+
 --- A more human readable and configurable mapping function
 --- designed after the lazy.nvim way. Each map entry defaults
 --- to normal mode.

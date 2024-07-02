@@ -14,9 +14,8 @@ return {
     })
 
     -- Enable highlighting
-    local group = vim.api.nvim_create_augroup("mbromell-treesitter", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
-      group = group,
+      group = require("custom.util").group,
       pattern = "<filetype>",
       callback = function()
         vim.treesitter.start()

@@ -12,9 +12,17 @@ return {
   },
 
   {
-    "rebelot/kanagawa.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = function()
+      return {
+        style = "moon",
+        on_highlights = function(hl, c)
+          hl.LineNrAbove = { bg = c.bg, fg = c.comment }
+          hl.LineNrBelow = { bg = c.bg, fg = c.comment }
+        end,
+      }
+    end,
   },
 }
