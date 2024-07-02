@@ -1,7 +1,11 @@
 require("custom.util").keys({
-  -- Stop these
+  -- Basics
   { "Q", "<nop>" },
   { "q:", "<nop>" },
+
+  -- Arrow keys can do something
+  { "<up>", "<nop>" },
+  { "<down>", "<nop>" },
 
   -- `Ex` aint so bad as a fallback if I ever remove file tree plugins
   -- { "<leader>.", "<cmd>Ex<cr>", desc = "File tree" },
@@ -17,9 +21,8 @@ require("custom.util").keys({
   { "N", "Nzzzv" },
 
   -- Diagnostics
-  { "<leader>cp", vim.cmd.cprevious, desc = "Quickfix prev" },
-  { "<leader>cn", vim.cmd.cnext, desc = "Quickfix next" },
-  { "<leader>cf", vim.cmd.cfirst, desc = "Quickfix first" },
+  { "[q", vim.cmd.cprevious, desc = "Quickfix prev" },
+  { "]q", vim.cmd.cnext, desc = "Quickfix next" },
   { "[x", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
   { "]x", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
   { "<leader>xh", vim.diagnostic.open_float, desc = "Open diagnostic hover window" },

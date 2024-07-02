@@ -13,6 +13,8 @@ return {
       ["<leader>x"] = { name = "+diagnostics" },
       ["["] = { name = "+prev" },
       ["]"] = { name = "+next" },
+      ["<up>"] = { name = "+prev" },
+      ["<down>"] = { name = "+next" },
       ["z"] = { name = "+fold" },
     })
   end,
