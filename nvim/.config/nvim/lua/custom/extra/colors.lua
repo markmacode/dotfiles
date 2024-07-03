@@ -1,28 +1,17 @@
+-- The best color scheme I found so far for a good balance of contrast
+-- and use of colors. I dont like color schemes that use too much red on
+-- a dark background, it is possibly the worst sin of readabilty.
 return {
-  {
-    "morhetz/gruvbox",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function()
-      -- unset ugly grey sign column color
-      vim.api.nvim_command("hi SignColumn guibg=NONE ctermbg=NONE")
-      vim.api.nvim_command("hi MiniIndentscopeSymbol guifg='#bdae93'")
-    end,
-  },
-
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = function()
-      return {
-        style = "moon",
-        on_highlights = function(hl, c)
-          hl.LineNrAbove = { bg = c.bg, fg = c.comment }
-          hl.LineNrBelow = { bg = c.bg, fg = c.comment }
-        end,
-      }
-    end,
-  },
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = function()
+    return {
+      style = "moon",
+      on_highlights = function(hl, c)
+        hl.LineNrAbove = { bg = c.bg, fg = c.comment }
+        hl.LineNrBelow = { bg = c.bg, fg = c.comment }
+      end,
+    }
+  end,
 }

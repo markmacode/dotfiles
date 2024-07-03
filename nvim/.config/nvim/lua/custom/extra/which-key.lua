@@ -1,3 +1,6 @@
+-- Always provides a way to remind you of keymaps that you may not use
+-- often enough to remember 100% of the time. Helps discover/rediscover
+-- and learn keymaps.
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",

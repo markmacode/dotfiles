@@ -1,3 +1,5 @@
+-- Easily open up a terminal within neovim, I find this useful for opening up TUIs
+-- such as lazygit. It feels much quicker than using tmux for some terminal tasks.
 return {
   "akinsho/toggleterm.nvim",
   version = "*",

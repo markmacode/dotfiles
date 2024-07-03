@@ -1,5 +1,6 @@
-local util = require("custom.util")
-
+-- Another plugin to stop the need for doing a bunch of motions when
+-- altering text. For many patterns you can now use a single motion for
+-- yanking, deleting or changing blocks of code.
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   event = "VeryLazy",

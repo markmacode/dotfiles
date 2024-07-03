@@ -1,3 +1,4 @@
+-- Replaces the need for many plugins that have basic functionality.
 return {
   "echasnovski/mini.nvim",
   config = function()

@@ -1,3 +1,5 @@
+-- Enable very quick file management by allowing you to manipulate files
+-- as if they were a buffer.
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },

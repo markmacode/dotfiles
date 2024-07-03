@@ -1,3 +1,6 @@
+-- I needed a way to be able to navigation through document symbols.
+-- Treesitter text objects should be able to handle that, but for various
+-- reasons it is broken, and I dont want to make a PR to fix it.
 return {
   "stevearc/aerial.nvim",
   dependencies = {
@@ -6,17 +9,10 @@ return {
   },
   config = function()
     require("aerial").setup({
-      autojump = true,
-      post_jump_cmd = "normal! zt",
-      float = {
-        relative = "win",
-      },
       on_attach = function(bufnr)
         require("custom.util").keys({
-          { "{", "<cmd>AerialPrev<cr>", buffer = bufnr, desc = "Previous symbol" },
-          { "}", "<cmd>AerialNext<cr>", buffer = bufnr, desc = "Next symbol" },
-          { "<leader>fo", "<cmd>AerialToggle!<cr>", desc = "File symbols outline" },
-          { "<leader>so", "<cmd>AerialToggle float<cr>", desc = "Search symbols outline" },
+          { "(", "<cmd>AerialPrev<cr>", buffer = bufnr, desc = "Previous symbol" },
+          { ")", "<cmd>AerialNext<cr>", buffer = bufnr, desc = "Next symbol" },
         })
       end,
     })

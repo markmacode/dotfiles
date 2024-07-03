@@ -3,9 +3,6 @@ require("custom.util").keys({
   { "Q", "<nop>" },
   { "q:", "<nop>" },
 
-  { "<up>", "<nop>" },
-  { "<down>", "<nop>" },
-
   -- Paste last yank
   { "<leader>p", '"0p' },
 
@@ -25,11 +22,11 @@ require("custom.util").keys({
   -- Diagnostics
   { "[q", vim.cmd.cprevious, desc = "Quickfix prev" },
   { "]q", vim.cmd.cnext, desc = "Quickfix next" },
-  { "[x", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
-  { "]x", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
+  { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
+  { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
   { "<leader>xh", vim.diagnostic.open_float, desc = "Open diagnostic hover window" },
-  { "<leader>xx", vim.diagnostic.setqflist, desc = "Open diagnostics list" },
-  { "<leader>xX", vim.diagnostic.setloclist, desc = "Open diagnostics list (buffer)" },
+  -- { "<leader>xx", vim.diagnostic.setqflist, desc = "Open diagnostics list" },
+  -- { "<leader>xX", vim.diagnostic.setloclist, desc = "Open diagnostics list (buffer)" },
 
   -- Toggle hlsearch if it's on, otherwise just do "enter"
   {
