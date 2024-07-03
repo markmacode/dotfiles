@@ -13,7 +13,7 @@ return {
       ["<leader>f"] = { name = "+file/buffer" },
       ["<leader>g"] = { name = "+git" },
       ["<leader>s"] = { name = "+search" },
-      ["<leader>x"] = { name = "+diagnostics" },
+      ["<leader>x"] = { name = "+trouble/explore" },
       ["["] = { name = "+prev" },
       ["]"] = { name = "+next" },
       ["<up>"] = { name = "+prev" },
