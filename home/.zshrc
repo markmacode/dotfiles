@@ -19,6 +19,7 @@ source "$ZSH/oh-my-zsh.sh"
 
 # Extra setup scripts
 [ -s "$XDG_CONFIG_HOME/personal/setup.sh" ] && source "$XDG_CONFIG_HOME/personal/setup.sh"
+[ -s "$XDG_CONFIG_HOME/personal/keymap.sh" ] && source "$XDG_CONFIG_HOME/personal/keymap.sh"
 [ -s "$XDG_CONFIG_HOME/work/setup.sh" ] && source "$XDG_CONFIG_HOME/work/setup.sh"
 
 # Evals / init programs for shell
