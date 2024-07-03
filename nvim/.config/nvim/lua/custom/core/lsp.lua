@@ -53,14 +53,8 @@ return {
     }
 
     -- Make life easy for me and install what I need
-    local install_list = {}
-    for key, value in pairs(servers) do
-      if value ~= false then
-        table.insert(install_list, key)
-      end
-    end
-    vim.list_extend(install_list, tools)
-    installer.setup({ ensure_isntalled = install_list })
+    vim.list_extend(tools, vim.tbl_keys(servers))
+    installer.setup({ ensure_isntalled = tools })
 
     -- Adding actual functionality to the servers
     -- stylua: ignore
