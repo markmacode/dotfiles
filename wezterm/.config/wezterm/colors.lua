@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local module = {}
 
 local light = "GruvboxLight"
-local dark = "kanagawa (Gogh)"
+local dark = "Tokyo Night Moon"
 
 function module.apply(config)
   -- Auto change light or dark mode depending on system config
