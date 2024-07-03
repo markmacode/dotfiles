@@ -8,23 +8,66 @@ return {
       ensure_install = {
         "core",
         "stable",
+        "dockerfile",
         "godot_resource",
         "gdscript",
       },
     })
 
-    -- Enable highlighting on all file types
+    -- I want to know if treesitter is enabled or not
+    require("custom.util").keys({
+      {
+        "<leader>ft",
+        function()
+          if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil then
+            vim.notify("treesitter enabled")
+          else
+            vim.notify("treesitter NOT enabled")
+          end
+        end,
+        desc = "Treesitter status",
+      },
+      {
+        "<leader>fs",
+        function()
+          if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil then
+            vim.treesitter.stop()
+          else
+            vim.treesitter.start()
+          end
+        end,
+        desc = "Treesitter toggle",
+      },
+    })
+
+    -- Enable highlighting
     vim.api.nvim_create_autocmd("FileType", {
       group = require("custom.util").group,
-      callback = function(opts)
-        local language = vim.treesitter.language.get_lang(opts.match)
-        if language == nil then
-          return
-        end
-        local parsers = vim.tbl_keys(require("nvim-treesitter.parsers"))
-        if vim.list_contains(parsers, language) then
-          vim.treesitter.start()
-        end
+      pattern = {
+        "c",
+        "cpp",
+        "sh",
+        "css",
+        "csv",
+        "gdscript",
+        "go",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "lua",
+        "markdown",
+        "python",
+        "svelte",
+        "toml",
+        "typescript",
+        "typescriptreact",
+        "vim",
+        "vimdoc",
+        "yaml",
+      },
+      callback = function()
+        vim.treesitter.start()
       end,
     })
   end,
