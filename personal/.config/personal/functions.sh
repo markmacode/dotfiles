@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Use fzf as a way to cd into dirs
+function fz {
+  dir="$(fd --type d --max-depth 1 | fzf)"
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
 # Run yazi through `yy` and when you close it it will cd into the selected
 # directory on yazi
 function yy {
