@@ -1,6 +1,6 @@
 return {
   "stevearc/conform.nvim",
-  config = function ()
+  opts = function ()
     require("custom.formatting")
   end,
 }

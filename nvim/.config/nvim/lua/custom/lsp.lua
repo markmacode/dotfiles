@@ -14,8 +14,17 @@ local keys = {
   { "<C-a>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature help (args)" },
   { "K", vim.lsp.buf.hover, desc = "Hover documentation" },
   { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto declaration" },
-  { "<leader>ar", vim.lsp.buf.rename, desc = "Rename" },
   { "<leader>aa", vim.lsp.buf.code_action, desc = "Code action" },
+  {
+    "<leader>ar",
+    function()
+      -- default vim.lsp.buf.rename does not default to empty string, this does
+      vim.ui.input({ prompt = "New Name: ", default = "" }, function(input)
+        vim.lsp.buf.rename(input)
+      end)
+    end,
+    desc = "Rename",
+  },
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {

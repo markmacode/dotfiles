@@ -37,8 +37,12 @@ require("custom.util").keys({
   {
     "<leader>r",
     function()
-      require("custom.lsp")
+      require("custom.completion")
       require("custom.formatting")
+      require("custom.lsp")
+      require("custom.snippets")
+      require("custom.treesitter")
+      require("custom.telescope")
       require("custom.config.keymaps")
     end,
     desc = "Reload core config",
