@@ -3,8 +3,7 @@ require("custom.util").keys({
   { "Q", "<nop>" },
   { "q:", "<nop>" },
 
-  -- Paste last yank
-  { "<leader>p", '"0p' },
+  { "<leader>p", '"0p', mode = { "n", "v" }, desc = "Paste last yank" },
 
   -- `Ex` aint so bad as a fallback if I ever remove file tree plugins
   -- { "<leader>.", "<cmd>Ex<cr>", desc = "File tree" },

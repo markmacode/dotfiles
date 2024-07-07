@@ -1,7 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
   version = false,
-  lazy = true,
   dependencies = {
     -- Snippet engine
     "L3MON4D3/LuaSnip",
@@ -19,6 +18,7 @@ return {
         { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "path" },
+        { name = "lazydev", group_index = 0 },
       }),
 
       mapping = cmp.mapping.preset.insert({

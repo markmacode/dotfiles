@@ -8,18 +8,12 @@ return {
     priority = 1000,
     opts = function()
       return {
-        style = "moon",
+        style = "night",
         on_highlights = function(hl, c)
           hl.LineNrAbove = { bg = c.bg, fg = c.comment }
           hl.LineNrBelow = { bg = c.bg, fg = c.comment }
         end,
       }
     end,
-  },
-
-  -- A good alternative that has less contrast.
-  {
-    "rose-pine/neovim",
-    as = "rose-pine",
   },
 }

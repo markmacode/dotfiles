@@ -72,6 +72,7 @@ return {
         file_ignore_patterns = {
           ".DS_Store",
           ".git/",
+          "node_modules/"
         },
       },
     })
