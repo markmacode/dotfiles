@@ -24,3 +24,10 @@ cmp.setup({
     end,
   },
 })
+
+-- cmp.setup.filetype("markdown", {
+--   sources = {
+--     { name = "luasnip" },
+--     { name = "nvim_lsp" },
+--   },
+-- })

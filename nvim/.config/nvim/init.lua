@@ -38,6 +38,7 @@ require("custom.util").keys({
     "<leader>r",
     function()
       require("custom.completion")
+      require("custom.files")
       require("custom.formatting")
       require("custom.lsp")
       require("custom.snippets")
