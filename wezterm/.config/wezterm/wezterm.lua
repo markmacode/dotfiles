@@ -2,10 +2,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices
-config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
-config.keys = require("keymap")
-
 -- Font stuff
 local font = "JetBrainsMono Nerd Font"
 config.font_size = 16
@@ -39,6 +35,7 @@ config.font_rules = {
 config.line_height = 1
 
 -- Window stuff
+config.color_scheme = "Tokyo Night"
 config.enable_tab_bar = false
 config.enable_scroll_bar = false
 config.window_padding = {
@@ -51,5 +48,4 @@ config.window_padding = {
 -- config.use_resize_increments = true
 
 require("windows").apply(config)
-require("colors").apply(config)
 return config

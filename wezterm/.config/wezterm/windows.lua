@@ -13,7 +13,7 @@ function module.apply(config)
   end
   wezterm.log_info("Applying Windows config")
 
-  config.font_size = 14
+  config.font_size = 12
   config.front_end = "WebGpu"
   config.webgpu_power_preference = "HighPerformance"
   -- This makes my work laptop actually responsive!!
