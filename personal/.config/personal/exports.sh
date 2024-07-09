@@ -11,12 +11,11 @@ export EDITOR="nvim"
 export PAGER="bat"
 
 export FZF_DEFAULT_COMMAND='fd -t file -LH -E "{\.git,node_modules}"'
+export FZF_DEFAULT_OPTS=""
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
   --info=inline-right \
   --ansi \
-  --layout=reverse \
-  --border=none
+  --border=none \
   --color=bg+:#283457 \
   --color=bg:#16161e \
   --color=border:#27a1b9 \

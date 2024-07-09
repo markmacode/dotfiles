@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 alias g='git'
+alias lg='lazygit'
 
 # Listing files
 alias eza='eza --color=always'
