@@ -40,15 +40,13 @@ config.keys = {
     key = "j",
     mods = "CMD|ALT|CTRL",
     action = wezterm.action_callback(function(window, pane)
-      local resolution = 1440
-      local zoom_size = resolution / 45 -- this will be 32 on 1440p
+      -- window:toggle_fullscreen()
+      local zoom_size = 20
       local current_overrides = window:get_config_overrides()
-      if current_overrides ~= nil and current_overrides.font_size == zoom_size then
-        window:toggle_fullscreen()
+      if current_overrides ~= nil and current_overrides.font_size ~= font_size then
         window:set_config_overrides({ font_size = font_size })
         return
       end
-      window:toggle_fullscreen()
       window:set_config_overrides({ font_size = zoom_size })
     end),
   },
@@ -58,14 +56,15 @@ config.keys = {
 config.color_scheme = "Tokyo Night"
 config.enable_tab_bar = false
 config.enable_scroll_bar = false
+config.window_decorations = "RESIZE"
 config.window_padding = {
   left = 0,
   right = 0,
-  top = 0,
+  top = '0.5cell',
   bottom = 0,
 }
 -- Snap to the size of cells
--- config.use_resize_increments = true
+-- config.use_resize_increments = false
 
 require("windows").apply(config)
 return config
