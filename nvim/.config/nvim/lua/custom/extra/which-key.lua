@@ -4,21 +4,23 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  opts = {},
-  config = function()
-    require("which-key").register({
-      ["<leader>a"] = { name = "+action/refactor" },
-      ["<leader>c"] = { name = "+quickfix" },
-      ["<leader>l"] = { name = "+lsp" },
-      ["<leader>f"] = { name = "+file/buffer" },
-      ["<leader>g"] = { name = "+git" },
-      ["<leader>s"] = { name = "+search" },
-      ["<leader>x"] = { name = "+trouble/explore" },
-      ["["] = { name = "+prev" },
-      ["]"] = { name = "+next" },
-      ["<up>"] = { name = "+prev" },
-      ["<down>"] = { name = "+next" },
-      ["z"] = { name = "+fold" },
+  opts = function()
+    require("which-key").add({
+      { "<leader>a", group = "+action/refactor" },
+      { "<leader>c", group = "+quickfix" },
+      { "<leader>l", group = "+lsp" },
+      { "<leader>f", group = "+file/buffer" },
+      { "<leader>g", group = "+git" },
+      { "<leader>s", group = "+search" },
+      { "<leader>x", group = "+trouble/explore" },
+      { "[", group = "+prev" },
+      { "]", group = "+next" },
+      { "<up>", group = "+prev" },
+      { "<down>", group = "+next" },
+      { "z", group = "+fold" },
     })
+    return {
+      preset = "helix",
+    }
   end,
 }
