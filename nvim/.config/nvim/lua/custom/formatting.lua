@@ -5,17 +5,18 @@ require("custom.util").keys({
 require("conform").setup({
   formatters_by_ft = {
     ["_"] = { "trim_whitespace" },
-    python = { "isort", "ruff_format" },
-    markdown = { "mdformat" },
-    sh = { "shfmt" },
+    css = { { "prettierd", "prettier" } },
+    html = { { "prettierd", "prettier" } },
+    go = { "goimports", "gofmt" },
+    javascript = { { "prettierd", "prettier" } },
+    javascriptreact = { { "prettierd", "prettier" } },
     lua = { "stylua" },
-    svelte = { "prettierd" },
-    javascript = { "prettierd" },
-    javascriptreact = { "prettierd" },
-    typescript = { "prettierd" },
-    typescriptreact = { "prettierd" },
-    css = { "prettierd" },
-    html = { "prettierd" },
+    markdown = { "mdformat" },
+    python = { "isort", "ruff_format" },
+    sh = { "shfmt" },
+    svelte = { { "prettierd", "prettier" } },
+    typescript = { { "prettierd", "prettier" } },
+    typescriptreact = { { "prettierd", "prettier" } },
   },
   formatters = {
     mdformat = {

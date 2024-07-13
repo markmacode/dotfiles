@@ -5,6 +5,7 @@ local telescope = require("telescope.builtin")
 local lspconfig = require("lspconfig")
 local installer = require("mason-tool-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local schemastore = require("schemastore")
 
 local keys = {
   { "<leader>ld", telescope.lsp_definitions, desc = "Goto definitions" },
@@ -37,25 +38,46 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- LSP to install and their configuration, `true` for default config.
 -- See `:help lspconfig-all` for more server config details
 local servers = {
+  bashls = true,
   clangd = true,
   cssls = true,
   gopls = true,
-  pyright = true,
-  tsserver = true,
-  bashls = true,
-  svelte = true,
+  graphql = true,
   html = true,
-  yamlls = true,
+  jsonls = {
+    settings = {
+      json = {
+        schemas = schemastore.json.schemas(),
+        validate = { enable = true },
+      },
+    },
+  },
   lua_ls = true,
+  pyright = true,
+  svelte = true,
+  tsserver = true,
+  yamlls = {
+    settings = {
+      yaml = {
+        schemaStore = {
+          -- disable builting schema store in favor of plugin
+          enable = false,
+          url = "",
+        },
+        schemas = schemastore.yaml.schemas(),
+      },
+    },
+  },
 }
 
 -- Anything else from mason that is not an LSP
 local tools = {
-  "stylua",
-  "ruff",
-  "prettierd",
-  "prettier",
+  "goimports",
   "mdformat",
+  "prettier",
+  "prettierd",
+  "ruff",
+  "stylua",
 }
 
 -- Make life easy for me and install what I need

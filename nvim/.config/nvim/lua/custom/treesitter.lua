@@ -3,8 +3,9 @@ require("nvim-treesitter").setup({
     "core",
     "stable",
     "dockerfile",
-    "godot_resource",
     "gdscript",
+    "godot_resource",
+    "graphql",
   },
 })
 
@@ -40,11 +41,11 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "c",
     "cpp",
-    "sh",
     "css",
     "csv",
     "gdscript",
     "go",
+    "graphql",
     "html",
     "javascript",
     "javascriptreact",
@@ -52,6 +53,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "lua",
     "markdown",
     "python",
+    "sh",
     "svelte",
     "toml",
     "typescript",
@@ -61,8 +63,20 @@ vim.api.nvim_create_autocmd("FileType", {
     "yaml",
   },
   callback = function()
+    vim.treesitter.start()
+  end,
+})
+
+-- Enable indentation from treesitter
+vim.api.nvim_create_autocmd("FileType", {
+  group = require("custom.util").group,
+  pattern = {
+    "javascriptreact",
+    "svelte",
+    "typescriptreact",
+  },
+  callback = function()
     -- Makes indenting in jsx and tsx work, otherwise it will just go to col 0
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    vim.treesitter.start()
   end,
 })
