@@ -3,6 +3,7 @@ vim.g.maplocalleader = " "
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
+-- See the autocommands for extra FileType indent options.
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4

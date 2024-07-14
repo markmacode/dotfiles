@@ -1,4 +1,4 @@
-# mbromell dotfiles
+# markmacode dotfiles
 
 My personal dotfiles. This readme is for my own future reference. These dotfiles
 are not designed to work on your machine, use at your own risk.

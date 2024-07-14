@@ -1,6 +1,6 @@
 [user]
     email = code@mamo.aleeas.com
-    name = mbromell
+    name = markmacode
 
 [init]
     defaultBranch = main
@@ -19,7 +19,7 @@
     branch = false
 
 [alias]
-    personal = !git config --local --replace-all user.name "mbromell" && \
+    personal = !git config --local --replace-all user.name "markmacode" && \
         git config --local --replace-all user.email "code@mamo.aleeas.com" && \
         git config --local -l
 

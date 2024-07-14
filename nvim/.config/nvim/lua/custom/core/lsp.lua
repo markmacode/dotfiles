@@ -81,6 +81,7 @@ return {
       local tools = {
         "yamllint",
         "goimports",
+        "isort",
         "mdformat",
         "prettier",
         "prettierd",

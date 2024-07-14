@@ -45,8 +45,6 @@ set autoindent
 set wrap
 
 " [[ Remaps ]]
-nmap gt :Ex<cr>
-
 " half-page jumping but stay centered
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
