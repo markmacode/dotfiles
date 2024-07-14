@@ -33,22 +33,5 @@ require("lazy").setup({
 require("custom.config.autocmds")
 require("custom.config.keymaps")
 
-require("custom.util").keys({
-  {
-    "<leader>r",
-    function()
-      require("custom.completion")
-      require("custom.files")
-      require("custom.formatting")
-      require("custom.lsp")
-      require("custom.snippets")
-      require("custom.treesitter")
-      require("custom.telescope")
-      require("custom.config.keymaps")
-    end,
-    desc = "Reload core config",
-  },
-})
-
 vim.cmd.colorscheme("tokyonight")
 vim.cmd.packadd("cfilter")
