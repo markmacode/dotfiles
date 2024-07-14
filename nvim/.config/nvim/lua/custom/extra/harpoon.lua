@@ -23,7 +23,7 @@ return {
       { "<leader>f2", function() h:list():replace_at(2) end, desc = "Replace bookmark 2" },
       { "<leader>f3", function() h:list():replace_at(3) end, desc = "Replace bookmark 3" },
       { "<leader>f4", function() h:list():replace_at(4) end, desc = "Replace bookmark 4" },
-      { "<leader>fl", function() h.ui:toggle_quick_menu(h:list()) end, desc = "Bookmark list" },
+      { "<leader>fb", function() h.ui:toggle_quick_menu(h:list()) end, desc = "Bookmark list" },
       { "<leader>fi", function() h:list():add() end, desc = "Bookmark insert" },
     }
   end,

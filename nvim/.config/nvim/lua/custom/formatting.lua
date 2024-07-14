@@ -20,7 +20,7 @@ require("conform").setup({
   },
   formatters = {
     mdformat = {
-      prepend_args = { "--number", "--wrap", "80" },
+      prepend_args = { "--number" },
     },
   },
 })

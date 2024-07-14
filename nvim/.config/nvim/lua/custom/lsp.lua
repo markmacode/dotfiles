@@ -1,9 +1,6 @@
 -- Putting these up here for better visibility on what is pulled in
-require("mason").setup()
-require("mason-lspconfig").setup()
 local telescope = require("telescope.builtin")
 local lspconfig = require("lspconfig")
-local installer = require("mason-tool-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local schemastore = require("schemastore")
 
@@ -28,19 +25,13 @@ local keys = {
   },
 }
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = require("custom.util").group,
-  callback = function(event)
-    require("custom.util").keys(keys, { buffer = event.buf })
-  end,
-})
-
 -- LSP to install and their configuration, `true` for default config.
 -- See `:help lspconfig-all` for more server config details
 local servers = {
   bashls = true,
   clangd = true,
   cssls = true,
+  eslint = true,
   gopls = true,
   graphql = true,
   html = true,
@@ -72,17 +63,24 @@ local servers = {
 
 -- Anything else from mason that is not an LSP
 local tools = {
+  "yamllint",
   "goimports",
   "mdformat",
   "prettier",
   "prettierd",
   "ruff",
+  "shellcheck",
   "stylua",
+  "vale",
 }
 
--- Make life easy for me and install what I need
-vim.list_extend(tools, vim.tbl_keys(servers))
-installer.setup({ ensure_isntalled = tools })
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = vim.tbl_keys(servers),
+})
+require("mason-tool-installer").setup({
+  ensure_installed = tools,
+})
 
 -- Adding actual functionality to the servers
 -- stylua: ignore
@@ -102,3 +100,10 @@ for name, config in pairs(servers) do
     lspconfig[name].setup(config)
   end
 end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = require("custom.util").group,
+  callback = function(event)
+    require("custom.util").keys(keys, { buffer = event.buf })
+  end,
+})
