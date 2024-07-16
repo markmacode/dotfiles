@@ -12,7 +12,7 @@ return {
     lint.linters_by_ft = {
       javascript = { "eslint" },
       javascriptreact = { "eslint" },
-      markdown = { "vale" },
+      markdown = { "markdownlint" },
       python = { "ruff" },
       sh = { "shellcheck" },
       typescript = { "eslint" },
@@ -27,7 +27,7 @@ return {
       group = require("custom.util").group,
       pattern = vim.tbl_keys(lint.linters_by_ft),
       callback = function()
-        lint.try_lint(nil, { ignore_errors = true })
+        lint.try_lint()
       end,
     })
   end,

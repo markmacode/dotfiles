@@ -4,6 +4,9 @@ return {
   dependencies = {
     -- Snippet engine
     "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
+
     -- Extra sources to make life easy
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
@@ -37,5 +40,10 @@ return {
         end,
       },
     })
+
+    -- I have to call this here and in snippetins.lua
+    -- For some reason this stops html duplication inside
+    -- jsx and tsx files.
+    require("luasnip.loaders.from_vscode").lazy_load()
   end,
 }

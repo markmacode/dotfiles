@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  event = "VeryLazy",
   opts = function()
     require("custom.util").keys({
       { "<leader>ff", require("conform").format, desc = "Format file" },

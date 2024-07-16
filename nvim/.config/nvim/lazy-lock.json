@@ -39,7 +39,6 @@
   "trouble.nvim": { "branch": "main", "commit": "03c1fbf518bef683422a3be9643c3da190903488" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "035d92eab05ac1390afef7204e3fcad9a50fa443" },
   "vim-godot": { "branch": "master", "commit": "f9c0b36b299efcc4aa4cb119a2be36a83fe10388" },
-  "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-tmux-navigator": { "branch": "master", "commit": "5b3c701686fb4e6629c100ed32e827edf8dad01e" },
   "which-key.nvim": { "branch": "main", "commit": "30cf839c82bcc0f90be951f8834c256c1cdc295c" }
 }

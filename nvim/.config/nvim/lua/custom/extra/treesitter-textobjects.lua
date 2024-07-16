@@ -3,11 +3,11 @@
 -- yanking, deleting or changing blocks of code.
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
-  event = "VeryLazy",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "echasnovski/mini.nvim",
   },
+  event = "VeryLazy",
   branch = "main",
   config = function()
     local spec_treesitter = require("mini.ai").gen_spec.treesitter
