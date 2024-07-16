@@ -48,7 +48,13 @@ return {
         clangd = true,
         cssls = true,
         eslint = true,
-        gopls = true,
+        gopls = {
+          settings = {
+            gopls = {
+              gofumpt = true,
+            },
+          },
+        },
         graphql = true,
         html = true,
         jsonls = {
@@ -77,19 +83,28 @@ return {
         },
       }
 
-      -- Anything else from mason that is not an LSP
       local tools = {
+        -- Debug adapters
+        "bash-debug-adapter",
+        "chrome-debug-adapter",
+        "debugpy",
+        "delve",
+        "js-debug-adapter",
+
+        -- Linters
         "yamllint",
-        "goimports",
+        "shellcheck",
+        "markdownlint",
+
+        -- Formatters / Multi-purpose
+        -- "goimports",
         "isort",
         "mdformat",
         "prettier",
         "prettierd",
         "ruff",
-        "shellcheck",
         "shfmt",
         "stylua",
-        "vale",
       }
 
       require("mason").setup()

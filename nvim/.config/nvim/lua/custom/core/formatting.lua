@@ -3,7 +3,21 @@ return {
   event = "VeryLazy",
   opts = function()
     require("custom.util").keys({
-      { "<leader>ff", require("conform").format, desc = "Format file" },
+      {
+        "<leader>ff",
+        function()
+          require("conform").format({ lsp_format = "fallback" })
+        end,
+        desc = "Format file",
+      },
+      {
+        "<leader><space>",
+        function()
+          require("conform").format({ lsp_format = "fallback" })
+          vim.cmd("write")
+        end,
+        desc = "Format and save",
+      },
     })
 
     require("conform").setup({
@@ -11,7 +25,6 @@ return {
         ["_"] = { "trim_whitespace" },
         css = { { "prettierd", "prettier" } },
         html = { { "prettierd", "prettier" } },
-        go = { "goimports", "gofmt" },
         javascript = { { "prettierd", "prettier" } },
         javascriptreact = { { "prettierd", "prettier" } },
         lua = { "stylua" },
