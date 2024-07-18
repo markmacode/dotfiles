@@ -10,13 +10,9 @@ return {
     })
 
     lint.linters_by_ft = {
-      javascript = { "eslint" },
-      javascriptreact = { "eslint" },
-      markdown = { "markdownlint" },
       python = { "ruff" },
       sh = { "shellcheck" },
-      typescript = { "eslint" },
-      typescriptreact = { "eslint" },
+      yaml = { "yamllint" },
     }
 
     vim.api.nvim_create_autocmd({
