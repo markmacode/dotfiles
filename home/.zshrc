@@ -25,14 +25,14 @@ source "$ZSH/oh-my-zsh.sh"
 # Evals / init programs for shell
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # Shell completions
 [ -s "$ZSH/completions/_bun" ] && source "$ZSH/completions/_bun"
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
 
 [ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"
 

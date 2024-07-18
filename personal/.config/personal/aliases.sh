@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 alias g='git'
+alias v='nvim'
 alias lg='lazygit'
 
 # Listing files
