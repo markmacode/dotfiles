@@ -1,3 +1,6 @@
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+
 brew "zsh"
 
 # TUIs
@@ -18,11 +21,6 @@ brew "starship"
 brew "stow"
 brew "zoxide"
 
-# Languages
-brew "go"
-brew "python"
-brew "nvm"
-
 # Extras
 brew "curl"
 brew "fswatch"
@@ -32,7 +30,16 @@ brew "unzip"
 brew "wget"
 
 # Casks
-tap "homebrew/cask"
 cask "wezterm"
-tap "homebrew/cask-fonts"
 cask "font-jetbrains-mono-nerd-font"
+
+# Languages
+brew "go"
+brew "gofumpt"
+brew "python"
+brew "ruff"
+brew "nvm"
+brew "lua"
+brew "shfmt"
+brew "mdformat"
+
