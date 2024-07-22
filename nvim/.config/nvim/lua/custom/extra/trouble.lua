@@ -49,7 +49,7 @@ return {
     -- Good for exploration and navigation of large files.
     {
       "<leader>xo",
-      "<cmd>Trouble mine_symbols toggle focus=false win.size=50<cr>",
+      "<cmd>Trouble mine_symbols toggle focus=true win.size=50<cr>",
       desc = "File symbol outline",
     },
     -- VERY good for exploration, especially when learning new code bases.

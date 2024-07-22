@@ -18,10 +18,10 @@ return {
     vim.api.nvim_create_autocmd({
       "BufEnter",
       "BufWritePost",
+      "InsertLeave",
       "TextChanged",
     }, {
       group = require("custom.util").group,
-      pattern = vim.tbl_keys(lint.linters_by_ft),
       callback = function()
         lint.try_lint()
       end,

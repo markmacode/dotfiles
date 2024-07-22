@@ -3,7 +3,12 @@ return {
   "echasnovski/mini.nvim",
   config = function()
     require("mini.basics").setup()
-    require("mini.diff").setup({ view = { style = "sign" } })
+    -- require("mini.diff").setup({
+    --   view = {
+    --     style = "sign",
+    --     priority = 0,
+    --   },
+    -- })
     require("mini.hipatterns").setup()
     require("mini.trailspace").setup()
     require("mini.indentscope").setup({ symbol = "│" })

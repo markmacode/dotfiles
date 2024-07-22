@@ -12,7 +12,6 @@ return {
     local telescope = require("telescope")
 
     require("custom.util").keys({
-      { "<leader>ss", picker.resume, desc = "Resume" },
       { "<leader>sp", picker.builtin, desc = "Telescope pickers" },
       { "<leader>sr", picker.oldfiles, desc = "Recent files" },
       { "<leader>sb", picker.buffers, desc = "Buffers" },
@@ -39,6 +38,13 @@ return {
           picker.find_files({ cwd = vim.fn.stdpath("config") })
         end,
         desc = "Neovim config",
+      },
+      {
+        "<leader>sl",
+        function()
+          picker.find_files({ cwd = vim.fn.stdpath("data") })
+        end,
+        desc = "Neovim XDG data",
       },
     })
 

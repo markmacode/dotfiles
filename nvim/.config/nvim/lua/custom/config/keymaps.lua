@@ -26,17 +26,6 @@ require("custom.util").keys({
   { "<leader>xh", vim.diagnostic.open_float, desc = "Open diagnostic hover window" },
   -- { "<leader>xx", vim.diagnostic.setqflist, desc = "Open diagnostics list" },
   -- { "<leader>xX", vim.diagnostic.setloclist, desc = "Open diagnostics list (buffer)" },
-  {
-    "<leader>xt",
-    function()
-      vim.diagnostic.config({
-        virtual_text = not vim.diagnostic.config().virtual_text,
-        underline = not vim.diagnostic.config().virtual_text,
-        signs = not vim.diagnostic.config().virtual_text,
-      })
-    end,
-    desc = "Diagnostics inline toggle",
-  },
 
   -- Toggle hlsearch if it's on, otherwise just do "enter"
   {

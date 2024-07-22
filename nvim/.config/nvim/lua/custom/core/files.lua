@@ -13,7 +13,7 @@ return {
 
     local oil = require("oil")
     require("custom.util").keys({
-      { "<leader>.", oil.toggle_float, desc = "Files" },
+      { "<leader>.", oil.toggle_float, desc = "File manager" },
     })
 
     local keymaps = {

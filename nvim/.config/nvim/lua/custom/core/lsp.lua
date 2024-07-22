@@ -23,9 +23,9 @@ return {
       { "<C-a>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature help (args)" },
       { "K", vim.lsp.buf.hover, desc = "Hover documentation" },
       { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto declaration" },
-      { "<leader>aa", vim.lsp.buf.code_action, desc = "Code action" },
+      { "<leader>ca", vim.lsp.buf.code_action, desc = "Code action" },
       {
-        "<leader>ar",
+        "<leader>cr",
         function()
           -- default vim.lsp.buf.rename does not default to empty string, this does
           vim.ui.input({ prompt = "New Name: ", default = "" }, function(input)
@@ -60,7 +60,7 @@ return {
       },
       lua_ls = true,
       marksman = true,
-      ruff = true,
+      pyright = true,
       tsserver = true,
       yamlls = {
         settings = {
@@ -91,6 +91,7 @@ return {
       "gofumpt",
       "mdformat",
       "prettier",
+      "ruff",
       "shfmt",
       "stylua",
     }
@@ -103,12 +104,12 @@ return {
       ensure_installed = packages,
     })
 
-      -- Adding actual functionality to the servers
-      -- stylua: ignore
-      local capabilities = vim.tbl_deep_extend('force',
-        vim.lsp.protocol.make_client_capabilities(),
-        cmp_nvim_lsp.default_capabilities()
-      )
+    -- Adding actual functionality to the servers
+    -- stylua: ignore
+    local capabilities = vim.tbl_deep_extend('force',
+      vim.lsp.protocol.make_client_capabilities(),
+      cmp_nvim_lsp.default_capabilities()
+    )
 
     -- Setting up the servers
     for name, config in pairs(servers) do
