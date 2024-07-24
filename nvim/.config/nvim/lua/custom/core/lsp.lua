@@ -16,23 +16,26 @@ return {
     local schemastore = require("schemastore")
 
     local keys = {
-      { "<leader>ld", telescope.lsp_definitions, desc = "Goto definitions" },
-      { "<leader>lr", telescope.lsp_references, desc = "Goto references" },
-      { "<leader>li", telescope.lsp_implementations, desc = "Goto implementations" },
-      { "<leader>lt", telescope.lsp_type_definitions, desc = "Goto type definition" },
-      { "<C-a>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature help (args)" },
+      { "gd", telescope.lsp_definitions, desc = "Goto definitions" },
+      { "gr", telescope.lsp_references, desc = "Goto references" },
+      { "ga", telescope.lsp_implementations, desc = "Goto assignments" },
+      { "gt", telescope.lsp_type_definitions, desc = "Goto type definition" },
+      { "gD", vim.lsp.buf.declaration, desc = "Goto declaration" },
+      { "<C-s>", vim.lsp.buf.signature_help, mode = { "n", "i" }, desc = "Signature help" },
       { "K", vim.lsp.buf.hover, desc = "Hover documentation" },
-      { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto declaration" },
-      { "<leader>ca", vim.lsp.buf.code_action, desc = "Code action" },
+      { "<leader>rr", vim.lsp.buf.code_action, desc = "Refactor code action" },
       {
-        "<leader>cr",
+        "<leader>rn",
         function()
           -- default vim.lsp.buf.rename does not default to empty string, this does
-          vim.ui.input({ prompt = "New Name: ", default = "" }, function(input)
+          vim.ui.input({ prompt = "Rename `" .. vim.fn.expand("<cword>") .. "`", default = "" }, function(input)
+            if not input or #input == 0 then
+              return
+            end
             vim.lsp.buf.rename(input)
           end)
         end,
-        desc = "Rename",
+        desc = "Refactor rename",
       },
     }
 
@@ -80,7 +83,6 @@ return {
     -- Anything that is not an LSP should be defined here to be installed.
     local packages = {
       -- Debug adapters
-      "debugpy",
       "delve",
       "js-debug-adapter",
       -- Linters

@@ -4,7 +4,7 @@ return {
   opts = function()
     require("custom.util").keys({
       {
-        "<leader>ff",
+        "<leader>rf",
         function()
           require("conform").format({ lsp_format = "fallback" })
         end,

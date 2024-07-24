@@ -15,12 +15,11 @@ return {
     local h = require("harpoon")
     -- stylua: ignore
     return {
-      { "<leader>1", function() h:list():select(1) end, desc = "Jump to bookmark 1" },
-      { "<leader>2", function() h:list():select(2) end, desc = "Jump to bookmark 2" },
-      { "<leader>3", function() h:list():select(3) end, desc = "Jump to bookmark 3" },
-      { "<leader>4", function() h:list():select(4) end, desc = "Jump to bookmark 4" },
-      { "<leader>fb", function() h.ui:toggle_quick_menu(h:list()) end, desc = "Bookmark list" },
-      { "<leader>fi", function() h:list():add() end, desc = "Bookmark insert" },
+      { "<a-m>", function() h:list():select(1) end, desc = "Jump to bookmark 1" },
+      { "<a-,>", function() h:list():select(2) end, desc = "Jump to bookmark 2" },
+      { "<a-.>", function() h:list():select(3) end, desc = "Jump to bookmark 3" },
+      { "gh", function() h.ui:toggle_quick_menu(h:list()) end, desc = "Bookmark list" },
+      { "gb", function() h:list():add() end, desc = "Bookmark insert" },
     }
   end,
 }

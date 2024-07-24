@@ -1,43 +1,23 @@
 require("custom.util").keys({
-  -- Basics
+  -- Dable annoying stuff
   { "Q", "<nop>" },
   { "q:", "<nop>" },
-
-  { "<leader>p", '"0p', mode = { "n", "v" }, desc = "Paste last yank" },
-
-  -- `Ex` aint so bad as a fallback if I ever remove file tree plugins
-  -- { "<leader>.", "<cmd>Ex<cr>", desc = "File tree" },
 
   -- Just go down on wrapped lines
   { "k", 'v:count == 0 ? "gk" : "k"', expr = true, silent = true },
   { "j", 'v:count == 0 ? "gj" : "j"', expr = true, silent = true },
 
   -- Stay centered when jumping around
-  { "<C-d>", "<C-d>zz" },
-  { "<C-u>", "<C-u>zz" },
   { "n", "nzzzv" },
   { "N", "Nzzzv" },
+
+  -- Quickly paste what you actually yanked
+  { "gp", '"0p', mode = { "n", "x", "o" }, desc = "Paste last yank" },
 
   -- Diagnostics
   { "[q", vim.cmd.cprevious, desc = "Quickfix prev" },
   { "]q", vim.cmd.cnext, desc = "Quickfix next" },
-  { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
-  { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
-  { "<leader>xh", vim.diagnostic.open_float, desc = "Open diagnostic hover window" },
-  -- { "<leader>xx", vim.diagnostic.setqflist, desc = "Open diagnostics list" },
-  -- { "<leader>xX", vim.diagnostic.setloclist, desc = "Open diagnostics list (buffer)" },
-
-  -- Toggle hlsearch if it's on, otherwise just do "enter"
-  {
-    "<cr>",
-    function()
-      ---@diagnostic disable-next-line: undefined-field
-      if vim.opt.hlsearch:get() then
-        vim.cmd.nohl()
-        return ""
-      end
-      return "<CR>"
-    end,
-    expr = true,
-  },
+  { "[d", vim.diagnostic.goto_prev, desc = "Goto previous diagnostic message" },
+  { "]d", vim.diagnostic.goto_next, desc = "Goto next diagnostic message" },
+  { "H", vim.diagnostic.open_float, desc = "Open diagnostic hover window" },
 })

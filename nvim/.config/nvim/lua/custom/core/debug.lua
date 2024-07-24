@@ -11,13 +11,42 @@ return {
     "mfussenegger/nvim-dap-python",
   },
   config = function()
-    ---@diagnostic disable-next-line: missing-fields
-    require("dapui").setup({
-      icons = {
-        collapsed = "",
-        current_frame = "→",
-        expanded = "",
+    local dap = require("dap")
+    local dapui = require("dapui")
+    local dapvirtual = require("nvim-dap-virtual-text")
+
+    -- see :h dap-mappings for more inspiration
+    require("custom.util").keys({
+      { "<leader>bb", dap.toggle_breakpoint, desc = "Breakpoint toggle" },
+      {
+        "<leader>bl",
+        function()
+          dap.set_breakpoint(nil, nil, vim.fn.input("Breakpoint log message: "))
+        end,
+        desc = "Breakpoint log message",
       },
+      {
+        "<leader>bc",
+        function()
+          dap.set_breakpoint(vim.fn.input("Breakpoint condition: "), nil, nil)
+        end,
+        desc = "Breakpoint conditional",
+      },
+      { "<leader>dd", dapui.toggle, desc = "Debug toggle UI" },
+      { "<leader>dl", dap.run_last, desc = "Debug run last" },
+      { "<leader>dv", dapvirtual.toggle, desc = "Debug toggle virutal text" },
+      { "<F3>", dap.continue, desc = "Debug start / continue" },
+      { "<F4>", dap.run_to_cursor, desc = "Debug run to cursor" },
+      { "<F5>", dap.restart, desc = "Debug restart" },
+      { "<F6>", dap.step_over, desc = "Debug step over" },
+      { "<F7>", dap.step_into, desc = "Debug step into" },
+      { "<F8>", dap.step_out, desc = "Debug step out" },
+      { "<F9>", dap.step_back, desc = "Debug step back" },
+    })
+
+    ---@diagnostic disable-next-line: missing-fields
+    dapui.setup({
+      icons = { collapsed = "", expanded = "", current_frame = "→" },
       layouts = {
         {
           elements = {
@@ -39,54 +68,12 @@ return {
         },
       },
     })
-    require("nvim-dap-virtual-text").setup({})
+    dapvirtual.setup({})
 
     -- Setting up language specific debuggers
     require("custom.debug.go")
     require("custom.debug.javascript")
     require("custom.debug.python")
-
-    local dap = require("dap")
-    local dapui = require("dapui")
-
-    -- see :h dap-mappings for more inspiration
-    require("custom.util").keys({
-      { "<leader>bb", dap.toggle_breakpoint, desc = "Breakpoint toggle" },
-      {
-        "<leader>bl",
-        function()
-          dap.set_breakpoint(nil, nil, vim.fn.input("Breakpoint log message: "))
-        end,
-        desc = "Breakpoint log message",
-      },
-      {
-        "<leader>bc",
-        function()
-          dap.set_breakpoint(vim.fn.input("Breakpoint condition: "), nil, nil)
-        end,
-        desc = "Breakpoint conditional",
-      },
-      { "<leader>dl", dap.run_last, desc = "Debug run last" },
-      {
-        "<leader>dt",
-        function()
-          if vim.bo.filetype == "go" then
-            require("dap-go").debug_test()
-          elseif vim.bo.filetype == "python" then
-            require("dap-python").test_method()
-          end
-        end,
-        desc = "Debug test",
-      },
-      { "<leader>dd", dapui.toggle, desc = "Debug toggle UI" },
-      { "<F3>", dap.continue, desc = "Debug start / continue" },
-      { "<F4>", dap.run_to_cursor, desc = "Debug run to cursor" },
-      { "<F5>", dap.restart, desc = "Debug restart" },
-      { "<F6>", dap.step_over, desc = "Debug step over" },
-      { "<F7>", dap.step_into, desc = "Debug step into" },
-      { "<F8>", dap.step_out, desc = "Debug step out" },
-      { "<F9>", dap.step_back, desc = "Debug step back" },
-    })
 
     -- Open UI when starting debugging
     dap.listeners.before.attach.dapui_config = dapui.open

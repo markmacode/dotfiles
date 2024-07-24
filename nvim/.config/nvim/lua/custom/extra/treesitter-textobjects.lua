@@ -29,14 +29,23 @@ return {
       },
     })
 
-    local select = require("nvim-treesitter-textobjects.select").select_textobject
     -- Altering code
     -- I prefer to use mini.ai to set these up, but for some reason it
     -- does not want to work for the @call object, which I use a lot.
+    local select = require("nvim-treesitter-textobjects.select").select_textobject
     -- stylua: ignore
     require("custom.util").keys({
       { "ac", function() select("@call.outer") end, desc = "Select call" },
       { "ic", function() select("@call.inner") end, desc = "Select call args" },
     }, { mode = { "x", "o" } })
+
+    -- Swapping stuff
+    local swap = require("nvim-treesitter-textobjects.swap")
+    require("custom.util").keys({
+      { "<leader>rl", swap.swap_next("@parameter.inner"), desc = "Swap parameter right" },
+      { "<leader>rh", swap.swap_previous("@parameter.inner"), desc = "Swap parameter left" },
+      { "<leader>rL", swap.swap_next("@function.outer"), desc = "Swap function right" },
+      { "<leader>rH", swap.swap_previous("@function.outer"), desc = "Swap function left" },
+    })
   end,
 }

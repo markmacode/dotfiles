@@ -11,6 +11,8 @@ return {
     local picker = require("telescope.builtin")
     local telescope = require("telescope")
 
+    -- The ~/.ignore file will affect results of various file finders,
+    -- so take that into consideration if results are not as expected.
     require("custom.util").keys({
       { "<leader>sp", picker.builtin, desc = "Telescope pickers" },
       { "<leader>sr", picker.oldfiles, desc = "Recent files" },
@@ -72,8 +74,8 @@ return {
         layout_config = {
           prompt_position = "top",
           -- For some reason builtin flex is not smart enough
-          flip_columns = 120,
-          flip_lines = 40,
+          -- flip_columns = 120,
+          -- flip_lines = 40,
         },
         file_ignore_patterns = {
           ".DS_Store",

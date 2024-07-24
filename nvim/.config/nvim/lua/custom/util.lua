@@ -39,16 +39,6 @@ function M._map(table, extra_opts)
   end
 
   vim.keymap.set(mode, lhs, rhs, opts)
-
-  -- use arrow keys for [] motions
-  -- if string.sub(lhs, 1, 1) == "[" then
-  --   local new_lhs = "<up>" .. lhs:sub(2)
-  --   vim.keymap.set(mode, new_lhs, rhs, opts)
-  -- end
-  -- if string.sub(lhs, 1, 1) == "]" then
-  --   local new_lhs = "<down>" .. lhs:sub(2)
-  --   vim.keymap.set(mode, new_lhs, rhs, opts)
-  -- end
 end
 
 return M

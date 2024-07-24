@@ -19,18 +19,7 @@ return {
     -- I want to know if treesitter is enabled or not
     require("custom.util").keys({
       {
-        "<leader>ft",
-        function()
-          if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil then
-            vim.notify("treesitter enabled")
-          else
-            vim.notify("treesitter NOT enabled")
-          end
-        end,
-        desc = "Treesitter status",
-      },
-      {
-        "<leader>fs",
+        "\\t",
         function()
           if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil then
             vim.treesitter.stop()
@@ -38,7 +27,7 @@ return {
             vim.treesitter.start()
           end
         end,
-        desc = "Treesitter toggle",
+        desc = "Toggle treesitter",
       },
     })
 

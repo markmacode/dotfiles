@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if [[ -f "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ]]; then
+  echo "WARNING: If chrome attached to existing session, the debug port may not activate."
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222
+fi

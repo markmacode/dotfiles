@@ -6,7 +6,7 @@ return {
     local lint = require("lint")
 
     require("custom.util").keys({
-      { "<leader>fl", lint.try_lint, desc = "Lint file" },
+      { "gl", lint.try_lint, desc = "Lint file" },
     })
 
     lint.linters_by_ft = {
