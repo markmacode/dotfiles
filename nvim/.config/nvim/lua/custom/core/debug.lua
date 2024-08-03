@@ -33,6 +33,7 @@ return {
         desc = "Breakpoint conditional",
       },
       { "<leader>dd", dapui.toggle, desc = "Debug toggle UI" },
+      { "<leader>dq", dap.close, desc = "Debug stop" },
       { "<leader>dl", dap.run_last, desc = "Debug run last" },
       { "<leader>dv", dapvirtual.toggle, desc = "Debug toggle virutal text" },
       { "<F3>", dap.continue, desc = "Debug start / continue" },

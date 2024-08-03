@@ -8,7 +8,7 @@ return {
     priority = 1000,
     opts = function()
       return {
-        style = "night",
+        style = "moon",
         on_highlights = function(hl, c)
           -- defaults
           hl.LineNr = { fg = c.comment }
