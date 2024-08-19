@@ -53,7 +53,7 @@ config.keys = {
 }
 
 -- Window stuff
-config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = false
 config.enable_scroll_bar = false
 config.window_decorations = "RESIZE"
