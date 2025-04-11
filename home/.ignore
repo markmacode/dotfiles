@@ -1,7 +1,9 @@
 .git/
 node_modules/
 venv/
+.venv/
 venv-*/
+.venv-*/
 
 # Linux
 .Trash-*

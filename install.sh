@@ -1,12 +1,33 @@
 #!/usr/bin/env bash
 
 #
-# Installing Homebrew
+# Install Homebrew
 #
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-[[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
-[[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if which -s brew; then
+  # Check if I have sudo permission, if not then install in user dir
+  prompt=$(sudo -nv 2>&1)
+  if [ $? -eq 0 ]; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  elif echo "$prompt" | grep -q '^sudo:'; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  else
+    mkdir -p "$HOME/.homebrew"
+    curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C "$HOME/.homebrew"
+    export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+  fi
+else
+  brew update
+fi
 brew bundle
+
+#
+# Setup ~/me dir
+#
+mkdir -p $HOME/me/
+mkdir -p $HOME/me/repos
+mkdir -p $HOME/me/remotes
+mkdir -p $HOME/me/clones
+ln -snf $(pwd) $HOME/me/dotfiles
 
 #
 # Setting up ZSH
@@ -47,13 +68,5 @@ done
 #
 echo "Setting lazy.nvim plugins to the lockfile versions"
 nvim --headless "+Lazy! restore" +qa
-
-echo "Building bat cache"
-bat cache --build
-
-echo "Install NVM and Node"
-mkdir $HOME/.nvm
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
-nvm install --lts
 
 echo "Restart terminal for changes to take effect"

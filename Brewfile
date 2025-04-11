@@ -1,8 +1,3 @@
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-
-brew "zsh"
-
 # TUIs
 brew "fzf"
 brew "lazygit"

@@ -1,0 +1,100 @@
+let mapleader=" "
+
+""" Plugins ---------------------------
+set argtextobj
+set commentary
+set highlightedyank
+set machit.vim
+set nerdtree
+set surround
+set sneak
+set textobj-entire
+set which-key
+
+""" Plugin settings -------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+let g:sneak#label = 1
+
+""" Common options --------------------
+set number
+set relativenumber
+set scrolloff=5
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamedplus
+set notimeout
+set timeoutlen=5000
+
+"" Search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+""" Mappings --------------------------
+map <D-j> <Action>(Switcher)
+map <C-f> <Action>($LRU)
+map <C-p> <Action>(GotoAction)
+map <C-e> <Action>(ActivateProjectToolWindow)
+map <C-o> <Action>(ManageRecentProjects)
+map <C-t> <Action>(ActivateTerminalToolWindow)
+
+"" Stop messing with my clipboard
+"noremap p "0p
+"noremap <leader>p "*p
+
+"" Help
+map  <A-s> <Action>(ParameterInfo)
+imap <A-s> <Action>(ParameterInfo)
+map  <A-d> <Action>(QuickJavaDoc)
+imap <A-d> <Action>(QuickJavaDoc)
+
+"" Search
+map <leader>sf <Action>(GotoFile)
+map <leader>so <Action>(GotoClass)
+map <leader>sa <Action>(GotoAction)
+map <leader>ss <Action>(GotoSymbol)
+map <leader>sc <Action>(TextSearchAction)
+
+"" Navigation
+map <left>  <Action>(Back)
+map <right> <Action>(Forward)
+map <up>    <Action>(MethodUp)
+map <down>  <Action>(MethodDown)
+map gn      <Action>(GotoNextError)
+map gp      <Action>(GotoPreviousError)
+map gd      <Action>(GotoDeclaration)
+map gr      <Action>(ShowUsages)
+map gi      <Action>(GotoImplementation)
+map gc      <Action>(GotoTypeDeclaration)
+map gt      <Action>(GotoTest)
+
+"" Refactor
+map <A-j>           <Action>(MoveLineDown)
+map <A-k>           <Action>(MoveLineUp)
+map <A-up>          <Action>(MoveStatementUp)
+map <A-down>        <Action>(MoveStatementDown)
+map <leader>rr      <Action>(Refactorings.QuickListPopupAction)
+map <leader>rs      <Action>(ChangeSignature)
+map <leader>rn      <Action>(RenameElement)
+map <leader>rg      <Action>(Generate)
+map <leader>rf      <Action>(ReformatCode)
+map <leader>ri      <Action>(OptimizeImports)
+map <leader><space> <Action>(ShowIntentionActions)
+
+"" Git
+map <leader>gg <Action>(Git.Menu)
+map <leader>gu <Action>(Vcs.UpdateProject)
+map <leader>gb <Action>(Git.Branches)
+map <leader>go <Action>(Git.Cehckout.Branch)
+map <leader>gf <Action>(Git.Fetch)
+map <leader>gp <Action>(Git.Pull)
+map <leader>gP <Action>(Vcs.Push)
+map <leader>gr <Action>(Git.Reset)
+map <leader>ga <Action>(Git.Stage.Add.All)
+map <leader>gc <Action>(Git.Commit.Stage)
+
+"" Diff
+"map <leader>gn <Action>(NextDiff)
+"map <leader>gp <Action>(NextDiff)

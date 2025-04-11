@@ -8,9 +8,10 @@
 [core]
     editor = nvim
     excludesfile = ~/.gitignore
+	autocrlf = input
 
 [push]
-    autoSetupRemote = false
+    autoSetupRemote = true
 
 [fetch]
     prune = true
@@ -44,8 +45,6 @@
         --format=format:'%C(auto)%h%C(auto)%d %s %C(italic dim white)~ %an'
     # Checking out
     o = checkout
-    om = checkout main
-    ob = checkout -b
     # Status
     s = status -sb
     sv = status --long

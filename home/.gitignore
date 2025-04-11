@@ -53,7 +53,7 @@ tags
 [._]*.un~
 
 # JetBrains
-.idea/
+.idea/*
 .idea_modules/
 cmake-build-*/
 out/

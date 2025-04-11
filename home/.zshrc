@@ -4,8 +4,8 @@ plugins=(
     git
     docker
     # nvm
-    zsh-autosuggestions
-    zsh-autocomplete
+    # zsh-autosuggestions
+    # zsh-autocomplete
 )
 source "$ZSH/oh-my-zsh.sh"
 [ -s "$HOME/.zshrc.inject" ] && source "$HOME/.zshrc.inject"

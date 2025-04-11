@@ -54,14 +54,13 @@ config.keys = {
 
 -- Window stuff
 config.color_scheme = "Catppuccin Mocha"
-config.enable_tab_bar = false
+config.enable_tab_bar = true
 config.enable_scroll_bar = false
-config.window_decorations = "RESIZE"
 config.window_padding = {
   left = 0,
   right = 0,
   top = '0.5cell',
-  bottom = 0,
+  bottom = '0.5cell',
 }
 -- Snap to the size of cells
 -- config.use_resize_increments = false
