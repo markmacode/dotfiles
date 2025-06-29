@@ -31,6 +31,7 @@ cask "font-jetbrains-mono-nerd-font"
 # Languages
 brew "go"
 brew "gofumpt"
+brew "pipx"
 brew "python"
 brew "ruff"
 brew "nvm"
