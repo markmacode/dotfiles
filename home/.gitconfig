@@ -11,7 +11,7 @@
 	autocrlf = input
 
 [push]
-    autoSetupRemote = true
+	autoSetupRemote = true
 
 [fetch]
     prune = true

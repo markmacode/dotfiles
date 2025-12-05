@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+alias a='aws'
 alias g='git'
 alias v='nvim'
 alias lg='lazygit'

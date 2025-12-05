@@ -22,3 +22,4 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
 eval "$(starship init bash)"
 # eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"

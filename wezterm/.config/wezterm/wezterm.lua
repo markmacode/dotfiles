@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 
 -- Font stuff
 local font = "JetBrainsMono Nerd Font"
-local font_size = 16
+local font_size = 14
 config.font_size = font_size
 config.font = wezterm.font({
   family = font,
