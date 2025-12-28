@@ -1,0 +1,28 @@
+.git/
+node_modules/
+venv/
+.venv/
+venv-*/
+.venv-*/
+
+# Linux
+.Trash-*
+.nfs*
+
+# MacOS
+.DS_Store
+
+# Vim
+Session.vim
+Sessionx.vim
+.netrwhist
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix

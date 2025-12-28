@@ -1,0 +1,59 @@
+[user]
+    email = code@mamo.aleeas.com
+    name = markmacode
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+	autocrlf = input
+
+[push]
+	autoSetupRemote = true
+
+[fetch]
+    prune = true
+
+[pager]
+    branch = false
+
+[alias]
+    personal = !git config --local --replace-all user.name "markmacode" && \
+        git config --local --replace-all user.email "code@mamo.aleeas.com" && \
+        git config --local -l
+
+    a = add --all
+    # Branch
+    b = branch -vv
+    ba = branch -vv -a
+    br = branch -r
+    # Commit
+    c = commit
+    ca = commit -a
+    cm = commit -m
+    cam = commit -am
+    cd = commit --amend
+    cad = commit --amend -a
+    # Cherry Pick
+    cp = cherry-pick
+    cpa = cherry-pick --abort
+    cpc = cherry-pick --continue
+    # Logging
+    l = log --graph --abbrev-commit --decorate \
+        --format=format:'%C(auto)%h%C(auto)%d %s %C(italic dim white)~ %an'
+    # Checking out
+    o = checkout
+    # Status
+    s = status -sb
+    sv = status --long
+
+[include]
+    path = ~/.config/work/.gitconfig
+
+[include]
+    path = ~/.gitconfig.inject
+
+[color]
+    status = always
