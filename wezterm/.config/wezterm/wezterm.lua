@@ -76,8 +76,7 @@ config.window_padding = {
   top = "0.5cell",
   bottom = "0.5cell",
 }
--- Snap to the size of cells
--- config.use_resize_increments = false
 
+require("colors")
 require("windows").apply(config)
 return config
