@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+local act = wezterm.action
 
 -- Font stuff
 local font = "JetBrainsMono Nerd Font"
@@ -36,6 +37,7 @@ config.font_rules = {
 config.line_height = 1
 
 config.keys = {
+  -- Presentation mode with zoomed in text
   {
     key = "j",
     mods = "CMD|ALT|CTRL",
@@ -50,6 +52,18 @@ config.keys = {
       window:set_config_overrides({ font_size = zoom_size })
     end),
   },
+
+  -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
+  {
+    key = "LeftArrow",
+    mods = "OPT",
+    action = act.SendKey({ key = "b", mods = "ALT" }),
+  },
+  {
+    key = "RightArrow",
+    mods = "OPT",
+    action = act.SendKey({ key = "f", mods = "ALT" }),
+  },
 }
 
 -- Window stuff
@@ -59,8 +73,8 @@ config.enable_scroll_bar = false
 config.window_padding = {
   left = 0,
   right = 0,
-  top = '0.5cell',
-  bottom = '0.5cell',
+  top = "0.5cell",
+  bottom = "0.5cell",
 }
 -- Snap to the size of cells
 -- config.use_resize_increments = false
