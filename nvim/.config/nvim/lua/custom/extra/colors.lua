@@ -1,26 +1,8 @@
 return {
-  -- The best color scheme I found so far for a good balance of contrast
-  -- and use of colors. I dont like color schemes that use too much red on
-  -- a dark background, it is possibly the worst sin of readabilty.
-  -- {
-  --   "norcalli/nvim-colorizer.lua",
-  --   opts = function()
-  --     require("colorizer").setup()
-  --     require("custom.util").keys({
-  --       { "<leader>c", "<cmd>ColorizerToggle<cr>", desc = "Toggle colorizer" },
-  --     })
-  --   end,
-  -- },
-  -- {
-  --   dir = "~/me/repos/allay.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = function()
-  --     require("custom.util").keys({
-  --       { "<leader>t", "<cmd>Inspect<cr>" },
-  --     })
-  --   end,
-  -- },
+  {
+    "f-person/auto-dark-mode.nvim",
+    opts = {},
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
