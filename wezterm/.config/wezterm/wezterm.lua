@@ -35,16 +35,21 @@ config.font_rules = {
 config.line_height = 1
 
 -- Window stuff
-config.enable_tab_bar = true
-config.enable_scroll_bar = false
 config.window_padding = {
   left = 0,
   right = 0,
   top = "0.5cell",
   bottom = "0.5cell",
 }
+config.enable_tab_bar = true
+config.enable_scroll_bar = false
+config.hide_tab_bar_if_only_one_tab = false
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = false
 
+require("status").apply(config)
 require("keymap").apply(config)
 require("colors").apply(config)
 require("windows").apply(config)
+
 return config

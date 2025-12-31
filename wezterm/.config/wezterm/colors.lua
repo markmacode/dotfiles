@@ -1,30 +1,44 @@
 local wezterm = require("wezterm")
 local module = {}
 
-local dark = "Catppuccin Mocha"
-local light = "Catppuccin Latte"
+module.dark = "Catppuccin Mocha"
+module.light = "Catppuccin Latte"
 
-local function scheme_for_appearance(appearance)
+function module.scheme_name(appearance)
   if appearance:find("Dark") then
-    return dark
+    return module.dark
   else
-    return light
+    return module.light
   end
 end
 
-function module.apply(conig)
+function module.apply(config)
   -- Using dark theme by default
-  wezterm.color_scheme = dark
+  config.color_scheme = module.dark
 
   -- Auto change light or dark mode depending on system config
   -- https://wezfurlong.org/wezterm/config/lua/window/get_appearance.html
   wezterm.on("window-config-reloaded", function(window, pane)
     local overrides = window:get_config_overrides() or {}
-    local appearance = window:get_appearance()
-    local scheme = scheme_for_appearance(appearance)
+    local scheme_name = module.scheme_name(window:get_appearance())
+    local scheme = wezterm.color.get_builtin_schemes()[scheme_name]
 
-    if overrides.color_scheme ~= scheme then
-      overrides.color_scheme = scheme
+    overrides.colors = {
+      tab_bar = {
+        active_tab = {
+          bg_color = scheme.brights[5],
+          fg_color = scheme.background,
+        },
+        inactive_tab = {
+          fg_color = scheme.foreground,
+          bg_color = scheme.tab_bar.background,
+        },
+      },
+    }
+    window:set_config_overrides(overrides)
+
+    if overrides.color_scheme ~= scheme_name then
+      overrides.color_scheme = scheme_name
       window:set_config_overrides(overrides)
     end
   end)
