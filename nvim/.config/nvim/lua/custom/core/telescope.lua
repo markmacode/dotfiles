@@ -23,13 +23,6 @@ return {
     vim.keymap.set("n", "<leader>/", picker.current_buffer_fuzzy_find, { desc = "Current buffer search" })
 
     vim.keymap.set("n", "<leader>sg", function()
-      -- local git = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait()
-      -- if git.code ~= 0 then
-      --   picker.find_files()
-      --   return
-      -- end
-      -- If CWD is somewhere inside a git repo, then it will use
-      -- the CWD instead of the git repo root dir.
       picker.git_files()
     end, { desc = "CWD files (git/general)" })
 
@@ -64,14 +57,13 @@ return {
         layout_strategy = "flex",
         layout_config = {
           prompt_position = "top",
-          -- For some reason builtin flex is not smart enough
-          -- flip_columns = 120,
-          -- flip_lines = 40,
         },
         file_ignore_patterns = {
           ".DS_Store",
-          ".git/",
+          "\\.git/",
           "node_modules/",
+          ".venv/",
+          "venv/",
         },
       },
     })
