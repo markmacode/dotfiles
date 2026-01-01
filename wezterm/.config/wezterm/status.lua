@@ -3,7 +3,7 @@ local colors = require("colors")
 local module = {}
 
 local function get_active_workspace(window)
-  return wezterm.nerdfonts.md_cube_outline .. " " .. window:active_workspace()
+  return wezterm.nerdfonts.md_cube_outline .. "  " .. window:active_workspace()
 end
 
 function module.apply(config)
@@ -30,9 +30,9 @@ function module.apply(config)
     local scheme = wezterm.color.get_builtin_schemes()[scheme_name]
 
     window:set_right_status(wezterm.format({
-      { Background = { Color = scheme.tab_bar.background } },
-      { Foreground = { Color = scheme.brights[5] } },
-      { Text = " " .. get_active_workspace(window) .. " " },
+      { Background = { Color = "#464646" } },
+      { Foreground = { Color = "#D2D6DF" } },
+      { Text = "  " .. get_active_workspace(window) .. "  " },
     }))
   end)
 end
