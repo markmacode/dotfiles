@@ -31,6 +31,28 @@ function module.apply(config)
       mods = "OPT",
       action = act.SendKey({ key = "f", mods = "ALT" }),
     },
+
+    -- Navigation on panes
+    {
+      key = "h",
+      mods = "CTRL",
+      action = act.ActivatePaneDirection("Left"),
+    },
+    {
+      key = "j",
+      mods = "CTRL",
+      action = act.ActivatePaneDirection("Down"),
+    },
+    {
+      key = "k",
+      mods = "CTRL",
+      action = act.ActivatePaneDirection("Up"),
+    },
+    {
+      key = "l",
+      mods = "CTRL",
+      action = act.ActivatePaneDirection("Right"),
+    },
   }
 end
 

@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local colors = require("colors")
 local module = {}
 
 local function get_active_workspace(window)
@@ -26,9 +25,6 @@ function module.apply(config)
   end)
 
   wezterm.on("update-right-status", function(window, pane)
-    local scheme_name = colors.scheme_name(window:get_appearance())
-    local scheme = wezterm.color.get_builtin_schemes()[scheme_name]
-
     window:set_right_status(wezterm.format({
       { Background = { Color = "#464646" } },
       { Foreground = { Color = "#D2D6DF" } },
