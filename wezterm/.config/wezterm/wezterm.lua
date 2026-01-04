@@ -41,7 +41,6 @@ config.window_padding = {
   top = "0.5cell",
   bottom = "0.5cell",
 }
-config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
 config.enable_scroll_bar = false
 config.hide_tab_bar_if_only_one_tab = false
