@@ -3,55 +3,36 @@ local module = {}
 local act = wezterm.action
 
 function module.apply(config)
+  local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+
+  config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 3000 }
+
   config.keys = {
-    -- Presentation mode with zoomed in text
-    {
-      key = "j",
-      mods = "CMD|ALT|CTRL",
-      action = wezterm.action_callback(function(window, pane)
-        -- window:toggle_fullscreen()
-        local zoom_size = 20
-        local current_overrides = window:get_config_overrides()
-        if current_overrides ~= nil and current_overrides.font_size ~= config.font_size then
-          window:set_config_overrides({ font_size = config.font_size })
-          return
-        end
-        window:set_config_overrides({ font_size = zoom_size })
-      end),
-    },
-
     -- Opt-Left and Opt-Right will jump words on MacOS
-    {
-      key = "LeftArrow",
-      mods = "OPT",
-      action = act.SendKey({ key = "b", mods = "ALT" }),
-    },
-    {
-      key = "RightArrow",
-      mods = "OPT",
-      action = act.SendKey({ key = "f", mods = "ALT" }),
-    },
+    { key = "LeftArrow", mods = "OPT", action = act.SendKey({ key = "b", mods = "ALT" }) },
+    { key = "RightArrow", mods = "OPT", action = act.SendKey({ key = "f", mods = "ALT" }) },
 
-    -- Navigation on panes
+    -- Navigation
+    { key = "h", mods = "CTRL", action = act.EmitEvent("ActivatePaneDirection-left") },
+    { key = "j", mods = "CTRL", action = act.EmitEvent("ActivatePaneDirection-down") },
+    { key = "k", mods = "CTRL", action = act.EmitEvent("ActivatePaneDirection-up") },
+    { key = "l", mods = "CTRL", action = act.EmitEvent("ActivatePaneDirection-right") },
+
+    -- Pane
     {
-      key = "h",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Left"),
+      key = "v",
+      mods = "LEADER",
+      action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
     },
     {
-      key = "j",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Down"),
+      key = "s",
+      mods = "LEADER",
+      action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
     },
     {
-      key = "k",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Up"),
-    },
-    {
-      key = "l",
-      mods = "CTRL",
-      action = act.ActivatePaneDirection("Right"),
+      key = "q",
+      mods = "LEADER",
+      action = act.CloseCurrentPane({ confirm = true }),
     },
   }
 end

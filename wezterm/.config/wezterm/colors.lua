@@ -23,24 +23,39 @@ function module.apply(config)
     local scheme_name = module.scheme_name(window:get_appearance())
     local scheme = wezterm.color.get_builtin_schemes()[scheme_name]
 
-    overrides.colors = {
-      tab_bar = {
-        active_tab = {
-          bg_color = scheme.brights[5],
-          fg_color = scheme.background,
+    if window:get_appearance():find("Dark") then
+      overrides.colors = {
+        tab_bar = {
+          active_tab = {
+            fg_color = wezterm.color.parse(scheme.brights[5]):lighten(0.2),
+            bg_color = wezterm.color.parse(scheme.brights[5]):darken(0.6):desaturate(0.5),
+          },
+          inactive_tab = {
+            fg_color = scheme.foreground,
+            bg_color = scheme.tab_bar.background,
+          },
         },
-        inactive_tab = {
-          fg_color = scheme.foreground,
-          bg_color = scheme.tab_bar.background,
+      }
+    else
+      overrides.colors = {
+        tab_bar = {
+          active_tab = {
+            fg_color = wezterm.color.parse(scheme.brights[5]):darken(0.6),
+            bg_color = wezterm.color.parse(scheme.brights[5]):lighten(0.5):desaturate(0.5),
+          },
+          inactive_tab = {
+            fg_color = scheme.foreground,
+            bg_color = scheme.tab_bar.background,
+          },
         },
-      },
-    }
-    window:set_config_overrides(overrides)
+      }
+    end
 
     if overrides.color_scheme ~= scheme_name then
       overrides.color_scheme = scheme_name
-      window:set_config_overrides(overrides)
     end
+
+    window:set_config_overrides(overrides)
   end)
 end
 

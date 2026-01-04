@@ -10,10 +10,8 @@ return {
   config = function()
     require("aerial").setup({
       on_attach = function(bufnr)
-        require("custom.util").keys({
-          { "(", "<cmd>AerialPrev<cr>", buffer = bufnr, desc = "Previous symbol" },
-          { ")", "<cmd>AerialNext<cr>", buffer = bufnr, desc = "Next symbol" },
-        })
+        vim.keymap.set("n", "(", "<cmd>AerialPrev<cr>", { desc = "Previous symbol" })
+        vim.keymap.set("n", ")", "<cmd>AerialNext<cr>", { desc = "Next symbol" })
       end,
     })
   end,

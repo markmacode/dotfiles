@@ -1,8 +1,9 @@
 local wezterm = require("wezterm")
+local colors = require("colors")
 local module = {}
 
 local function get_active_workspace(window)
-  return wezterm.nerdfonts.md_cube_outline .. "  " .. window:active_workspace()
+  return wezterm.nerdfonts.md_cube_outline .. " " .. window:active_workspace()
 end
 
 function module.apply(config)
@@ -15,20 +16,22 @@ function module.apply(config)
 
     if tab.is_active then
       return {
-        { Text = " " .. (tab.tab_index + 1) .. ": " .. title .. " " },
+        { Text = "  " .. (tab.tab_index + 1) .. ": " .. title .. "  " },
       }
     else
       return {
-        { Text = " " .. (tab.tab_index + 1) .. ": " .. title .. " " },
+        { Text = "  " .. (tab.tab_index + 1) .. ": " .. title .. "  " },
       }
     end
   end)
 
   wezterm.on("update-right-status", function(window, pane)
+    local scheme_name = colors.scheme_name(window:get_appearance())
+    local scheme = wezterm.color.get_builtin_schemes()[scheme_name]
+
     window:set_right_status(wezterm.format({
-      { Background = { Color = "#464646" } },
-      { Foreground = { Color = "#D2D6DF" } },
-      { Text = "  " .. get_active_workspace(window) .. "  " },
+      { Foreground = { Color = scheme.foreground } },
+      { Text = " " .. get_active_workspace(window) .. " " },
     }))
   end)
 end

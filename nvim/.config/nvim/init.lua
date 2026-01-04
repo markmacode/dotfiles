@@ -21,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { import = "custom.core" },
   { import = "custom.extra" },
-  { import = "custom.vendor" },
 }, {
   change_detection = {
     enabled = true,
@@ -33,6 +32,4 @@ require("lazy").setup({
 require("custom.config.autocmds")
 require("custom.config.keymaps")
 
-vim.o.termguicolors = true
-vim.cmd.colorscheme("catppuccin")
 vim.cmd.packadd("cfilter")

@@ -1,7 +1,21 @@
 return {
   {
     "f-person/auto-dark-mode.nvim",
-    opts = {},
+    priority = 999,
+    opts = function()
+      vim.cmd([[colorscheme tokyonight]])
+    end,
+  },
+  {
+    "EdenEast/nightfox.nvim",
+    priority = 1000,
+    opts = {
+      options = {
+        styles = {
+          comments = "italic",
+        },
+      },
+    },
   },
   {
     "catppuccin/nvim",
