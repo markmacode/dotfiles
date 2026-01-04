@@ -7,6 +7,6 @@ return {
   ---@module "auto-session"
   ---@type AutoSession.Config
   opts = {
-    allowed_dirs = { "~/me/repos/", "~/me/clones/", "~/dotfiles/" },
+    allowed_dirs = { "~/me/repos/**/", "~/me/clones/**/", "~/dotfiles/", "~/dotfiles/nvim/.config/nvim/" },
   },
 }

@@ -3,7 +3,7 @@ return {
     "f-person/auto-dark-mode.nvim",
     priority = 999,
     opts = function()
-      vim.cmd([[colorscheme tokyonight]])
+      vim.cmd([[colorscheme catppuccin-mocha]])
     end,
   },
   {
