@@ -11,6 +11,7 @@ return {
       { "<leader>g", group = "+Git" },
       { "<leader>r", group = "+Refactor" },
       { "<leader>s", group = "+Search" },
+      { "<leader>t", group = "+Filetree" },
       { "<leader>x", group = "+Trouble" },
       { "z", group = "+Fold" },
       { "\\", group = "+Toggle" },
