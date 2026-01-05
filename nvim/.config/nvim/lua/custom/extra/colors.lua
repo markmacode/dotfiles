@@ -9,7 +9,7 @@ return {
   {
     "EdenEast/nightfox.nvim",
     priority = 1000,
-    opts = {
+    config = {
       options = {
         styles = {
           comments = "italic",
@@ -21,14 +21,23 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    opts = function()
+    config = function()
       require("catppuccin").setup({
         compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
+        auto_integrations = true,
+        integrations = {
+          neotest = true,
+        },
         custom_highlights = function(colors)
           local util = require("catppuccin.utils.colors")
           return {
             Operator = { fg = colors.subtext1 },
             ["@tag.delimiter"] = { fg = colors.subtext1 },
+
+            -- neotest
+            NeotestSkipped = { fg = colors.overlay1 },
+
+            -- dap
             DapStoppedLine = { bg = util.darken(colors.red, 0.25) },
           }
         end,
@@ -39,7 +48,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = function()
+    config = function()
       return {
         style = "moon",
         on_highlights = function(hl, c)
