@@ -9,13 +9,37 @@
   {
     "context": "Workspace",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "shift shift": "file_finder::Toggle",
     },
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
       // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "space": null,
+      "tab": null,
+      "space o": "tab_switcher::Toggle",
+    },
+  },
+  {
+    // Don't conflict with the normal tab
+    "context": "(Editor && edit_prediction)",
+    "bindings": {
+      "tab": "editor::Tab",
+      "shift-tab": "editor::Backtab",
+      "alt-tab": "editor::AcceptEditPrediction",
+    },
+  },
+  {
+    "context": "(Editor && showing_completions)",
+    "bindings": {
+      "tab": "editor::Tab",
+      "shift-tab": "editor::Backtab",
     },
   },
 ]
