@@ -6,10 +6,34 @@
   // To see all of Zed's default settings without changing your
   // custom settings, run `zed: open default settings` from the
   // command palette (cmd-shift-p / ctrl-shift-p)
+  "excerpt_context_lines": 3,
+  "expand_excerpt_lines": 5,
+  "inlay_hints": {
+    "show_background": true,
+  },
+  "relative_line_numbers": "enabled",
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "ui_font_size": 16.0,
+  "buffer_line_height": {
+    "custom": 1.5,
+  },
+  "buffer_font_size": 14.0,
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark",
   },
   "vim_mode": true,
+  "which_key": {
+    "enabled": true,
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["!ty", "..."],
+    },
+  },
 }
