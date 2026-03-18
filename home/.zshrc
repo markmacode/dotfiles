@@ -28,6 +28,7 @@ source "$ZSH/oh-my-zsh.sh"
 [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+source <(fzf --zsh)
 
 # Shell completions
 [ -s "$ZSH/completions/_bun" ] && source "$ZSH/completions/_bun"

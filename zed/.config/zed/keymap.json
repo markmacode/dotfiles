@@ -7,15 +7,10 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
+    "context": "(VimControl && !menu)",
     "bindings": {
-      "shift shift": "file_finder::Toggle",
-    },
-  },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore"
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }],
     },
   },
   {
@@ -27,19 +22,18 @@
     },
   },
   {
-    // Don't conflict with the normal tab
     "context": "(Editor && edit_prediction)",
     "bindings": {
-      "tab": "editor::Tab",
-      "shift-tab": "editor::Backtab",
-      "alt-tab": "editor::AcceptEditPrediction",
+      "tab": "editor::ConfirmCompletion",
     },
   },
   {
-    "context": "(Editor && showing_completions)",
     "bindings": {
-      "tab": "editor::Tab",
-      "shift-tab": "editor::Backtab",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "shift-enter": "file_finder::Toggle",
     },
   },
 ]

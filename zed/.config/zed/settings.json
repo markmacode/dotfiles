@@ -6,8 +6,29 @@
   // To see all of Zed's default settings without changing your
   // custom settings, run `zed: open default settings` from the
   // command palette (cmd-shift-p / ctrl-shift-p)
-  "excerpt_context_lines": 3,
-  "expand_excerpt_lines": 5,
+  "completions": {
+    "lsp_insert_mode": "insert",
+  },
+  "snippet_sort_order": "top",
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "project_panel": {
+    "dock": "right",
+  },
+  "git_panel": {
+    "tree_view": true,
+  },
+  "buffer_font_size": 15.0,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "scroll_beyond_last_line": "vertical_scroll_margin",
+  "vertical_scroll_margin": 8.0,
   "inlay_hints": {
     "show_background": true,
   },
@@ -19,9 +40,8 @@
   },
   "ui_font_size": 16.0,
   "buffer_line_height": {
-    "custom": 1.5,
+    "custom": 1.4,
   },
-  "buffer_font_size": 14.0,
   "theme": {
     "mode": "system",
     "light": "One Light",
@@ -33,7 +53,12 @@
   },
   "languages": {
     "Python": {
-      "language_servers": ["!ty", "..."],
+      "language_servers": ["pylsp", "!pyright", "!basedpyright", "!ty", "..."],
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll.ruff": true,
+      },
     },
   },
+  "wrap_guides": [88],
 }

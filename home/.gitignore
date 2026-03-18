@@ -1,6 +1,7 @@
 # Custom
 .scripts/
 .debug/
+*_bromell_ignore/
 
 # Linux
 *~

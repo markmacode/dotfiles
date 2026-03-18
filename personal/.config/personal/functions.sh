@@ -8,6 +8,13 @@ function fz {
   fi
 }
 
+function fdir {
+  dir="$(fd --type d | fzf)"
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
 # Run yazi through `yy` and when you close it it will cd into the selected
 # directory on yazi
 function yy {

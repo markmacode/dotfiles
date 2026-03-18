@@ -34,8 +34,7 @@
     ca = commit -a
     cm = commit -m
     cam = commit -am
-    cd = commit --amend
-    cad = commit --amend -a
+    cd = commit --amend --no-edit
     # Cherry Pick
     cp = cherry-pick
     cpa = cherry-pick --abort
@@ -57,3 +56,5 @@
 
 [color]
     status = always
+[safe]
+	directory = /workspaces/ermds-toolkit
