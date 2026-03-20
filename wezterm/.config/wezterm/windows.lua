@@ -1,13 +1,13 @@
 local wezterm = require("wezterm")
-local module = {}
+local M = {}
 
-function module.is_windows()
+function M.is_windows()
   -- Thank you for the hack mnicky https://stackoverflow.com/a/14425862
   return package.config:sub(1, 1) == "\\"
 end
 
-function module.apply(config)
-  if not module.is_windows() then
+function M.apply(config)
+  if not M.is_windows() then
     wezterm.log_info("Cannot apply Windows config (not on Windows)")
     return
   end
@@ -26,4 +26,4 @@ function module.apply(config)
   }
 end
 
-return module
+return M

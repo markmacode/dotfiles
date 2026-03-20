@@ -1,10 +1,11 @@
 -- Got this from the Navigator.nvim wiki
 -- https://github.com/numToStr/Navigator.nvim/wiki/WezTerm-Integration
 
-local module = {}
+local M = {}
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+-- Checks if the current process is a vi / vim / neovim processes.
 local function is_vi_process(pane)
   -- get_foreground_process_name On Linux, macOS and Windows,
   -- the process can be queried to determine this path. Other operating systems
@@ -12,6 +13,7 @@ local function is_vi_process(pane)
   return pane:get_foreground_process_name():find("n?vim") ~= nil or pane:get_title():find("n?vim") ~= nil
 end
 
+-- Decide if we activate a pane within a vi / vim / neovim process, or a WezTerm pane.
 local function conditional_activate_pane(window, pane, pane_direction, vim_direction)
   if is_vi_process(pane) then
     window:perform_action(
@@ -24,7 +26,8 @@ local function conditional_activate_pane(window, pane, pane_direction, vim_direc
   end
 end
 
-function module.apply(config)
+
+function M.apply(config)
   wezterm.on("ActivatePaneDirection-right", function(window, pane)
     conditional_activate_pane(window, pane, "Right", "l")
   end)
@@ -39,4 +42,4 @@ function module.apply(config)
   end)
 end
 
-return module
+return M

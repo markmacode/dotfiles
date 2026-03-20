@@ -20,6 +20,7 @@ return {
     vim.keymap.set("n", "<leader>sh", picker.help_tags, { desc = "Help" })
     vim.keymap.set("n", "<leader>sw", picker.grep_string, { desc = "Word (grep)" })
     vim.keymap.set("n", "<leader>sc", picker.live_grep, { desc = "Code (grep)" })
+    vim.keymap.set("n", "<leader>ss", picker.lsp_dynamic_workspace_symbols, { desc = "Workspace symbols (dynamic)" })
     vim.keymap.set("n", "<leader>/", picker.current_buffer_fuzzy_find, { desc = "Current buffer search" })
 
     vim.keymap.set("n", "<leader>sg", function()
