@@ -5,10 +5,9 @@ local colors = require("colors")
 
 local M = {}
 
-local fd = "/Users/mbromell/.homebrew/bin/fd"
-
 M.toggle = function(window, pane)
   local home = wezterm.home_dir
+  local fd = home .. "/.local/bin/fd"
 
   -- These are the entries for the selector. With some default paths.
   local projects = {
