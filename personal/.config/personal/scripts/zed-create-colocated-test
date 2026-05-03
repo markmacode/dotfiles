@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Zed automatically passes these environment variables to tasks:
+# $ZED_STEM: The current filename without its extension
+# $ZED_DIRNAME: The directory of the current file
+
+zed_cmd="zed"
+
+if command -v zed-preview &>/dev/null; then
+  zed_cmd="zed-preview"
+fi
+
+if [[ "$ZED_STEM" == test_* ]] || [[ "$ZED_STEM" == *_test ]]; then
+  echo "ERROR: This is already a test file."
+  exit 1
+fi
+
+file_extension="${ZED_FILENAME##*.}"
+colocated_test_file="${ZED_STEM}_test.${file_extension}"
+
+# Execute the Zed CLI to open the file
+"$zed_cmd" "$ZED_DIRNAME/$colocated_test_file"
