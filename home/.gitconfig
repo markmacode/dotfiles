@@ -47,6 +47,7 @@
     # Status
     s = status -sb
     sv = status --long
+	new = "!f() { git stash && git checkout main && git pull origin main && git checkout -b \"$1\" && git stash pop; }; f"
 
 [include]
     path = ~/.config/work/.gitconfig
