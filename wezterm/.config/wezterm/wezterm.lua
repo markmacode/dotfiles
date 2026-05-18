@@ -2,36 +2,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- Text
-local font = "JetBrainsMono Nerd Font"
-local font_size = 14
-config.font_size = font_size
-config.font = wezterm.font({
-  family = font,
-  harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-  weight = "Regular",
-})
-config.font_rules = {
-  -- Bold and non-italic
-  {
-    intensity = "Bold",
-    italic = false,
-    font = wezterm.font({
-      family = font,
-      weight = "Bold",
-    }),
-  },
-
-  -- Bold and italic
-  {
-    intensity = "Bold",
-    italic = true,
-    font = wezterm.font({
-      family = font,
-      weight = "Bold",
-      style = "Italic",
-    }),
-  },
-}
+config.font = wezterm.font_with_fallback {"Brosevka Nerd Font", "JetBrains Nerd Font"}
+config.font_size = 14
 config.line_height = 1
 
 -- Window stuff

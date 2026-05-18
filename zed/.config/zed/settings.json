@@ -6,7 +6,7 @@
   // To see all of Zed's default settings without changing your
   // custom settings, run `zed: open default settings` from the
   // command palette (cmd-shift-p / ctrl-shift-p)
-  "buffer_font_family": ".ZedMono",
+  "buffer_font_family": "Brosevka Nerd Font",
   "buffer_font_size": 14.0,
   "terminal": {
     "font_size": 14.0

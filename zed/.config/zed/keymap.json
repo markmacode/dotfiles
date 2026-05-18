@@ -11,8 +11,13 @@
     "bindings": {
       "j": ["vim::Down", { "display_lines": true }],
       "k": ["vim::Up", { "display_lines": true }],
-      "s": "vim::HelixJumpToWord",
       "space f f": "editor::Format"
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::HelixJumpToWord",
     },
   },
   {
@@ -54,6 +59,13 @@
         "task::Spawn",
         { "task_name": "LazyGit", "reveal_target": "center" },
       ],
+    },
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "space": null,
+      "tab": null,
     },
   },
 ]
