@@ -13,5 +13,4 @@ alias ll='eza -lah --group-directories-first --git'
 # Python
 alias py='python3'
 alias python='python3'
-alias pip='pip3'
 

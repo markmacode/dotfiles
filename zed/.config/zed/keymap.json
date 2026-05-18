@@ -11,6 +11,8 @@
     "bindings": {
       "j": ["vim::Down", { "display_lines": true }],
       "k": ["vim::Up", { "display_lines": true }],
+      "s": "vim::HelixJumpToWord",
+      "space f f": "editor::Format"
     },
   },
   {
@@ -24,15 +26,6 @@
     "context": "Editor && edit_prediction",
     "bindings": {
       "tab": "editor::ConfirmCompletion",
-    },
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "ctrl-a t t": [
-        "task::Spawn",
-        { "task_name": "Test: Create colocated test file" },
-      ],
     },
   },
   {

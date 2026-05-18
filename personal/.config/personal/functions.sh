@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+function dotsync {
+  local message="${1:-chore: quick sync}"
+  git -C "$HOME/dotfiles/" pull
+  git -C "$HOME/dotfiles/" add --all
+  git -C "$HOME/dotfiles/" commit --message "${message}"
+  git -C "$HOME/dotfiles/" push
+}
+
+function dotamend {
+  git -C "$HOME/dotfiles/" pull
+  git -C "$HOME/dotfiles/" add --all
+  git -C "$HOME/dotfiles/" commit --amend --no-message
+  git -C "$HOME/dotfiles/" push --force
+}
+
 # Use fzf as a way to cd into dirs
 function fz {
   dir="$(fd --type d --max-depth 1 | fzf)"

@@ -57,5 +57,4 @@
 
 [color]
     status = always
-[safe]
-	directory = /workspaces/ermds-toolkit
+
