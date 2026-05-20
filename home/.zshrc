@@ -3,6 +3,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     docker
+    direnv
     # nvm
     # zsh-autosuggestions
     # zsh-autocomplete

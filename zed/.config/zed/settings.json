@@ -7,9 +7,9 @@
   // custom settings, run `zed: open default settings` from the
   // command palette (cmd-shift-p / ctrl-shift-p)
   "buffer_font_family": "Brosevka Nerd Font",
-  "buffer_font_size": 14.0,
+  "buffer_font_weight": 300,
   "terminal": {
-    "font_size": 14.0
+    "font_weight": 300,
   },
   "format_on_save": "off",
   "icon_theme": {
@@ -97,19 +97,24 @@
       "syntax": {
         "comment": {
           "font_style": "italic",
+          "font_weight": 250,
         },
         "function.definition": {
           "color": "#5B79E3",
-          "font_weight": 600,
+          "font_weight": 700,
         },
         "function.kwargs": {
-          "color": "#858e99",
+          "color": "#757596",
           "font_style": "italic",
+          "font_weight": 250,
         },
         "type.class.definition": {
           "color": "#3882B7",
-          "font_weight": 600,
+          "font_weight": 700,
         },
+        "string.doc": {
+          "color": "#A2A3A7",
+        }
       },
     },
     "Dracula Light (Alucard)": {
@@ -117,7 +122,7 @@
       "syntax": {
         "function.definition": {
           "color": "#14710A",
-          "font_weight": 600,
+          "font_weight": 700,
         },
         "function.kwargs": {
           "color": "#504254",
@@ -125,7 +130,7 @@
         },
         "type.class.definition": {
           "color": "#036A96",
-          "font_weight": 600,
+          "font_weight": 700,
         },
       },
     },
