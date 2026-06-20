@@ -5,7 +5,6 @@ return {
     require("mini.basics").setup()
     require("mini.hipatterns").setup()
     require("mini.trailspace").setup()
-    require("mini.indentscope").setup({ symbol = "│" })
     require("mini.move").setup()
   end,
 }

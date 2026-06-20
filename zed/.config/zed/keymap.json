@@ -11,7 +11,14 @@
     "bindings": {
       "j": ["vim::Down", { "display_lines": true }],
       "k": ["vim::Up", { "display_lines": true }],
-      "space f f": "editor::Format"
+      "space f f": "editor::Format",
+
+      // Finders
+      "space s f": "file_finder::Toggle",
+      "space s s": "project_symbols::Toggle",
+      "space s t": "tab_switcher::ToggleAll",
+
+      // Git
     },
   },
   {
@@ -35,30 +42,23 @@
   },
   {
     "bindings": {
+      // Git
+      "cmd-g p": "git::Pull",
+      "cmd-g P": "git::Push",
+      "cmd-g b": "git::Branch",
+      "cmd-g w": "git::Worktree",
+      "cmd-g g": [
+        "task::Spawn",
+        { "task_name": "LazyGit", "reveal_target": "center" },
+      ],
+
       // Navigation
       "cmd-e": "project_panel::ToggleFocus",
-      "cmd-g": "git_panel::ToggleFocus",
       "cmd-o": "projects::OpenRecent",
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
-
-      // Finders
-      "ctrl-a s f": "file_finder::Toggle",
-      "ctrl-a s s": "project_symbols::Toggle",
-      "ctrl-a s t": "tab_switcher::ToggleAll",
-
-      // Git
-      "ctrl-a g p": "git::Pull",
-      "ctrl-a g P": "git::Push",
-      "ctrl-a g b": "git::Branch",
-      "ctrl-a g s s": "git::StashAll",
-      "ctrl-a g s p": "git::StashPop",
-      "ctrl-a g g": [
-        "task::Spawn",
-        { "task_name": "LazyGit", "reveal_target": "center" },
-      ],
     },
   },
   {

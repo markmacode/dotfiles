@@ -1,3 +1,9 @@
+if vim.g.vscode then
+  -- vscode only setup
+else
+  -- neovim only setup
+end
+
 -- pre-plugin setup
 require("custom.config.options")
 require("custom.config.filetype")
