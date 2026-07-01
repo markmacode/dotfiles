@@ -47,6 +47,7 @@
       "cmd-g P": "git::Push",
       "cmd-g b": "git::Branch",
       "cmd-g w": "git::Worktree",
+      "cmd-g c": "git_panel::Toggle",
       "cmd-g g": [
         "task::Spawn",
         { "task_name": "LazyGit", "reveal_target": "center" },
