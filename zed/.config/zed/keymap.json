@@ -17,8 +17,6 @@
       "space s f": "file_finder::Toggle",
       "space s s": "project_symbols::Toggle",
       "space s t": "tab_switcher::ToggleAll",
-
-      // Git
     },
   },
   {
@@ -31,13 +29,12 @@
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
       "space": null,
-      "tab": null,
     },
   },
   {
-    "context": "Editor && edit_prediction",
+    "context": "Editor && showing_completions",
     "bindings": {
-      "tab": "editor::ConfirmCompletion",
+      "enter": "editor::Newline",
     },
   },
   {
@@ -60,13 +57,6 @@
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
-    },
-  },
-  {
-    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
-    "bindings": {
-      "space": null,
-      "tab": null,
     },
   },
 ]

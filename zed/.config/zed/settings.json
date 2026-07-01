@@ -6,6 +6,7 @@
   // To see all of Zed's default settings without changing your
   // custom settings, run `zed: open default settings` from the
   // command palette (cmd-shift-p / ctrl-shift-p)
+  "extend_comment_on_newline": false,
   "diff_view_style": "split",
   "buffer_font_size": 15.0,
   "buffer_font_family": "Brosevka Nerd Font",
@@ -131,7 +132,6 @@
       "formatter": "language_server",
     },
   },
-  "lsp": {},
   "file_types": {
     "Dockerfile": ["Dockerfile*", "dockerfile*"],
     "Shell Script": [".envrc"],
