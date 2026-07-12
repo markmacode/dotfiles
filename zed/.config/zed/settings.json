@@ -34,7 +34,8 @@
     "lsp_insert_mode": "insert",
   },
   "show_completions_on_input": true,
-  "snippet_sort_order": "bottom",
+  "snippet_sort_order": "inline",
+  "show_signature_help_after_edits": true,
   "edit_predictions": {
     "mode": "subtle",
   },
@@ -64,7 +65,7 @@
   },
   "unnecessary_code_fade": 0.7,
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "JetBrains Light",
     "dark": "One Dark",
   },

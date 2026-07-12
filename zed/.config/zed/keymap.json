@@ -15,8 +15,13 @@
 
       // Finders
       "space s f": "file_finder::Toggle",
+      "space s c": "text_finder::Toggle",
       "space s s": "project_symbols::Toggle",
       "space s t": "tab_switcher::ToggleAll",
+
+      // Navigation
+      "shift-n": "vim::ChangeListNewer",
+      "shift-p": "vim::ChangeListOlder",
     },
   },
   {
