@@ -65,7 +65,7 @@
   },
   "unnecessary_code_fade": 0.7,
   "theme": {
-    "mode": "dark",
+    "mode": "system",
     "light": "JetBrains Light",
     "dark": "One Dark",
   },

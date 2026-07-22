@@ -22,6 +22,8 @@
       // Navigation
       "shift-n": "vim::ChangeListNewer",
       "shift-p": "vim::ChangeListOlder",
+      "[ [": "editor::MoveToStartOfLargerSyntaxNode",
+      "] ]": "editor::MoveToEndOfLargerSyntaxNode",
     },
   },
   {

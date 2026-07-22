@@ -8,10 +8,11 @@
 [core]
     editor = nvim
     excludesfile = ~/.gitignore
-	autocrlf = input
+    autocrlf = input
+    pager = delta
 
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
 
 [fetch]
     prune = true
@@ -47,7 +48,7 @@
     # Status
     s = status -sb
     sv = status --long
-	new = "!f() { git fetch origin main && git stash && git checkout --no-track  -b \"$1\" origin/main && git stash pop; }; f"
+    new = "!f() { git fetch origin main && git stash && git checkout --no-track  -b \"$1\" origin/main && git stash pop; }; f"
 
 [include]
     path = ~/.config/work/.gitconfig
@@ -58,3 +59,11 @@
 [color]
     status = always
 
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    side-by-side = true
+    line-numbers = true
+[merge]
+    conflictStyle = zdiff3

@@ -1,0 +1,150 @@
+#!/bin/bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# 1. Ensure GitHub CLI is installed
+if ! command -v gh &>/dev/null; then
+  echo "Error: gh (GitHub CLI) is not installed. Please install it first."
+  exit 1
+fi
+
+echo "Fetching latest from origin..."
+git fetch origin
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# ==========================================
+# MODE 1: UPDATE EXISTING BACKPORT PR
+# ==========================================
+if [[ "$CURRENT_BRANCH" == fix/CURE-0/pick-* ]]; then
+  if [ "$#" -lt 1 ]; then
+    echo "Usage (Update PR Mode): $0 <commit-sha-1> [commit-sha-2] ..."
+    echo "Example: $0 8a3f9e2"
+    exit 1
+  fi
+
+  SHAS=("$@")
+  echo "Detected existing backport branch: ${CURRENT_BRANCH}"
+
+  # Fetch existing PR details using gh cli
+  echo "Fetching existing PR details..."
+  EXISTING_TITLE=$(gh pr view --json title -q .title)
+  EXISTING_BODY=$(gh pr view --json body -q .body)
+
+  NEW_TITLE="$EXISTING_TITLE"
+  NEW_BODY="$EXISTING_BODY"
+
+  echo "Cherry-picking ${#SHAS[@]} new commit(s)..."
+  for SHA in "${SHAS[@]}"; do
+    FULL_SHA=$(git rev-parse "$SHA")
+    SHORT_SHA=$(git rev-parse --short "$FULL_SHA")
+    TITLE=$(git log -1 --format=%s "$FULL_SHA")
+
+    echo "- Cherry-picking ${SHORT_SHA}..."
+    git cherry-pick "$SHA"
+
+    # Append to the existing body
+    NEW_BODY="${NEW_BODY}
+- ${SHORT_SHA} ${TITLE}"
+
+    # Extract PR numbers and append to title if they aren't already there
+    PR_MATCHES=$(echo "$TITLE" | grep -oE '#[0-9]+' || true)
+    for PR_NUM in $PR_MATCHES; do
+      if [[ "$NEW_TITLE" != *"$PR_NUM"* ]]; then
+        NEW_TITLE="${NEW_TITLE} ${PR_NUM}"
+      fi
+    done
+  done
+
+  echo "Pushing updates to origin..."
+  git push
+
+  echo "Updating PR on GitHub..."
+  gh pr edit --title "$NEW_TITLE" --body "$NEW_BODY"
+
+  echo "✅ Success! PR updated."
+  exit 0
+fi
+
+# ==========================================
+# MODE 2: CREATE NEW BACKPORT PR
+# ==========================================
+if [ "$#" -lt 2 ]; then
+  echo "Usage (Create PR Mode): $0 <version> <commit-sha-1> [commit-sha-2] ..."
+  echo "Example: $0 1.10 8a3f9e2 c4d5e6f"
+  exit 1
+fi
+
+VERSION=$1
+shift
+SHAS=("$@") # Store all remaining arguments as an array of SHAs
+RELEASE_BRANCH="release/${VERSION}.x"
+
+# Extract the very first SHA to base the branch name on
+FIRST_SHA="${SHAS[0]}"
+FIRST_SHORT_SHA=$(git rev-parse --short "$FIRST_SHA")
+
+if [ ${#SHAS[@]} -gt 1 ]; then
+  NEW_BRANCH="fix/CURE-0/pick-${FIRST_SHORT_SHA}-multiple"
+else
+  NEW_BRANCH="fix/CURE-0/pick-${FIRST_SHORT_SHA}"
+fi
+
+ALL_PR_NUMBERS=()
+PR_BODY="Automated cherry-pick of the following commits into \`${RELEASE_BRANCH}\`:
+
+"
+
+for i in "${!SHAS[@]}"; do
+  SHA="${SHAS[$i]}"
+  FULL_SHA=$(git rev-parse "$SHA")
+  SHORT_SHA=$(git rev-parse --short "$FULL_SHA")
+  TITLE=$(git log -1 --format=%s "$FULL_SHA")
+
+  PR_BODY="${PR_BODY}- ${SHORT_SHA} ${TITLE}
+"
+
+  PR_MATCHES=$(echo "$TITLE" | grep -oE '#[0-9]+' || true)
+
+  for PR_NUM in $PR_MATCHES; do
+    IS_DUPE=0
+    for EXISTING_PR in "${ALL_PR_NUMBERS[@]}"; do
+      if [ "$EXISTING_PR" == "$PR_NUM" ]; then
+        IS_DUPE=1
+        break
+      fi
+    done
+    if [ "$IS_DUPE" -eq 0 ]; then
+      ALL_PR_NUMBERS+=("$PR_NUM")
+    fi
+  done
+done
+
+if [ ${#ALL_PR_NUMBERS[@]} -gt 0 ]; then
+  PR_TITLE="chore: backport ${ALL_PR_NUMBERS[*]}"
+else
+  PR_TITLE="chore: backport"
+fi
+
+echo "Creating and checking out branch ${NEW_BRANCH} from origin/${RELEASE_BRANCH}..."
+git checkout -b "$NEW_BRANCH" "origin/${RELEASE_BRANCH}"
+
+echo "Cherry-picking ${#SHAS[@]} commit(s)..."
+for SHA in "${SHAS[@]}"; do
+  SHORT_SHA=$(git rev-parse --short "$SHA")
+  echo "- Cherry-picking ${SHORT_SHA}..."
+  git cherry-pick "$SHA"
+done
+
+echo "Pushing ${NEW_BRANCH} to origin..."
+git push -u origin "$NEW_BRANCH"
+
+echo "Creating Pull Request..."
+gh pr create \
+  --base "$RELEASE_BRANCH" \
+  --head "$NEW_BRANCH" \
+  --title "$PR_TITLE" \
+  --body "$PR_BODY"
+
+echo "✅ Success! PR created for ${RELEASE_BRANCH}."
