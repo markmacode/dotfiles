@@ -9,7 +9,7 @@ return {
   {
     "EdenEast/nightfox.nvim",
     priority = 1000,
-    config = {
+    opts = {
       options = {
         styles = {
           comments = "italic",
@@ -48,7 +48,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
+    opts = function()
       return {
         style = "moon",
         on_highlights = function(hl, c)

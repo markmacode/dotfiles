@@ -3,18 +3,24 @@
 #
 # Install Homebrew
 #
-if which -s brew; then
+if ! command -v brew >/dev/null; then
   # Check if I have sudo permission, if not then install in user dir
   prompt=$(sudo -nv 2>&1)
-  if [ $? -eq 0 ]; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  elif echo "$prompt" | grep -q '^sudo:'; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  if [ $? -eq 0 ] || echo "$prompt" | grep -q '^sudo:'; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
     mkdir -p "$HOME/.homebrew"
     curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C "$HOME/.homebrew"
     export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
   fi
+
+  # Put the fresh install on PATH for the rest of this script
+  for brew_bin in /opt/homebrew/bin/brew "$HOME/.homebrew/bin/brew" /home/linuxbrew/.linuxbrew/bin/brew; do
+    if [[ -x "$brew_bin" ]]; then
+      eval "$("$brew_bin" shellenv)"
+      break
+    fi
+  done
 else
   brew update
 fi
@@ -59,13 +65,16 @@ for repo in "${custom_plugins[@]}"; do
     git -C "$repo_path" pull
   else
     echo "Downloading ZSH plugin $repo"
-    git clone https://github.com/${repo}.git "$plugins_path"
+    git clone https://github.com/${repo}.git "$repo_path"
   fi
 done
 
 #
 # Extra app inits
 #
+echo "Installing stable neovim through bob"
+bob use stable
+
 echo "Setting lazy.nvim plugins to the lockfile versions"
 nvim --headless "+Lazy! restore" +qa
 

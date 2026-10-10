@@ -8,7 +8,11 @@ dap.adapters["pwa-node"] = {
   port = "${port}",
   executable = {
     command = "node",
-    args = { "", "${port}" },
+    -- Installed by mason, see `custom/core/lsp.lua`
+    args = {
+      vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+      "${port}",
+    },
   },
 }
 

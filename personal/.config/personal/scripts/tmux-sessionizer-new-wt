@@ -15,4 +15,4 @@ if git -C "$repo" show-ref --verify --quiet "refs/heads/$branch"; then
   git -C "$repo" worktree add "$target" "$branch"
 else
   git -C "$repo" worktree add "$target" -b "$branch"
-fi && exec sessionizer "$target"
+fi && exec tmux-sessionizer "$target"
