@@ -73,7 +73,7 @@ done
 # Extra app inits
 #
 echo "Installing stable neovim through bob"
-bob use stable
+bob use 0.12.6
 
 echo "Setting lazy.nvim plugins to the lockfile versions"
 nvim --headless "+Lazy! restore" +qa
