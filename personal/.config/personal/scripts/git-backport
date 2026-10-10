@@ -27,13 +27,13 @@ if [[ "$CURRENT_BRANCH" == hotfix/CURE-0/pick-* ]]; then
   SHAS=("$@")
   echo "Detected existing backport branch: ${CURRENT_BRANCH}"
 
-  # Fetch existing PR details using gh cli
   echo "Fetching existing PR details..."
   EXISTING_TITLE=$(gh pr view --json title -q .title)
   EXISTING_BODY=$(gh pr view --json body -q .body)
 
   NEW_TITLE="$EXISTING_TITLE"
   NEW_BODY="$EXISTING_BODY"
+  APPLIED_COUNT=0
 
   echo "Cherry-picking ${#SHAS[@]} new commit(s)..."
   for SHA in "${SHAS[@]}"; do
@@ -42,13 +42,27 @@ if [[ "$CURRENT_BRANCH" == hotfix/CURE-0/pick-* ]]; then
     TITLE=$(git log -1 --format=%s "$FULL_SHA")
 
     echo "- Cherry-picking ${SHORT_SHA}..."
-    git cherry-pick "$SHA"
 
-    # Append to the existing body
+    set +e
+    git cherry-pick "$SHA"
+    CP_EXIT_CODE=$?
+    set -e
+
+    if [ $CP_EXIT_CODE -ne 0 ]; then
+      if [ -z "$(git status --porcelain)" ]; then
+        echo "⚠️  ${SHORT_SHA} is empty or already applied on this branch. Skipping..."
+        git cherry-pick --skip
+        continue
+      else
+        echo "❌ Cherry-pick conflict on ${SHORT_SHA}. Resolve conflicts and run 'git cherry-pick --continue'."
+        exit 1
+      fi
+    fi
+
+    APPLIED_COUNT=$((APPLIED_COUNT + 1))
     NEW_BODY="${NEW_BODY}
 - ${SHORT_SHA} ${TITLE}"
 
-    # Extract PR numbers and append to title if they aren't already there
     PR_MATCHES=$(echo "$TITLE" | grep -oE '#[0-9]+' || true)
     for PR_NUM in $PR_MATCHES; do
       if [[ "$NEW_TITLE" != *"$PR_NUM"* ]]; then
@@ -56,6 +70,11 @@ if [[ "$CURRENT_BRANCH" == hotfix/CURE-0/pick-* ]]; then
       fi
     done
   done
+
+  if [ "$APPLIED_COUNT" -eq 0 ]; then
+    echo "⚠️ All commits were skipped (already applied). No updates were pushed."
+    exit 0
+  fi
 
   echo "Pushing updates to origin..."
   git push
@@ -78,10 +97,9 @@ fi
 
 VERSION=$1
 shift
-SHAS=("$@") # Store all remaining arguments as an array of SHAs
+SHAS=("$@")
 RELEASE_BRANCH="release/${VERSION}.x"
 
-# Extract the very first SHA to base the branch name on
 FIRST_SHA="${SHAS[0]}"
 FIRST_SHORT_SHA=$(git rev-parse --short "$FIRST_SHA")
 
@@ -91,22 +109,41 @@ else
   NEW_BRANCH="hotfix/CURE-0/pick-${FIRST_SHORT_SHA}"
 fi
 
+echo "Creating and checking out branch ${NEW_BRANCH} from origin/${RELEASE_BRANCH}..."
+git checkout -b "$NEW_BRANCH" "origin/${RELEASE_BRANCH}"
+
 ALL_PR_NUMBERS=()
-PR_BODY="Automated cherry-pick of the following commits into \`${RELEASE_BRANCH}\`:
+COMMIT_DESCRIPTIONS=()
+APPLIED_COUNT=0
 
-"
-
-for i in "${!SHAS[@]}"; do
-  SHA="${SHAS[$i]}"
+echo "Cherry-picking ${#SHAS[@]} commit(s)..."
+for SHA in "${SHAS[@]}"; do
   FULL_SHA=$(git rev-parse "$SHA")
   SHORT_SHA=$(git rev-parse --short "$FULL_SHA")
   TITLE=$(git log -1 --format=%s "$FULL_SHA")
 
-  PR_BODY="${PR_BODY}- ${SHORT_SHA} ${TITLE}
-"
+  echo "- Cherry-picking ${SHORT_SHA}..."
+
+  set +e
+  git cherry-pick "$SHA"
+  CP_EXIT_CODE=$?
+  set -e
+
+  if [ $CP_EXIT_CODE -ne 0 ]; then
+    if [ -z "$(git status --porcelain)" ]; then
+      echo "⚠️  ${SHORT_SHA} is empty or already applied on this branch. Skipping..."
+      git cherry-pick --skip
+      continue
+    else
+      echo "❌ Cherry-pick conflict on ${SHORT_SHA}. Resolve conflicts and run 'git cherry-pick --continue'."
+      exit 1
+    fi
+  fi
+
+  APPLIED_COUNT=$((APPLIED_COUNT + 1))
+  COMMIT_DESCRIPTIONS+=("- ${SHORT_SHA} ${TITLE}")
 
   PR_MATCHES=$(echo "$TITLE" | grep -oE '#[0-9]+' || true)
-
   for PR_NUM in $PR_MATCHES; do
     IS_DUPE=0
     for EXISTING_PR in "${ALL_PR_NUMBERS[@]}"; do
@@ -121,20 +158,29 @@ for i in "${!SHAS[@]}"; do
   done
 done
 
+# Clean up branch and exit if no commits were actually applied
+if [ "$APPLIED_COUNT" -eq 0 ]; then
+  echo "⚠️ All commits were skipped because they are already applied on ${RELEASE_BRANCH}."
+  echo "Cleaning up local branch ${NEW_BRANCH}..."
+  git checkout "$RELEASE_BRANCH" &>/dev/null || git checkout main &>/dev/null || true
+  git branch -D "$NEW_BRANCH"
+  echo "Done. No PR created."
+  exit 0
+fi
+
+# Build PR metadata using only successfully applied commits
 if [ ${#ALL_PR_NUMBERS[@]} -gt 0 ]; then
   PR_TITLE="chore: backport ${ALL_PR_NUMBERS[*]}"
 else
   PR_TITLE="chore: backport"
 fi
 
-echo "Creating and checking out branch ${NEW_BRANCH} from origin/${RELEASE_BRANCH}..."
-git checkout -b "$NEW_BRANCH" "origin/${RELEASE_BRANCH}"
+PR_BODY="Automated cherry-pick of the following commits into \`${RELEASE_BRANCH}\`:
 
-echo "Cherry-picking ${#SHAS[@]} commit(s)..."
-for SHA in "${SHAS[@]}"; do
-  SHORT_SHA=$(git rev-parse --short "$SHA")
-  echo "- Cherry-picking ${SHORT_SHA}..."
-  git cherry-pick "$SHA"
+"
+for DESC in "${COMMIT_DESCRIPTIONS[@]}"; do
+  PR_BODY="${PR_BODY}${DESC}
+"
 done
 
 echo "Pushing ${NEW_BRANCH} to origin..."

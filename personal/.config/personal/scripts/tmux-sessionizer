@@ -1,33 +1,53 @@
 #!/usr/bin/env bash
 
+roots=(~/me ~/me/repos ~/me/remotes ~/me/clones)
+
+# Emit each directory, plus every worktree of it if it's a git repo
+list_candidates() {
+  fd . "${roots[@]}" -d 1 -td -tl --absolute-path | sed 's,/$,,' |
+    while read -r dir; do
+      echo "$dir"
+      # normal repo (.git dir/file) or bare repo (HEAD at top level)
+      [[ -e $dir/.git || -f $dir/HEAD ]] || continue
+      git -C "$dir" worktree list --porcelain 2>/dev/null |
+        awk '/^worktree /{p=substr($0,10)} /^bare/{p=""} /^$/{if(p)print p; p=""} END{if(p)print p}'
+    done | awk '!seen[$0]++'
+}
+
+# repo_worktree for linked worktrees, plain basename otherwise
+session_name() {
+  local dir=$1 gitdir common
+  if gitdir=$(git -C "$dir" rev-parse --absolute-git-dir 2>/dev/null) &&
+    common=$(git -C "$dir" rev-parse --path-format=absolute --git-common-dir 2>/dev/null) &&
+    [[ $gitdir != "$common" ]]; then
+    echo "$(basename "$(dirname "$common")")_$(basename "$dir")"
+  else
+    basename "$dir"
+  fi | tr './:' '___'
+}
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected="$(fd --full-path ~/ \
-    ~/me \
-    ~/me/repos \
-    ~/me/remotes \
-    ~/me/clones \
-    -d 1 -td -tl | sed 's,/$,,' | fzf)"
+  selected=$(list_candidates | fzf \
+    --preview 'git -C {} status -sb 2>/dev/null || ls -a {}')
 fi
 
-if [[ -z $selected ]]; then
+[[ -z $selected ]] && exit 0
+
+selected_name=$(session_name "$selected")
+
+if [[ -z $TMUX ]] && ! pgrep -x tmux >/dev/null; then
+  tmux new-session -s "$selected_name" -c "$selected"
   exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c $selected
-  exit 0
-fi
-
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-  tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+  tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
 if [[ -z $TMUX ]]; then
-  tmux attach -t $selected_name
+  tmux attach -t "$selected_name"
 else
-  tmux switch-client -t $selected_name
+  tmux switch-client -t "$selected_name"
 fi

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+repo=$(fd . ~/me ~/me/repos ~/me/remotes ~/me/clones -d 1 -td | sed 's,/$,,' | fzf --prompt='repo> ') || exit 0
+read -rp "branch: " branch
+[[ -z $branch ]] && exit 0
+
+# bare layout: worktrees live inside the repo dir; normal clone: siblings
+if [[ -f $repo/HEAD ]] || [[ -f $repo/.git ]]; then
+  target="$repo/${branch//\//-}"
+else
+  target="$repo-${branch//\//-}"
+fi
+
+if git -C "$repo" show-ref --verify --quiet "refs/heads/$branch"; then
+  git -C "$repo" worktree add "$target" "$branch"
+else
+  git -C "$repo" worktree add "$target" -b "$branch"
+fi && exec sessionizer "$target"

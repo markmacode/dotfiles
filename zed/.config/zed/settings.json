@@ -6,8 +6,19 @@
   // To see all of Zed's default settings without changing your
   // custom settings, run `zed: open default settings` from the
   // command palette (cmd-shift-p / ctrl-shift-p)
+  "git": {
+    "blame": {
+      "show_avatar": true,
+    },
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "debugger": {
+    "dock": "left",
+  },
   "title_bar": {
-    "show_branch_status_icon": true
+    "show_branch_status_icon": true,
   },
   "extend_comment_on_newline": false,
   "diff_view_style": "split",
@@ -69,7 +80,7 @@
   "unnecessary_code_fade": 0.7,
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "JetBrains Light",
     "dark": "One Dark",
   },
   "theme_overrides": {
