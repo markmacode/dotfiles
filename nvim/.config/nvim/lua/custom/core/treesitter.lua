@@ -7,7 +7,7 @@ return {
       "bash",
       "c",
       "cpp",
-      "csharp",
+      "c_sharp",
       "css",
       "go",
       "gomod",
