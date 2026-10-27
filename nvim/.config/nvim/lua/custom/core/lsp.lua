@@ -38,7 +38,17 @@ return {
       },
       lua_ls = true,
       marksman = true,
-      pyright = true,
+      basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              -- basedpyright defaults to "recommended", which is much noisier
+              typeCheckingMode = "standard",
+              autoImportCompletions = true,
+            },
+          },
+        },
+      },
       yamlls = {
         settings = {
           yaml = {
