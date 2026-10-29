@@ -1,2 +1,11 @@
 **/tmux/plugins/
 .claude/worktrees/
+
+# Claude Code: only track what's explicitly allowed
+claude/.claude/*
+!claude/.claude/settings.json
+!claude/.claude/statusline-command.sh
+!claude/.claude/CLAUDE.md
+!claude/.claude/keybindings.json
+!claude/.claude/agents/
+!claude/.claude/commands/

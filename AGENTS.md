@@ -15,6 +15,7 @@ Every top-level **directory** is a stow package that mirrors `$HOME`.
 | `personal/` | `~/.config/personal/` | `setup.sh` sources `exports.sh`, `functions.sh` and `aliases.sh`; `scripts/` is on PATH |
 | `nvim/` | `~/.config/nvim/` | lazy.nvim; read `nvim/.config/nvim/README.md` before touching it |
 | `zed/` | `~/.config/zed/{settings,keymap,tasks}.json` | Symlinked per file, because `~/.config/zed` is a real dir |
+| `claude/` | `~/.claude/{settings.json,statusline-command.sh}` | Symlinked per file, because `~/.claude` is a real dir full of runtime state; allowlisted in the root `.gitignore` |
 | `wezterm/` | `~/.config/wezterm/` | One Lua module per concern, each exposing `M.apply(config)` |
 | `tmux/` | `~/.config/tmux/` | The plugins come from tpm in `~/.tmux/plugins`, **not** from `tmux/plugins/` |
 | `starship/`, `lazygit/`, `bat/`, `yazi/` | `~/.config/...` | Small configs; yazi flavors are vendored |
@@ -92,6 +93,12 @@ After adding a file to a package, run `stow -t ~ -R <package>` to deploy it.
 - **A `.stow-local-ignore` replaces stow's default ignore list entirely.** `home/` has an
   empty one so that `.gitignore` gets stowed. `tmux/` has one with `^/plugins` so the
   leftover, gitignored `tmux/plugins/` isn't linked to `~/plugins`.
+- **Claude Code rewrites `settings.json` itself** (`/config`, "always allow"
+  permissions), so expect diffs in `claude/`. If the file is ever replaced rather than
+  edited, the symlink breaks: move the new file back into the package and re-stow. On a
+  fresh machine, stow skips the `claude` package if `~/.claude/settings.json` already
+  exists, so remove it first. Machine- or work-specific settings belong in
+  `managed-settings.json` or `~/.zshrc.inject` env vars, not in the tracked file.
 - **Homebrew installs can break other tools.** For example, installing `git-delta`
   upgraded `libgit2` and broke `bat`/`eza`. Since git → delta → `$PAGER=bat`, that
   breaks `git diff`. After any `brew install`, run
