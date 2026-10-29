@@ -6,8 +6,7 @@ return {
   event = "VeryLazy",
   opts = function()
     require("which-key").add({
-      { "<leader>b", group = "+Breakpoint" },
-      { "<leader>d", group = "+Debug" },
+      { "<leader>d", group = "+Diff" },
       { "<leader>g", group = "+Git" },
       { "<leader>r", group = "+Refactor" },
       { "<leader>s", group = "+Search" },
