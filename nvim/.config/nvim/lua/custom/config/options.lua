@@ -19,5 +19,6 @@ vim.opt.number = true -- Shows the line number on the current line
 vim.opt.relativenumber = true -- Line numbers are relative to current line
 vim.opt.inccommand = "split" -- Show some commands in an updating window
 vim.opt.list = true -- Show some helper symbols
+vim.opt.fillchars = { eob = " ", diff = "╱" } -- Hide end of buffer `~`, diagonal diff filler lines
 vim.opt.swapfile = false -- Do not create swap files
 vim.opt.signcolumn = "yes:2" -- Allow 1 item in the sign column

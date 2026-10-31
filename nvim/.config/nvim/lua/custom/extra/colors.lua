@@ -39,6 +39,10 @@ return {
 
             -- dap
             DapStoppedLine = { bg = util.darken(colors.red, 0.25) },
+
+            -- diff filler lines (DiffviewDiffDeleteDim is used by enhanced_diff_hl)
+            DiffDelete = { fg = colors.surface2 },
+            DiffviewDiffDeleteDim = { fg = colors.surface2 },
           }
         end,
       })
